@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIGHTHOUSE | 自己探究から自己理解へ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= FIXED BACKGROUND LAYER ================= -->
+    <div id="fixed-background" data-stage="1">
+        <img src="assets/map.jpg" id="bg-map" alt="LIGHTHOUSE World Map">
+        <div id="bg-fog-noise"></div>
+        <div id="bg-fog-gradient"></div>
+    </div>
+
+    <!-- ================= SCROLLABLE SNAP CONTENT ================= -->
+    <main id="scroller">
+
+        <!-- Screen 1: Hero -->
+        <section class="snap-section" id="screen-hero" data-stage="1">
+            <div class="panel-inner center-align">
+                <p class="hero-eyecatch">偏差値36からの逆転をはじめ、SFC合格者を連続輩出する仕組み</p>
+                <h1 class="brand-title mb-4">LIGHTHOUSE</h1>
+                <h2 class="hero-title border-none">「なぜ、あなたなのか。」<br>難関大教授を唸らせる必然性を創る。</h2>
+                <p class="hero-sub mt-4">自己探究と論理的思考を掛け合わせた独自のフレームワークで、<br>あなたのルーツから圧倒的な志望理由を抽出する。<br>総合型選抜専門のオンライン塾</p>
+            </div>
+        </section>
+
+        <!-- Screen 2: Pain（CTAなし） -->
+        <section class="snap-section" id="screen-pain" data-stage="2">
+            <div class="panel-inner center-align">
+                <h2>「実績がない」「偏差値が足りない」<br>それだけで諦めていませんか？</h2>
+                <div class="text-block mt-4">
+                    <p>総合型選抜は、現在の学力や突出した実績だけで決まるものではありません。<br>大切なのは「なぜその大学でなければならないか」を、自身のルーツから圧倒的な説得力で語れるかどうかです。</p>
+                    <p>合否を分けるのは「うまい文章」ではなく、「あなたの話」があるかどうか。<br>LIGHTHOUSEは、その「話」を一緒に掘り起こします。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 3: Proof（実績・プロフィール — 信頼の担保） -->
+        <section class="snap-section" id="screen-proof" data-stage="3">
+            <div class="panel-inner center-align">
+                <h2>整理と一本化が、<br>結果を生んだ実績。</h2>
+                <div class="text-block mt-4 text-left">
+                    <p><strong>【合格実績】</strong><br>
+                        ・慶應義塾大学（SFC含む）：6年連続輩出<br>
+                        ・偏差値36からの逆転合格など、出発点の偏差値は問わない<br>
+                        ・早慶上理、GMARCH、関関同立など全国各地から多数<br>
+                        ・海外大学（モナシュ大・トロント大・ライデン大 等）計6校以上輩出</p>
+                    <p class="mt-4"><strong>【代表・田邊勇人】</strong><br>
+                        長年の教育現場における指導の中で、偏差値36からの慶應SFC逆転合格などを輩出。以降、独自のメソッドによる総合型選抜の指導や、私立中高での探究授業の企画実施を通じ、6年連続でSFC合格者を導く。生徒一人ひとりのルーツに寄り添う本質的な伴走支援に定評がある。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: Method（4ステップ — CTAなし） -->
+        <section class="snap-section" id="screen-flow" data-stage="4">
+            <div class="panel-inner center-align">
+                <h2>志望理由を「なんとなく」から<br>「絶対の必然」へ変える4ステップ</h2>
+                <div class="flow-steps mt-4">
+                    <div class="step-card">
+                        <span class="step-num">省察（過去の棚卸し）</span>
+                        <div class="step-text">プロの壁打ちを通じて、過去の経験や感覚を深く掘り起こす。</div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">抽出（価値観の特定）</span>
+                        <div class="step-text">一見バラバラな経験の底流にある「共通の価値観」を洗い出す。</div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">接続（学問とのリンク）</span>
+                        <div class="step-text">あなたの価値観を、大学の学びや社会課題と論理的に結びつける。</div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">証明（書類・面接作成）</span>
+                        <div class="step-text">「なぜ私なのか」を一本の通った筋にし、高い完成度で資料・言葉に落とし込む。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 5: Vision（顧客が得る変化 — ここで初めてCTA） -->
+        <section class="snap-section" id="screen-vision" data-stage="5">
+            <div class="panel-inner center-align">
+                <h2>当プログラムを経た先に、<br>あなたが手にする確実な変化</h2>
+                <div class="text-block mt-4 text-left">
+                    <p><strong>1.
+                            どんな質問にも動じない「面接力」</strong><br>借り物の言葉ではない、自分の人生から抽出した「本物の言葉」で語れるため、面接官の深掘りにも圧倒的な説得力で受け答えができるようになります。
+                    </p>
+                    <p><strong>2.
+                            評価の土台となる「高校の評定UP」</strong><br>志望理由や小論文だけでなく、現代文・英語・生物などの教科学習にも一貫して伴走。選抜の基礎となる学校の成績向上から確実にサポートします。
+                    </p>
+                    <p><strong>3.
+                            受験を超えて活きる「自己理解の武器」</strong><br>偏差値や他者の評価軸を手放し、自分の価値観で進路を選ぶ力を身につけます。この自己分析は、大学進学後の学びや就職活動でも最強の武器として残り続けます。
+                    </p>
+                </div>
+                <div class="mt-8">
+                    <a href="https://line.me/R/ti/p/@331bezuy" target="_blank" rel="noopener noreferrer"
+                        class="btn-main-cta">田邊と話す — 無料相談を予約する</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 6: Quest Note（新規 — まず一人でやりたい人への入口） -->
+        <section class="snap-section" id="screen-questnote" data-stage="6">
+            <div class="panel-inner center-align">
+                <p class="hero-eyecatch">まず、自分でやってみたい方へ</p>
+                <h2>Quest Note<br>自己探求ワークブック</h2>
+                <div class="text-block mt-4">
+                    <p>「書くこと」と「AIとの対話」を往復しながら、<br>「なぜ自分がやるのか」という言葉を見つけていくワークブックです。</p>
+                    <p>LIGHTHOUSEのコーチングメソッド（4ステップ）をもとに設計。<br>一人で取り組みながら、自分の言葉を研ぎ澄ませる入口として使ってください。</p>
+                </div>
+                <div class="quest-note-badge mt-4">
+                    <span class="badge-label">LINE登録で無料配布中</span>
+                </div>
+                <div class="mt-6">
+                    <a href="https://line.me/R/ti/p/@331bezuy" target="_blank" rel="noopener noreferrer"
+                        class="btn-sub-cta">Quest Noteを受け取る（無料）</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 7: Final CTA -->
+        <section class="snap-section" id="screen-cta" data-stage="6">
+            <div class="panel-inner center-align">
+                <h1 class="brand-title">テクニックではなく、<br>必然性を。</h1>
+                <p class="brand-subtext mt-4">PIVOT & QUEST | LIGHTHOUSE</p>
+
+                <div class="cta-container mt-8">
+                    <p class="cta-lead mb-4">自己探究から自己理解へ。まずは話すことから始めよう。</p>
+                    <a href="https://line.me/R/ti/p/@331bezuy" target="_blank" rel="noopener noreferrer"
+                        class="btn-main-cta">公式LINEで無料相談・体験コーチングを予約する</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Site Footer -->
+        <footer class="snap-section site-footer" id="screen-footer" data-stage="6">
+            <div class="panel-inner center-align">
+                <p class="footer-brand">LIGHTHOUSE / PIVOT & QUEST Inc.</p>
+                <div class="footer-links mt-4">
+                    <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer">公式note</a>
+                    <a href="https://forms.gle/o3NBaoy7CoT4KCFY7" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+                    <a href="terms.html">利用規約</a>
+                    <a href="privacy-policy.html">プライバシーポリシー</a>
+                </div>
+                <p class="footer-copy mt-4">&copy; 2026 PIVOT & QUEST Inc. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ================= FLOATING BOTTOM CTA ================= -->
+    <div id="floating-cta">
+        <a href="https://line.me/R/ti/p/@331bezuy" target="_blank" rel="noopener noreferrer"
+            class="btn-floating">無料コーチングで現状の課題を整理する</a>
+    </div>
+
+    <!-- Script for Scroll Sync -->
+    <script>
+        const sections = document.querySelectorAll('.snap-section');
+        const bgContainer = document.getElementById('fixed-background');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stage = entry.target.getAttribute('data-stage');
+                    bgContainer.setAttribute('data-stage', stage);
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(sec => {
+            sectionObserver.observe(sec);
+        });
+
+        const setHeight = () => {
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        };
+        window.addEventListener('resize', setHeight);
+        setHeight();
+    </script>
+</body>
+
+</html>
