@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自己探究から、自己表現へ | LIGHTHOUSE</title>
+  <meta name="description" content="偏差値や常識に苦しむあなたが、年間20名限定の教室で「自分」を取り戻すまで。Lighthouseを創った田邊勇人の原体験と、3名の合格者の物語。">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8;
+      --ink: #1a1c22;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --soft: #f5f6f8;
+      --navy: #1A2744;
+      --accent: #e55f3a;
+      --accent-soft: #fff3ee;
+      --accent-line: #ffd4c2;
+      --gold: #C9A84C;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    .topnav {
+      background: var(--navy);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .topnav-brand { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 0.12em; }
+    .topnav-links { display: flex; gap: 20px; align-items: center; }
+    .topnav-links a { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 700; transition: color 0.15s; }
+    .topnav-links a:hover { color: #fff; }
+    .topnav-links a.cta { background: var(--accent); color: #fff; padding: 7px 16px; border-radius: 999px; }
+
+    /* ── Hero ── */
+    .story-hero {
+      background: var(--navy);
+      padding: 80px 24px 72px;
+      text-align: center;
+      color: #fff;
+    }
+    .story-hero .kicker {
+      display: inline-block;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); font-weight: 700; margin-bottom: 28px;
+    }
+    .story-hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(30px, 7vw, 52px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+    }
+    .story-hero .hero-rule {
+      width: 48px; height: 2px; background: var(--gold);
+      margin: 24px auto 24px;
+    }
+    .story-hero .subtitle {
+      font-size: clamp(13px, 2.5vw, 15px);
+      color: rgba(255,255,255,0.55);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── Layout ── */
+    .container { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* ── Prose ── */
+    .prose { padding: 60px 0 36px; }
+    .prose p { font-size: 16px; line-height: 2; color: #2c303a; margin-bottom: 1.6em; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 700; color: var(--ink); }
+
+    /* ── Chapter headers ── */
+    .chapter-header { padding: 60px 0 28px; }
+    .chapter-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    .chapter-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent); }
+    .chapter-header h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 4.5vw, 34px);
+      font-weight: 700; line-height: 1.4;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .chapter-header .sub { font-size: 14px; color: var(--muted); }
+
+    .section-head {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(17px, 3vw, 22px);
+      font-weight: 700; color: var(--ink);
+      margin: 40px 0 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent);
+      line-height: 1.5;
+    }
+
+    /* ── Pull quote ── */
+    .pull-quote {
+      border-left: 4px solid var(--accent);
+      padding: 20px 24px;
+      margin: 28px 0;
+      background: var(--accent-soft);
+      border-radius: 0 14px 14px 0;
+    }
+    .pull-quote p { font-size: 16px; line-height: 1.9; color: #2c303a; margin: 0; }
+    .pull-quote .attr { font-size: 12px; color: var(--muted); font-weight: 700; margin-top: 10px; display: block; }
+
+    /* ── Dark quote ── */
+    .dark-quote {
+      background: var(--navy);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin: 32px 0;
+    }
+    .dark-quote p { font-family: 'Noto Serif JP', serif; font-size: 17px; line-height: 1.95; color: rgba(255,255,255,0.88); margin: 0; }
+    .dark-quote .attr { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 700; margin-top: 14px; display: block; }
+
+    /* ── Section bg ── */
+    .bg-soft { background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+    /* ── Labeled rule ── */
+    .labeled-rule {
+      display: flex; align-items: center; gap: 16px; margin: 52px 0 36px;
+    }
+    .labeled-rule::before, .labeled-rule::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .labeled-rule span { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+
+    hr.section-rule { border: none; border-top: 1px solid var(--line); margin: 44px 0; }
+
+    /* ── Career timeline ── */
+    .career-timeline {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 20px; padding: 28px;
+      margin: 28px 0; box-shadow: 0 4px 20px rgba(20,24,33,0.06);
+    }
+    .career-timeline h4 { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+    .tl-item { display: flex; gap: 16px; align-items: flex-start; }
+    .tl-dot-col { display: flex; flex-direction: column; align-items: center; min-width: 16px; }
+    .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); margin-top: 5px; flex-shrink: 0; }
+    .tl-dot.accent { background: var(--accent); }
+    .tl-dot.gold { background: var(--gold); }
+    .tl-line { width: 2px; flex: 1; background: var(--line); min-height: 24px; }
+    .tl-content { padding-bottom: 22px; }
+    .tl-age { font-size: 11px; font-weight: 800; color: var(--muted); margin-bottom: 3px; }
+    .tl-desc { font-size: 13px; color: #3a4050; line-height: 1.75; }
+    .tl-desc strong { color: var(--ink); }
+
+    /* ── Values grid ── */
+    .values-grid {
+      background: var(--navy); border-radius: 20px;
+      padding: 32px; margin: 28px 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .value-item { display: flex; gap: 14px; align-items: flex-start; }
+    .value-num {
+      font-size: 11px; font-weight: 800; color: var(--gold);
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 6px; padding: 4px 8px; flex-shrink: 0;
+      letter-spacing: 0.05em; font-family: monospace;
+    }
+    .value-text h5 { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+    .value-text p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; margin: 0; }
+
+    /* ── Case card (same format for all 3) ── */
+    .case-card {
+      border: 1px solid var(--line); border-radius: 20px;
+      overflow: hidden; margin: 0 0 12px;
+      box-shadow: 0 4px 20px rgba(20,24,33,0.06);
+    }
+    .case-card-head {
+      background: var(--navy); padding: 24px 28px; color: #fff;
+    }
+    .case-card-head .case-tag {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .case-card-head h3 { font-size: 17px; font-weight: 800; line-height: 1.5; }
+    .case-card-body { background: #fff; padding: 24px 28px; }
+    .case-card-body p { font-size: 14px; color: #3a4050; line-height: 1.9; margin-bottom: 1em; }
+    .case-card-body p:last-child { margin-bottom: 0; }
+
+    /* ── Stats strip (same for all cases) ── */
+    .stat-strip {
+      display: flex; gap: 0; margin-bottom: 20px;
+      background: var(--soft); border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden;
+    }
+    .stat-item { flex: 1; padding: 20px 16px; text-align: center; border-right: 1px solid var(--line); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: clamp(22px, 4vw, 32px); font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 11px; color: var(--muted); font-weight: 700; }
+
+    /* ── Method steps ── */
+    .method-steps { margin: 28px 0; display: grid; gap: 10px; }
+    .method-step {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 14px; padding: 18px 20px;
+    }
+    .method-num {
+      min-width: 34px; height: 34px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; flex-shrink: 0;
+    }
+    .method-text h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+    .method-text p { font-size: 13px; color: var(--muted); line-height: 1.8; margin: 0; }
+
+    /* ── Guardians box ── */
+    .guardians-box {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 18px; padding: 28px; margin: 32px 0;
+    }
+    .guardians-box .box-title { font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .guardians-box p { font-size: 14px; color: #3a4050; line-height: 1.9; margin-bottom: 1em; }
+    .guardians-box p:last-child { margin-bottom: 0; }
+
+    /* ── FAQ ── */
+    .faq-list { margin: 16px 0; display: grid; gap: 8px; }
+    .faq-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+    .faq-q { font-size: 14px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+    /* ── Final CTA ── */
+    .story-cta {
+      background: var(--navy); padding: 72px 24px; text-align: center; margin-top: 60px;
+    }
+    .story-cta .kicker { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 700; margin-bottom: 20px; }
+    .story-cta h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.4; }
+    .story-cta p { font-size: 14px; color: rgba(255,255,255,0.55); margin: 0 auto 32px; line-height: 1.8; max-width: 440px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 0 26px; border-radius: 999px;
+      font-weight: 700; font-size: 14px; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.25); }
+    .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+
+    /* ── Progress bar ── */
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 1000; width: 0; transition: width 0.1s; }
+
+    /* ── Site footer ── */
+    .site-footer { background: #fff; border-top: 1px solid var(--line); padding: 24px; }
+    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; max-width: 720px; margin: 0 auto; }
+    .footer-brand { font-size: 13px; font-weight: 700; color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    @media (max-width: 640px) {
+      .topnav-links a:not(.cta) { display: none; }
+      .story-hero { padding: 56px 20px 56px; }
+      .values-grid { grid-template-columns: 1fr; padding: 24px; }
+      .stat-strip { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
+      .stat-item:last-child { border-bottom: none; }
+      .cta-row { flex-direction: column; align-items: center; }
+      .cta-row .btn { width: 100%; max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progress"></div>
+
+  <!-- Nav -->
+  <nav class="topnav">
+    <span class="topnav-brand">LIGHTHOUSE</span>
+    <div class="topnav-links">
+      <a href="index.html">← トップへ</a>
+      <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="cta">無料相談を予約する</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="story-hero">
+    <p class="kicker">Lighthouse Story</p>
+    <h1>自己探究から、<br>自己表現へ。</h1>
+    <div class="hero-rule"></div>
+    <p class="subtitle">偏差値や常識に苦しむあなたが、年間20名限定の教室で「自分」を取り戻すまで</p>
+  </header>
+
+  <!-- Prologue -->
+  <section style="padding: 60px 0;">
+    <div class="container">
+      <div class="chapter-header">
+        <div class="chapter-label">Prologue</div>
+        <h2>主役は、あなた。</h2>
+      </div>
+      <div class="prose">
+        <p>最初に、誤解のないように言っておきたい。この教室「Lighthouse（ライトハウス）」から、毎年驚くような合格者が生まれているのは事実だ。偏差値36からの慶應SFC合格、不登校からの立教・同志社合格、第一志望不合格からの建築コンペ受賞……。</p>
+        <p>だがそれは、僕らのおかげなんかじゃない。彼らが自分の頭で考え、泥臭く行動し、傷つきながら積み重ねた結果だ。</p>
+        <div class="pull-quote">
+          <p>僕らがやったことは、頭の中のぐちゃぐちゃを整理する手伝いをしたり、「本当はどう思ってるの？」と本心を引き出したり、漠然とした不安を明日やるべきことに細分化して、背中をポンと押すこと。主役は、いつだって彼らだ。</p>
+        </div>
+        <p>なぜ、僕らがそこまで一人ひとりの力を信じるのか。それは、僕自身の情けない過去の話をしなければならない。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 0 -->
+  <section class="bg-soft" style="padding: 60px 0;">
+    <div class="container">
+      <div class="chapter-header">
+        <div class="chapter-label">Chapter 0 — Origin</div>
+        <h2>27歳まで、僕は<br>自分を生きていなかった。</h2>
+        <p class="sub">Lighthouse 代表 田邊勇人の原体験</p>
+      </div>
+
+      <div class="career-timeline">
+        <h4>田邊の軌跡</h4>
+        <div class="tl-item">
+          <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-age">大学時代</div>
+            <div class="tl-desc">関西学院大学 文学部 地理学専攻。「枠があったから」「偏差値の見栄えが悪くないから」という理由だけで選択。大学で何を学んだかと聞かれても、明確な答えが出てこない。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-age">社会人初期</div>
+            <div class="tl-desc">大手旅行会社に入社。新規事業部で飛び込み営業の毎日。「これで勝ち組だ」と思った先に待っていたもの——数字に追われ、怒鳴られ、体力と精神が削り取られる日々。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot-col"><div class="tl-dot accent"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-age" style="color:var(--accent);">転機 — 27歳</div>
+            <div class="tl-desc"><strong>「たぶん僕は、それまで一度も、自分自身について考えたことがなかったんだ。」</strong><br>心が完全に壊れてから気づいた、圧倒的な空白。会社を辞め、実家で半年間休んだ。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-age">再起</div>
+            <div class="tl-desc">離島移住、映像制作、飲食業、生産業……。他人の評価ではなく、自分の好き嫌い・快不快に従って行動を変えた。それだけで、人生が変わった。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot-col"><div class="tl-dot gold"></div></div>
+          <div class="tl-content">
+            <div class="tl-age" style="color:var(--gold);">現在</div>
+            <div class="tl-desc"><strong>予備校講師を経てLighthouse設立。合格実績94件・合格率88%。</strong><br>次世代に同じ遠回りはさせない、という一心で指導を続けている。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>大学2年生の頃、周りで「自己成長」や「スタンス」という言葉が飛び交い始めた時も、内心では「ナニソレ？」と思っていた。答えが出ないから、とりあえず分かりやすい「資格」に逃げた。ITパスポート、基本情報技術者試験。留学にも2回行った。どれも、不安の裏返しに過ぎなかった。</p>
+        <p>自分の言葉がない人間は脆い。就職活動もその延長だった。あまり調べもせず、イメージだけで人気の大手旅行会社に入社した。「これで勝ち組だ」——でも、待っていた現実はキラキラとは程遠かった。</p>
+
+        <div class="dark-quote">
+          <p>「何のためにやっているんだろう？」そんな問いを持つ余裕すらなくなり、体力と精神が削り取られていきました。「本気で死のうか」と何度も思いました。</p>
+          <span class="attr">— 田邊、旅行会社勤務時代の述懐</span>
+        </div>
+
+        <p>会社を辞め、逃げるように実家へ帰った。そこからの半年間、ただ休んだ。そこで初めて気づいた。<strong>それまで一度も、自分自身について考えたことがなかった</strong>のだと。周りの評価軸に従順に生きるだけの「良い子」。自分の人生なのに、自分が不在だった。</p>
+        <p>だから僕らと関わる次世代の人には、同じ遠回りはさせたくない。偏差値や世間体という外側のものさしで進路を選び、その先で心を壊すような経験はしてほしくない。大学に受かることはゴールではなく過程だ。大切なのは、その先で自分が何に幸せを感じるかを知っておくことだ。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 1 -->
+  <section style="padding: 60px 0;">
+    <div class="container">
+      <div class="chapter-header">
+        <div class="chapter-label">Chapter 1 — Philosophy</div>
+        <h2>自分らしさは、<br>後からついてくる。</h2>
+      </div>
+      <div class="prose">
+        <p>正解が消えた時代に、あなたはどこへ向かえばいいのか。僕たちの考えはこうだ——動いて、問うて、関わる。幻を追うのではなく、現実と泥臭く関わる。そのプロセスの末に足跡のように見えてくるのが、自分らしさだ。</p>
+        <p>Lighthouseが大切にする5つの価値観がある。これはコーチが教えるものではなく、生徒と対等に向き合うための共通言語だ。</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-num">01</div>
+          <div class="value-text">
+            <h5>探究 — 問いを持ち続ける</h5>
+            <p>世界に正解はない。あるのは納得解だけ。迷いを受け入れる強さを持ってほしい。迷うことは弱さじゃない。深く潜るための準備運動だ。</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">02</div>
+          <div class="value-text">
+            <h5>対話 — 他者と変わる</h5>
+            <p>自分ひとりの考えなんて、たかが知れている。年齢も立場も違う他者と対等に関わってほしい。傷つくことを恐れず、混ざり合ってほしい。</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">03</div>
+          <div class="value-text">
+            <h5>表現 — 自分の言葉でつながる</h5>
+            <p>思っているだけでは、誰にも伝わらない。あなたの内側にある願いや痛みを言葉にし、外へ出してほしい。稚拙でいい。あなたの言葉で語られた時、世界は初めてあなたを認識する。</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">04</div>
+          <div class="value-text">
+            <h5>想像 — 他者をおもんぱかる</h5>
+            <p>目の前の人の背景には、どんな物語があるのか。社会の裏側には、どんな痛みが隠れているのか。想像力こそが、あなたを独りよがりから救い出す。</p>
+          </div>
+        </div>
+        <div class="value-item" style="grid-column: 1 / -1;">
+          <div class="value-num">05</div>
+          <div class="value-text">
+            <h5>選択 — 厳しい選択を楽しめ</h5>
+            <p>自分で悩み、自分で選んだ道なら、どんなに険しくても納得して歩ける。その道で出会う困難、失敗、仲間——すべてがあなたを豊かにする。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2 -->
+  <section class="bg-soft" style="padding: 60px 0;">
+    <div class="container">
+      <div class="chapter-header">
+        <div class="chapter-label">Chapter 2 — Case Study</div>
+        <h2>彼らが自分を<br>取り戻した瞬間。</h2>
+      </div>
+      <div class="prose">
+        <p>これから紹介するのは、生徒たちの物語だ。僕らが彼らを変えたわけじゃない。彼らが自分の弱さと向き合い、悩み、苦しみ、自分自身で殻を破った記録だ。</p>
+      </div>
+
+      <!-- Case 1 -->
+      <div class="labeled-rule"><span>Case 1</span></div>
+
+      <div class="stat-strip">
+        <div class="stat-item"><div class="stat-num">36</div><div class="stat-label">出発点の偏差値</div></div>
+        <div class="stat-item"><div class="stat-num">8万字</div><div class="stat-label">書いた総文字数</div></div>
+        <div class="stat-item"><div class="stat-num">SFC</div><div class="stat-label">慶應義塾大学 合格</div></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-head">
+          <div class="case-tag">離島の公立高校生 / 偏差値36</div>
+          <h3>100回の自己否定と、1回の自己肯定感</h3>
+        </div>
+        <div class="case-card-body">
+          <p>離島の偏差値36の高校に通う彼女は、中学時代にいじめを受けていた。地方における教育格差、生きづらさ——それは彼女にとって毎日の肌感覚としての痛みだった。</p>
+          <p>転機は、ボランティアで出会った「学校に行きたくない」という男の子だった。彼の姿が、過去の自分と重なった。「私が味わったこの生きづらさを、次の世代には感じさせたくない」</p>
+          <p>彼女は町の古民家を借り、地域住民80名を巻き込んで共育の拠点を作った。入試のためではなく、生存本能として動いていた。Lighthouseがやったのは、そのエネルギーを大学に伝わる言葉に変換する手伝いだけだ。</p>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>志望理由書の制限は2,000字。しかし彼女はそのために<strong>8万字以上</strong>を書いた。「これじゃ伝わらない」「まだ浅い」と突き返すたびに、泣きながら書き直した。それは100回の自己否定のプロセスだった。そして書き上げた時、彼女は確信していた——「私は、この社会を変えるために、ここに来たんだ」と。</p>
+      </div>
+
+      <div class="dark-quote">
+        <p>「合格した時より、8万字書ききったことの方が誇らしかった。」</p>
+        <span class="attr">— 公立高校2年生・女性（離島出身・偏差値36 → 慶應義塾大学SFC合格）</span>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="labeled-rule" style="margin-top: 64px;"><span>Case 2</span></div>
+
+      <div class="stat-strip">
+        <div class="stat-item"><div class="stat-num">不登校</div><div class="stat-label">中学時代の経験</div></div>
+        <div class="stat-item"><div class="stat-num">通信制</div><div class="stat-label">在籍高校</div></div>
+        <div class="stat-item"><div class="stat-num">MARCH</div><div class="stat-label">立教・同志社 合格</div></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-head">
+          <div class="case-tag">通信制高校・不登校経験者</div>
+          <h3>正直者がバカを見ない社会をつくりたい</h3>
+        </div>
+        <div class="case-card-body">
+          <p>彼には、直視できない2つの傷があった。中学時代の不登校と、実家の建設関係の事業だ。真面目にやっているのに理不尽な偏見に晒され続ける業界——父が不当な扱いを受ける姿を見て、傷ついていた。</p>
+          <p>だから彼は自分の言葉を殺し、「短期留学しかない」「英語を活かしたい」と借り物の言葉で武装していた。別の大手AO塾にも通っていたが、担当者が拙い言葉を整理してしまうため、核心に辿り着く前にきれいに修正されてしまっていた。</p>
+          <p>対話を重ねるうちに、本音が出てきた。「僕は、正直者がバカを見ない社会を作りたい。そのために、この業界を変えたい」</p>
+          <p>彼は自分で決め、作業着を着て父の現場へ走った。父や仕事仲間にヒアリングし、関連法規を調べ上げ、業界健全化の具体策をまとめた。面接官が評価したのは、整った論理でも英語力でもない——彼の痛みと誇り、そしてそこに向き合い続けた姿勢そのものだった。</p>
+        </div>
+      </div>
+
+      <div class="dark-quote">
+        <p>「最初は実家の仕事が恥ずかしくて、別の角度で書いていた。コーチに『本音を出せ』と言われて、怖かった。でも結局、父の仕事を丸ごと書いたことで、面接官の目が変わった。」</p>
+        <span class="attr">— 通信制高校・男性（不登校経験あり → 立教大学・同志社大学合格）</span>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="labeled-rule" style="margin-top: 64px;"><span>Case 3</span></div>
+
+      <div class="stat-strip">
+        <div class="stat-item"><div class="stat-num">横国</div><div class="stat-label">第一志望 不合格</div></div>
+        <div class="stat-item"><div class="stat-num">第二志望</div><div class="stat-label">進学先</div></div>
+        <div class="stat-item"><div class="stat-num">複数</div><div class="stat-label">学生建築コンペ受賞</div></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-head">
+          <div class="case-tag">進学校出身・ラグビー部キャプテン</div>
+          <h3>第一志望より大切なこと。</h3>
+        </div>
+        <div class="case-card-body">
+          <p>いわゆる優等生だった。進学校出身、中学ラグビー部キャプテン。しかし高校では怪我に泣き、フィットネスリーダーとして裏方でチームを支えた。この経験が、全体を見る目と他者への共感を育てた。</p>
+          <p>建築への愛は本物だった。職人の孫として育ち、長く愛される建築を作りたいと夢見ていた。しかし第一志望の横浜国立大学、不合格。「僕には才能がなかったんでしょうか……」</p>
+          <p>「今回の結果は、あなたが劣っているからじゃない。方針が合わなかっただけだ。あの大学は行政の目線で街づくり（マクロ）ができる人を育てようとしている。でもあなたは、そこに生きる人の営み（ミクロ）を豊かにしたくて建築に関わりたい。そこがマッチしていなかった、それだけのことだ。」</p>
+          <p>進学先は第二志望となった。しかし入学後、第一志望に受かったライバルたちがキャンパスライフを謳歌している間に、彼は学外に飛び出してコンペに出し続けた。そして学生ながら複数の賞を受賞した。</p>
+        </div>
+      </div>
+
+      <div class="dark-quote">
+        <p>「大学に入って気づきました。ラグビーで得た学びも挫折も、受験で取り組んだ自己探究も、全部繋がっているんですね。仕事には相手がいるから。」</p>
+        <span class="attr">— 卒業後、食事の席での発言</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3 -->
+  <section style="padding: 60px 0;">
+    <div class="container">
+      <div class="chapter-header">
+        <div class="chapter-label">Chapter 3 — Method</div>
+        <h2>探究を、伝わる言葉へ。</h2>
+      </div>
+      <div class="prose">
+        <p>感覚で動いているわけではない。一人ひとりの状況を読み、深掘りの方向を変えながら対話を設計しているからこそ、結果が再現できる。</p>
+      </div>
+
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="method-num">1</div>
+          <div class="method-text">
+            <h4>自己理解 — その言葉はあなたのものか</h4>
+            <p>借り物の表現が出た瞬間に止める。「御学のカリキュラムに魅力を感じ……」ではなく、あなたが実際に経験し、感じた痛みや喜びへ。原体験に辿り着くまで「なぜ？」を繰り返す。</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="method-num">2</div>
+          <div class="method-text">
+            <h4>論理構成 — 想いを設計図に変える</h4>
+            <p>想いだけでは人を動かせない。「悲しいから助けたい」ではなく、「この構造的欠陥があるから、この解決策が必要だ」というロジックへ。あなたの熱量を、大人が納得できる言葉に翻訳する。</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="method-num">3</div>
+          <div class="method-text">
+            <h4>具体性 — 夢物語で終わらせない</h4>
+            <p>「頑張ります」「貢献します」はいらない。誰に、どうやって、根拠は何か。不登校の彼が作業着で現場へ走ったように、自分の足で稼いだ一次情報を使って語る。</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="method-num">4</div>
+          <div class="method-text">
+            <h4>表現力 — 面接は発表ではなく対話だ</h4>
+            <p>暗記した答えを発表するな。目の前の面接官と、未来について語り合え。声のトーン、目線、間の取り方まで、あなたのキャラクターに合わせて調整していく。</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="method-num">5</div>
+          <div class="method-text">
+            <h4>フィードバック — 打たれ強さが最後の武器</h4>
+            <p>最初はボコボコにされるだろう。プライドが傷つくかもしれない。だが「じゃあ、どうすればいいですか？」と食らいつけるか。その姿勢こそが、大学が、そして社会が求めている才能だ。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Epilogue -->
+  <section class="bg-soft" style="padding: 60px 0;">
+    <div class="container">
+      <div class="chapter-header">
+        <div class="chapter-label">Epilogue</div>
+        <h2>生きやすい人生を、<br>あなたに。</h2>
+      </div>
+      <div class="prose">
+        <p>最後に、改めて伝えたい。僕たちの指導に、魔法はない。あるのは、あなたの人生に泥臭く向き合う覚悟だけだ。</p>
+        <p>合格するのは、僕たちでも親でもない。人生を変えるのは、いつだって自分で決めて、自分で動いた人間だけだ。自分の手綱を自分の手で握り返す覚悟がある人にだけ、来てほしい。</p>
+        <p>担当できるのは年間20名が限界だ。それ以上増やすと、一人ひとりの人生に深く関わり、共に変化していくことができなくなるから。</p>
+        <div class="pull-quote">
+          <p>一緒に、面白い未来を作ろう。</p>
+        </div>
+      </div>
+
+      <hr class="section-rule">
+
+      <div class="chapter-header" style="padding-top: 40px;">
+        <div class="chapter-label">Afterword</div>
+        <h2>なぜ「Lighthouse」なのか。</h2>
+      </div>
+      <div class="prose">
+        <p>灯台は、高みに登ることで遠くを見渡せる。そして自分が光ることで、暗闇の中にいる人へ光を届けられる。</p>
+        <p>自分の軸や将来の夢なんて、大それたものじゃなくていい。大事なのは、一度決めてみること。決めるのは怖い。制限されるように感じるから。でも、違ったら変えればいい。決めて、動いて、違ったらまた変える。その繰り返しでしか見えない景色がある。</p>
+        <div class="dark-quote">
+          <p>Lighthouseで、あなただけの海を見つけよう。その旅路を、一緒に歩ける日を楽しみにしている。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- For Guardians -->
+  <section style="padding: 60px 0;">
+    <div class="container">
+      <div class="guardians-box">
+        <div class="box-title">保護者の皆様へ</div>
+        <p>最後までお読みいただき、ありがとうございます。</p>
+        <p>総合型選抜において、大学側が見ているのは大人が作った綺麗な書類ではなく、受験生本人の切実な言葉です。親御様が手綱を引けば引くほど、お子様の言葉は力を失い、合格から遠ざかります。</p>
+        <p>逆に、本人が「自分の人生だ」と覚悟を決めた瞬間、成長のスピードは大人の想像を遥かに超えます。私たちは彼らを子供扱いしません。一人の若き探究者として、敬意を持って接します。どうか、少しの間だけお子様の手を離し、背中を見守ってください。</p>
+      </div>
+
+      <div class="chapter-header" style="padding-top: 40px;">
+        <div class="chapter-label">FAQ</div>
+        <h2>よくある質問</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">偏差値30台でも総合型選抜で合格できますか？</div>
+          <div class="faq-a">はい、可能です。偏差値36からのSFC合格事例にもある通り、総合型選抜はペーパーテストの点数だけで決まりません。探究の実績や志、大学との研究マッチングを総合的に評価します。まずは無料相談で現状を整理しましょう。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">不登校の期間が長く、活動実績が何もないのですが。</div>
+          <div class="faq-a">「何もない」と思っているのはご本人だけであるケースがほとんどです。不登校の期間に感じた痛みや、そこで育った視点こそが、大学が求める問いの種になります。丁寧な対話で、埋もれたものを引き出します。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">地方在住ですが指導を受けられますか？</div>
+          <div class="faq-a">はい。完全オンラインで対応しています。実際に離島や地方からの合格者も多数います。物理的な距離よりも、対話の密度を重視しています。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">一般受験との両立は可能ですか？</div>
+          <div class="faq-a">可能です。一般対策と並行しながら合格した事例が多数あります。英語・現代文・生物など教科の伴走も行っています。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <div class="story-cta">
+    <p class="kicker">テクニックではなく、必然性を。</p>
+    <h2>無料相談で、<br>いまの課題を整理する。</h2>
+    <p>あなたの現状・志望校・うまく言葉にできない理由を一緒に整理します。<br>無理な勧誘はしません。</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINEで無料相談を予約する</a>
+      <a class="btn btn-ghost" href="index.html">← トップページへ</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="inner">
+      <div>
+        <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
+        <p class="footer-copy">&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">トップ</a>
+        <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINE</a>
+        <a href="terms.html">利用規約</a>
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const scrolled = doc.scrollTop;
+      const total = doc.scrollHeight - doc.clientHeight;
+      document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+    });
+  </script>
+</body>
+</html>

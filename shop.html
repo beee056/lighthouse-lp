@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サービス・料金 | LIGHTHOUSE</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8;
+      --card: #ffffff;
+      --ink: #1a1c22;
+      --navy: #1A2744;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --soft: #f5f6f8;
+      --accent: #e55f3a;
+      --accent-soft: #fff3ee;
+      --accent-line: #ffd4c2;
+      --green: #059669;
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-card: 0 4px 24px rgba(20,24,33,0.07);
+      --shadow-sm: 0 2px 10px rgba(20,24,33,0.06);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 100px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Layout ── */
+    .container { width: min(800px, calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 52px 0; }
+    .section-soft { background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+    /* ── Typography ── */
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    h1 { font-size: clamp(26px, 6vw, 42px); line-height: 1.15; font-weight: 800; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(20px, 4vw, 28px); line-height: 1.25; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+    h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+    p.lead { font-size: 15px; color: var(--muted); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 0 24px; border-radius: 999px;
+      font-weight: 700; font-size: 15px; transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer; white-space: nowrap; border: none;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.22); }
+    .btn-primary:hover { box-shadow: 0 12px 30px rgba(229,95,58,0.3); }
+    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(26,39,68,0.18); }
+    .btn-navy:hover { box-shadow: 0 12px 30px rgba(26,39,68,0.28); }
+    .btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
+    .btn-line { background: #06C755; color: #fff; box-shadow: 0 8px 24px rgba(6,199,85,0.2); }
+    .btn-full { width: 100%; }
+    .btn-sm { min-height: 40px; font-size: 13px; padding: 0 18px; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-card); padding: 24px;
+    }
+    .card p, .card li { font-size: 14px; color: #4b5260; line-height: 1.75; }
+
+    /* ── Top nav ── */
+    .top-nav {
+      border-bottom: 1px solid var(--line); padding: 14px 0;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .top-nav-brand { font-size: 14px; font-weight: 800; color: var(--navy); letter-spacing: 0.04em; }
+    .top-nav-links { display: flex; align-items: center; gap: 16px; }
+    .top-nav-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
+    .top-nav-links a:hover { color: var(--ink); }
+    .top-nav-links a.nav-cta {
+      background: var(--accent); color: #fff; border-radius: 999px;
+      padding: 6px 16px; font-weight: 700; font-size: 12px;
+    }
+    @media (max-width: 640px) {
+      .top-nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* ── Page hero ── */
+    .page-hero { padding: 32px 0 40px; }
+    .page-hero .eyebrow { margin-bottom: 12px; }
+    .page-hero h1 { margin-bottom: 14px; }
+    .page-hero p.lead { max-width: 560px; }
+
+    /* ── Section label ── */
+    .section-label {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .section-label-bar {
+      width: 4px; height: 22px; border-radius: 2px; background: var(--navy); flex-shrink: 0;
+    }
+    .section-label h2 { margin-bottom: 0; }
+
+    /* ── Product card (paid course) ── */
+    .product-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-card);
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .product-card-head {
+      padding: 22px 24px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .product-tag {
+      display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.06em;
+      text-transform: uppercase; background: var(--soft); border: 1px solid var(--line);
+      color: var(--muted); border-radius: 6px; padding: 3px 8px; margin-bottom: 10px;
+    }
+    .product-tag.tag-recommend {
+      background: var(--accent-soft); border-color: var(--accent-line); color: var(--accent);
+    }
+    .product-name { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+    .product-target { font-size: 12px; color: var(--muted); }
+    .product-price-block { padding: 16px 24px; border-bottom: 1px solid var(--line); }
+    .product-price {
+      font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: -0.03em;
+    }
+    .product-price span { font-size: 14px; font-weight: 500; color: var(--muted); }
+    .product-session { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .product-features { padding: 16px 24px; flex: 1; }
+    .product-features ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .product-features li {
+      font-size: 13px; color: #4b5260; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .product-features li::before {
+      content: "✓"; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .product-cta { padding: 16px 24px; }
+
+    /* ── Product grid ── */
+    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    /* ── Spot / single card ── */
+    .spot-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-card); padding: 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .spot-card-info h3 { margin-bottom: 4px; }
+    .spot-card-info p { font-size: 13px; color: var(--muted); }
+    .spot-price { font-size: 22px; font-weight: 800; color: var(--navy); white-space: nowrap; }
+    .spot-price span { font-size: 12px; font-weight: 500; color: var(--muted); }
+
+    /* ── Free diagnostic cards ── */
+    .free-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);
+      padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      cursor: pointer;
+      text-decoration: none; color: inherit;
+    }
+    .free-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(20,24,33,0.12);
+      border-color: var(--navy);
+    }
+    .free-card-head { display: flex; align-items: center; gap: 10px; }
+    .free-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 7px;
+      background: var(--ink); color: #fff;
+      font-size: 11px; font-weight: 800; flex-shrink: 0;
+    }
+    .free-card h3 { font-size: 15px; margin-bottom: 0; }
+    .free-card p { font-size: 13px; color: var(--muted); flex: 1; }
+    .free-card .free-go { font-size: 13px; font-weight: 700; color: var(--accent); }
+    .free-badge {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      background: #e8fdf3; border: 1px solid #a7f3d0;
+      color: var(--green); border-radius: 6px; padding: 2px 8px;
+    }
+
+    /* ── Note section ── */
+    .note-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-card); padding: 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .note-card-info h3 { margin-bottom: 6px; }
+    .note-card-info p { font-size: 13px; color: var(--muted); max-width: 380px; }
+
+    /* ── CTA section ── */
+    .cta-block {
+      background: var(--navy); border-radius: 28px;
+      padding: 40px 32px; text-align: center; color: #fff;
+    }
+    .cta-block h2 { color: #fff; margin-bottom: 10px; }
+    .cta-block p { color: rgba(255,255,255,0.65); font-size: 14px; margin-bottom: 24px; }
+    .cta-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    /* ── Notice ── */
+    .notice { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+    /* ── Stripe placeholder notice ── */
+    .stripe-note {
+      font-size: 11px; color: var(--muted); text-align: center; margin-top: 8px;
+    }
+    .btn-disabled {
+      background: var(--soft); color: var(--muted); border: 1px solid var(--line);
+      cursor: default; pointer-events: none;
+    }
+    .btn-disabled:hover { transform: none; box-shadow: none; }
+
+    /* ── Sticky CTA bar ── */
+    .sticky-bar {
+      position: fixed; left: 12px; right: 12px; bottom: 12px;
+      background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+      border-radius: 20px; box-shadow: 0 8px 32px rgba(20,24,33,0.12);
+      backdrop-filter: blur(12px); padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px; z-index: 100;
+    }
+    .sticky-bar p { font-size: 12px; color: var(--muted); flex: 1; }
+    .sticky-bar .btn { min-height: 44px; padding: 0 16px; font-size: 13px; }
+
+    /* ── Site footer ── */
+    .site-footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 60px; }
+    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer-brand { font-size: 13px; font-weight: 700; color: var(--muted); }
+    .footer-copy { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .spot-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .note-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .cta-block { padding: 28px 20px; }
+      .sticky-bar { flex-direction: column; align-items: stretch; border-radius: 16px; }
+      .sticky-bar p { text-align: center; }
+      .sticky-bar .btn { width: 100%; }
+      .site-footer .inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════ TOP NAV ══════════════════════════════════════ -->
+  <nav class="top-nav">
+    <div class="container">
+      <div class="inner">
+        <a href="index.html" class="top-nav-brand">LIGHTHOUSE</a>
+        <div class="top-nav-links">
+          <a href="shindan.html">合格可能性診断</a>
+          <a href="shinro.html">進路発見チャート</a>
+          <a href="index.html">トップ</a>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="nav-cta">LINEで相談</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════ PAGE HERO ══════════════════════════════════════ -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow">SERVICES &amp; PRICING</div>
+      <h1>すべてのサービス</h1>
+      <p class="lead" style="margin-top:12px;">無料の診断から個別コーチングまで、Lighthouseで受けられるすべてのサービスをまとめました。まずは無料から試してください。</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ FREE SERVICES ══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">
+        <div class="section-label-bar"></div>
+        <div>
+          <h2>無料サービス</h2>
+          <p style="font-size:13px;color:var(--muted);margin-top:2px;">登録不要・結果はその場で確認</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <a href="shindan.html" class="free-card">
+          <div class="free-card-head">
+            <div class="free-num">01</div>
+            <h3>合格可能性診断</h3>
+            <span class="free-badge">無料</span>
+          </div>
+          <p>10問・約5分。5軸レーダーチャートで志望校合格ラインとの差を可視化。PDF保存対応。</p>
+          <span class="free-go">診断する →</span>
+        </a>
+
+        <a href="shinro.html" class="free-card">
+          <div class="free-card-head">
+            <div class="free-num">02</div>
+            <h3>進路発見チャート</h3>
+            <span class="free-badge">無料</span>
+          </div>
+          <p>8問・約3分。興味・強み・価値観から、向いている学部・進路タイプを提示します。</p>
+          <span class="free-go">診断する →</span>
+        </a>
+
+        <a href="learning-style.html" class="free-card">
+          <div class="free-card-head">
+            <div class="free-num">03</div>
+            <h3>学習スタイル診断</h3>
+            <span class="free-badge">無料</span>
+          </div>
+          <p>12問・約5分。学習効率・コミュニケーション・問題解決の3軸でタイプを判定。自己PRにも直結。</p>
+          <span class="free-go">診断する →</span>
+        </a>
+
+        <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="free-card">
+          <div class="free-card-head">
+            <div class="free-num">04</div>
+            <h3>無料相談（30分）</h3>
+            <span class="free-badge">無料</span>
+          </div>
+          <p>オンライン30分。現状の悩みや志望校について田邊が直接お聞きします。無理な勧誘は一切なし。</p>
+          <span class="free-go">予約する →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════ PAID COURSES ══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">
+        <div class="section-label-bar"></div>
+        <div>
+          <h2>コーチングコース</h2>
+          <p style="font-size:13px;color:var(--muted);margin-top:2px;">定員 年間20名限定 · 税抜表示</p>
+        </div>
+      </div>
+
+      <div class="product-grid">
+
+        <!-- 探究スタート -->
+        <div class="product-card">
+          <div class="product-card-head">
+            <div class="product-tag">探究スタートコース</div>
+            <div class="product-name">自分を知るところから始める</div>
+            <div class="product-target">高1〜2年生 / まず自己理解したい</div>
+          </div>
+          <div class="product-price-block">
+            <div class="product-price">¥18,000<span> / 月（税抜）</span></div>
+            <div class="product-session">月2回 × 90分</div>
+          </div>
+          <div class="product-features">
+            <ul>
+              <li>自己分析・過去経験の言語化</li>
+              <li>進路テーマの探索・整理</li>
+              <li>田邊との1on1対話セッション</li>
+              <li>セッション間のテキスト相談対応</li>
+            </ul>
+          </div>
+          <div class="product-cta">
+            <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-full">無料相談で詳細を聞く</a>
+            <p class="notice" style="text-align:center;">まずは無料相談から</p>
+          </div>
+        </div>
+
+        <!-- 総合型選抜 伴走 -->
+        <div class="product-card" style="border-color: var(--accent-line);">
+          <div class="product-card-head">
+            <div class="product-tag tag-recommend">総合型選抜 伴走コース</div>
+            <div class="product-name">出願から面接まで完全サポート</div>
+            <div class="product-target">高2〜3年生 / 総合型選抜を目指している</div>
+          </div>
+          <div class="product-price-block">
+            <div class="product-price">¥36,000<span> / 月（税抜）</span></div>
+            <div class="product-session">月4回 × 90分</div>
+          </div>
+          <div class="product-features">
+            <ul>
+              <li>「必然性の一本化」メソッドで自己分析</li>
+              <li>志望理由書・自己推薦書の作成・添削</li>
+              <li>活動報告書・出願ストーリー設計</li>
+              <li>面接・口頭試問対策</li>
+              <li>出願戦略・スケジュール管理</li>
+            </ul>
+          </div>
+          <div class="product-cta">
+            <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">無料相談で詳細を聞く</a>
+            <p class="notice" style="text-align:center;">合格率88%（94件中82件）</p>
+          </div>
+        </div>
+
+        <!-- 出願直前 集中 -->
+        <div class="product-card">
+          <div class="product-card-head">
+            <div class="product-tag">出願直前 集中コース</div>
+            <div class="product-name">書類を仕上げる短期集中</div>
+            <div class="product-target">出願まで1〜3ヶ月 / 急ぎで書類を仕上げたい</div>
+          </div>
+          <div class="product-price-block">
+            <div class="product-price">¥54,000<span> / 月（税抜）</span></div>
+            <div class="product-session">月6回 × 90分</div>
+          </div>
+          <div class="product-features">
+            <ul>
+              <li>伴走コースの全内容を凝縮</li>
+              <li>週1〜2回ペースの集中セッション</li>
+              <li>出願書類の完成・提出まで伴走</li>
+              <li>緊急対応・直前メッセージ相談対応</li>
+            </ul>
+          </div>
+          <div class="product-cta">
+            <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-full">無料相談で詳細を聞く</a>
+            <p class="notice" style="text-align:center;">まずは無料相談から</p>
+          </div>
+        </div>
+
+        <!-- 単発スポット -->
+        <div class="product-card">
+          <div class="product-card-head">
+            <div class="product-tag">単発スポット相談</div>
+            <div class="product-name">まず1回だけ試したい</div>
+            <div class="product-target">どのコースか迷っている / 特定の悩みを相談したい</div>
+          </div>
+          <div class="product-price-block">
+            <div class="product-price">¥9,000<span>（税抜）</span></div>
+            <div class="product-session">1回 × 90分</div>
+          </div>
+          <div class="product-features">
+            <ul>
+              <li>現状の悩みや志望理由の相談</li>
+              <li>志望理由書の方向性アドバイス</li>
+              <li>コース検討のための体験セッション</li>
+            </ul>
+          </div>
+          <div class="product-cta">
+            <!-- Stripe決済リンクが決まり次第差し替え -->
+            <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-full">相談・予約はこちら</a>
+            <p class="stripe-note">※ オンライン決済は準備中です。予約後に案内します。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="notice" style="margin-top:16px;">※ 月額コースは月初に翌月分を請求します。銀行振込または請求書払い対応。詳細は無料相談にてご案内します。</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════ TOOLS & CONTENT ══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">
+        <div class="section-label-bar"></div>
+        <div>
+          <h2>ツール・読みもの</h2>
+          <p style="font-size:13px;color:var(--muted);margin-top:2px;">まず試してみたい・読んでみたい方へ</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div class="note-card">
+          <div class="note-card-info">
+            <h3 style="display:flex;align-items:center;gap:8px;">Quest Note <span class="free-badge">無料</span></h3>
+            <p>自己分析・探究学習をサポートするAI対話ツール。「なぜ自分がやるのか」を言語化するプロセスを田邊のフレームワークに沿って進められます。</p>
+          </div>
+          <a href="https://quest.p-quest.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex-shrink:0;">使ってみる →</a>
+        </div>
+
+        <div class="note-card">
+          <div class="note-card-info">
+            <h3 style="display:flex;align-items:center;gap:8px;">Quest AI <span class="free-badge">無料</span></h3>
+            <p>公式LINEから使えるAI対話アシスタント。Quest Noteの記述をサポートし、「なぜ自分はそう感じるのか」を一緒に掘り下げます。田邊が設計したプロンプトをベースにした専用AIです。</p>
+          </div>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex-shrink:0;">LINEで使う →</a>
+        </div>
+
+        <div class="note-card">
+          <div class="note-card-info">
+            <h3>note 記事</h3>
+            <p>志望理由書の書き方・自己分析のコツ・総合型選抜の現実など、田邊が実践から書いたノウハウ記事。無料記事と有料記事があります。</p>
+          </div>
+          <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex-shrink:0;">noteを見る →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════ CTA ══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-block">
+        <h2>どのコースか迷ったら、<br>まず話してみてください。</h2>
+        <p>30分の無料相談で、現状をお聞きしてから最適なプランをご提案します。<br>無理な勧誘は一切ありません。</p>
+        <div class="cta-row">
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="btn btn-line">
+            <svg style="width:17px;height:17px;margin-right:7px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+            LINEで気軽に相談する
+          </a>
+          <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="btn" style="background:#fff;color:var(--navy);font-weight:800;">
+            無料面談を予約する（30分）
+          </a>
+        </div>
+        <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.45);">合格実績 94件 · 合格率88% · 年間20名限定</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ SITE FOOTER ══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="inner">
+        <div>
+          <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
+          <p class="footer-copy">&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+        </div>
+        <nav class="footer-links">
+          <a href="index.html">トップ</a>
+          <a href="shindan.html">合格可能性診断</a>
+          <a href="shinro.html">進路発見チャート</a>
+          <a href="learning-style.html">学習スタイル診断</a>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINE</a>
+          <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer">公式note</a>
+          <a href="terms.html">利用規約</a>
+          <a href="tokusho.html">特定商取引法</a>
+          <a href="privacy-policy.html">プライバシーポリシー</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════ STICKY CTA ══════════════════════════════════════ -->
+  <div class="sticky-bar">
+    <p>まずは無料相談 · 定員年間20名</p>
+    <a class="btn btn-outline btn-sm" href="shindan.html">合格可能性診断</a>
+    <a class="btn btn-primary btn-sm" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで相談する</a>
+  </div>
+
+</body>
+</html>

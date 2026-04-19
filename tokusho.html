@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特定商取引法に基づく表記 | LIGHTHOUSE</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1A2744;
+      --accent: #e55f3a;
+      --ink: #1a1c22;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --soft: #f5f6f8;
+      --bg: #fafaf8;
+    }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--navy);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-size: 14px; font-weight: 800; color: #fff; letter-spacing: 0.14em; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    /* ── Layout ── */
+    .container { width: min(760px, calc(100% - 32px)); margin: 0 auto; }
+    main { padding: 52px 0 80px; }
+
+    /* ── Page title ── */
+    .page-title {
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .page-title h1 {
+      font-size: clamp(20px, 4vw, 26px);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .page-title p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Table ── */
+    .disclosure-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 32px;
+    }
+    .disclosure-table th,
+    .disclosure-table td {
+      padding: 14px 16px;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.75;
+    }
+    .disclosure-table th {
+      width: 34%;
+      background: var(--soft);
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .disclosure-table td {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    /* ── Section heading ── */
+    .section-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 36px 0 12px;
+    }
+
+    /* ── Notes ── */
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--soft);
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+    .site-footer .container {
+      text-align: center;
+    }
+    .site-footer p { font-size: 12px; color: var(--muted); }
+    .footer-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+    .footer-nav a { font-size: 12px; color: var(--muted); }
+    .footer-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .disclosure-table th { width: 40%; font-size: 13px; }
+      .disclosure-table td { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">LIGHT<span>HOUSE</span></a>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="page-title">
+        <h1>特定商取引法に基づく表記</h1>
+        <p>Commerce Disclosure — Specified Commercial Transactions Act</p>
+      </div>
+
+      <!-- 事業者情報 -->
+      <div class="section-heading">事業者情報</div>
+      <table class="disclosure-table">
+        <tr>
+          <th>販売業者</th>
+          <td>株式会社PIVOT＆QUEST</td>
+        </tr>
+        <tr>
+          <th>運営統括責任者</th>
+          <td>田邊 勇人（たなべ ゆうと）</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>〒305-0861　茨城県つくば市谷田部1144-392</td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td>080-5302-9182<br>
+            <span style="font-size:12px;color:#6b7280;">受付時間：平日 10:00〜18:00（土日祝除く）</span>
+          </td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><a href="mailto:info@p-quest.com">info@p-quest.com</a></td>
+        </tr>
+        <tr>
+          <th>ウェブサイト</th>
+          <td><a href="index.html">LIGHTHOUSE 公式サイト</a></td>
+        </tr>
+      </table>
+
+      <!-- サービス・料金 -->
+      <div class="section-heading">サービス・販売価格</div>
+      <table class="disclosure-table">
+        <tr>
+          <th>サービス名</th>
+          <td>Lighthouse（総合型選抜個別コーチング）</td>
+        </tr>
+        <tr>
+          <th>販売価格</th>
+          <td>
+            探究スタートコース：月額 18,000円（税抜）<br>
+            総合型選抜 伴走コース：月額 36,000円（税抜）<br>
+            出願直前 集中コース：月額 54,000円（税抜）<br>
+            単発スポット相談：9,000円（税抜）<br>
+            <span style="font-size:12px;color:#6b7280;">※ 消費税は別途申し受けます。</span>
+          </td>
+        </tr>
+        <tr>
+          <th>販売価格以外に<br>必要な費用</th>
+          <td>インターネット接続料金・通信費（お客様負担）</td>
+        </tr>
+      </table>
+
+      <!-- 支払・提供 -->
+      <div class="section-heading">支払・サービス提供</div>
+      <table class="disclosure-table">
+        <tr>
+          <th>支払方法</th>
+          <td>クレジットカード決済（Visa・Mastercard・American Express・JCB）<br>
+            <span style="font-size:12px;color:#6b7280;">※ 決済処理はStripe, Inc.を通じて行われます。</span>
+          </td>
+        </tr>
+        <tr>
+          <th>支払時期</th>
+          <td>お申込み時に決済が確定します。月額コースは毎月同日に自動更新されます。</td>
+        </tr>
+        <tr>
+          <th>役務の提供時期</th>
+          <td>契約締結後30日以内に初回面談を実施し、サービスを開始します。</td>
+        </tr>
+      </table>
+
+      <!-- キャンセル・返金 -->
+      <div class="section-heading">キャンセル・返金について</div>
+      <table class="disclosure-table">
+        <tr>
+          <th>キャンセル・<br>返品について</th>
+          <td>
+            <strong>サービス開始前：</strong>全額返金いたします。<br>
+            <strong>サービス開始後：</strong>原則として返金はできません。<br><br>
+            キャンセルをご希望の場合は、<a href="mailto:info@p-quest.com">info@p-quest.com</a> までご連絡ください。<br>
+            <span style="font-size:12px;color:#6b7280;">※ サービス開始とは、初回面談の実施をもって判断します。</span>
+          </td>
+        </tr>
+      </table>
+
+      <div class="note">
+        ご不明な点は <a href="mailto:info@p-quest.com">info@p-quest.com</a> または <a href="https://forms.gle/7tXNDso586UYcYfY9" target="_blank" rel="noopener noreferrer">お問い合わせフォーム</a> よりご連絡ください。
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="index.html">トップ</a>
+        <a href="shop.html">サービス・料金</a>
+        <a href="terms.html">利用規約</a>
+        <a href="tokusho.html">特定商取引法</a>
+      </nav>
+      <p>© 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
