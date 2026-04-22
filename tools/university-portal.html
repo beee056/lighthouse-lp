@@ -30,8 +30,13 @@
 
         header {
             background: var(--primary-dark); border-bottom: 4px solid var(--primary);
-            color: var(--white); padding: 3rem 1rem; text-align: center;
+            color: var(--white); padding: 3rem 1rem; text-align: center; position: relative;
         }
+        .header-top-link {
+            position: absolute; top: 1.5rem; left: 1.5rem; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s;
+        }
+        .header-top-link:hover { color: var(--white); text-decoration: underline; }
 
         header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.05em; }
         header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
@@ -201,7 +206,7 @@
         }
 
         /* Footer */
-        footer { padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 60px; text-align: center; background: var(--white); }
+        footer { padding: 40px 0 100px 0; border-top: 1px solid var(--border-color); margin-top: 60px; text-align: center; background: var(--white); }
         .loading, .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
         .empty-state { background: var(--white); border-radius: 12px; grid-column: 1 / -1; }
 
@@ -223,6 +228,7 @@
 <body>
 
     <header>
+        <a href="../index.html" class="header-top-link">&larr; LIGHTHOUSE トップ</a>
         <h1>全国大学 受験情報ポータル</h1>
         <p>総合型選抜・学校推薦型選抜の情報を県別・大学別に検索できます。</p>
     </header>
@@ -233,7 +239,7 @@
             <div class="lp-banner-content">
                 <h2>「実績ゼロ」から難関大に逆転合格するには？</h2>
                 <p>保護者の高額な費用負担をなくす、完全月額制の総合型選抜対策「LIGHTHOUSE」</p>
-                <a href="ao-sogo-taisaku.html" class="lp-btn">詳細・リアルな口コミを見る</a>
+                <a href="../ao-sogo-taisaku.html" class="lp-btn">詳細・リアルな口コミを見る</a>
             </div>
         </div>
 
