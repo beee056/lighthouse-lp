@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>合格可能性診断 — 総合型選抜 準備度チャート | LIGHTHOUSE</title>
+  <meta name="description" content="10の質問に答えるだけ。志望校合格ラインとの比較レーダーチャートで現状を可視化。PDF保存対応。LIGHTHOUSE（ライトハウス）">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8; --card: #fff; --ink: #1a1c22; --muted: #6b7280;
+      --line: #e5e7eb; --soft: #f5f6f8;
+      --accent: #e55f3a; --accent-soft: #fff3ee; --accent-line: #ffd4c2;
+      --navy: #1A2744; --gold: #C9A84C; --green: #22c55e; --blue: #3b7dd8;
+      --shadow: 0 4px 24px rgba(20,24,33,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Header ── */
+    .site-header { padding: 14px 0; border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
+    .header-inner { width: min(1100px, calc(100% - 32px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; color: var(--navy); }
+    .logo span { color: var(--accent); }
+    .header-badge { font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 999px; padding: 5px 12px; }
+
+    /* ── Layout ── */
+    .container { width: min(740px, calc(100% - 32px)); margin: 0 auto; }
+    .page { padding: 40px 0 80px; }
+
+    /* ── Card ── */
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 28px; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Noto Sans JP',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.25); }
+    .btn-primary:hover { box-shadow: 0 12px 32px rgba(229,95,58,0.35); }
+    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(26,39,68,0.2); }
+    .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
+    .btn-line { background: #06C755; color: #fff; box-shadow: 0 8px 24px rgba(6,199,85,0.2); }
+    .btn-full { width: 100%; }
+    .btn-lg { min-height: 58px; font-size: 17px; }
+
+    .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+    /* ─────────────────────────────────────
+       INTRO SCREEN
+    ───────────────────────────────────── */
+    #screen-intro { display: block; }
+    .intro-hero { text-align: center; padding: 20px 0 28px; }
+    .intro-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 999px; padding: 8px 20px; font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 18px; }
+    .intro-hero h1 { font-size: clamp(24px, 6vw, 38px); line-height: 1.2; font-weight: 800; margin-bottom: 14px; }
+    .intro-hero p.lead { font-size: 15px; color: var(--muted); max-width: 500px; margin: 0 auto 22px; }
+    .intro-meta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .intro-meta span { font-size: 13px; color: var(--muted); font-weight: 700; display: flex; align-items: center; gap: 5px; }
+    .intro-meta span::before { content: "✓"; color: var(--green); }
+
+    /* What you get */
+    .wyg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
+    .wyg-item { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px 12px; text-align: center; }
+    .wyg-icon { font-size: 24px; margin-bottom: 7px; }
+    .wyg-item p { font-size: 12px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+
+    /* Name input */
+    .name-block { background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin-bottom: 20px; }
+    .name-block label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .name-block .sub { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
+    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .name-input:focus { border-color: var(--accent); }
+    .name-input::placeholder { color: #c0c4cc; }
+
+    /* Tier selection */
+    .tier-block { margin-bottom: 24px; }
+    .tier-block .tier-label { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: block; }
+    .tier-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+    .tier-card { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .tier-card:hover { border-color: var(--navy); }
+    .tier-card.selected { border-color: var(--navy); background: #f0f3f8; }
+    .tier-card .tier-name { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+    .tier-card .tier-eg { font-size: 12px; color: var(--muted); }
+
+    /* ─────────────────────────────────────
+       QUIZ SCREEN
+    ───────────────────────────────────── */
+    #screen-quiz { display: none; }
+
+    .progress-wrap { margin-bottom: 28px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+    .progress-label .q-num { color: var(--accent); }
+    .progress-label .q-pct { color: var(--muted); }
+    .progress-bg { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.4s ease; }
+
+    .question-axis { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
+    .question-text { font-size: clamp(15px, 3vw, 18px); font-weight: 800; line-height: 1.5; color: var(--ink); margin-bottom: 18px; }
+
+    .options { display: grid; gap: 9px; }
+    .option { display: flex; align-items: flex-start; gap: 13px; background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, background 0.15s, transform 0.1s; }
+    .option:hover { border-color: var(--accent-line); background: var(--accent-soft); transform: translateY(-1px); }
+    .option.selected { border-color: var(--accent); background: var(--accent-soft); }
+    .opt-letter { flex-shrink: 0; width: 28px; height: 28px; background: var(--soft); border: 1.5px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: var(--muted); transition: all 0.15s; }
+    .option.selected .opt-letter { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .opt-text { font-size: 14px; color: var(--ink); line-height: 1.6; padding-top: 2px; }
+
+    .quiz-nav { display: flex; gap: 10px; margin-top: 18px; }
+    .quiz-nav .btn { flex: 1; }
+
+    /* ─────────────────────────────────────
+       GATE SCREEN
+    ───────────────────────────────────── */
+    #screen-gate { display: none; }
+
+    .gate-hero { text-align: center; padding: 8px 0 24px; }
+    .gate-badge { display: inline-block; background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 999px; padding: 7px 18px; font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+    .gate-hero h2 { font-size: clamp(22px, 5vw, 30px); font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+    .gate-hero p { font-size: 14px; color: var(--muted); max-width: 400px; margin: 0 auto; }
+
+    .gate-preview {
+      background: linear-gradient(180deg, rgba(250,250,248,0) 0%, var(--bg) 70%);
+      border: 1px solid var(--line); border-radius: 20px;
+      padding: 24px; margin: 16px 0 24px;
+      position: relative; overflow: hidden;
+    }
+    .gate-preview-inner { filter: blur(4px) brightness(0.95); pointer-events: none; user-select: none; }
+    .gate-preview-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: var(--navy); color: #fff;
+      border-radius: 999px; padding: 10px 20px;
+      font-size: 13px; font-weight: 800; white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .gate-preview-bars { display: grid; gap: 10px; }
+    .gate-bar-row { display: flex; gap: 10px; align-items: center; }
+    .gate-bar-name { font-size: 12px; font-weight: 700; width: 80px; flex-shrink: 0; }
+    .gate-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; }
+    .gate-bar-fill { height: 100%; border-radius: 999px; }
+
+    .gate-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+    .gate-divider::before, .gate-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .gate-divider span { font-size: 12px; color: var(--muted); font-weight: 700; }
+
+    .gate-option { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 22px; margin-bottom: 12px; }
+    .gate-option.highlighted { border-color: var(--accent); background: var(--accent-soft); }
+    .gate-option h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+    .gate-option p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
+
+    .email-row { display: flex; gap: 8px; }
+    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .email-input:focus { border-color: var(--accent); }
+    .email-input::placeholder { color: #c0c4cc; }
+
+    /* ─────────────────────────────────────
+       RESULT SCREEN
+    ───────────────────────────────────── */
+    #screen-result { display: none; }
+
+    .result-header { text-align: center; margin-bottom: 28px; }
+    .result-name { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .result-tier-chip { display: inline-block; font-size: 12px; font-weight: 700; color: var(--navy); background: #e8eef6; border: 1px solid #b8c9e2; border-radius: 999px; padding: 4px 14px; margin-bottom: 12px; }
+    .result-type-badge { display: inline-block; padding: 7px 20px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 10px; }
+    .result-title { font-size: clamp(20px, 4vw, 28px); font-weight: 800; line-height: 1.3; }
+
+    /* Chart */
+    .chart-wrap { background: #fff; border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 24px; margin-bottom: 20px; }
+    .chart-legend { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .chart-canvas-wrap { max-width: 380px; margin: 0 auto; }
+
+    /* Score comparison table */
+    .score-table { margin-bottom: 20px; }
+    .score-row { display: grid; grid-template-columns: 130px 1fr 52px 52px; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .score-row:last-child { border-bottom: none; }
+    .score-axis { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .score-bar-bg { height: 8px; background: var(--line); border-radius: 999px; overflow: visible; position: relative; }
+    .score-bar-yours { height: 100%; border-radius: 999px; transition: width 1s ease; position: relative; z-index: 1; }
+    .score-bar-mark { position: absolute; top: -4px; width: 2px; height: 16px; background: var(--navy); border-radius: 2px; z-index: 2; opacity: 0.7; }
+    .score-val-yours { font-size: 13px; font-weight: 800; text-align: right; }
+    .score-gap { font-size: 12px; font-weight: 700; text-align: right; }
+    .gap-neg { color: var(--accent); }
+    .gap-ok { color: var(--green); }
+    .score-header { display: grid; grid-template-columns: 130px 1fr 52px 52px; gap: 10px; padding: 0 0 8px; border-bottom: 2px solid var(--line); margin-bottom: 4px; }
+    .score-header span { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .score-header .sh-right { text-align: right; }
+
+    /* Result type message */
+    .result-msg { background: var(--navy); color: #fff; border-radius: 22px; padding: 26px; margin-bottom: 18px; }
+    .result-msg .type-lbl { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+    .result-msg h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+    .result-msg p { font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.8; }
+
+    /* Advice */
+    .advice-box { background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 18px; padding: 20px; margin-bottom: 20px; }
+    .advice-label { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .advice-box p { font-size: 14px; color: var(--ink); line-height: 1.8; }
+
+    /* CTA block */
+    .result-cta { text-align: center; padding: 28px 24px; border: 2px solid var(--accent-line); border-radius: 22px; background: linear-gradient(160deg, #fff 0%, var(--accent-soft) 100%); margin-bottom: 20px; }
+    .result-cta h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .result-cta p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+    .cta-buttons { display: flex; flex-direction: column; gap: 10px; }
+
+    /* Print button */
+    .print-btn-wrap { text-align: center; margin-bottom: 14px; }
+
+    .retry-wrap { text-align: center; padding-top: 4px; }
+    .retry-link { font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; }
+
+    /* ─────────────────────────────────────
+       PRINT STYLES
+    ───────────────────────────────────── */
+    .screen-only { display: block; }
+    #print-view { display: none; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 12mm 14mm; }
+
+      .site-header, .site-footer, .screen-only { display: none !important; }
+      body { background: white; padding: 0; }
+      #screen-intro, #screen-quiz { display: none !important; }
+      #screen-result .chart-wrap { display: none !important; }
+      #screen-result .result-cta { display: none !important; }
+      #screen-result .print-btn-wrap { display: none !important; }
+      #screen-result .retry-wrap { display: none !important; }
+      #screen-result .score-table { page-break-inside: avoid; }
+
+      #print-view {
+        display: block !important;
+        font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+        color: #1a1c22;
+        font-size: 10pt;
+        line-height: 1.6;
+      }
+
+      .pv-header {
+        background: #1A2744;
+        color: white;
+        padding: 10mm 12mm 8mm;
+        margin-bottom: 6mm;
+        border-radius: 4mm;
+      }
+      .pv-header .pv-brand { font-size: 9pt; font-weight: 700; color: rgba(255,255,255,0.6); margin-bottom: 2mm; letter-spacing: 0.1em; }
+      .pv-header .pv-title { font-size: 18pt; font-weight: 800; color: white; margin-bottom: 1mm; }
+      .pv-header .pv-sub { font-size: 9pt; color: rgba(255,255,255,0.75); }
+
+      .pv-meta { display: flex; gap: 8mm; margin-bottom: 6mm; }
+      .pv-meta-item { display: flex; flex-direction: column; }
+      .pv-meta-item .pv-meta-lbl { font-size: 8pt; color: #6b7280; font-weight: 700; margin-bottom: 1mm; }
+      .pv-meta-item .pv-meta-val { font-size: 11pt; font-weight: 800; color: #1A2744; }
+
+      .pv-type-badge { display: inline-block; padding: 2mm 6mm; border-radius: 99mm; font-size: 9pt; font-weight: 800; margin-bottom: 5mm; }
+
+      .pv-body { display: grid; grid-template-columns: 72mm 1fr; gap: 8mm; margin-bottom: 6mm; }
+      .pv-chart img { width: 70mm; height: 70mm; }
+      .pv-scores { }
+
+      .pv-score-row { display: grid; grid-template-columns: 22mm 1fr 14mm 14mm; align-items: center; gap: 3mm; padding: 2mm 0; border-bottom: 0.5pt solid #e5e7eb; font-size: 9pt; }
+      .pv-score-row:first-child { border-top: 0.5pt solid #e5e7eb; }
+      .pv-sb-bg { height: 5pt; background: #e5e7eb; border-radius: 99pt; overflow: hidden; position: relative; }
+      .pv-sb-fill { height: 100%; border-radius: 99pt; }
+      .pv-sb-mark { position: absolute; top: -2pt; height: 9pt; width: 1.5pt; background: #1A2744; opacity: 0.5; }
+      .pv-sv { font-weight: 800; text-align: right; }
+      .pv-gap { font-weight: 700; text-align: right; font-size: 8pt; }
+
+      .pv-msg { background: #f5f6f8; border: 0.5pt solid #e5e7eb; border-radius: 3mm; padding: 5mm; margin-bottom: 5mm; }
+      .pv-msg h4 { font-size: 11pt; font-weight: 800; color: #1A2744; margin-bottom: 2mm; }
+      .pv-msg p { font-size: 9pt; color: #3a4050; line-height: 1.7; }
+
+      .pv-advice { background: #fff3ee; border: 0.5pt solid #ffd4c2; border-radius: 3mm; padding: 4mm; margin-bottom: 5mm; }
+      .pv-advice .pv-adv-lbl { font-size: 8pt; font-weight: 700; color: #e55f3a; margin-bottom: 2mm; }
+      .pv-advice p { font-size: 9pt; line-height: 1.7; }
+
+      .pv-footer { border-top: 0.5pt solid #e5e7eb; padding-top: 4mm; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #6b7280; }
+      .pv-footer .pv-cta { font-size: 9pt; font-weight: 700; color: #1A2744; }
+    }
+
+    /* ── Footer ── */
+    .site-footer { padding: 24px 0; border-top: 1px solid var(--line); margin-top: 20px; }
+    .footer-inner { width: min(1100px, calc(100% - 32px)); margin: 0 auto; text-align: center; }
+    .footer-inner p { font-size: 12px; color: var(--muted); }
+
+    /* ─────────────────────────────────────
+       EMAIL SENT BANNER
+    ───────────────────────────────────── */
+    .email-sent-banner { background: linear-gradient(135deg,#ecfdf5 0%,#d1fae5 100%); border: 1.5px solid #6ee7b7; border-radius: 20px; padding: 20px 22px; margin-bottom: 20px; display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+    .esb-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+    .esb-body { flex: 1; min-width: 0; }
+    .esb-title { font-size: 15px; font-weight: 800; color: #065f46; margin-bottom: 4px; }
+    .esb-sub { font-size: 13px; color: #047857; line-height: 1.6; margin-bottom: 12px; }
+    .esb-cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── Cross-diagnostic nav ── */
+    .cross-diag { margin: 20px 0; }
+    .cross-diag-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .cross-diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cross-diag-card { background: #fff; border: 1.5px solid var(--line); border-radius: 18px; padding: 18px 16px; display: flex; flex-direction: column; gap: 4px; text-decoration: none; transition: border-color 0.15s, transform 0.12s; }
+    .cross-diag-card:hover { border-color: var(--navy); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .cdc-icon { font-size: 22px; margin-bottom: 4px; }
+    .cdc-name { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+    .cdc-desc { font-size: 12px; color: var(--muted); line-height: 1.5; flex: 1; }
+    .cdc-arrow { font-size: 12px; font-weight: 700; color: var(--accent); margin-top: 8px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .wyg-grid { grid-template-columns: 1fr; }
+      .tier-grid { grid-template-columns: 1fr; }
+      .quiz-nav { flex-direction: column-reverse; }
+      .score-row { grid-template-columns: 110px 1fr 46px 46px; gap: 7px; }
+      .score-header { grid-template-columns: 110px 1fr 46px 46px; gap: 7px; }
+      .card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header screen-only">
+    <div class="header-inner">
+      <a href="index.html" class="logo">LIGHT<span>HOUSE</span></a>
+      <span class="header-badge">合格可能性診断</span>
+    </div>
+  </header>
+
+  <main class="screen-only">
+    <div class="page">
+      <div class="container">
+
+        <!-- ════════ INTRO ════════ -->
+        <div id="screen-intro">
+          <div class="intro-hero">
+            <div class="intro-badge">✦ 無料・約5分</div>
+            <h1>あなたの「合格可能性」を<br>チャートで見る。</h1>
+            <p class="lead">10問に答えるだけで、志望校合格ラインとの差をレーダーチャートで可視化。PDF保存してそのまま相談に持ってこれます。</p>
+            <div class="intro-meta">
+              <span>10問・約5分</span>
+              <span>志望校との比較つき</span>
+              <span>PDF保存・印刷対応</span>
+            </div>
+          </div>
+
+          <div class="wyg-grid">
+            <div class="wyg-item"><p>5軸×2問で精度の高いレーダーチャートを生成</p></div>
+            <div class="wyg-item"><p>志望校合格ラインとの差が一目でわかる</p></div>
+            <div class="wyg-item"><p>PDF保存して親御さんや相談時に持参できる</p></div>
+          </div>
+
+          <div class="card">
+            <div class="name-block">
+              <label for="userName">お名前<span class="sub">ニックネームでもOK・チャートに表示</span></label>
+              <input type="text" id="userName" class="name-input" placeholder="例：田中 / Yuto" maxlength="20">
+            </div>
+
+            <div class="tier-block">
+              <span class="tier-label">志望校のレベルを選んでください<span class="sub">合格ラインの参考値として使用します</span></span>
+              <div class="tier-grid" id="tierGrid">
+                <div class="tier-card" data-tier="sfc" onclick="selectTier('sfc',this)">
+                  <div class="tier-name">慶應SFC・早稲田</div>
+                  <div class="tier-eg">最難関私大・AO入試</div>
+                </div>
+                <div class="tier-card" data-tier="march" onclick="selectTier('march',this)">
+                  <div class="tier-name">MARCH・関関同立</div>
+                  <div class="tier-eg">難関私大・総合型選抜</div>
+                </div>
+                <div class="tier-card" data-tier="koku" onclick="selectTier('koku',this)">
+                  <div class="tier-name">国公立大学</div>
+                  <div class="tier-eg">筑波・横国・広島 など</div>
+                </div>
+                <div class="tier-card" data-tier="kaigai" onclick="selectTier('kaigai',this)">
+                  <div class="tier-name">海外大学（IB）</div>
+                  <div class="tier-eg">トロント・ライデン など</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-full btn-lg" onclick="startQuiz()" id="startBtn">診断スタート →</button>
+            <p class="hint" style="text-align:center; margin-top:12px;">回答は外部に送信されません。登録なしでも結果を確認できます。</p>
+          </div>
+        </div>
+
+        <!-- ════════ QUIZ ════════ -->
+        <div id="screen-quiz">
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span class="q-num" id="progressLabel">質問 1 / 10</span>
+              <span class="q-pct" id="progressPct">10%</span>
+            </div>
+            <div class="progress-bg"><div class="progress-fill" id="progressBar" style="width:10%"></div></div>
+          </div>
+          <div class="card">
+            <div class="question-axis" id="qAxis"></div>
+            <div class="question-text" id="qText"></div>
+            <div class="options" id="qOptions"></div>
+          </div>
+          <div class="quiz-nav">
+            <button class="btn btn-outline" onclick="prevQ()" id="btnBack">← 戻る</button>
+            <button class="btn btn-primary" onclick="nextQ()" id="btnNext" disabled>次へ →</button>
+          </div>
+        </div>
+
+        <!-- ════════ GATE ════════ -->
+        <div id="screen-gate">
+          <div class="gate-hero">
+            <div class="gate-badge">✦ 診断完了</div>
+            <h2>あなたの結果が出ました。<br>受け取り方を選んでください。</h2>
+            <p>結果は無料です。メールアドレスを登録するか、<br>無料面談で田邊から直接受け取ることができます。</p>
+          </div>
+
+          <!-- Preview (blurred) -->
+          <div class="gate-preview">
+            <div class="gate-preview-inner">
+              <div class="gate-preview-bars">
+                <div class="gate-bar-row"><span class="gate-bar-name">志望の明確さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:60%;background:#e55f3a;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">自己理解の深さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:45%;background:#3b7dd8;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">経験の言語化</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:75%;background:#7c3aed;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">準備の進捗</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:30%;background:#059669;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">表現への自信</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:55%;background:#d97706;"></div></div></div>
+              </div>
+            </div>
+            <div class="gate-preview-label">🔒 受け取り方を選ぶと表示されます</div>
+          </div>
+
+          <div class="card">
+            <!-- Option A: Email -->
+            <div class="gate-option highlighted">
+              <h3>📩 メールアドレスで受け取る</h3>
+              <p>診断結果を今すぐ確認できます。Lighthouseからの情報もお届けします（配信停止はいつでも可能）。</p>
+              <div class="email-row">
+                <input type="email" id="gateEmail" class="email-input" placeholder="メールアドレスを入力" autocomplete="email">
+                <button class="btn btn-primary" onclick="proceedWithEmail()" style="min-width:80px;min-height:48px;font-size:14px;">確認する</button>
+              </div>
+              <p class="hint" style="margin-top:8px;">個人情報は適切に管理します。第三者への提供は行いません。</p>
+            </div>
+
+            <div class="gate-divider"><span>または</span></div>
+
+            <!-- Option B: Free consultation -->
+            <div class="gate-option">
+              <h3>📅 無料面談で田邊から受け取る</h3>
+              <p>30分の無料面談で、チャートを見ながら田邊が直接結果を解説します。自分の弱点と次のステップを一緒に整理できます。</p>
+              <a class="btn btn-line btn-full" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" style="justify-content:center;gap:8px;">
+                <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+                LINEで無料面談を予約する
+              </a>
+              <p class="hint" style="margin-top:8px;">無理な勧誘は一切ありません。合格実績 94件・合格率88%。</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ════════ RESULT ════════ -->
+        <div id="screen-result">
+
+          <!-- Email sent banner (shown after email gate) -->
+          <div id="email-sent-banner" class="email-sent-banner" style="display:none;">
+            <div class="esb-icon">✉️</div>
+            <div class="esb-body">
+              <p class="esb-title">ご確認ありがとうございます</p>
+              <p class="esb-sub">メールアドレス（<span id="email-sent-addr"></span>）を受け取りました。そのまま結果をご確認ください。田邊への相談もお気軽にどうぞ。</p>
+              <div class="esb-cta-row">
+                <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="btn btn-line" style="font-size:13px;min-height:42px;padding:0 16px;">
+                  <svg style="width:15px;height:15px;margin-right:6px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+                  LINEで相談する
+                </a>
+                <a href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:13px;min-height:42px;padding:0 16px;">無料面談を予約</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-header">
+            <div class="result-name" id="rName"></div>
+            <div class="result-tier-chip" id="rTierChip"></div>
+            <br>
+            <div class="result-type-badge" id="rTypeBadge"></div>
+            <div class="result-title" id="rTitle"></div>
+          </div>
+
+          <div class="chart-wrap">
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:#e55f3a;"></div>あなたのスコア</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#1A2744; opacity:0.6;"></div>合格者の傾向ライン（参考）</div>
+            </div>
+            <div class="chart-canvas-wrap">
+              <canvas id="radarChart"></canvas>
+            </div>
+          </div>
+
+          <div class="card score-table" id="scoreTable">
+            <div class="score-header">
+              <span>軸</span><span>スコア</span><span class="sh-right">あなた</span><span class="sh-right">差</span>
+            </div>
+          </div>
+
+          <div class="result-msg" id="rMsg"></div>
+          <div class="advice-box" id="rAdvice"></div>
+
+          <div class="print-btn-wrap">
+            <button class="btn btn-gold" onclick="printResult()" style="gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              診断レポートをPDF保存・印刷する
+            </button>
+            <p class="hint">「PDFとして保存」を選ぶとファイルで保存できます</p>
+          </div>
+
+          <div class="result-cta">
+            <h3>診断の先に、本当の変化がある。</h3>
+            <p>弱点を把握したら、次は一緒に動きましょう。<br>30分の無料相談でチャートを見ながら具体的なプランを作ります。</p>
+            <div class="cta-buttons">
+              <a class="btn btn-line" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">
+                <svg style="width:20px;height:20px;margin-right:8px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+                LINEで無料相談を予約する
+              </a>
+              <a class="btn btn-primary" href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer">カレンダーから日程を選ぶ</a>
+            </div>
+            <p class="hint">無理な勧誘は一切なし。合格実績 94件・合格率88%</p>
+          </div>
+
+          <!-- Other diagnostics -->
+          <div class="cross-diag">
+            <div class="cross-diag-title">他の診断も試してみる</div>
+            <div class="cross-diag-grid">
+              <a href="tools/shinro.html" class="cross-diag-card">
+                <div class="cdc-name">進路発見チャート</div>
+                <div class="cdc-desc">8問・興味と価値観から向いている学部・進路タイプを探す</div>
+                <div class="cdc-arrow">診断する →</div>
+              </a>
+              <a href="tools/learning-style.html" class="cross-diag-card">
+                <div class="cdc-name">学習スタイル診断</div>
+                <div class="cdc-desc">12問・3軸で自分の学び方のタイプを診断する</div>
+                <div class="cdc-arrow">診断する →</div>
+              </a>
+            </div>
+          </div>
+
+          <div class="retry-wrap">
+            <span class="retry-link" onclick="resetQuiz()">もう一度診断する</span>
+            　|　<a href="index.html" style="font-size:13px;color:var(--muted);">← LIGHTHOUSEトップへ</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ════════════════════════════════
+       PRINT VIEW (hidden on screen)
+  ═══════════════════════════════════ -->
+  <div id="print-view">
+    <div class="pv-header">
+      <div class="pv-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</div>
+      <div class="pv-title">合格可能性診断レポート</div>
+      <div class="pv-sub" id="pv-sub"></div>
+    </div>
+    <div class="pv-meta">
+      <div class="pv-meta-item"><span class="pv-meta-lbl">診断者</span><span class="pv-meta-val" id="pv-name"></span></div>
+      <div class="pv-meta-item"><span class="pv-meta-lbl">診断日</span><span class="pv-meta-val" id="pv-date"></span></div>
+      <div class="pv-meta-item"><span class="pv-meta-lbl">志望ライン</span><span class="pv-meta-val" id="pv-tier"></span></div>
+      <div class="pv-meta-item"><span class="pv-meta-lbl">総合タイプ</span><span class="pv-meta-val" id="pv-type"></span></div>
+    </div>
+
+    <div class="pv-type-badge" id="pv-badge"></div>
+    <div class="pv-body">
+      <div class="pv-chart">
+        <img id="pv-chart-img" src="" alt="レーダーチャート" style="width:70mm;height:70mm;">
+        <div style="font-size:8pt;color:#6b7280;margin-top:2mm;text-align:center;">■ オレンジ：あなた　■ ネイビー(点線)：合格者傾向ライン</div>
+      </div>
+      <div class="pv-scores" id="pv-scores"></div>
+    </div>
+
+    <div class="pv-msg" id="pv-msg"></div>
+    <div class="pv-advice" id="pv-advice"></div>
+
+    <div class="pv-footer">
+      <div>
+        <div style="font-weight:700;color:#1A2744;">LIGHTHOUSE — 総合型選抜専門塾</div>
+        <div>株式会社PIVOT＆QUEST　info@p-quest.com</div>
+      </div>
+      <div class="pv-cta">
+        無料相談予約：<br>calendar.app.google/4nqSFe7uQXyPCTrd6
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer screen-only">
+    <div class="footer-inner">
+      <p>LIGHTHOUSE / PIVOT &amp; QUEST Inc.　|　info@p-quest.com</p>
+      <p style="margin-top:5px;">© 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+<script>
+// ─────────────────────────────────────
+// GOOGLE APPS SCRIPT 通知設定 (スプレッドシート連携)
+// ─────────────────────────────────────
+// 【セットアップ手順】
+// 1. 対象スプレッドシートを開く → メニュー「拡張機能」→「Apps Script」
+// 2. 下記コードを貼り付けて保存：
+//
+//   function doPost(e) {
+//     try {
+//       const ss = SpreadsheetApp.openById("1Yf8r7C0T-CLM0FRc62-DnAdHsV7csRMm4imjTTQafRQ");
+//       let sheet = ss.getSheetByName("診断回答") || ss.getActiveSheet();
+//       if (sheet.getLastRow() === 0)
+//         sheet.appendRow(["日時","診断ページ","お名前","メールアドレス","結果タイプ","スコア詳細"]);
+//       sheet.appendRow([new Date(), e.parameter.page||"", e.parameter.name||"",
+//                        e.parameter.email||"", e.parameter.result||"", e.parameter.score||""]);
+//       return ContentService.createTextOutput("ok");
+//     } catch(err) { return ContentService.createTextOutput("error:"+err.message); }
+//   }
+//
+// 3. 「デプロイ」→「新しいデプロイ」→ 種類「ウェブアプリ」
+//    実行者: 自分 / アクセス: 全員  → デプロイ
+// 4. 表示された「ウェブアプリのURL」をコピーして下記に貼り付け
+const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzQ1vghylptMc9X8ZJaGhOO-a6d7i7Un4Y50nNYdPb19UIMagNTVOJc07IkxmCDfhEE/exec";
+
+function notifyAdmin(name, email, page, result, score) {
+  if (SHEET_WEBAPP_URL.includes("YOUR_SCRIPT_ID")) return;
+  const params = new URLSearchParams();
+  params.append("name",   name   || "（未入力）");
+  params.append("email",  email  || "（未登録）");
+  params.append("page",   page);
+  params.append("result", result || "");
+  params.append("score",  score  || "");
+  fetch(SHEET_WEBAPP_URL, { method: "POST", body: params, mode: "no-cors" })
+    .catch(err => console.warn("Spreadsheet notify error:", err));
+}
+
+// ─────────────────────────────────────
+// DATA
+// ─────────────────────────────────────
+const AXES = ["志望の明確さ","自己理解の深さ","経験の言語化","準備の進捗","表現への自信"];
+const AXIS_COLORS = ["#e55f3a","#3b7dd8","#7c3aed","#059669","#d97706"];
+
+// 10 questions: Q1-Q5 = first round (one per axis), Q6-Q10 = second round
+const QUESTIONS = [
+  // Round 1
+  { axis: 0, text:"「なぜこの大学・学部なのか」を今すぐ5分間、自分の言葉で話し続けることができますか？", opts:[
+    {t:"まったく言葉が出てこない",s:1},{t:"断片的には言えるが、論理のつながりが薄い",s:2},
+    {t:"ある程度話せるが、「自分ならでは」という部分が薄い",s:3},{t:"自分の経験と結びついた、筋の通った話ができる",s:4}]},
+  { axis: 1, text:"自分が大切にしていること（価値観）を、具体的なエピソードと一緒に語れますか？", opts:[
+    {t:"価値観と言われても、よくわからない",s:1},{t:"なんとなくあるが、エピソードで語れない",s:2},
+    {t:"1〜2個のエピソードと結びつけて言える",s:3},{t:"複数のエピソードが同じテーマに収束することに気づいている",s:4}]},
+  { axis: 2, text:"これまでの経験（部活・趣味・家庭・学校）を振り返って、繰り返し現れる「問い」や「関心」に気づいていますか？", opts:[
+    {t:"考えたことがない",s:1},{t:"なんとなくあるが、言葉にできない",s:2},
+    {t:"気づいてはいるが、大学の学問とつながっていない",s:3},{t:"はっきり気づいていて、志望学問との接続もできている",s:4}]},
+  { axis: 3, text:"志望理由書や自己推薦書の準備は、どの段階まで進んでいますか？", opts:[
+    {t:"まだ何も書いていない（何を書けばいいかもわからない）",s:1},{t:"下書きはあるが、「借り物の言葉」感がある",s:2},
+    {t:"一通り書けたが、深掘り質問に答えられるか不安",s:3},{t:"自分の言葉で書けていて、面接でも同じように語れる",s:4}]},
+  { axis: 4, text:"面接で「なぜ他の大学・学部ではなく、ここなのですか？」と聞かれたら、即答できますか？", opts:[
+    {t:"まったく準備していない",s:1},{t:"準備はしているが、暗記になってしまう",s:2},
+    {t:"言えるが、深掘りされると詰まる",s:3},{t:"自分の経験に根ざした答えがあり、どんな深掘りにも対応できる",s:4}]},
+  // Round 2
+  { axis: 0, text:"志望大学・学部の「研究内容・授業カリキュラム」を、具体的に人に説明できますか？", opts:[
+    {t:"よく知らない・調べていない",s:1},{t:"ざっくり知っているが、詳細は説明できない",s:2},
+    {t:"主要な授業・研究室の名前は言えるが、自分との接続が薄い",s:3},{t:"学部のカリキュラムと自分のやりたいことが明確に結びついている",s:4}]},
+  { axis: 1, text:"自分の「強み」と「弱み」を、それぞれ具体的なエピソードで説明できますか？", opts:[
+    {t:"強みも弱みも言葉にできない",s:1},{t:"なんとなくはあるが、エピソードで語れない",s:2},
+    {t:"強みは言えるが、弱みや弱みの克服過程が薄い",s:3},{t:"強み・弱みともにエピソードで語れて、成長の文脈につなげられる",s:4}]},
+  { axis: 2, text:"課外活動・趣味・学校外の経験を、「なぜやったのか・何を得たのか」で語れますか？", opts:[
+    {t:"特に語れる経験がない",s:1},{t:"経験はあるが「何をしたか」しか言えない",s:2},
+    {t:"「なぜやったか」は言えるが、得たものとの接続が弱い",s:3},{t:"「なぜ→何を得た→今にどう活きているか」を筋道立てて語れる",s:4}]},
+  { axis: 3, text:"出願に必要な書類全体（活動報告書・自己推薦書・志望理由書など）の準備状況は？", opts:[
+    {t:"何が必要かも把握できていない",s:1},{t:"必要書類はわかるが、ほとんど未着手",s:2},
+    {t:"主要な書類は作成済みだが、まだ手を入れる必要がある",s:3},{t:"すべて出願可能なレベルに仕上がっている",s:4}]},
+  { axis: 4, text:"面接で予期しない質問（「最近気になるニュースは？」「将来の夢は？」など）に自分の言葉で答えられますか？", opts:[
+    {t:"まったく想定していない",s:1},{t:"暗記した答えは用意しているが、その場で考えることが難しい",s:2},
+    {t:"自分なりの考えはあるが、面接の場で言葉にできるか不安",s:3},{t:"普段から自分の意見を持ち、どんな質問にも自分の言葉で答えられる",s:4}]},
+];
+
+const BENCHMARKS = {
+  sfc:    { name:"慶應SFC・早稲田上位", values:[3.5,3.5,3.5,3.0,3.5] },
+  march:  { name:"MARCH・関関同立",     values:[3.0,3.0,3.0,3.0,3.0] },
+  koku:   { name:"国公立（総合型選抜）", values:[3.0,3.0,3.0,3.5,3.0] },
+  kaigai: { name:"海外大学（IB含む）",   values:[3.0,3.5,3.5,2.5,3.5] },
+};
+
+const TYPES = [
+  { min:5, max:9,  badge:"🌱 ゼロ地点タイプ",  badgeColor:"#e55f3a", badgeBg:"#fff3ee",
+    name:"ゼロ地点タイプ",
+    title:"「語れる自分」はこれから作る。<br>そこからが、本当のスタート。",
+    msg:"今はまだ「自分の話」が言葉になっていない段階です。でも、これは能力の問題でも経験の少なさの問題でもありません。多くの場合、「正しい問いを立てたことがない」ことが原因です。逆に言えば、問いさえ変えれば誰でもここから動き始められる——多くの合格者が、最初はまったく同じ状態でした。",
+    adv:"まず「いつ、何に感情が動いたか」を書き出すことから始めましょう。正解を探すのではなく、感情の跡を追う。それがLighthouseの出発点です。無料相談では、ゼロから一緒に掘り起こします。" },
+  { min:9.1, max:13, badge:"💡 言語化途中タイプ", badgeColor:"#3b7dd8", badgeBg:"#eff6ff",
+    name:"言語化途中タイプ",
+    title:"素材は持っている。<br>「筋の通った言葉」に変える段階。",
+    msg:"経験や想いの素材はあるのに、うまく言葉にならない——「書いたら当たり前のことしか出ない」「他の人と同じになる」という感覚を持つなら、素材ではなく整理の方法に問題があります。素材を変えなくても、整理の軸を変えるだけで、まったく違う志望理由になります。",
+    adv:"「なぜその経験が大切だったのか」を徹底的に深掘りすることが次のステップです。表面の出来事ではなく、そのとき感じた「違和感・驚き・悔しさ」を掘り下げてください。そこから共通するテーマが見えてきます。" },
+  { min:13.1, max:17, badge:"⚡ 最後の一押しタイプ", badgeColor:"#7c3aed", badgeBg:"#f5f3ff",
+    name:"最後の一押しタイプ",
+    title:"形はできている。<br>「あなたにしかない必然性」を磨く段階。",
+    msg:"書類の骨格は整っています。でも「深掘りされると詰まる」「どこか他人の言葉を使っている気がする」——その感覚は正確です。仕上げの段階は、言葉の「解像度」を上げることが仕事です。「なぜあなたが、この問いを持ち続けているのか」という一本の線をもう一段掘り下げる。そこに、審査員が「この人だ」と感じる必然性があります。",
+    adv:"面接での模擬深掘りと、志望理由の「必然性の確認」が最優先です。「第三者が聞いて、あなたにしか言えない言葉かどうか」——それが判断基準です。一緒に確認しましょう。" },
+  { min:17.1, max:20, badge:"🏆 仕上げ段階タイプ", badgeColor:"#059669", badgeBg:"#ecfdf5",
+    name:"仕上げ段階タイプ",
+    title:"自己理解は整っている。<br>あとは「審査員に届く設計」をする段階。",
+    msg:"自己分析と準備が高い水準で進んでいます。ここからの差は「伝え方の設計」にあります。同じ内容でも、書類の構成・話す順番・深掘りへの返し方によって、審査員の印象は大きく変わります。あなたの言葉が「必然的に見える」状態まで仕上げることが、最後の仕事です。",
+    adv:"出願書類全体の「ストーリー設計」と、模擬面接による最終調整がカギです。一つひとつの書類を単体で完成させるのではなく、全体が一つの物語として読めているか——そこを一緒に確認しましょう。" },
+];
+
+const AXIS_ADVICE = {
+  0:"「なぜこの大学・学部か」の答えを、大学のパンフレットや偏差値から探さないでください。まず「自分がずっと気になってきたこと」を書き出し、そこから学部を逆引きするのが先です。志望校は「行きたい場所」ではなく「必然的に辿り着く場所」として語れるまで深掘りしましょう。",
+  1:"価値観は「強い感情が動いた記憶」の中にあります。怒り・喜び・違和感・悔しさを感じた出来事を5つ書き出し、共通するテーマを探してください。「大切にしていること」は感情の跡に隠れています。",
+  2:"「何をしたか」ではなく「なぜそこにいたか・そのとき何を感じたか・何が残ったか」を言語化してください。経験の価値は出来事の大きさではなく、あなたがそれをどう解釈したかにあります。規模が小さい経験でも、解釈が深ければ最強の素材になります。",
+  3:"まず「借り物の言葉」を全部外した素の文章を書いてみてください。誰かの例文に寄せるほど、あなたの言葉は死んでいきます。稚拙でも日常語で書いた文章の方が、審査員には届きます。",
+  4:"暗記は面接の敵です。代わりに「エピソード→感情→問い→今→未来」の5段階を一本の線でつなぐ練習をしてください。この線がある人は、どんな突然の質問にも自分の言葉で返すことができます。",
+};
+
+// ─────────────────────────────────────
+// STATE
+// ─────────────────────────────────────
+let currentQ = 0, answers = new Array(10).fill(null);
+let userName = "", selectedTier = null, chartInstance = null;
+let axisScores = [], totalScore = 0;
+
+// ─────────────────────────────────────
+// INTRO
+// ─────────────────────────────────────
+function selectTier(tier, el) {
+  selectedTier = tier;
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function startQuiz() {
+  userName = document.getElementById("userName").value.trim() || "あなた";
+  if (!selectedTier) { alert("志望校のレベルを選んでください"); return; }
+  document.getElementById("screen-intro").style.display = "none";
+  document.getElementById("screen-quiz").style.display = "block";
+  currentQ = 0; answers = new Array(10).fill(null);
+  renderQ();
+}
+
+// ─────────────────────────────────────
+// QUIZ
+// ─────────────────────────────────────
+function renderQ() {
+  const q = QUESTIONS[currentQ];
+  const n = currentQ + 1;
+  const pct = Math.round((n/10)*100);
+  document.getElementById("progressLabel").textContent = `質問 ${n} / 10`;
+  document.getElementById("progressPct").textContent = `${pct}%`;
+  document.getElementById("progressBar").style.width = `${pct}%`;
+  document.getElementById("qAxis").textContent = AXES[q.axis];
+  document.getElementById("qText").textContent = q.text;
+
+  const cont = document.getElementById("qOptions");
+  cont.innerHTML = "";
+  const letters = ["A","B","C","D"];
+  q.opts.forEach((opt, i) => {
+    const d = document.createElement("div");
+    d.className = "option" + (answers[currentQ] === i ? " selected" : "");
+    d.onclick = () => selectOpt(i);
+    d.innerHTML = `<div class="opt-letter">${letters[i]}</div><div class="opt-text">${opt.t}</div>`;
+    cont.appendChild(d);
+  });
+
+  const btnNext = document.getElementById("btnNext");
+  btnNext.disabled = answers[currentQ] === null;
+  btnNext.textContent = currentQ < 9 ? "次へ →" : "結果を見る ✦";
+  document.getElementById("btnBack").style.display = currentQ === 0 ? "none" : "inline-flex";
+}
+
+function selectOpt(i) { answers[currentQ] = i; renderQ(); }
+function nextQ() { if (answers[currentQ]===null) return; if (currentQ<9) { currentQ++; renderQ(); } else showResult(); }
+function prevQ() { if (currentQ>0) { currentQ--; renderQ(); } }
+
+// ─────────────────────────────────────
+// GATE
+// ─────────────────────────────────────
+function showResult() {
+  // Calculate scores
+  axisScores = [0,1,2,3,4].map(ax => {
+    const qs = QUESTIONS.map((q,i) => ({q,i})).filter(({q}) => q.axis === ax);
+    const sum = qs.reduce((s,{q,i}) => s + q.opts[answers[i]].s, 0);
+    return sum / qs.length;
+  });
+  totalScore = axisScores.reduce((a,b) => a+b, 0);
+
+  // Show gate instead of result directly
+  document.getElementById("screen-quiz").style.display = "none";
+  document.getElementById("screen-gate").style.display = "block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function proceedWithEmail() {
+  const emailInput = document.getElementById("gateEmail");
+  const email = emailInput.value.trim();
+  if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    emailInput.focus();
+    emailInput.style.borderColor = "var(--accent)";
+    emailInput.placeholder = "正しいメールアドレスを入力してください";
+    return;
+  }
+
+  // Button loading state
+  const submitBtn = document.querySelector('#screen-gate .gate-option.highlighted .btn-primary');
+  if (submitBtn) { submitBtn.textContent = "送信中…"; submitBtn.disabled = true; }
+
+  const type = TYPES.find(t => totalScore >= t.min && totalScore <= t.max) || TYPES[TYPES.length-1];
+  const bench = BENCHMARKS[selectedTier];
+
+  // --- スプレッドシート通知 ---
+  const scoreDetail = `${bench.name} | ` + AXES.map((a,i) => `${a}:${axisScores[i].toFixed(1)}`).join(" / ");
+  notifyAdmin(userName, email, "合格可能性診断", type.name, scoreDetail);
+
+  // Show result immediately (don't block on email response)
+  document.getElementById("screen-gate").style.display = "none";
+  document.getElementById("screen-result").style.display = "block";
+  const banner = document.getElementById("email-sent-banner");
+  banner.style.display = "flex";
+  document.getElementById("email-sent-addr").textContent = email;
+  renderResultUI();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+
+// ─────────────────────────────────────
+// RESULT RENDER
+// ─────────────────────────────────────
+function renderResultUI() {
+  const bench = BENCHMARKS[selectedTier];
+  const type = TYPES.find(t => totalScore >= t.min && totalScore <= t.max) || TYPES[TYPES.length-1];
+  // ベンチマーク差分でワースト順に並べる
+  const gapsFromBench = axisScores.map((sc, i) => ({ i, gap: sc - bench.values[i] }));
+  gapsFromBench.sort((a, b) => a.gap - b.gap);
+  const weak1 = gapsFromBench[0].i;
+  const weak2 = gapsFromBench[1].i;
+  const showWeak2 = gapsFromBench[1].gap < 0;
+
+  // Header
+  document.getElementById("rName").textContent = `${userName}さんの診断結果`;
+  document.getElementById("rTierChip").textContent = `志望ライン：${bench.name}`;
+  const badge = document.getElementById("rTypeBadge");
+  badge.textContent = type.badge; badge.style.background = type.badgeBg; badge.style.color = type.badgeColor; badge.style.border = `1.5px solid ${type.badgeColor}44`;
+  document.getElementById("rTitle").innerHTML = type.title;
+
+  // Score table
+  const tbl = document.getElementById("scoreTable");
+  tbl.innerHTML = `<div class="score-header"><span>軸</span><span></span><span class="sh-right">あなた</span><span class="sh-right">差</span></div>`;
+  axisScores.forEach((sc, i) => {
+    const bv = bench.values[i];
+    const gap = sc - bv;
+    const gapStr = gap >= 0 ? `+${gap.toFixed(1)}` : gap.toFixed(1);
+    const gapCls = gap >= 0 ? "gap-ok" : "gap-neg";
+    const barPct = (sc/4)*100;
+    const markPct = (bv/4)*100;
+    const row = document.createElement("div"); row.className = "score-row";
+    row.innerHTML = `
+      <div class="score-axis">${AXES[i]}</div>
+      <div class="score-bar-bg">
+        <div class="score-bar-yours" style="width:${barPct}%;background:${AXIS_COLORS[i]};"></div>
+        <div class="score-bar-mark" style="left:${markPct}%;"></div>
+      </div>
+      <div class="score-val-yours" style="color:${AXIS_COLORS[i]};">${sc.toFixed(1)}</div>
+      <div class="score-gap ${gapCls}">${gapStr}</div>`;
+    tbl.appendChild(row);
+  });
+  const note = document.createElement("p"); note.style.cssText="font-size:11px;color:var(--muted);margin-top:8px;";
+  note.textContent = "縦線 = 合格者傾向ライン（参考値）　差 = あなたのスコア − 傾向ライン";
+  tbl.appendChild(note);
+
+  // Type message
+  document.getElementById("rMsg").innerHTML = `<div class="type-lbl">${type.name}</div><h3>${type.title.replace(/<br>/g,"")}</h3><p>${type.msg}</p>`;
+
+  // Advice（ベンチマーク差が大きい上位2軸を表示）
+  let adviceHtml = `<div class="advice-label">📌 最優先ポイント：${AXES[weak1]}</div><p>${AXIS_ADVICE[weak1]}</p>`;
+  if (showWeak2) adviceHtml += `<div class="advice-label" style="margin-top:16px;">📌 改善ポイント②：${AXES[weak2]}</div><p>${AXIS_ADVICE[weak2]}</p>`;
+  document.getElementById("rAdvice").innerHTML = adviceHtml;
+
+  // Radar chart
+  if (chartInstance) chartInstance.destroy();
+  const ctx = document.getElementById("radarChart").getContext("2d");
+  chartInstance = new Chart(ctx, {
+    type:"radar",
+    data: {
+      labels: AXES,
+      datasets:[
+        { label:`${userName}さん`, data: axisScores.map(s => +s.toFixed(2)),
+          backgroundColor:"rgba(229,95,58,0.12)", borderColor:"#e55f3a", borderWidth:2.5,
+          pointBackgroundColor: AXIS_COLORS, pointBorderColor:"#fff", pointBorderWidth:2, pointRadius:5 },
+        { label:"合格者傾向ライン", data: bench.values,
+          backgroundColor:"rgba(26,39,68,0.06)", borderColor:"#1A2744", borderWidth:2,
+          borderDash:[6,4], pointBackgroundColor:"#1A2744", pointBorderColor:"#fff",
+          pointBorderWidth:2, pointRadius:4, pointStyle:"triangle" },
+      ]
+    },
+    options:{
+      animation:{duration:800,easing:"easeOutQuart"},
+      scales:{ r:{
+        min:0,max:4,
+        ticks:{stepSize:1,display:false,backdropColor:"transparent"},
+        grid:{color:"rgba(0,0,0,0.06)"},
+        angleLines:{color:"rgba(0,0,0,0.06)"},
+        pointLabels:{font:{family:"'Noto Sans JP',sans-serif",size:11,weight:"700"},color:"#1a1c22",padding:10}
+      }},
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw}`}}
+      }
+    }
+  });
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// ─────────────────────────────────────
+// PRINT
+// ─────────────────────────────────────
+function printResult() {
+  const bench = BENCHMARKS[selectedTier];
+  const type = TYPES.find(t => totalScore >= t.min && totalScore <= t.max) || TYPES[TYPES.length-1];
+  const gapsFromBenchP = axisScores.map((sc, i) => ({ i, gap: sc - bench.values[i] }));
+  gapsFromBenchP.sort((a, b) => a.gap - b.gap);
+  const weak1P = gapsFromBenchP[0].i;
+  const weak2P = gapsFromBenchP[1].i;
+  const showWeak2P = gapsFromBenchP[1].gap < 0;
+  const today = new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'});
+
+  // Fill print view
+  document.getElementById("pv-sub").textContent = `${userName}さん｜${today}`;
+  document.getElementById("pv-name").textContent = userName + "さん";
+  document.getElementById("pv-date").textContent = today;
+  document.getElementById("pv-tier").textContent = bench.name;
+  document.getElementById("pv-type").textContent = type.name;
+
+  const pvBadge = document.getElementById("pv-badge");
+  pvBadge.textContent = type.badge; pvBadge.style.background = type.badgeBg;
+  pvBadge.style.color = type.badgeColor; pvBadge.style.border = `1px solid ${type.badgeColor}44`;
+
+  // Chart image
+  const canvas = document.getElementById("radarChart");
+  document.getElementById("pv-chart-img").src = canvas.toDataURL("image/png",1.0);
+
+  // Scores
+  const pvScores = document.getElementById("pv-scores");
+  pvScores.innerHTML = "";
+  axisScores.forEach((sc,i) => {
+    const bv = bench.values[i];
+    const gap = sc - bv;
+    const gapStr = gap >= 0 ? `+${gap.toFixed(1)}` : gap.toFixed(1);
+    const barPct = (sc/4)*100;
+    const markPct = (bv/4)*100;
+    const row = document.createElement("div"); row.className = "pv-score-row";
+    row.innerHTML = `
+      <span>${AXES[i]}</span>
+      <div class="pv-sb-bg"><div class="pv-sb-fill" style="width:${barPct}%;background:${AXIS_COLORS[i]};"></div><div class="pv-sb-mark" style="left:${markPct}%;"></div></div>
+      <span class="pv-sv" style="color:${AXIS_COLORS[i]};">${sc.toFixed(1)}</span>
+      <span class="pv-gap" style="color:${gap>=0?'#059669':'#e55f3a'};">${gapStr}</span>`;
+    pvScores.appendChild(row);
+  });
+  const legend = document.createElement("p"); legend.style.cssText="font-size:7pt;color:#6b7280;margin-top:2mm;";
+  legend.textContent = "縦線=傾向ライン　差=あなた−傾向ライン";
+  pvScores.appendChild(legend);
+
+  // Message & Advice
+  document.getElementById("pv-msg").innerHTML = `<h4>${type.name}</h4><p>${type.msg}</p>`;
+  let pvAdviceHtml = `<div class="pv-adv-lbl">📌 最優先ポイント：${AXES[weak1P]}</div><p>${AXIS_ADVICE[weak1P]}</p>`;
+  if (showWeak2P) pvAdviceHtml += `<div class="pv-adv-lbl" style="margin-top:8px;">📌 改善ポイント②：${AXES[weak2P]}</div><p>${AXIS_ADVICE[weak2P]}</p>`;
+  document.getElementById("pv-advice").innerHTML = pvAdviceHtml;
+
+  window.print();
+}
+
+// ─────────────────────────────────────
+// RESET
+// ─────────────────────────────────────
+function resetQuiz() {
+  currentQ = 0; answers = new Array(10).fill(null);
+  selectedTier = null; axisScores = []; totalScore = 0;
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById("screen-result").style.display = "none";
+  document.getElementById("screen-gate").style.display = "none";
+  document.getElementById("screen-intro").style.display = "block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
