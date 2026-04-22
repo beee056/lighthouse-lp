@@ -1,4 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/shindan", "destination": "/tools/shindan", "permanent": true },
+    { "source": "/shinro", "destination": "/tools/shinro", "permanent": true },
+    { "source": "/learning-style", "destination": "/tools/learning-style", "permanent": true },
+    { "source": "/university-portal", "destination": "/tools/university-portal", "permanent": true },
+    { "source": "/shindan.html", "destination": "/tools/shindan", "permanent": true },
+    { "source": "/shinro.html", "destination": "/tools/shinro", "permanent": true },
+    { "source": "/learning-style.html", "destination": "/tools/learning-style", "permanent": true },
+    { "source": "/university-portal.html", "destination": "/tools/university-portal", "permanent": true }
+  ]
 }
