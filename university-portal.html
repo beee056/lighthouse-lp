@@ -243,7 +243,8 @@
                 <p style="color: #166534; font-size: 1rem; margin-bottom: 1rem;">まずは自分の強みや向いている進路を発見しましょう！</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="shinro.html" class="lp-btn" style="background: #16a34a; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);">🧭 進路発見チャート</a>
-                    <a href="shindan.html" class="lp-btn" style="background: #0ea5e9; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);">📝 学習スタイル診断</a>
+                    <a href="learning-style.html" class="lp-btn" style="background: #8b5cf6; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);">🧠 学習スタイル診断</a>
+                    <a href="shindan.html" class="lp-btn" style="background: #0ea5e9; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);">📈 合格可能性診断</a>
                 </div>
             </div>
         </div>
@@ -313,20 +314,20 @@
                 <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 0.5rem;">
                     <div>
                         <label>生徒氏名</label>
-                        <input type="text" placeholder="氏名を入力...">
+                        <input type="text" id="studentNameInput" onchange="saveStudentMeta()" placeholder="氏名を入力...">
                     </div>
                     <div>
                         <label>進路タイプ (進路チャート)</label>
-                        <input type="text" placeholder="例：ビジネス・イノベーター型">
+                        <input type="text" id="shinroTypeInput" onchange="saveStudentMeta()" placeholder="例：ビジネス・イノベーター型">
                     </div>
                     <div>
                         <label>学習スタイル (学習診断)</label>
-                        <input type="text" placeholder="例：コツコツ探求型">
+                        <input type="text" id="learningStyleInput" onchange="saveStudentMeta()" placeholder="例：コツコツ探求型">
                     </div>
                 </div>
                 <div style="grid-column: 1 / -1;">
                     <label>指導者コメント / 全体方針</label>
-                    <textarea rows="2" placeholder="ここに全体メモや方針を記入できます（印刷時に反映されます）..."></textarea>
+                    <textarea rows="2" id="overallCommentInput" onchange="saveStudentMeta()" placeholder="ここに全体メモや方針を記入できます（印刷時に反映されます）..."></textarea>
                 </div>
             </div>
 
@@ -345,8 +346,10 @@
                 </tbody>
             </table>
 
-            <div class="modal-actions">
-                <button class="btn btn-outline" onclick="copyShareUrl()">🔗 このリストのURLをコピー</button>
+            <div class="modal-actions" style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="copyShareUrl()" style="margin-right: auto;">🔗 リストのURLを共有</button>
+                <button class="btn btn-outline" style="color: #06C755; border-color: #06C755;" onclick="copyTextForLine()">💬 面談メモをLINE用にコピー</button>
+                <button class="btn btn-outline" style="color: #dc2626; border-color: #fca5a5;" onclick="clearCompareList()">🗑️ リセット</button>
                 <button class="btn btn-primary" onclick="window.print()">🖨️ 面談シートを印刷する</button>
             </div>
             </div>
@@ -407,9 +410,17 @@
                     if (saved) compareUrls = JSON.parse(saved);
                 }
                 
-                const savedMeta = localStorage.getItem('lighthouse_compare_meta');
-                if (savedMeta) {
-                    try { compareMeta = JSON.parse(savedMeta); } catch(e){}
+                const storedMeta = JSON.parse(localStorage.getItem('lighthouse_compare_meta'));
+                if (storedMeta) {
+                    compareMeta = storedMeta;
+                }
+                
+                const studentMeta = JSON.parse(localStorage.getItem('lighthouse_student_meta'));
+                if (studentMeta) {
+                    if (document.getElementById('studentNameInput')) document.getElementById('studentNameInput').value = studentMeta.name || '';
+                    if (document.getElementById('shinroTypeInput')) document.getElementById('shinroTypeInput').value = studentMeta.shinro || '';
+                    if (document.getElementById('learningStyleInput')) document.getElementById('learningStyleInput').value = studentMeta.learning || '';
+                    if (document.getElementById('overallCommentInput')) document.getElementById('overallCommentInput').value = studentMeta.comment || '';
                 }
                 
                 // 3. Populate Selects
@@ -545,6 +556,16 @@
 
         function openCompareModal() {
             document.getElementById('compareModal').classList.add('active');
+        }
+
+        function saveStudentMeta() {
+            const meta = {
+                name: document.getElementById('studentNameInput') ? document.getElementById('studentNameInput').value : '',
+                shinro: document.getElementById('shinroTypeInput') ? document.getElementById('shinroTypeInput').value : '',
+                learning: document.getElementById('learningStyleInput') ? document.getElementById('learningStyleInput').value : '',
+                comment: document.getElementById('overallCommentInput') ? document.getElementById('overallCommentInput').value : ''
+            };
+            localStorage.setItem('lighthouse_student_meta', JSON.stringify(meta));
         }
 
         function updateMeta(id, key, value) {
@@ -686,6 +707,54 @@
                 notice.className = 'empty-state';
                 notice.textContent = `※他 ${universities.length - 100} 校のデータがあります。条件を絞り込んでください。`;
                 resultsContainer.appendChild(notice);
+            }
+        }
+
+        function copyTextForLine() {
+            const studentName = document.getElementById('studentNameInput') ? document.getElementById('studentNameInput').value : '未入力';
+            const shinroType = document.getElementById('shinroTypeInput') ? document.getElementById('shinroTypeInput').value : '未入力';
+            const learningStyle = document.getElementById('learningStyleInput') ? document.getElementById('learningStyleInput').value : '未入力';
+            const overallComment = document.getElementById('overallCommentInput') ? document.getElementById('overallCommentInput').value : '未記入';
+
+            let text = `【LIGHTHOUSE 受験戦略・面談メモ】\n`;
+            text += `生徒氏名: ${studentName}\n`;
+            text += `進路タイプ: ${shinroType} / 学習スタイル: ${learningStyle}\n\n`;
+            text += `【全体方針】\n${overallComment}\n\n`;
+            text += `------------------------\n\n`;
+
+            const compareItems = allData.filter(item => compareUrls.includes(item.id));
+            if (compareItems.length === 0) {
+                text += `リストに大学が登録されていません。\n`;
+            } else {
+                compareItems.forEach(item => {
+                    const meta = compareMeta[item.id] || { status: '', action: '', memo: '' };
+                    text += `◆ ${item.university} ${item.faculty} (${item.category})\n`;
+                    text += `ステータス: ${meta.status || '未設定'}\n`;
+                    text += `【ネクストアクション】\n${meta.action || 'なし'}\n`;
+                    text += `【メモ】\n${meta.memo || 'なし'}\n\n`;
+                });
+            }
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('面談メモをクリップボードにコピーしました！\nLINEなどに貼り付けて送信してください。');
+            }).catch(err => {
+                alert('コピーに失敗しました。');
+            });
+        }
+
+        function clearCompareList() {
+            if (confirm('リストと入力したメモをすべて削除します。よろしいですか？')) {
+                compareUrls = [];
+                compareMeta = {};
+                localStorage.removeItem('lighthouse_compare');
+                localStorage.removeItem('lighthouse_compare_meta');
+                localStorage.removeItem('lighthouse_student_meta');
+                if (document.getElementById('studentNameInput')) document.getElementById('studentNameInput').value = '';
+                if (document.getElementById('shinroTypeInput')) document.getElementById('shinroTypeInput').value = '';
+                if (document.getElementById('learningStyleInput')) document.getElementById('learningStyleInput').value = '';
+                if (document.getElementById('overallCommentInput')) document.getElementById('overallCommentInput').value = '';
+                updateCompareTray();
+                renderCompareTable();
             }
         }
 
