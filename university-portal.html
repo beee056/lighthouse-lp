@@ -142,14 +142,26 @@
         
         .modal-content {
             background: var(--white); border-radius: 16px; width: 100%; max-width: 1000px;
-            max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; box-shadow: var(--shadow-lg);
+            max-height: 90vh; display: flex; flex-direction: column; position: relative; box-shadow: var(--shadow-lg);
         }
         #uniDetailModal .modal-content { max-width: 800px; }
         
-        .modal-close {
-            position: absolute; top: 20px; right: 20px; background: none; border: none;
-            font-size: 1.5rem; cursor: pointer; color: var(--text-muted);
+        .modal-header {
+            padding: 2rem 2rem 1.5rem 2rem; border-bottom: 1px solid var(--border-color);
+            position: relative; flex-shrink: 0;
         }
+        
+        .modal-body {
+            padding: 1.5rem 2rem 2rem 2rem; overflow-y: auto; flex-grow: 1;
+        }
+
+        .modal-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; background: #f3f4f6; border: none;
+            font-size: 1.5rem; cursor: pointer; color: var(--text-muted); width: 36px; height: 36px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s; z-index: 10;
+        }
+        .modal-close:hover { background: #e5e7eb; }
         
         /* Compare Modal Specifics */
         .counseling-fields {
@@ -198,7 +210,8 @@
             body * { visibility: hidden; }
             .modal-overlay { position: absolute; left: 0; top: 0; margin: 0; padding: 0; background: none; }
             #compareModal .modal-content, #compareModal .modal-content * { visibility: visible; }
-            .modal-content { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; padding: 0; max-height: none; overflow: visible; }
+            .modal-content { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; padding: 0; max-height: none; overflow: visible; display: block; }
+            .modal-header, .modal-body { padding: 0; border: none; overflow: visible; }
             .modal-close, .modal-actions, .ext-btn, .fav-btn, .remove-compare-btn, #uniDetailModal { display: none !important; }
             .counseling-fields { background: none; border: none; padding: 0; margin-bottom: 2rem; }
             .counseling-fields input, .counseling-fields textarea { border: none; padding: 0; resize: none; background: transparent; }
@@ -260,26 +273,30 @@
     </div>
 
     <!-- 大学詳細モーダル (Grouped Click) -->
-    <div id="uniDetailModal" class="modal-overlay">
+    <div id="uniDetailModal" class="modal-overlay" onclick="closeOnOutsideClick(event, 'uniDetailModal')">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeUniDetailModal()">&times;</button>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                <span id="uniDetailType" class="badge" style="margin-bottom: 0;"></span>
-                <span id="uniDetailPref" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeUniDetailModal()">&times;</button>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <span id="uniDetailType" class="badge" style="margin-bottom: 0;"></span>
+                    <span id="uniDetailPref" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+                </div>
+                <h3 id="uniDetailTitle" style="font-size: 1.8rem; margin-bottom: 0; color: var(--primary-dark);"></h3>
             </div>
-            <h3 id="uniDetailTitle" style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary-dark);"></h3>
-            
-            <div id="uniDetailList" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="modal-body" id="uniDetailList" style="display: flex; flex-direction: column; gap: 1rem;">
                 <!-- JS Inject -->
             </div>
         </div>
     </div>
 
     <!-- 比較・面談モーダル -->
-    <div id="compareModal" class="modal-overlay">
+    <div id="compareModal" class="modal-overlay" onclick="closeOnOutsideClick(event, 'compareModal')">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeCompareModal()">&times;</button>
-            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-dark);">受験戦略・比較シート</h3>
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeCompareModal()">&times;</button>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0; color: var(--primary-dark);">受験戦略・比較シート</h3>
+            </div>
+            <div class="modal-body">
             
             <div class="counseling-fields">
                 <div>
@@ -310,6 +327,7 @@
             <div class="modal-actions">
                 <button class="btn btn-outline" onclick="copyShareUrl()">🔗 このリストのURLをコピー</button>
                 <button class="btn btn-primary" onclick="window.print()">🖨️ 面談シートを印刷する</button>
+            </div>
             </div>
         </div>
     </div>
@@ -342,6 +360,17 @@
                 const res = await fetch('data.json');
                 allData = await res.json();
                 
+                // Assign deterministic unique IDs
+                allData.forEach(item => {
+                    let str = (item.university||'') + (item.faculty||'') + (item.category||'') + (item.url||'');
+                    let hash = 0;
+                    for (let i = 0; i < str.length; i++) {
+                        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                        hash |= 0; 
+                    }
+                    item.id = 'item_' + Math.abs(hash);
+                });
+                
                 // 2. Load Compare List from LocalStorage or URL
                 const urlParams = new URLSearchParams(window.location.search);
                 const sharedCompare = urlParams.get('compare');
@@ -367,8 +396,9 @@
                 });
 
                 // Default setup (Tokyo)
-                if (prefs.includes('東京都')) {
-                    prefFilter.value = '東京都';
+                const tokyo = prefs.find(p => p.includes('東京'));
+                if (tokyo) {
+                    prefFilter.value = tokyo;
                 }
 
                 render();
@@ -416,7 +446,7 @@
             `;
 
             items.forEach(item => {
-                const isSaved = compareUrls.includes(item.url);
+                const isSaved = compareUrls.includes(item.id);
                 const starClass = isSaved ? 'fav-btn active' : 'fav-btn';
                 const starIcon = isSaved ? '★ 比較リスト保存済み' : '☆ 比較リストに追加';
 
@@ -428,7 +458,7 @@
                             <span class="badge category" style="margin-left: 0; margin-bottom: 0.5rem;">${item.category}</span>
                             <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.25rem;">${item.faculty}</div>
                         </div>
-                        <button class="${starClass}" style="padding: 0.5rem 0.75rem; border:1px solid #e5e7eb; border-radius:6px; background:var(--white); white-space:nowrap; margin-left:1rem;" onclick="toggleCompareFromDetail('${item.url}', this)">
+                        <button class="${starClass}" style="padding: 0.5rem 0.75rem; border:1px solid #e5e7eb; border-radius:6px; background:var(--white); white-space:nowrap; margin-left:1rem;" onclick="toggleCompareFromDetail('${item.id}', this)">
                             ${starIcon}
                         </button>
                     </div>
@@ -494,6 +524,12 @@
             document.getElementById('compareModal').classList.remove('active');
         }
 
+        function closeOnOutsideClick(event, modalId) {
+            if (event.target.id === modalId) {
+                document.getElementById(modalId).classList.remove('active');
+            }
+        }
+
         function copyShareUrl() {
             const baseUrl = window.location.origin + window.location.pathname;
             const param = compareUrls.map(u => encodeURIComponent(u)).join(',');
@@ -510,7 +546,7 @@
             const tbody = document.getElementById('compareTableBody');
             tbody.innerHTML = '';
 
-            const compareItems = allData.filter(item => compareUrls.includes(item.url));
+            const compareItems = allData.filter(item => compareUrls.includes(item.id));
 
             if (compareItems.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2rem;">比較リストに大学が登録されていません。<br>検索結果から「★ 比較リストに追加」を押してください。</td></tr>`;
@@ -525,7 +561,7 @@
                 tr.innerHTML = `
                     <td style="font-weight: 700;">
                         ${item.university}
-                        <button class="btn-outline remove-compare-btn" style="display:block; padding: 0.2rem 0.5rem; margin-top:0.75rem; font-size:0.75rem; width:100%;" onclick="toggleCompareFromTray('${item.url}')">リストから外す</button>
+                        <button class="btn-outline remove-compare-btn" style="display:block; padding: 0.2rem 0.5rem; margin-top:0.75rem; font-size:0.75rem; width:100%;" onclick="toggleCompareFromTray('${item.id}')">リストから外す</button>
                     </td>
                     <td>${item.faculty}</td>
                     <td><span class="badge ${item.type}">${item.type}</span><br>${item.category}<br>📍${item.prefecture}</td>
