@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HVVFXMQ1XS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HVVFXMQ1XS');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー | LIGHTHOUSE</title>
+  <meta name="description" content="総合型選抜専門塾 Lighthouse（株式会社PIVOT＆QUEST）のプライバシーポリシー">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8;
+      --ink: #1a1c22;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --soft: #f5f6f8;
+      --navy: #1A2744;
+      --accent: #e55f3a;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    .topnav {
+      background: var(--navy);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topnav-brand { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 0.12em; }
+    .topnav-links a { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 700; }
+    .topnav-links a:hover { color: #fff; text-decoration: none; }
+
+    /* ── Header ── */
+    .page-header {
+      background: var(--navy);
+      padding: 48px 24px 40px;
+      color: #fff;
+    }
+    .page-header .container { max-width: 760px; margin: 0 auto; }
+    .page-header .kicker { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700; margin-bottom: 12px; }
+    .page-header h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .page-header .meta { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+    /* ── Layout ── */
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .content { padding: 56px 0 80px; }
+
+    /* ── Intro box ── */
+    .intro-box {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 16px; padding: 24px 28px; margin-bottom: 40px;
+      box-shadow: 0 2px 12px rgba(20,24,33,0.05);
+    }
+    .intro-box p { font-size: 14px; color: #4b5260; line-height: 1.85; }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--soft); border: 1px solid var(--line);
+      border-radius: 14px; padding: 20px 24px; margin-bottom: 40px;
+    }
+    .toc h3 { font-size: 13px; font-weight: 800; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { font-size: 13px; margin-bottom: 6px; }
+    .toc a { color: var(--navy); font-weight: 500; }
+    .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+    /* ── Article ── */
+    .article-section { margin-bottom: 44px; scroll-margin-top: 20px; }
+    .article-section h2 {
+      font-size: 16px; font-weight: 800;
+      color: var(--ink);
+      padding: 12px 16px;
+      background: var(--soft); border-left: 3px solid var(--navy);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 16px;
+    }
+    .article-section p { font-size: 14px; color: #3a4050; line-height: 1.9; margin-bottom: 12px; }
+    .article-section p:last-child { margin-bottom: 0; }
+    .article-section ol, .article-section ul { padding-left: 20px; margin-bottom: 12px; }
+    .article-section li { font-size: 14px; color: #3a4050; line-height: 1.85; margin-bottom: 6px; }
+    .article-section h3 { font-size: 14px; font-weight: 800; color: var(--ink); margin: 16px 0 8px; }
+
+    /* ── Info types ── */
+    .info-list { display: grid; gap: 8px; margin: 12px 0; }
+    .info-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .info-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .info-text { font-size: 13px; color: #3a4050; line-height: 1.75; }
+    .info-text strong { font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
+
+    /* ── Notice ── */
+    .notice-box {
+      background: #fff3ee; border: 1px solid #ffd4c2;
+      border-radius: 12px; padding: 14px 18px; margin-top: 14px;
+    }
+    .notice-box p { font-size: 13px; color: #6b3620; margin: 0; }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: var(--navy); border-radius: 16px;
+      padding: 28px; margin-top: 40px; color: #fff;
+    }
+    .contact-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 16px; }
+    .contact-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
+    .contact-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); width: 140px; flex-shrink: 0; }
+    .contact-val { font-size: 13px; color: rgba(255,255,255,0.85); }
+    .contact-val a { color: rgba(255,255,255,0.85); }
+
+    /* ── Footer ── */
+    .site-footer { background: #fff; border-top: 1px solid var(--line); padding: 24px; }
+    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; max-width: 760px; margin: 0 auto; }
+    .footer-brand { font-size: 13px; font-weight: 700; color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .footer-links a { font-size: 13px; color: var(--muted); }
+    .footer-links a:hover { color: var(--ink); text-decoration: none; }
+    .footer-copy { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    @media (max-width: 640px) {
+      .topnav { padding: 12px 16px; }
+      .page-header { padding: 36px 20px 28px; }
+      .content { padding: 36px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ Nav ══ -->
+  <nav class="topnav">
+    <span class="topnav-brand">LIGHTHOUSE</span>
+    <div class="topnav-links">
+      <a href="index.html">← トップへ</a>
+    </div>
+  </nav>
+
+  <!-- ══ Header ══ -->
+  <header class="page-header">
+    <div class="container">
+      <p class="kicker">Legal</p>
+      <h1>プライバシーポリシー</h1>
+      <p class="meta">最終更新：2026年4月17日　制定：株式会社PIVOT＆QUEST</p>
+    </div>
+  </header>
+
+  <!-- ══ Content ══ -->
+  <main class="content">
+    <div class="container">
+
+      <div class="intro-box">
+        <p>株式会社PIVOT＆QUEST（以下「当社」）は、総合型選抜専門塾 Lighthouse（以下「本サービス」）において取得する個人情報の取り扱いについて、以下のプライバシーポリシーを定めます。本サービスをご利用いただくことで、本ポリシーに同意いただいたものとみなします。</p>
+      </div>
+
+      <!-- 目次 -->
+      <div class="toc">
+        <h3>目次</h3>
+        <ol>
+          <li><a href="#s1">事業者情報</a></li>
+          <li><a href="#s2">取得する個人情報</a></li>
+          <li><a href="#s3">個人情報の利用目的</a></li>
+          <li><a href="#s4">個人情報の第三者提供</a></li>
+          <li><a href="#s5">業務委託</a></li>
+          <li><a href="#s6">安全管理措置</a></li>
+          <li><a href="#s7">Cookie・アクセス解析ツール</a></li>
+          <li><a href="#s8">個人情報の開示・訂正・利用停止等</a></li>
+          <li><a href="#s9">未成年者の個人情報</a></li>
+          <li><a href="#s10">プライバシーポリシーの改定</a></li>
+          <li><a href="#s11">お問い合わせ窓口</a></li>
+        </ol>
+      </div>
+
+      <!-- 第1条 -->
+      <div class="article-section" id="s1">
+        <h2>第1条（事業者情報）</h2>
+        <p>本ポリシーにおける個人情報管理責任者は以下の通りです。</p>
+        <div class="contact-card">
+          <h3>株式会社PIVOT＆QUEST</h3>
+          <div class="contact-row">
+            <span class="contact-label">代表取締役</span>
+            <span class="contact-val">田邊 勇人</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">所在地</span>
+            <span class="contact-val">茨城県つくば市</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">メール</span>
+            <span class="contact-val"><a href="mailto:info@p-quest.com">info@p-quest.com</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第2条 -->
+      <div class="article-section" id="s2">
+        <h2>第2条（取得する個人情報）</h2>
+        <p>当社は、以下の個人情報を取得することがあります。</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <span class="info-icon">👤</span>
+            <div class="info-text">
+              <strong>基本情報</strong>
+              氏名、生年月日、性別、学校名・学年、住所、電話番号、メールアドレス
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📝</span>
+            <div class="info-text">
+              <strong>相談・指導に関する情報</strong>
+              志望校・志望理由、学習状況、自己分析内容、セッション記録、提出書類（志望理由書・活動報告書等）
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">👨‍👩‍👧</span>
+            <div class="info-text">
+              <strong>保護者情報</strong>
+              保護者氏名、連絡先（未成年者が受講する場合）
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">💳</span>
+            <div class="info-text">
+              <strong>お支払い情報</strong>
+              振込口座の名義（請求書発行・入金確認に限り使用。カード情報は当社では保持しません）
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📊</span>
+            <div class="info-text">
+              <strong>ウェブサイト利用情報</strong>
+              IPアドレス、ブラウザ情報、アクセスログ、Cookie情報（Google Analytics等を通じて取得する場合があります）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第3条 -->
+      <div class="article-section" id="s3">
+        <h2>第3条（個人情報の利用目的）</h2>
+        <p>取得した個人情報は、以下の目的のために利用します。</p>
+        <ol>
+          <li>本サービスのコーチング・指導・添削の実施</li>
+          <li>受講者および保護者への連絡・進捗共有</li>
+          <li>請求書の発行・入金管理</li>
+          <li>無料相談・お問い合わせへの対応</li>
+          <li>本サービスの改善・新機能の開発</li>
+          <li>合格実績・事例紹介（氏名・個人情報を特定できない形での利用に限る。実名・顔写真等は別途同意を取得します）</li>
+          <li>法令で定める場合</li>
+        </ol>
+        <div class="notice-box">
+          <p>上記以外の目的での利用は行いません。目的が変更される場合は、事前にご本人の同意を取得します。</p>
+        </div>
+      </div>
+
+      <!-- 第4条 -->
+      <div class="article-section" id="s4">
+        <h2>第4条（個人情報の第三者提供）</h2>
+        <p>当社は、以下の場合を除き、利用者の個人情報を第三者に提供・開示しません。</p>
+        <ol>
+          <li>ご本人の同意がある場合</li>
+          <li>法令に基づき開示が求められる場合</li>
+          <li>人の生命・身体・財産の保護のために必要があり、ご本人の同意を得ることが困難な場合</li>
+          <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合</li>
+        </ol>
+      </div>
+
+      <!-- 第5条 -->
+      <div class="article-section" id="s5">
+        <h2>第5条（業務委託）</h2>
+        <p>当社は、利用目的の達成に必要な範囲で、個人情報の取り扱いを外部の業者に委託する場合があります（例：会計ソフト、メール配信サービス等）。その場合、委託先に対して適切な管理・監督を行います。</p>
+      </div>
+
+      <!-- 第6条 -->
+      <div class="article-section" id="s6">
+        <h2>第6条（安全管理措置）</h2>
+        <p>当社は、取得した個人情報の漏えい・滅失・毀損の防止および適切な管理のために、以下の安全管理措置を講じます。</p>
+        <ol>
+          <li>個人情報へのアクセスを、業務上必要な担当者に限定します。</li>
+          <li>個人情報を含む書類・データは、適切なアクセス制御を施した環境で管理します。</li>
+          <li>不要となった個人情報は、適切な方法で速やかに削除・廃棄します。</li>
+          <li>情報セキュリティに関する意識向上に努めます。</li>
+        </ol>
+      </div>
+
+      <!-- 第7条 -->
+      <div class="article-section" id="s7">
+        <h2>第7条（Cookie・アクセス解析ツール）</h2>
+        <p>当社のウェブサイトでは、サービス改善のためにGoogle Analyticsを使用する場合があります。Google Analyticsは、Cookieを使用してウェブサイトの利用状況を匿名で収集・分析します。個人を特定する情報は収集されません。</p>
+        <p>Cookieの使用を無効にしたい場合は、ブラウザの設定から変更できます。なお、Cookieを無効にすると一部のサービスが正常に機能しない場合があります。</p>
+        <p>Google Analyticsのデータ収集・利用については、<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googleのプライバシーポリシー</a>をご参照ください。</p>
+      </div>
+
+      <!-- 第8条 -->
+      <div class="article-section" id="s8">
+        <h2>第8条（個人情報の開示・訂正・利用停止等）</h2>
+        <p>利用者は、当社に対して自己の個人情報について、以下の請求を行うことができます。</p>
+        <ul>
+          <li>開示の請求</li>
+          <li>内容の訂正・追加または削除の請求</li>
+          <li>利用の停止または消去の請求</li>
+          <li>第三者への提供の停止の請求</li>
+        </ul>
+        <p>請求は、下記お問い合わせ窓口までご連絡ください。ご本人確認のための書類提出をお願いする場合があります。合理的な期間内に対応いたします。</p>
+      </div>
+
+      <!-- 第9条 -->
+      <div class="article-section" id="s9">
+        <h2>第9条（未成年者の個人情報）</h2>
+        <p>本サービスは主に高校生（未成年者）を対象としています。未成年者が本サービスに申し込む場合、保護者の同意のもとで申込が行われるものとします。当社は、保護者の同意なく未成年者の個人情報を不必要に収集することはありません。</p>
+      </div>
+
+      <!-- 第10条 -->
+      <div class="article-section" id="s10">
+        <h2>第10条（プライバシーポリシーの改定）</h2>
+        <p>当社は、法令の変更やサービス内容の変更等に伴い、本ポリシーを改定することがあります。改定した場合は、当社ウェブサイトに掲載することで通知します。重要な変更を行う場合は、メールまたはLINEにてお知らせします。</p>
+        <p>改定後のポリシーは、ウェブサイト掲載時より効力を持ちます。</p>
+      </div>
+
+      <!-- 第11条 -->
+      <div class="article-section" id="s11">
+        <h2>第11条（お問い合わせ窓口）</h2>
+        <p>個人情報の取り扱いに関するご質問・ご相談・請求は、以下の窓口までご連絡ください。</p>
+        <div class="contact-card">
+          <h3>個人情報管理窓口</h3>
+          <div class="contact-row">
+            <span class="contact-label">会社名</span>
+            <span class="contact-val">株式会社PIVOT＆QUEST</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">担当</span>
+            <span class="contact-val">代表取締役 田邊 勇人</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">メール</span>
+            <span class="contact-val"><a href="mailto:info@p-quest.com">info@p-quest.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">お問い合わせフォーム</span>
+            <span class="contact-val"><a href="https://forms.gle/7tXNDso586UYcYfY9" target="_blank" rel="noopener noreferrer">Google フォームはこちら</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">受付時間</span>
+            <span class="contact-val">平日 10:00〜18:00（土日祝・年末年始を除く）</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size: 13px; color: var(--muted); margin-top: 32px;">以上</p>
+
+    </div>
+  </main>
+
+  <!-- ══ Footer ══ -->
+  <footer class="site-footer">
+    <div class="inner">
+      <div>
+        <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
+        <p class="footer-copy">&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">トップ</a>
+        <a href="terms.html">利用規約</a>
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

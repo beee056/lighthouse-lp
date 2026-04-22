@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全国大学 受験情報ポータル | LIGHTHOUSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e55f3a;
+            --primary-light: #ff7a55;
+            --primary-dark: #1a1c22;
+            --secondary: #06C755; /* LINE color */
+            --bg-light: #fafaf8;
+            --text-main: #1a1c22;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 10px rgba(20,24,33,0.06);
+            --shadow-md: 0 4px 24px rgba(20,24,33,0.07);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light); color: var(--text-main); line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary-dark); border-bottom: 4px solid var(--primary);
+            color: var(--white); padding: 3rem 1rem; text-align: center;
+        }
+
+        header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.05em; }
+        header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+
+        /* Controls / Search */
+        .controls {
+            display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
+            background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-sm);
+        }
+
+        .control-group { flex: 1; min-width: 200px; }
+        .control-group label {
+            display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-muted);
+        }
+        .control-group select, .control-group input {
+            width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color);
+            border-radius: 8px; font-size: 1rem; font-family: inherit; outline: none; transition: all 0.2s;
+        }
+        .control-group select:focus, .control-group input:focus {
+            border-color: var(--primary); box-shadow: 0 0 0 3px rgba(229, 95, 58, 0.1);
+        }
+
+        /* Data Grid */
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white); border-radius: 12px; padding: 1.5rem;
+            box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border-color); display: flex; flex-direction: column;
+        }
+        
+        .clickable-card { cursor: pointer; }
+        .clickable-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-light);
+        }
+
+        .badge {
+            display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; align-self: flex-start;
+        }
+
+        .badge.国立 { background-color: #e0f2fe; color: #0369a1; }
+        .badge.公立 { background-color: #f1f5f9; color: #475569; }
+        .badge.私立 { background-color: #fce7f3; color: #be185d; }
+        .badge.category { background-color: #fef3c7; color: #b45309; margin-left: 0.5rem; }
+
+        .card-header { display: flex; align-items: center; }
+        
+        .fav-btn {
+            background: none; border: none; font-size: 0.9rem; font-weight: 600;
+            color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+        }
+        .fav-btn.active { color: #b45309; background: #fef3c7 !important; border-color: #f59e0b !important; }
+        .fav-btn:hover { background: #f3f4f6; }
+
+        .uni-name {
+            font-size: 1.35rem; font-weight: 700; color: var(--text-main);
+            margin-bottom: 0.5rem; line-height: 1.4;
+        }
+
+        .pref {
+            font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        .link-btn {
+            display: inline-block; margin-top: 1rem; padding: 0.75rem 1rem;
+            background-color: var(--bg-light); color: var(--primary); text-decoration: none;
+            text-align: center; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+        }
+        .link-btn:hover { background-color: var(--primary); color: var(--white); }
+
+        /* Banner */
+        .lp-banner {
+            margin: 3rem 0; padding: 2.5rem; background: #fff3ee; border: 2px solid var(--primary);
+            border-radius: 16px; color: var(--primary-dark); text-align: center; box-shadow: var(--shadow-sm);
+        }
+        .lp-banner h2 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
+        .lp-banner p { margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 500; }
+        .lp-btn {
+            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary); color: var(--white);
+            text-decoration: none; font-weight: 700; border-radius: 9999px; font-size: 1.1rem;
+            box-shadow: 0 8px 24px rgba(229,95,58,0.22); transition: transform 0.15s, background-color 0.15s;
+        }
+        .lp-btn:hover { transform: translateY(-2px); background-color: var(--primary-light); }
+
+        /* Floating Compare Tray */
+        .compare-tray {
+            position: fixed; bottom: 85px; right: 20px; z-index: 90;
+            background: var(--primary-dark); color: var(--white);
+            padding: 12px 24px; border-radius: 999px; box-shadow: var(--shadow-lg);
+            cursor: pointer; font-weight: 600; display: none; transition: transform 0.2s;
+        }
+        .compare-tray.visible { display: flex; align-items: center; gap: 8px; }
+        .compare-tray:hover { transform: translateY(-2px); }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+            padding: 20px; backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active { display: flex; }
+        
+        .modal-content {
+            background: var(--white); border-radius: 16px; width: 100%; max-width: 1000px;
+            max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; box-shadow: var(--shadow-lg);
+        }
+        #uniDetailModal .modal-content { max-width: 800px; }
+        
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; background: none; border: none;
+            font-size: 1.5rem; cursor: pointer; color: var(--text-muted);
+        }
+        
+        /* Compare Modal Specifics */
+        .counseling-fields {
+            display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-bottom: 1.5rem;
+            background: #f9fafb; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);
+        }
+        .counseling-fields label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .counseling-fields input, .counseling-fields textarea {
+            width: 100%; padding: 0.75rem; border: 1px solid var(--border-color);
+            border-radius: 6px; font-family: inherit; font-size: 1rem; outline: none;
+        }
+        .counseling-fields input:focus, .counseling-fields textarea:focus { border-color: var(--primary); }
+
+        .compare-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem; }
+        .compare-table th, .compare-table td { padding: 1rem; border: 1px solid var(--border-color); text-align: left; vertical-align: middle; }
+        .compare-table th { background: var(--bg-light); font-weight: 600; color: var(--text-muted); }
+        .compare-table td a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .compare-table td a:hover { text-decoration: underline; }
+
+        .modal-actions { display: flex; gap: 1rem; justify-content: flex-end; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 0.95rem; text-decoration: none; display: inline-block; text-align: center;}
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+        .btn-outline:hover { background: #f3f4f6; }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 100; width: 90%; max-width: 400px; display: flex; justify-content: center;
+            background: rgba(255, 255, 255, 0.9); padding: 12px; border-radius: 999px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5);
+        }
+        .floating-cta .btn-line {
+            display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px;
+            font-size: 15px; font-weight: 700; background: var(--secondary); color: #fff;
+            text-decoration: none; border-radius: 999px; transition: transform 0.15s;
+        }
+
+        /* Footer */
+        footer { padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 60px; text-align: center; background: var(--white); }
+        .loading, .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
+        .empty-state { background: var(--white); border-radius: 12px; grid-column: 1 / -1; }
+
+        /* Print Specific CSS */
+        @media print {
+            body * { visibility: hidden; }
+            .modal-overlay { position: absolute; left: 0; top: 0; margin: 0; padding: 0; background: none; }
+            #compareModal .modal-content, #compareModal .modal-content * { visibility: visible; }
+            .modal-content { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; padding: 0; max-height: none; overflow: visible; }
+            .modal-close, .modal-actions, .ext-btn, .fav-btn, .remove-compare-btn, #uniDetailModal { display: none !important; }
+            .counseling-fields { background: none; border: none; padding: 0; margin-bottom: 2rem; }
+            .counseling-fields input, .counseling-fields textarea { border: none; padding: 0; resize: none; background: transparent; }
+            .compare-table th { background: #f3f4f6 !important; -webkit-print-color-adjust: exact; color-adjust: exact; }
+            .compare-table { border-top: 2px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>全国大学 受験情報ポータル</h1>
+        <p>総合型選抜・学校推薦型選抜の情報を県別・大学別に検索できます。</p>
+    </header>
+
+    <div class="container">
+
+        <div class="lp-banner">
+            <div class="lp-banner-content">
+                <h2>「実績ゼロ」から難関大に逆転合格するには？</h2>
+                <p>保護者の高額な費用負担をなくす、完全月額制の総合型選抜対策「LIGHTHOUSE」</p>
+                <a href="ao-sogo-taisaku.html" class="lp-btn">詳細・リアルな口コミを見る</a>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="search">キーワード検索</label>
+                <input type="text" id="search" placeholder="大学名や学部名を入力...">
+            </div>
+            <div class="control-group">
+                <label for="categoryFilter">選抜区分</label>
+                <select id="categoryFilter">
+                    <option value="all">すべて</option>
+                    <option value="総合型選抜">総合型選抜</option>
+                    <option value="学校推薦型選抜（主要）">学校推薦型選抜（主要私立）</option>
+                    <option value="学校推薦型選抜（国公立）">学校推薦型選抜（国公立）</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="prefFilter">都道府県</label>
+                <select id="prefFilter">
+                    <option value="all">すべて</option>
+                    <!-- JavaScriptで動的追加 -->
+                </select>
+            </div>
+        </div>
+
+        <div id="results" class="grid">
+            <div class="loading">データを読み込み中...</div>
+        </div>
+
+    </div>
+
+    <!-- 比較トレイ (Floating) -->
+    <div id="compareTray" class="compare-tray" onclick="openCompareModal()">
+        <span>📋</span>
+        <span id="compareCountText">比較リストを見る (0件)</span>
+    </div>
+
+    <!-- 大学詳細モーダル (Grouped Click) -->
+    <div id="uniDetailModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeUniDetailModal()">&times;</button>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span id="uniDetailType" class="badge" style="margin-bottom: 0;"></span>
+                <span id="uniDetailPref" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+            </div>
+            <h3 id="uniDetailTitle" style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary-dark);"></h3>
+            
+            <div id="uniDetailList" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- JS Inject -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 比較・面談モーダル -->
+    <div id="compareModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCompareModal()">&times;</button>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-dark);">受験戦略・比較シート</h3>
+            
+            <div class="counseling-fields">
+                <div>
+                    <label>生徒氏名</label>
+                    <input type="text" placeholder="氏名を入力...">
+                </div>
+                <div>
+                    <label>指導者コメント / 面談メモ</label>
+                    <textarea rows="2" placeholder="ここにメモや方針を記入できます（印刷時に反映されます）..."></textarea>
+                </div>
+            </div>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>大学名</th>
+                        <th>学部名</th>
+                        <th>選抜区分 / 地域</th>
+                        <th style="width: 150px;">外部調査</th>
+                        <th style="width: 100px;">詳細（元データ）</th>
+                    </tr>
+                </thead>
+                <tbody id="compareTableBody">
+                    <!-- JS Inject -->
+                </tbody>
+            </table>
+
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="copyShareUrl()">🔗 このリストのURLをコピー</button>
+                <button class="btn btn-primary" onclick="window.print()">🖨️ 面談シートを印刷する</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 追従CTA -->
+    <div class="floating-cta">
+        <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="btn-line">
+            <svg style="width:20px;height:20px;margin-right:6px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+            LINEでプロに無料相談する
+        </a>
+    </div>
+
+    <footer>
+        <div class="container" style="padding: 0;">
+            <div style="margin-bottom: 20px;">
+                <a href="index.html" style="font-weight: 700; color: var(--primary); text-decoration: underline;">&larr; LIGHTHOUSE トップページへ戻る</a>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted);">&copy; 2026 PIVOT & QUEST Inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let allData = [];
+        let compareUrls = [];
+        let currentGroupedData = {}; // Store mapped data by university
+
+        async function init() {
+            try {
+                // 1. Load Data
+                const res = await fetch('data.json');
+                allData = await res.json();
+                
+                // 2. Load Compare List from LocalStorage or URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const sharedCompare = urlParams.get('compare');
+                if (sharedCompare) {
+                    try {
+                        compareUrls = sharedCompare.split(',').map(u => decodeURIComponent(u));
+                        localStorage.setItem('lighthouse_compare', JSON.stringify(compareUrls));
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    } catch(e) {}
+                } else {
+                    const saved = localStorage.getItem('lighthouse_compare');
+                    if (saved) compareUrls = JSON.parse(saved);
+                }
+                
+                // 3. Populate Selects
+                const prefs = [...new Set(allData.map(item => item.prefecture).filter(Boolean))].sort();
+                const prefFilter = document.getElementById('prefFilter');
+                prefs.forEach(pref => {
+                    const option = document.createElement('option');
+                    option.value = pref;
+                    option.textContent = pref;
+                    prefFilter.appendChild(option);
+                });
+
+                // Default setup (Tokyo)
+                if (prefs.includes('東京都')) {
+                    prefFilter.value = '東京都';
+                }
+
+                render();
+                updateCompareTray();
+                
+                // Events
+                document.getElementById('search').addEventListener('input', render);
+                document.getElementById('categoryFilter').addEventListener('change', render);
+                document.getElementById('prefFilter').addEventListener('change', render);
+
+            } catch (err) {
+                document.getElementById('results').innerHTML = `<div class="empty-state">データの読み込みに失敗しました。時間をおいて再度お試しください。</div>`;
+                console.error(err);
+            }
+        }
+
+        function getGoogleSiteSearchUrl(domain, keyword) {
+            return `https://www.google.com/search?q=site:${domain}+${encodeURIComponent(keyword)}`;
+        }
+
+        function openUniversityDetail(uniName) {
+            const items = currentGroupedData[uniName];
+            if (!items || items.length === 0) return;
+            
+            const firstItem = items[0];
+            document.getElementById('uniDetailTitle').textContent = uniName;
+            document.getElementById('uniDetailPref').textContent = `📍 ${firstItem.prefecture || '地域不明'}`;
+            
+            const typeSpan = document.getElementById('uniDetailType');
+            typeSpan.className = `badge ${firstItem.type}`;
+            typeSpan.textContent = firstItem.type || '種別不明';
+            
+            const listContainer = document.getElementById('uniDetailList');
+            listContainer.innerHTML = '';
+            
+            const benesseUrl = getGoogleSiteSearchUrl('manabi.benesse.ne.jp/daigaku', uniName);
+            const keinetUrl = getGoogleSiteSearchUrl('keinet.ne.jp', uniName);
+
+            // Top level external links for the university
+            listContainer.innerHTML = `
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;">🔍 Benesseで検索</a>
+                    <a href="${keinetUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;">🔍 Keinetで検索</a>
+                </div>
+            `;
+
+            items.forEach(item => {
+                const isSaved = compareUrls.includes(item.url);
+                const starClass = isSaved ? 'fav-btn active' : 'fav-btn';
+                const starIcon = isSaved ? '★ 比較リスト保存済み' : '☆ 比較リストに追加';
+
+                const row = document.createElement('div');
+                row.style.cssText = "background: #f9fafb; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); display:flex; flex-direction:column; gap:0.5rem;";
+                row.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <span class="badge category" style="margin-left: 0; margin-bottom: 0.5rem;">${item.category}</span>
+                            <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.25rem;">${item.faculty}</div>
+                        </div>
+                        <button class="${starClass}" style="padding: 0.5rem 0.75rem; border:1px solid #e5e7eb; border-radius:6px; background:var(--white); white-space:nowrap; margin-left:1rem;" onclick="toggleCompareFromDetail('${item.url}', this)">
+                            ${starIcon}
+                        </button>
+                    </div>
+                    <div style="text-align: right; margin-top: 0.5rem;">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="link-btn" style="margin-top:0; padding: 0.5rem 1.5rem; display:inline-block;">詳細・募集要項を見る &rarr;</a>
+                    </div>
+                `;
+                listContainer.appendChild(row);
+            });
+
+            document.getElementById('uniDetailModal').classList.add('active');
+        }
+
+        function closeUniDetailModal() {
+            document.getElementById('uniDetailModal').classList.remove('active');
+        }
+
+        function toggleCompareFromDetail(url, btnElement) {
+            const index = compareUrls.indexOf(url);
+            if (index > -1) {
+                compareUrls.splice(index, 1);
+                btnElement.className = 'fav-btn';
+                btnElement.textContent = '☆ 比較リストに追加';
+            } else {
+                if (compareUrls.length >= 10) {
+                    alert('比較リストに追加できるのは最大10件までです。');
+                    return;
+                }
+                compareUrls.push(url);
+                btnElement.className = 'fav-btn active';
+                btnElement.textContent = '★ 比較リスト保存済み';
+            }
+            localStorage.setItem('lighthouse_compare', JSON.stringify(compareUrls));
+            updateCompareTray();
+        }
+
+        function toggleCompareFromTray(url) {
+            const index = compareUrls.indexOf(url);
+            if (index > -1) {
+                compareUrls.splice(index, 1);
+                localStorage.setItem('lighthouse_compare', JSON.stringify(compareUrls));
+                updateCompareTray();
+            }
+        }
+
+        function updateCompareTray() {
+            const tray = document.getElementById('compareTray');
+            const text = document.getElementById('compareCountText');
+            if (compareUrls.length > 0) {
+                text.textContent = `比較リストを見る (${compareUrls.length}件)`;
+                tray.classList.add('visible');
+            } else {
+                tray.classList.remove('visible');
+            }
+            renderCompareTable();
+        }
+
+        function openCompareModal() {
+            document.getElementById('compareModal').classList.add('active');
+        }
+
+        function closeCompareModal() {
+            document.getElementById('compareModal').classList.remove('active');
+        }
+
+        function copyShareUrl() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const param = compareUrls.map(u => encodeURIComponent(u)).join(',');
+            const shareUrl = `${baseUrl}?compare=${param}`;
+            
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                alert('共有用URLをクリップボードにコピーしました！\nLINEなどに貼り付けて送信してください。');
+            }).catch(err => {
+                alert('コピーに失敗しました。手動でURLを作成してください: ' + shareUrl);
+            });
+        }
+
+        function renderCompareTable() {
+            const tbody = document.getElementById('compareTableBody');
+            tbody.innerHTML = '';
+
+            const compareItems = allData.filter(item => compareUrls.includes(item.url));
+
+            if (compareItems.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2rem;">比較リストに大学が登録されていません。<br>検索結果から「★ 比較リストに追加」を押してください。</td></tr>`;
+                return;
+            }
+
+            compareItems.forEach(item => {
+                const tr = document.createElement('tr');
+                const benesseUrl = getGoogleSiteSearchUrl('manabi.benesse.ne.jp/daigaku', item.university);
+                const keinetUrl = getGoogleSiteSearchUrl('keinet.ne.jp', item.university);
+                
+                tr.innerHTML = `
+                    <td style="font-weight: 700;">
+                        ${item.university}
+                        <button class="btn-outline remove-compare-btn" style="display:block; padding: 0.2rem 0.5rem; margin-top:0.75rem; font-size:0.75rem; width:100%;" onclick="toggleCompareFromTray('${item.url}')">リストから外す</button>
+                    </td>
+                    <td>${item.faculty}</td>
+                    <td><span class="badge ${item.type}">${item.type}</span><br>${item.category}<br>📍${item.prefecture}</td>
+                    <td>
+                        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                            <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="padding: 0.4rem; font-size: 0.8rem;">Benesse</a>
+                            <a href="${keinetUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="padding: 0.4rem; font-size: 0.8rem;">Keinet</a>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">要項を確認</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function render() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const prefFilter = document.getElementById('prefFilter').value;
+
+            const filteredData = allData.filter(item => {
+                const matchSearch = (item.university || '').toLowerCase().includes(searchQuery) || (item.faculty || '').toLowerCase().includes(searchQuery);
+                const matchCat = categoryFilter === 'all' || item.category === categoryFilter;
+                const matchPref = prefFilter === 'all' || item.prefecture === prefFilter;
+                return matchSearch && matchCat && matchPref;
+            });
+
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                resultsContainer.innerHTML = `<div class="empty-state">該当するデータがありませんでした。検索条件を変えてお試しください。</div>`;
+                return;
+            }
+
+            // Group by university
+            const grouped = {};
+            filteredData.forEach(item => {
+                if (!grouped[item.university]) {
+                    grouped[item.university] = [];
+                }
+                grouped[item.university].push(item);
+            });
+            currentGroupedData = grouped;
+
+            const universities = Object.keys(grouped);
+            const displayUniversities = universities.slice(0, 100); // 100大学に制限
+
+            displayUniversities.forEach(uniName => {
+                const items = grouped[uniName];
+                const firstItem = items[0];
+                const typeClass = firstItem.type === '国立' || firstItem.type === '公立' || firstItem.type === '私立' ? firstItem.type : '私立';
+                
+                const card = document.createElement('div');
+                card.className = 'card clickable-card';
+                card.onclick = () => openUniversityDetail(uniName);
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="badge ${typeClass}">${firstItem.type || '種別不明'}</span>
+                        <span class="badge category">${items.length}件の募集方式</span>
+                    </div>
+                    <div class="uni-name">${uniName}</div>
+                    <div class="pref">📍 ${firstItem.prefecture || '地域不明'}</div>
+                    <div style="margin-top: 1.5rem; text-align: center; color: var(--primary); font-weight: 600; font-size: 0.9rem; background: var(--bg-light); padding: 0.75rem; border-radius: 8px; transition: background 0.2s;">
+                        学部・詳細を見る &rarr;
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+            
+            if(universities.length > 100) {
+                const notice = document.createElement('div');
+                notice.className = 'empty-state';
+                notice.textContent = `※他 ${universities.length - 100} 校のデータがあります。条件を絞り込んでください。`;
+                resultsContainer.appendChild(notice);
+            }
+        }
+
+        // 初期化
+        init();
+    </script>
+</body>
+</html>
