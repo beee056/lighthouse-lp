@@ -382,7 +382,7 @@
         async function init() {
             try {
                 // 1. Load Data
-                const res = await fetch('data.json');
+                const res = await fetch('../data.json');
                 allData = await res.json();
                 
                 // Assign deterministic unique IDs
