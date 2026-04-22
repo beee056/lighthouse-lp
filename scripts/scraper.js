@@ -5,7 +5,7 @@ const path = require('path');
 
 const BASE_URLS = [
   { url: 'https://dricomeye.net/37_aoexam/aoexam01.html', category: '総合型選抜' },
-  { url: 'https://dricomeye.net/35_suisen/list_suisen01.html', category: '学校推薦型選抜（主要）' },
+  { url: 'https://dricomeye.net/35_suisen/list_suisen01.html', category: '学校推薦型選抜（私立）' },
   { url: 'https://dricomeye.net/33_nu_suisen/list_nu_suisen01.html', category: '学校推薦型選抜（国公立）' }
 ];
 
@@ -53,20 +53,34 @@ async function scrapeUniversityData(url, category) {
           rowData.push(text);
         });
         
-        // Basic heuristic to check if it's a valid data row (e.g., starts with 国立/公立/私立)
-        if (rowData.length > 2 && (rowData[0] === '国立' || rowData[0] === '公立' || rowData[0] === '私立' || rowData[0] === '省庁等')) {
-          results.push({
-            category: category,
-            prefecture: prefName,
-            type: rowData[0],
-            university: rowData[1],
-            faculty: rowData[2],
-            capacity: rowData[3] || '',
-            url: url
-          });
+        if (url.includes('35_suisen')) {
+          if (rowData.length >= 3 && rowData[1] && rowData[1].match(/^\d+/)) {
+            results.push({
+              category: category,
+              prefecture: prefName,
+              type: '私立',
+              university: rowData[0],
+              faculty: `${rowData[1]} ${rowData[2]}`,
+              capacity: rowData[3] || '',
+              url: url
+            });
+          }
+        } else {
+          if (rowData.length > 2 && (rowData[0] === '国立' || rowData[0] === '公立' || rowData[0] === '私立' || rowData[0] === '省庁等')) {
+            results.push({
+              category: category,
+              prefecture: prefName,
+              type: rowData[0],
+              university: rowData[1],
+              faculty: rowData[2],
+              capacity: rowData[3] || '',
+              url: url
+            });
+          }
         }
       }
     });
+
     return results;
   } catch (err) {
     console.error('Error fetching university data:', url, err.message);

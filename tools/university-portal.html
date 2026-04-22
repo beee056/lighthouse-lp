@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全国大学 受験情報ポータル | LIGHTHOUSE</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HVVFXMQ1XS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HVVFXMQ1XS');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -206,7 +214,7 @@
         }
 
         /* Footer */
-        footer { padding: 40px 0 100px 0; border-top: 1px solid var(--border-color); margin-top: 60px; text-align: center; background: var(--white); }
+        footer { padding: 40px 0 120px 0; border-top: 1px solid var(--border-color); margin-top: 60px; text-align: center; background: var(--white); }
         .loading, .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
         .empty-state { background: var(--white); border-radius: 12px; grid-column: 1 / -1; }
 
@@ -265,7 +273,7 @@
                 <select id="categoryFilter">
                     <option value="all">すべて</option>
                     <option value="総合型選抜">総合型選抜</option>
-                    <option value="学校推薦型選抜（主要）">学校推薦型選抜（主要私立）</option>
+                    <option value="学校推薦型選抜（私立）">学校推薦型選抜（私立）</option>
                     <option value="学校推薦型選抜（国公立）">学校推薦型選抜（国公立）</option>
                 </select>
             </div>
@@ -430,7 +438,23 @@
                 }
                 
                 // 3. Populate Selects
-                const prefs = [...new Set(allData.map(item => item.prefecture).filter(Boolean))].sort();
+                const jisPrefs = [
+                    '北海道', '青森', '岩手', '宮城', '秋田', '山形', '福島',
+                    '茨城', '栃木', '群馬', '埼玉', '千葉', '東京', '神奈川',
+                    '新潟', '富山', '石川', '福井', '山梨', '長野', '岐阜', '静岡', '愛知',
+                    '三重', '滋賀', '京都', '大阪', '兵庫', '奈良', '和歌山',
+                    '鳥取', '島根', '岡山', '広島', '山口',
+                    '徳島', '香川', '愛媛', '高知',
+                    '福岡', '佐賀', '長崎', '熊本', '大分', '宮崎', '鹿児島', '沖縄'
+                ];
+                const prefs = [...new Set(allData.map(item => item.prefecture).filter(Boolean))].sort((a, b) => {
+                    const aIdx = jisPrefs.findIndex(p => a.includes(p));
+                    const bIdx = jisPrefs.findIndex(p => b.includes(p));
+                    if (aIdx === -1 && bIdx === -1) return a.localeCompare(b);
+                    if (aIdx === -1) return 1;
+                    if (bIdx === -1) return -1;
+                    return aIdx - bIdx;
+                });
                 const prefFilter = document.getElementById('prefFilter');
                 prefs.forEach(pref => {
                     const option = document.createElement('option');
