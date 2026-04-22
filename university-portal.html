@@ -386,14 +386,14 @@
                 allData = await res.json();
                 
                 // Assign deterministic unique IDs
-                allData.forEach(item => {
-                    let str = (item.university||'') + (item.faculty||'') + (item.category||'') + (item.url||'');
-                    let hash = 0;
-                    for (let i = 0; i < str.length; i++) {
-                        hash = ((hash << 5) - hash) + str.charCodeAt(i);
-                        hash |= 0; 
-                    }
+                allData = allData.map((item, index) => {
+                    // Generate a stable ID based on the university, faculty, and category
+                    // Removed 'item.url' from the hash to ensure IDs don't break if the source site URL changes
+                    const hash = (item.university + item.faculty + item.category).split('').reduce((a, b) => {
+                        a = ((a << 5) - a) + b.charCodeAt(0); return a & a;
+                    }, 0);
                     item.id = 'item_' + Math.abs(hash);
+                    return item;
                 });
                 
                 // 2. Load Compare List from LocalStorage or URL
