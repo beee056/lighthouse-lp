@@ -728,11 +728,20 @@
             } else {
                 compareItems.forEach(item => {
                     const meta = compareMeta[item.id] || { status: '', action: '', memo: '' };
+                    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + item.faculty + ' ' + item.category + ' 募集要項 公式')}`;
+                    
                     text += `◆ ${item.university} ${item.faculty} (${item.category})\n`;
                     text += `ステータス: ${meta.status || '未設定'}\n`;
                     text += `【ネクストアクション】\n${meta.action || 'なし'}\n`;
-                    text += `【メモ】\n${meta.memo || 'なし'}\n\n`;
+                    if (meta.memo) text += `【メモ】\n${meta.memo}\n`;
+                    text += `▼ 公式募集要項を検索\n${searchUrl}\n\n`;
                 });
+                
+                const baseUrl = window.location.origin + window.location.pathname;
+                const param = compareUrls.map(u => encodeURIComponent(u)).join(',');
+                const shareUrl = `${baseUrl}?compare=${param}`;
+                text += `------------------------\n`;
+                text += `📱 この作戦ボードをブラウザで見る:\n${shareUrl}\n`;
             }
 
             navigator.clipboard.writeText(text).then(() => {
