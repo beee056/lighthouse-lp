@@ -214,7 +214,7 @@
             .modal-header, .modal-body { padding: 0; border: none; overflow: visible; }
             .modal-close, .modal-actions, .ext-btn, .fav-btn, .remove-compare-btn, #uniDetailModal { display: none !important; }
             .counseling-fields { background: none; border: none; padding: 0; margin-bottom: 2rem; }
-            .counseling-fields input, .counseling-fields textarea { border: none; padding: 0; resize: none; background: transparent; }
+            .counseling-fields input, .counseling-fields textarea, .compare-table select, .compare-table textarea { border: none; padding: 0; resize: none; background: transparent; -webkit-appearance: none; appearance: none; }
             .compare-table th { background: #f3f4f6 !important; -webkit-print-color-adjust: exact; color-adjust: exact; }
             .compare-table { border-top: 2px solid #000; }
         }
@@ -234,6 +234,17 @@
                 <h2>「実績ゼロ」から難関大に逆転合格するには？</h2>
                 <p>保護者の高額な費用負担をなくす、完全月額制の総合型選抜対策「LIGHTHOUSE」</p>
                 <a href="ao-sogo-taisaku.html" class="lp-btn">詳細・リアルな口コミを見る</a>
+            </div>
+        </div>
+
+        <div class="lp-banner" style="background: #f0fdf4; border-color: #22c55e; margin-top: 1rem;">
+            <div class="lp-banner-content">
+                <h2 style="color: #15803d; font-size: 1.4rem;">💡 やりたいことが決まっていませんか？</h2>
+                <p style="color: #166534; font-size: 1rem; margin-bottom: 1rem;">まずは自分の強みや向いている進路を発見しましょう！</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="shinro.html" class="lp-btn" style="background: #16a34a; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);">🧭 進路発見チャート</a>
+                    <a href="shindan.html" class="lp-btn" style="background: #0ea5e9; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);">📝 学習スタイル診断</a>
+                </div>
             </div>
         </div>
 
@@ -299,24 +310,34 @@
             <div class="modal-body">
             
             <div class="counseling-fields">
-                <div>
-                    <label>生徒氏名</label>
-                    <input type="text" placeholder="氏名を入力...">
+                <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 0.5rem;">
+                    <div>
+                        <label>生徒氏名</label>
+                        <input type="text" placeholder="氏名を入力...">
+                    </div>
+                    <div>
+                        <label>進路タイプ (進路チャート)</label>
+                        <input type="text" placeholder="例：ビジネス・イノベーター型">
+                    </div>
+                    <div>
+                        <label>学習スタイル (学習診断)</label>
+                        <input type="text" placeholder="例：コツコツ探求型">
+                    </div>
                 </div>
-                <div>
-                    <label>指導者コメント / 面談メモ</label>
-                    <textarea rows="2" placeholder="ここにメモや方針を記入できます（印刷時に反映されます）..."></textarea>
+                <div style="grid-column: 1 / -1;">
+                    <label>指導者コメント / 全体方針</label>
+                    <textarea rows="2" placeholder="ここに全体メモや方針を記入できます（印刷時に反映されます）..."></textarea>
                 </div>
             </div>
 
             <table class="compare-table">
                 <thead>
                     <tr>
-                        <th>大学名</th>
-                        <th>学部名</th>
-                        <th>選抜区分 / 地域</th>
-                        <th style="width: 150px;">外部調査</th>
-                        <th style="width: 100px;">詳細（元データ）</th>
+                        <th style="width: 25%;">大学・学部・方式</th>
+                        <th style="width: 15%;">志望度・ステータス</th>
+                        <th style="width: 25%;">ネクストアクション</th>
+                        <th style="width: 20%;">個別メモ</th>
+                        <th style="width: 15%;">リンク</th>
                     </tr>
                 </thead>
                 <tbody id="compareTableBody">
@@ -352,6 +373,7 @@
     <script>
         let allData = [];
         let compareUrls = [];
+        let compareMeta = {}; // stores metadata like { "item_123": { status: "第一志望", action: "OC行く", memo: "英検必須" } }
         let currentGroupedData = {}; // Store mapped data by university
 
         async function init() {
@@ -383,6 +405,11 @@
                 } else {
                     const saved = localStorage.getItem('lighthouse_compare');
                     if (saved) compareUrls = JSON.parse(saved);
+                }
+                
+                const savedMeta = localStorage.getItem('lighthouse_compare_meta');
+                if (savedMeta) {
+                    try { compareMeta = JSON.parse(savedMeta); } catch(e){}
                 }
                 
                 // 3. Populate Selects
@@ -463,7 +490,7 @@
                         </button>
                     </div>
                     <div style="text-align: right; margin-top: 0.5rem;">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="link-btn" style="margin-top:0; padding: 0.5rem 1.5rem; display:inline-block;">詳細・募集要項を見る &rarr;</a>
+                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + item.faculty + ' ' + item.category + ' 募集要項 公式')}" target="_blank" rel="noopener noreferrer" class="link-btn" style="margin-top:0; padding: 0.5rem 1.5rem; display:inline-block;">🔍 公式の募集要項を検索 &rarr;</a>
                     </div>
                 `;
                 listContainer.appendChild(row);
@@ -520,6 +547,14 @@
             document.getElementById('compareModal').classList.add('active');
         }
 
+        function updateMeta(id, key, value) {
+            if (!compareMeta[id]) {
+                compareMeta[id] = { status: '', action: '', memo: '' };
+            }
+            compareMeta[id][key] = value;
+            localStorage.setItem('lighthouse_compare_meta', JSON.stringify(compareMeta));
+        }
+
         function closeCompareModal() {
             document.getElementById('compareModal').classList.remove('active');
         }
@@ -554,25 +589,36 @@
             }
 
             compareItems.forEach(item => {
+                const meta = compareMeta[item.id] || { status: '', action: '', memo: '' };
                 const tr = document.createElement('tr');
+                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + item.faculty + ' ' + item.category + ' 募集要項 公式')}`;
                 const benesseUrl = getGoogleSiteSearchUrl('manabi.benesse.ne.jp/daigaku', item.university);
-                const keinetUrl = getGoogleSiteSearchUrl('keinet.ne.jp', item.university);
                 
                 tr.innerHTML = `
-                    <td style="font-weight: 700;">
-                        ${item.university}
+                    <td style="line-height: 1.4;">
+                        <div style="font-weight: 700; font-size: 1.1rem; color: var(--primary-dark);">${item.university}</div>
+                        <div style="font-weight: 600; margin-top: 0.25rem;">${item.faculty}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">${item.category} / 📍${item.prefecture}</div>
                         <button class="btn-outline remove-compare-btn" style="display:block; padding: 0.2rem 0.5rem; margin-top:0.75rem; font-size:0.75rem; width:100%;" onclick="toggleCompareFromTray('${item.id}')">リストから外す</button>
                     </td>
-                    <td>${item.faculty}</td>
-                    <td><span class="badge ${item.type}">${item.type}</span><br>${item.category}<br>📍${item.prefecture}</td>
-                    <td>
-                        <div style="display:flex; flex-direction:column; gap:0.5rem;">
-                            <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="padding: 0.4rem; font-size: 0.8rem;">Benesse</a>
-                            <a href="${keinetUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="padding: 0.4rem; font-size: 0.8rem;">Keinet</a>
-                        </div>
+                    <td style="vertical-align: top;">
+                        <select onchange="updateMeta('${item.id}', 'status', this.value)" style="width:100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit;">
+                            <option value="">-- 未設定 --</option>
+                            <option value="第一志望" ${meta.status === '第一志望' ? 'selected' : ''}>第一志望</option>
+                            <option value="併願（有力）" ${meta.status === '併願（有力）' ? 'selected' : ''}>併願（有力）</option>
+                            <option value="併願（滑り止め）" ${meta.status === '併願（滑り止め）' ? 'selected' : ''}>併願（滑り止め）</option>
+                            <option value="検討中" ${meta.status === '検討中' ? 'selected' : ''}>検討中</option>
+                        </select>
                     </td>
-                    <td>
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">要項を確認</a>
+                    <td style="vertical-align: top;">
+                        <textarea rows="3" onchange="updateMeta('${item.id}', 'action', this.value)" placeholder="例：要項DL、OC申込..." style="width:100%; padding:0.5rem; border:1px solid var(--border-color); border-radius:4px; font-family:inherit; resize:vertical;">${meta.action}</textarea>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <textarea rows="3" onchange="updateMeta('${item.id}', 'memo', this.value)" placeholder="例：小論文重視、英検必須..." style="width:100%; padding:0.5rem; border:1px solid var(--border-color); border-radius:4px; font-family:inherit; resize:vertical;">${meta.memo}</textarea>
+                    </td>
+                    <td style="text-align: center; vertical-align: top;">
+                        <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="display:block; padding: 0.4rem; font-size: 0.8rem; margin-bottom: 0.5rem; border-radius: 6px;">🔍 公式要項を検索</a>
+                        <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; color: var(--text-muted); text-decoration: underline;">Benesseで調べる</a>
                     </td>
                 `;
                 tbody.appendChild(tr);
