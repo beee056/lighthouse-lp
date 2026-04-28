@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIGHTHOUSE | 総合型選抜の自己探究塾</title>
+  <meta name="description" content="総合型選抜（旧AO入試）専門の個別コーチング塾。合格率88%・94件の実績。「必然性の一本化」メソッドで自己分析から志望理由書・面接対策まで伴走します。">
+  <link rel="canonical" href="https://lp.p-quest.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LIGHTHOUSE | 総合型選抜の自己探究塾">
+  <meta property="og:description" content="総合型選抜専門の個別コーチング。合格率88%・94件の実績。自己分析から志望理由書まで伴走します。">
+  <meta property="og:url" content="https://lp.p-quest.com/">
+  <meta property="og:image" content="https://lp.p-quest.com/image_top_lp.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,6 +254,26 @@
     .sticky-bar p { font-size: 12px; color: var(--muted); flex: 1; }
     .sticky-bar .btn { min-height: 44px; padding: 0 16px; font-size: 13px; }
 
+
+    /* ── Top nav ── */
+    .top-nav {
+      border-bottom: 1px solid var(--line); padding: 14px 0;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .top-nav-brand { font-size: 14px; font-weight: 800; color: var(--navy); letter-spacing: 0.04em; }
+    .top-nav-links { display: flex; align-items: center; gap: 16px; }
+    .top-nav-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
+    .top-nav-links a:hover { color: var(--ink); }
+    .top-nav-links a.nav-cta {
+      background: var(--accent); color: #fff; border-radius: 999px;
+      padding: 6px 16px; font-weight: 700; font-size: 12px;
+    }
+    @media (max-width: 640px) {
+      .top-nav-links a:not(.nav-cta) { display: none; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; }
@@ -278,6 +306,20 @@
 <body>
 
   <!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
+    <nav class="top-nav">
+    <div class="container">
+      <div class="inner">
+        <a href="index.html" class="top-nav-brand">LIGHTHOUSE</a>
+        <div class="top-nav-links">
+          <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
+          <a href="shop.html">サービス・料金</a>
+          <a href="story.html">ストーリー</a>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="nav-cta">LINEで相談</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <section class="hero">
     <div class="container">
       <div class="hero-inner">
