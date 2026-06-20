@@ -12,6 +12,28 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <!-- JSON-LD 構造化データ (AIO対策 - クイズ形式の明示) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "合格可能性診断 — 総合型選抜 準備度チャート",
+    "description": "10の質問に答えるだけで、総合型選抜（旧AO入試）の準備度を5つの軸で可視化する無料診断ツール。志望校合格ラインとの比較レーダーチャート出力に対応。",
+    "learningResourceType": "Self-Assessment",
+    "educationalUse": "Assessment",
+    "about": {
+      "@type": "Thing",
+      "name": "総合型選抜 (AO入試)"
+    },
+    "assesses": [
+      "志望の明確さ",
+      "自己理解の深さ",
+      "経験の言語化",
+      "準備の進捗",
+      "表現への自信"
+    ]
+  }
+  </script>
   <title>合格可能性診断 — 総合型選抜 準備度チャート | LIGHTHOUSE</title>
   <meta name="description" content="10の質問に答えるだけ。志望校合格ラインとの比較レーダーチャートで現状を可視化。PDF保存対応。LIGHTHOUSE（ライトハウス）">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -222,6 +244,60 @@
 
     .retry-wrap { text-align: center; padding-top: 4px; }
     .retry-link { font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; }
+
+    /* note Banner styling */
+    .note-banner {
+      margin: 20px 0;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1.5px solid #00E689;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(0, 230, 137, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .note-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 230, 137, 0.14);
+      border-color: #00b36b;
+    }
+    .note-banner-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #e6fcf4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00e689;
+    }
+    .note-banner-body {
+      flex: 1;
+      text-align: left;
+    }
+    .note-banner-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: #00b36b;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .note-banner-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .note-banner-arrow {
+      font-size: 14px;
+      color: #00b36b;
+      font-weight: 700;
+    }
 
     /* ─────────────────────────────────────
        PRINT STYLES
@@ -713,22 +789,30 @@ const TYPES = [
     name:"ゼロ地点タイプ",
     title:"「語れる自分」はこれから作る。<br>そこからが、本当のスタート。",
     msg:"今はまだ「自分の話」が言葉になっていない段階です。でも、これは能力の問題でも経験の少なさの問題でもありません。多くの場合、「正しい問いを立てたことがない」ことが原因です。逆に言えば、問いさえ変えれば誰でもここから動き始められる——多くの合格者が、最初はまったく同じ状態でした。",
-    adv:"まず「いつ、何に感情が動いたか」を書き出すことから始めましょう。正解を探すのではなく、感情の跡を追う。それがLighthouseの出発点です。無料相談では、ゼロから一緒に掘り起こします。" },
+    adv:"まず「いつ、何に感情が動いたか」を書き出すことから始めましょう。正解を探すのではなく、感情の跡を追う。それがLighthouseの出発点です。無料相談では、ゼロから一緒に掘り起こします。",
+    noteUrl:"https://note.com/veintiuno",
+    noteTitle:"「『実績がない』と悩む受験生へ。自己探究を始めるための3つのステップ」" },
   { min:9.1, max:13, badge:"💡 言語化途中タイプ", badgeColor:"#3b7dd8", badgeBg:"#eff6ff",
     name:"言語化途中タイプ",
     title:"素材は持っている。<br>「筋の通った言葉」に変える段階。",
     msg:"経験や想いの素材はあるのに、うまく言葉にならない——「書いたら当たり前のことしか出ない」「他の人と同じになる」という感覚を持つなら、素材ではなく整理の方法に問題があります。素材を変えなくても、整理の軸を変えるだけで、まったく違う志望理由になります。",
-    adv:"「なぜその経験が大切だったのか」を徹底的に深掘りすることが次のステップです。表面の出来事ではなく、そのとき感じた「違和感・驚き・悔しさ」を掘り下げてください。そこから共通するテーマが見えてきます。" },
+    adv:"「なぜその経験が大切だったのか」を徹底的に深掘りすることが次のステップです。表面の出来事ではなく、そのとき感じた「違和感・驚き・悔しさ」を掘り下げてください。そこから共通するテーマが見えてきます。",
+    noteUrl:"https://note.com/veintiuno",
+    noteTitle:"「素材を『面接官に伝わる志望理由』に変換する文章構成の秘訣」" },
   { min:13.1, max:17, badge:"⚡ 最後の一押しタイプ", badgeColor:"#7c3aed", badgeBg:"#f5f3ff",
     name:"最後の一押しタイプ",
     title:"形はできている。<br>「あなたにしかない必然性」を磨く段階。",
     msg:"書類の骨格は整っています。でも「深掘りされると詰まる」「どこか他人の言葉を使っている気がする」——その感覚は正確です。仕上げの段階は、言葉の「解像度」を上げることが仕事です。「なぜあなたが、この問いを持ち続けているのか」という一本の線をもう一段掘り下げる。そこに、審査員が「この人だ」と感じる必然性があります。",
-    adv:"面接での模擬深掘りと、志望理由の「必然性の確認」が最優先です。「第三者が聞いて、あなたにしか言えない言葉かどうか」——それが判断基準です。一緒に確認しましょう。" },
+    adv:"面接での模擬深掘りと、志望理由の「必然性の確認」が最優先です。「第三者が聞いて、あなたにしか言えない言葉かどうか」——それが判断基準です。一緒に確認しましょう。",
+    noteUrl:"https://note.com/veintiuno",
+    noteTitle:"「第三者が納得する『あなたにしかない必然性』の磨き方」" },
   { min:17.1, max:20, badge:"🏆 仕上げ段階タイプ", badgeColor:"#059669", badgeBg:"#ecfdf5",
     name:"仕上げ段階タイプ",
     title:"自己理解は整っている。<br>あとは「審査員に届く設計」をする段階。",
     msg:"自己分析と準備が高い水準で進んでいます。ここからの差は「伝え方の設計」にあります。同じ内容でも、書類の構成・話す順番・深掘りへの返し方によって、審査員の印象は大きく変わります。あなたの言葉が「必然的に見える」状態まで仕上げることが、最後の仕事です。",
-    adv:"出願書類全体の「ストーリー設計」と、模擬面接による最終調整がカギです。一つひとつの書類を単体で完成させるのではなく、全体が一つの物語として読めているか——そこを一緒に確認しましょう。" },
+    adv:"出願書類全体の「ストーリー設計」と、模擬面接による最終調整がカギです。一つひとつの書類を単体で完成させるのではなく、全体が一つの物語として読めているか——そこを一緒に確認しましょう。",
+    noteUrl:"https://note.com/veintiuno",
+    noteTitle:"「面接で絶対に崩れないストーリー設計と模擬深掘り対策」" },
 ];
 
 const AXIS_ADVICE = {
@@ -899,6 +983,20 @@ function renderResultUI() {
   // Advice（ベンチマーク差が大きい上位2軸を表示）
   let adviceHtml = `<div class="advice-label">📌 最優先ポイント：${AXES[weak1]}</div><p>${AXIS_ADVICE[weak1]}</p>`;
   if (showWeak2) adviceHtml += `<div class="advice-label" style="margin-top:16px;">📌 改善ポイント②：${AXES[weak2]}</div><p>${AXIS_ADVICE[weak2]}</p>`;
+  
+  // 公式noteおすすめ記事の紐付け
+  if (type.noteUrl && type.noteTitle) {
+    adviceHtml += `
+      <a href="${type.noteUrl}" target="_blank" rel="noopener noreferrer" class="note-banner">
+        <div class="note-banner-icon">📝</div>
+        <div class="note-banner-body">
+          <div class="note-banner-tag">代表ちーずの公式note推奨記事</div>
+          <div class="note-banner-title">${type.noteTitle}</div>
+        </div>
+        <div class="note-banner-arrow">→</div>
+      </a>
+    `;
+  }
   document.getElementById("rAdvice").innerHTML = adviceHtml;
 
   // Radar chart

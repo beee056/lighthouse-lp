@@ -11,6 +11,26 @@
     gtag('config', 'G-HVVFXMQ1XS');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- JSON-LD 構造化データ (AIO対策 - クイズ形式の明示) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "学習スタイル診断 — 自分の「学び方」を知る",
+    "description": "12の質問から学習効率・コミュニケーション・問題解決の3軸で、あなただけの学び方のタイプを分析・診断する無料ツール。",
+    "learningResourceType": "Self-Assessment",
+    "educationalUse": "Assessment",
+    "about": {
+      "@type": "Thing",
+      "name": "学習スタイル・勉強法適性診断"
+    },
+    "assesses": [
+      "学習効率",
+      "コミュニケーション",
+      "問題解決"
+    ]
+  }
+  </script>
   <title>学習スタイル診断 — 自分の「学び方」を知る | LIGHTHOUSE</title>
   <meta name="description" content="12問に答えるだけ。学習効率・コミュニケーション・問題解決の3軸で、あなたの学習スタイルタイプを診断。総合型選抜の自己分析にも直結します。LIGHTHOUSE">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -218,6 +238,60 @@
     }
     @media (max-width: 640px) {
       .top-nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* note Banner styling */
+    .note-banner {
+      margin: 20px 0;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1.5px solid #00E689;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(0, 230, 137, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .note-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 230, 137, 0.14);
+      border-color: #00b36b;
+    }
+    .note-banner-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #e6fcf4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00e689;
+    }
+    .note-banner-body {
+      flex: 1;
+      text-align: left;
+    }
+    .note-banner-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: #00b36b;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .note-banner-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .note-banner-arrow {
+      font-size: 14px;
+      color: #00b36b;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -835,9 +909,21 @@ function renderResult(type) {
       <div class="tip-text">${t}</div>
     </div>
   `).join("");
+
+  const noteTitle = "「合格者が実践する、自分の強みを活かした『自律学習スタイル』の作り方」";
+  const noteUrl = "https://note.com/veintiuno";
+
   document.getElementById("studyTips").innerHTML = `
     <div class="study-tips-lbl">今日からできる3つのアクション</div>
     ${tipsHtml}
+    <a href="${noteUrl}" target="_blank" rel="noopener noreferrer" class="note-banner" style="margin-top: 24px;">
+      <div class="note-banner-icon">📝</div>
+      <div class="note-banner-body">
+        <div class="note-banner-tag">代表ちーずの公式note推奨記事</div>
+        <div class="note-banner-title">${noteTitle}</div>
+      </div>
+      <div class="note-banner-arrow">→</div>
+    </a>
   `;
 }
 

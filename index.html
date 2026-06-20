@@ -13,6 +13,73 @@
     gtag('config', 'G-HVVFXMQ1XS');
   </script>
 
+  <!-- JSON-LD 構造化データ (SEO/AIO対策) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "LIGHTHOUSE",
+    "url": "https://lp.p-quest.com/",
+    "logo": "https://lp.p-quest.com/favicon.svg",
+    "description": "自己探究と論理的思考を掛け合わせた独自のフレームワーク。あなたのルーツから、圧倒的な志望理由を抽出する。総合型選抜（旧AO入試）専門の個別コーチング塾。",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "つくば市",
+      "addressRegion": "茨城県",
+      "postalCode": "305-0854",
+      "streetAddress": "谷田部1144-392"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "田邊 勇人"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "総合型選抜専門オンライン指導プログラム"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "実績がほとんどなくても大丈夫ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。むしろ「実績がないから無理だ」と思っている方こそ対象です。LIGHTHOUSEは実績を盛るのではなく、あなたの人生の中にある必然性を掘り起こします。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "一般受験との両立は可能ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可能です。実際に一般対策と並行しながら合格した事例が多数あります。英語・現代文・生物など教科面の伴走も行っています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "相談前に準備するものはありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quest Noteに一度取り組んでいただくのがおすすめです。現状の整理が進んだ状態で相談すると、初回面談 of 密度が大きく変わります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "偏差値が低くても受けられますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。偏差値36からの慶應SFC合格など、出発点の学力は問いません。総合型選抜は現在の学力だけで決まるものではありません。"
+        }
+      }
+    ]
+  }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIGHTHOUSE | 総合型選抜の自己探究塾</title>
@@ -313,6 +380,44 @@
       .footer-cta { padding: 28px 20px; border-radius: 24px; }
       .site-footer .inner { flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── Diagnostic Cards Premium Styles ── */
+    .diag-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+    .diag-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(229, 95, 58, 0.12);
+      border-color: var(--accent);
+    }
+    .diag-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-left: auto;
+    }
+    .diag-card .diag-arrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: auto;
+      transition: transform 0.15s;
+    }
+    .diag-card:hover .diag-arrow {
+      transform: translateX(4px);
+    }
   </style>
 </head>
 <body>
@@ -326,6 +431,7 @@
           <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
           <a href="shop.html">サービス・料金</a>
           <a href="story.html">ストーリー</a>
+          <a href="tools/shindan.html" style="color:var(--accent); font-weight:bold;">無料自己診断</a>
           <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="nav-cta">LINEで相談</a>
         </div>
       </div>
@@ -352,6 +458,12 @@
             <a class="btn btn-secondary" href="https://quest.p-quest.com/" target="_blank" rel="noopener noreferrer">Quest Noteを受け取る</a>
           </div>
           <p class="hint">まずワークブックに取り組んでから相談すると、面談の質が上がります。</p>
+          <div class="hint" style="margin-top: 15px; display: flex; gap: 15px; flex-wrap: wrap;">
+            <span>📊 5分で現在地を判定：</span>
+            <a href="tools/shindan.html" style="text-decoration: underline; color: var(--accent); font-weight: bold;">①合格可能性診断</a>
+            <a href="tools/shinro.html" style="text-decoration: underline; color: var(--accent); font-weight: bold;">②進路発見チャート</a>
+            <a href="tools/learning-style.html" style="text-decoration: underline; color: var(--accent); font-weight: bold;">③学習スタイル診断</a>
+          </div>
         </div>
         <div class="hero-img">
           <img src="image_top_lp.png" alt="自己探究のイメージ">
@@ -380,6 +492,12 @@
           <h3>面接が不安</h3>
           <p>借り物の言葉は深掘りで崩れます。自分の言葉に変えることで、<strong>どんな質問にも動じない</strong>答えが生まれます。</p>
         </div>
+      </div>
+
+      <div class="card" style="margin-top: 30px; text-align: center; background: var(--accent-soft); border-color: var(--accent-line);">
+        <h3 style="font-size: 18px; color: var(--ink);">あなたはどのタイプ？まず現在地を診断してみましょう</h3>
+        <p style="font-size: 14px; color: var(--muted); margin: 6px 0 16px;">5つの質問に答えるだけで、あなたの強みと対策の準備度がレーダーチャートで分かります。</p>
+        <a class="btn btn-primary" href="tools/shindan.html" style="min-height: 44px; font-size: 14px;">5分でできる合格可能性診断を受ける</a>
       </div>
     </div>
   </section>
@@ -547,10 +665,15 @@
           <h3>選択 — 厳しい選択を楽しめ</h3>
           <p>何に賭けるかを自分で決めること。それ自体が、あなたの志望理由の核になります。</p>
         </div>
-        <div class="card">
-          <span class="tag">代表・田邊勇人</span>
-          <h3>生徒一人ひとりのルーツへ</h3>
-          <p>私立中高での探究授業の企画・実施を経て、独自メソッドによる総合型選抜指導を確立。6年連続SFC合格者を輩出。</p>
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="tag">代表・田邊勇人</span>
+            <h3>生徒一人ひとりのルーツへ</h3>
+            <p>私立中高での探究授業の企画・実施を経て、独自メソッドによる総合型選抜指導を確立。6年連続SFC合格者を輩出。</p>
+          </div>
+          <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer" style="margin-top: 14px; display: inline-flex; align-items: center; font-size: 13px; font-weight: 700; color: var(--accent); text-decoration: underline;">
+            公式note「ちーず」で自己探究の知見を発信中 →
+          </a>
         </div>
       </div>
     </div>
@@ -584,7 +707,9 @@
       <p class="lead" style="margin-top:20px; font-size:14px;">
         📖 3名の詳しいエピソードは
         <a href="story.html" style="color:var(--accent); font-weight:700; text-decoration:underline;">「自己探究から、自己表現へ」（読み物）</a>
-        でご覧いただけます。
+        でご覧いただけます。また、代表の公式note
+        <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-weight:700; text-decoration:underline;">「ちーず｜note」</a>
+        でも合格への自己探究ノウハウや指導メソッドを公開しています。
       </p>
     </div>
   </section>
@@ -674,29 +799,32 @@
       <p class="lead">合格への距離・進路の方向性・自分の学び方——気になるものから試してみてください。すべて無料です。</p>
 
       <div class="grid-3" style="margin-top:28px;">
-        <a href="tools/shindan.html" class="card card-action" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;">
-          <div class="diag-head">
+        <a href="tools/shindan.html" class="card diag-card" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;min-height:220px;">
+          <div class="diag-head" style="display:flex;align-items:center;width:100%;">
             <div class="diag-num">01</div>
-            <h3 style="font-size:15px;margin-bottom:0;">合格可能性診断</h3>
+            <h3 style="font-size:16px;margin-bottom:0;margin-left:10px;">合格可能性診断</h3>
+            <span class="diag-badge">準備度 5軸判定</span>
           </div>
-          <p style="font-size:13px;color:var(--muted);flex:1;">10問・5軸レーダーチャートで志望校との差を可視化。PDF保存対応。</p>
-          <span style="font-size:13px;font-weight:700;color:var(--accent);">診断する →</span>
+          <p style="font-size:13px;color:var(--muted);flex:1;line-height:1.6;">10の質問に答えるだけ。志望校合格ラインとの比較レーダーチャートで現状を可視化。所要時間約5分。</p>
+          <span class="diag-arrow">診断する <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </a>
-        <a href="tools/shinro.html" class="card card-action" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;">
-          <div class="diag-head">
+        <a href="tools/shinro.html" class="card diag-card" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;min-height:220px;">
+          <div class="diag-head" style="display:flex;align-items:center;width:100%;">
             <div class="diag-num">02</div>
-            <h3 style="font-size:15px;margin-bottom:0;">進路発見チャート</h3>
+            <h3 style="font-size:16px;margin-bottom:0;margin-left:10px;">進路発見チャート</h3>
+            <span class="diag-badge">興味＆価値観分析</span>
           </div>
-          <p style="font-size:13px;color:var(--muted);flex:1;">8問・興味と価値観から向いている学部・進路タイプを探す。</p>
-          <span style="font-size:13px;font-weight:700;color:var(--accent);">診断する →</span>
+          <p style="font-size:13px;color:var(--muted);flex:1;line-height:1.6;">8つの質問から興味と価値観の方向性を探り、あなたに向いている学部や進路タイプを見つけます。</p>
+          <span class="diag-arrow">診断する <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </a>
-        <a href="tools/learning-style.html" class="card card-action" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;">
-          <div class="diag-head">
+        <a href="tools/learning-style.html" class="card diag-card" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;min-height:220px;">
+          <div class="diag-head" style="display:flex;align-items:center;width:100%;">
             <div class="diag-num">03</div>
-            <h3 style="font-size:15px;margin-bottom:0;">学習スタイル診断</h3>
+            <h3 style="font-size:16px;margin-bottom:0;margin-left:10px;">学習スタイル診断</h3>
+            <span class="diag-badge">自習効率アップ</span>
           </div>
-          <p style="font-size:13px;color:var(--muted);flex:1;">12問・学習効率・コミュニケーション・問題解決の3軸でタイプを判定。</p>
-          <span style="font-size:13px;font-weight:700;color:var(--accent);">診断する →</span>
+          <p style="font-size:13px;color:var(--muted);flex:1;line-height:1.6;">12の質問から学習効率・コミュニケーション・問題解決の3軸で、あなただけの学び方のタイプを分析。</p>
+          <span class="diag-arrow">診断する <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </a>
       </div>
     </div>
@@ -709,22 +837,34 @@
       <h2>よくある質問</h2>
 
       <div class="faq">
-        <div class="faq-item">
-          <div class="faq-q">実績がほとんどなくても大丈夫ですか？</div>
-          <div class="faq-a">はい。むしろ「実績がないから無理だ」と思っている方こそ対象です。LIGHTHOUSEは実績を盛るのではなく、あなたの人生の中にある必然性を掘り起こします。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">一般受験との両立は可能ですか？</div>
-          <div class="faq-a">可能です。実際に一般対策と並行しながら合格した事例が多数あります。英語・現代文・生物など教科面の伴走も行っています。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">相談前に準備するものはありますか？</div>
-          <div class="faq-a">Quest Noteに一度取り組んでいただくのがおすすめです。現状の整理が進んだ状態で相談すると、初回面談の密度が大きく変わります。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">偏差値が低くても受けられますか？</div>
-          <div class="faq-a">はい。偏差値36からの慶應SFC合格など、出発点の学力は問いません。総合型選抜は現在の学力だけで決まるものではありません。</div>
-        </div>
+        <details class="faq-item" style="cursor: pointer; outline: none; border-bottom: 1px solid var(--line); display: block;" open>
+          <summary class="faq-q" style="font-weight: 800; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>実績がほとんどなくても大丈夫ですか？</span>
+            <span style="font-size: 12px; color: var(--accent);">▼</span>
+          </summary>
+          <div class="faq-a" style="margin-top: 10px; color: var(--muted); line-height: 1.75;">はい。むしろ「実績がないから無理だ」と思っている方こそ対象です。LIGHTHOUSEは実績を盛るのではなく、あなたの人生の中にある必然性を掘り起こします。</div>
+        </details>
+        <details class="faq-item" style="cursor: pointer; outline: none; border-bottom: 1px solid var(--line); display: block;">
+          <summary class="faq-q" style="font-weight: 800; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>一般受験との両立は可能ですか？</span>
+            <span style="font-size: 12px; color: var(--accent);">▼</span>
+          </summary>
+          <div class="faq-a" style="margin-top: 10px; color: var(--muted); line-height: 1.75;">可能です。実際に一般対策と並行しながら合格した事例が多数あります。英語・現代文・生物など教科面の伴走も行っています。</div>
+        </details>
+        <details class="faq-item" style="cursor: pointer; outline: none; border-bottom: 1px solid var(--line); display: block;">
+          <summary class="faq-q" style="font-weight: 800; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>相談前に準備するものはありますか？</span>
+            <span style="font-size: 12px; color: var(--accent);">▼</span>
+          </summary>
+          <div class="faq-a" style="margin-top: 10px; color: var(--muted); line-height: 1.75;">Quest Noteに一度取り組んでいただくのがおすすめです。現状の整理が進んだ状態で相談すると、初回面談の密度が大きく変わります。</div>
+        </details>
+        <details class="faq-item" style="cursor: pointer; outline: none; display: block;">
+          <summary class="faq-q" style="font-weight: 800; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            <span>偏差値が低くても受けられますか？</span>
+            <span style="font-size: 12px; color: var(--accent);">▼</span>
+          </summary>
+          <div class="faq-a" style="margin-top: 10px; color: var(--muted); line-height: 1.75;">はい。偏差値36からの慶應SFC合格など、出発点の学力は問いません。総合型選抜は現在の学力だけで決まるものではありません。</div>
+        </details>
       </div>
     </div>
   </section>

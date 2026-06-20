@@ -11,6 +11,27 @@
     gtag('config', 'G-HVVFXMQ1XS');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- JSON-LD 構造化データ (AIO対策 - クイズ形式の明示) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "進路発見チャート — あなたに向いている学部・進路を探す",
+    "description": "8つの質問から興味・強み・価値観の方向性を探り、高校生に向いている大学学部や進路タイプを診断する無料ツール。",
+    "learningResourceType": "Self-Assessment",
+    "educationalUse": "Assessment",
+    "about": {
+      "@type": "Thing",
+      "name": "大学進路・適性学部診断"
+    },
+    "assesses": [
+      "興味分野",
+      "詳細テーマ",
+      "得意分野",
+      "将来の貢献"
+    ]
+  }
+  </script>
   <title>進路発見チャート — あなたに向いている学部・進路を探す | LIGHTHOUSE</title>
   <meta name="description" content="8つの質問に答えるだけ。興味・強み・価値観から、あなたに向いている大学学部・進路タイプを診断します。LIGHTHOUSE（ライトハウス）">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -219,6 +240,60 @@
     }
     @media (max-width: 640px) {
       .top-nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* note Banner styling */
+    .note-banner {
+      margin: 20px 0;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1.5px solid #00E689;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(0, 230, 137, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .note-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 230, 137, 0.14);
+      border-color: #00b36b;
+    }
+    .note-banner-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #e6fcf4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00e689;
+    }
+    .note-banner-body {
+      flex: 1;
+      text-align: left;
+    }
+    .note-banner-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: #00b36b;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .note-banner-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .note-banner-arrow {
+      font-size: 14px;
+      color: #00b36b;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -871,9 +946,31 @@ function renderResult(profile, runner) {
       <div class="action-text">${a}</div>
     </div>
   `).join("");
+
+  // profile.idに応じた推奨note記事の紐付け
+  const noteMapping = {
+    human: "「『誰かを救いたい』という想いを志望理由の必然性に変える方法」",
+    science: "「理系AO・総合型選抜で『自分の研究テーマ』を武器にするアプローチ」",
+    business: "「『なんとなく起業したい』から『このビジネスで変える』への解像度の上げ方」",
+    creative: "「芸術・デザイン系推薦で差がつく『作品制作の動機』言語化ステップ」",
+    social: "「社会課題への『違和感』を法律・政策の論理的解決策へつなげる方法」",
+    environment: "「『環境を守りたい』を単なる理想論で終わらせない出願書類の書き方」",
+    literature: "「文学・メディア系で評価される『自分にしか書けない独自の物語』の紡ぎ方」"
+  };
+  const noteTitle = noteMapping[profile.id] || "「推薦入試・総合型選抜で合格するための自己探究メソッド」";
+  const noteUrl = "https://note.com/veintiuno";
+
   document.getElementById("rActions").innerHTML = `
     <div class="actions-lbl">今日からできる3つのアクション</div>
     ${actionsHtml}
+    <a href="${noteUrl}" target="_blank" rel="noopener noreferrer" class="note-banner" style="margin-top: 24px;">
+      <div class="note-banner-icon">📝</div>
+      <div class="note-banner-body">
+        <div class="note-banner-tag">代表ちーずの公式note推奨記事</div>
+        <div class="note-banner-title">${noteTitle}</div>
+      </div>
+      <div class="note-banner-arrow">→</div>
+    </a>
   `;
 }
 
