@@ -255,6 +255,27 @@
     .floating-cta .btn {
       width: 100%; min-height: 48px; font-size: 15px; box-shadow: none; border-radius: 999px;
     }
+
+    /* ── Cluster Tour (回遊) ── */
+    .cluster-tour {
+      margin-top: 60px; padding: 32px; background: var(--soft);
+      border-radius: var(--radius-xl); border: 1px solid var(--line);
+    }
+    .cluster-tour h2 { border: none; padding: 0; background: none; margin: 0 0 20px 0; font-size: 22px; text-align: center; }
+    .cluster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 640px) {
+      .cluster-grid { grid-template-columns: 1fr; }
+    }
+    .cluster-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+      padding: 20px; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cluster-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-sm);
+      border-color: var(--accent);
+    }
+    .cluster-card h3 { border: none; margin: 0 0 8px 0; font-size: 16px; padding-bottom: 0; }
+    .cluster-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -594,6 +615,29 @@
     </div>
 
   </div>
+
+    <!-- 回遊ナビゲーション -->
+    <div class="cluster-tour">
+      <h2>あわせて読みたい総合型選抜ガイド</h2>
+      <div class="cluster-grid">
+        <a href="shibou-riyusho.html" class="cluster-card">
+          <h3>志望理由書書き方完全ガイド</h3>
+          <p>「志望理由書が書けない」悩みを解決する3つのステップと、合格構成テンプレート。</p>
+        </a>
+        <a href="story.html" class="cluster-card">
+          <h3>合格者たちの逆転ストーリー</h3>
+          <p>偏差値36からのSFC合格、不登校からのGMARCH合格など、リアルな合格体験談。</p>
+        </a>
+        <a href="for-parents.html" class="cluster-card">
+          <h3>保護者向け準備ガイド</h3>
+          <p>保護者ができる最適なサポートや、準備のスケジュールについてまとめました。</p>
+        </a>
+        <a href="tools/university-portal.html" class="cluster-card">
+          <h3>全国大学 受験情報ポータル</h3>
+          <p>全国の国公立・私立大学の推薦入試傾向や出願条件を検索・比較できます。</p>
+        </a>
+      </div>
+    </div>
 
   <!-- フッター -->
   <footer style="padding: 40px 0; border-top: 1px solid var(--line); margin-top: 60px; text-align: center;">
