@@ -418,15 +418,16 @@
     }
     @media (max-width: 640px) {
       body { padding-bottom: 118px; }
+      .btn { white-space: normal; line-height: 1.3; }
       .section { padding: 52px 0; }
       .hero { padding: 28px 0 36px; }
       .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
       .cta-row { flex-direction: column; }
       .cta-row .btn { width: 100%; }
-      .sticky-bar { flex-wrap: wrap; border-radius: 16px; }
+      .sticky-bar { flex-wrap: nowrap; border-radius: 16px; gap: 8px; }
       .sticky-bar p { flex-basis: 100%; text-align: center; }
-      .sticky-bar .btn { flex: 1; }
+      .sticky-bar .btn { flex: 1 1 0; min-width: 0; }
       .footer-cta { padding: 36px 22px; border-radius: 22px; }
       .site-footer .inner { flex-direction: column; }
     }
