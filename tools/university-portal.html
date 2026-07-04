@@ -71,11 +71,11 @@
 
         /* Data Grid */
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;
         }
 
         .card {
-            background: var(--white); border-radius: 12px; padding: 1.5rem;
+            background: var(--white); border-radius: 12px; padding: 0.9rem 1.1rem;
             box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid var(--border-color); display: flex; flex-direction: column;
         }
@@ -86,8 +86,8 @@
         }
 
         .badge {
-            display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px;
-            font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; align-self: flex-start;
+            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px;
+            font-size: 0.72rem; font-weight: 600; margin-bottom: 0; align-self: flex-start;
         }
 
         .badge.国立 { background-color: #e0f2fe; color: #0369a1; }
@@ -95,7 +95,7 @@
         .badge.私立 { background-color: #fce7f3; color: #be185d; }
         .badge.category { background-color: #fef3c7; color: #b45309; margin-left: 0.5rem; }
 
-        .card-header { display: flex; align-items: center; }
+        .card-header { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.5rem; }
         
         .fav-btn {
             background: none; border: none; font-size: 0.9rem; font-weight: 600;
@@ -105,13 +105,14 @@
         .fav-btn:hover { background: #f3f4f6; }
 
         .uni-name {
-            font-size: 1.35rem; font-weight: 700; color: var(--text-main);
-            margin-bottom: 0.5rem; line-height: 1.4;
+            font-size: 1.12rem; font-weight: 700; color: var(--text-main);
+            margin-bottom: 0.3rem; line-height: 1.35;
         }
 
         .pref {
-            font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
         }
+        .card-see { color: var(--primary); font-weight: 700; margin-left: auto; }
 
         .link-btn {
             display: inline-block; margin-top: 1rem; padding: 0.75rem 1rem;
@@ -582,22 +583,22 @@
             items.forEach(item => {
                 const isSaved = compareUrls.includes(item.id);
                 const starClass = isSaved ? 'fav-btn active' : 'fav-btn';
-                const starIcon = isSaved ? '★ 比較リスト保存済み' : '☆ 比較リストに追加';
+                const starIcon = isSaved ? '★ 保存済み' : '☆ 比較に追加';
+                // 先頭の連番表記(例: "001 ")は省略して表示
+                const facultyName = (item.faculty || '').replace(/^[\s　]*[0-9]+[\s　.．・:：]*/, '');
 
                 const row = document.createElement('div');
-                row.style.cssText = "background: #f9fafb; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); display:flex; flex-direction:column; gap:0.5rem;";
+                row.style.cssText = "background: #f9fafb; padding: 0.7rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-color); display:flex; flex-direction:column; gap:0.5rem;";
                 row.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div style="flex: 1;">
-                            <span class="badge category" style="margin-left: 0; margin-bottom: 0.5rem;">${item.category}</span>
-                            <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.25rem;">${item.faculty}</div>
-                        </div>
-                        <button class="${starClass}" style="padding: 0.5rem 0.75rem; border:1px solid #e5e7eb; border-radius:6px; background:var(--white); white-space:nowrap; margin-left:1rem;" onclick="toggleCompareFromDetail('${item.id}', this)">
+                    <div style="display:flex; align-items:baseline; gap:0.5rem; flex-wrap:wrap;">
+                        <span class="badge category" style="margin-left: 0;">${item.category}</span>
+                        <span style="font-weight: 700; font-size: 0.98rem; color: var(--text-main);">${facultyName}</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:0.6rem;">
+                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + facultyName + ' ' + item.category + ' 募集要項 公式')}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:600; font-size:0.82rem; text-decoration:none; white-space:nowrap;">🔍 募集要項を検索 &rarr;</a>
+                        <button class="${starClass}" style="padding: 0.35rem 0.7rem; border:1px solid #e5e7eb; border-radius:6px; background:var(--white); white-space:nowrap; font-size:0.8rem;" onclick="toggleCompareFromDetail('${item.id}', this)">
                             ${starIcon}
                         </button>
-                    </div>
-                    <div style="text-align: right; margin-top: 0.5rem;">
-                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + item.faculty + ' ' + item.category + ' 募集要項 公式')}" target="_blank" rel="noopener noreferrer" class="link-btn" style="margin-top:0; padding: 0.5rem 1.5rem; display:inline-block;">🔍 公式の募集要項を検索 &rarr;</a>
                     </div>
                 `;
                 listContainer.appendChild(row);
@@ -615,7 +616,7 @@
             if (index > -1) {
                 compareUrls.splice(index, 1);
                 btnElement.className = 'fav-btn';
-                btnElement.textContent = '☆ 比較リストに追加';
+                btnElement.textContent = '☆ 比較に追加';
             } else {
                 if (compareUrls.length >= 10) {
                     alert('比較リストに追加できるのは最大10件までです。');
@@ -623,7 +624,7 @@
                 }
                 compareUrls.push(url);
                 btnElement.className = 'fav-btn active';
-                btnElement.textContent = '★ 比較リスト保存済み';
+                btnElement.textContent = '★ 保存済み';
             }
             localStorage.setItem('lighthouse_compare', JSON.stringify(compareUrls));
             updateCompareTray();
@@ -787,13 +788,10 @@
                 card.innerHTML = `
                     <div class="card-header">
                         <span class="badge ${typeClass}">${firstItem.type || '種別不明'}</span>
-                        <span class="badge category">${items.length}件の募集方式</span>
+                        <span class="badge category">${items.length}方式</span>
                     </div>
                     <div class="uni-name">${uniName}</div>
-                    <div class="pref">📍 ${firstItem.prefecture || '地域不明'}</div>
-                    <div style="margin-top: 1.5rem; text-align: center; color: var(--primary); font-weight: 600; font-size: 0.9rem; background: var(--bg-light); padding: 0.75rem; border-radius: 8px; transition: background 0.2s;">
-                        学部・詳細を見る &rarr;
-                    </div>
+                    <div class="pref">📍 ${firstItem.prefecture || '地域不明'}<span class="card-see">詳細 &rarr;</span></div>
                 `;
                 resultsContainer.appendChild(card);
             });
