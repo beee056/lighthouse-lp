@@ -27,7 +27,7 @@
     },
     "assesses": [
       "志望の明確さ",
-      "自己理解の深さ",
+      "問いの接続度",
       "経験の言語化",
       "準備の進捗",
       "表現への自信"
@@ -521,7 +521,7 @@
             <div class="gate-preview-inner">
               <div class="gate-preview-bars">
                 <div class="gate-bar-row"><span class="gate-bar-name">志望の明確さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:60%;background:#EE6223;"></div></div></div>
-                <div class="gate-bar-row"><span class="gate-bar-name">自己理解の深さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:45%;background:#4D227F;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">問いの接続度</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:45%;background:#4D227F;"></div></div></div>
                 <div class="gate-bar-row"><span class="gate-bar-name">経験の言語化</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:75%;background:#7c3aed;"></div></div></div>
                 <div class="gate-bar-row"><span class="gate-bar-name">準備の進捗</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:30%;background:#059669;"></div></div></div>
                 <div class="gate-bar-row"><span class="gate-bar-name">表現への自信</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:55%;background:#d97706;"></div></div></div>
@@ -738,7 +738,7 @@ function notifyAdmin(name, email, page, result, score) {
 // ─────────────────────────────────────
 // DATA
 // ─────────────────────────────────────
-const AXES = ["志望の明確さ","自己理解の深さ","経験の言語化","準備の進捗","表現への自信"];
+const AXES = ["志望の明確さ","問いの接続度","経験の言語化","準備の進捗","表現への自信"];
 const AXIS_COLORS = ["#EE6223","#4D227F","#7c3aed","#059669","#d97706"];
 
 // 10 questions: Q1-Q5 = first round (one per axis), Q6-Q10 = second round
@@ -747,9 +747,9 @@ const QUESTIONS = [
   { axis: 0, text:"「なぜこの大学・学部なのか」を今すぐ5分間、自分の言葉で話し続けることができますか？", opts:[
     {t:"まったく言葉が出てこない",s:1},{t:"断片的には言えるが、論理のつながりが薄い",s:2},
     {t:"ある程度話せるが、「自分ならでは」という部分が薄い",s:3},{t:"自分の経験と結びついた、筋の通った話ができる",s:4}]},
-  { axis: 1, text:"自分が大切にしていること（価値観）を、具体的なエピソードと一緒に語れますか？", opts:[
-    {t:"価値観と言われても、よくわからない",s:1},{t:"なんとなくあるが、エピソードで語れない",s:2},
-    {t:"1〜2個のエピソードと結びつけて言える",s:3},{t:"複数のエピソードが同じテーマに収束することに気づいている",s:4}]},
+  { axis: 1, text:"自分の関心や問いが、大学で学ぶ学問や研究テーマとつながっていますか？", opts:[
+    {t:"自分の関心が何かも、よくわからない",s:1},{t:"関心はあるが、学問とのつながりは考えたことがない",s:2},
+    {t:"つながりそうな学問分野は思い浮かぶが、まだ具体的でない",s:3},{t:"自分の問いが、特定の学問・研究テーマと明確につながっている",s:4}]},
   { axis: 2, text:"これまでの経験（部活・趣味・家庭・学校）を振り返って、繰り返し現れる「問い」や「関心」に気づいていますか？", opts:[
     {t:"考えたことがない",s:1},{t:"なんとなくあるが、言葉にできない",s:2},
     {t:"気づいてはいるが、大学の学問とつながっていない",s:3},{t:"はっきり気づいていて、志望学問との接続もできている",s:4}]},
@@ -763,9 +763,9 @@ const QUESTIONS = [
   { axis: 0, text:"志望大学・学部の「研究内容・授業カリキュラム」を、具体的に人に説明できますか？", opts:[
     {t:"よく知らない・調べていない",s:1},{t:"ざっくり知っているが、詳細は説明できない",s:2},
     {t:"主要な授業・研究室の名前は言えるが、自分との接続が薄い",s:3},{t:"学部のカリキュラムと自分のやりたいことが明確に結びついている",s:4}]},
-  { axis: 1, text:"自分の「強み」と「弱み」を、それぞれ具体的なエピソードで説明できますか？", opts:[
-    {t:"強みも弱みも言葉にできない",s:1},{t:"なんとなくはあるが、エピソードで語れない",s:2},
-    {t:"強みは言えるが、弱みや弱みの克服過程が薄い",s:3},{t:"強み・弱みともにエピソードで語れて、成長の文脈につなげられる",s:4}]},
+  { axis: 1, text:"自分の問いが、社会の課題や将来の仕事とどうつながるかを説明できますか？", opts:[
+    {t:"考えたことがない",s:1},{t:"漠然と社会に役立てたいとは思うが、具体的でない",s:2},
+    {t:"社会課題との接点は言えるが、自分の経験との必然性が薄い",s:3},{t:"自分の経験→問い→社会課題・仕事 が一本の線でつながっている",s:4}]},
   { axis: 2, text:"課外活動・趣味・学校外の経験を、「なぜやったのか・何を得たのか」で語れますか？", opts:[
     {t:"特に語れる経験がない",s:1},{t:"経験はあるが「何をしたか」しか言えない",s:2},
     {t:"「なぜやったか」は言えるが、得たものとの接続が弱い",s:3},{t:"「なぜ→何を得た→今にどう活きているか」を筋道立てて語れる",s:4}]},
@@ -808,7 +808,7 @@ const TYPES = [
     noteTitle:"「第三者が納得する『あなたにしかない必然性』の磨き方」" },
   { min:17.1, max:20, badge:"🏆 仕上げ段階タイプ", badgeColor:"#059669", badgeBg:"#ecfdf5",
     name:"仕上げ段階タイプ",
-    title:"自己理解は整っている。<br>あとは「審査員に届く設計」をする段階。",
+    title:"問いと学問の接続は整っている。<br>あとは「審査員に届く設計」をする段階。",
     msg:"自己分析と準備が高い水準で進んでいます。ここからの差は「伝え方の設計」にあります。同じ内容でも、書類の構成・話す順番・深掘りへの返し方によって、審査員の印象は大きく変わります。あなたの言葉が「必然的に見える」状態まで仕上げることが、最後の仕事です。",
     adv:"出願書類全体の「ストーリー設計」と、模擬面接による最終調整がカギです。一つひとつの書類を単体で完成させるのではなく、全体が一つの物語として読めているか——そこを一緒に確認しましょう。",
     noteUrl:"https://note.com/veintiuno",
