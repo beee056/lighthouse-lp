@@ -263,7 +263,8 @@
     }
     .compare-box.recommend .compare-badge { background: var(--orange); }
     .compare-title { font-size: 22px; font-weight: 900; margin-bottom: 16px; margin-top: 4px; color: var(--ink);}
-    .ad-banner { display: flex; justify-content: center; margin-bottom: 24px; }
+    .ad-banner { display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
+    .ad-banner::before { content: "広告・PR"; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #7C786F; background: rgba(43,39,35,0.08); border-radius: 4px; padding: 2px 8px; margin-bottom: 8px; }
 
     .data-grid { display: grid; grid-template-columns: 120px 1fr; gap: 8px 16px; margin-bottom: 16px; font-size: 14px; background: var(--purple-soft); padding: 16px; border-radius: 8px;}
     .data-grid dt { font-weight: 700; color: var(--gray); }
@@ -567,6 +568,7 @@
 
     <!-- Section 4: Detailed Cards -->
     <h2 id="compare">4. 観点別・おすすめ塾の詳細と受講生のリアルな口コミ</h2>
+    <p style="font-size:13px; color:#7C786F; margin-bottom:24px;">※ 本セクションには広告（アフィリエイトプログラム）を含みます。掲載各社への申込により当サイトが対価を得る場合があります。</p>
 
     <!-- 早稲田塾 -->
     <div class="compare-box" id="waseda-card">
