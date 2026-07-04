@@ -37,18 +37,18 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #fafaf8; --card: #fff; --ink: #1a1c22; --muted: #6b7280;
+      --bg: #F7F3E5; --card: #fff; --ink: #2B2723; --muted: #6b7280;
       --line: #e5e7eb; --soft: #f5f6f8;
-      --accent: #e55f3a; --accent-soft: #fff3ee; --accent-line: #ffd4c2;
-      --navy: #1A2744; --gold: #C9A84C; --green: #22c55e;
+      --accent: #EE6223; --accent-soft: #FDEDE4; --accent-line: #F7C9AE;
+      --navy: #4D227F; --gold: #C9A84C; --green: #22c55e;
       --shadow: 0 4px 24px rgba(20,24,33,0.08);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body { font-family: 'Zen Kaku Gothic New', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
     a { color: inherit; text-decoration: none; }
 
     /* ── Header ── */
@@ -66,11 +66,11 @@
     .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 28px; }
 
     /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Noto Sans JP',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Zen Kaku Gothic New',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
     .btn:hover { transform: translateY(-1px); }
     .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.25); }
     .btn-primary:hover { box-shadow: 0 12px 32px rgba(229,95,58,0.35); }
-    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(26,39,68,0.2); }
+    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(77,34,127,0.2); }
     .btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
     .btn-line { background: #06C755; color: #fff; box-shadow: 0 8px 24px rgba(6,199,85,0.2); }
     .btn-full { width: 100%; }
@@ -97,7 +97,7 @@
     .name-block { background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin-bottom: 20px; }
     .name-block label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
     .name-block .sub { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
-    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Zen Kaku Gothic New',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
     .name-input:focus { border-color: var(--accent); }
     .name-input::placeholder { color: #c0c4cc; }
 
@@ -142,7 +142,7 @@
     .gate-option h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
     .gate-option p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
     .email-row { display: flex; gap: 8px; }
-    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Zen Kaku Gothic New',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
     .email-input:focus { border-color: var(--accent); }
     .email-input::placeholder { color: #c0c4cc; }
 
@@ -230,12 +230,12 @@
       position: sticky; top: 0; z-index: 50;
     }
     .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
-    .top-nav-brand { font-size: 14px; font-weight: 800; color: #1A2744; letter-spacing: 0.04em; text-decoration: none; }
+    .top-nav-brand { font-size: 14px; font-weight: 800; color: #4D227F; letter-spacing: 0.04em; text-decoration: none; }
     .top-nav-links { display: flex; align-items: center; gap: 16px; }
     .top-nav-links a { font-size: 13px; color: #6b7280; transition: color 0.15s; text-decoration: none; }
-    .top-nav-links a:hover { color: #1a1c22; }
+    .top-nav-links a:hover { color: #2B2723; }
     .top-nav-links a.nav-cta {
-      background: #e55f3a; color: #fff; border-radius: 999px;
+      background: #EE6223; color: #fff; border-radius: 999px;
       padding: 6px 16px; font-weight: 700; font-size: 12px;
     }
     @media (max-width: 640px) {
@@ -403,7 +403,7 @@
                 <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
                 LINEで無料面談を予約する
               </a>
-              <p class="hint" style="margin-top:8px;">無理な勧誘は一切ありません。合格実績 94件・合格率88%。</p>
+              <p class="hint" style="margin-top:8px;">無理な勧誘は一切ありません。合格実績 94件・合格率89.4%。</p>
             </div>
 
             <div class="gate-divider"><span>または</span></div>
@@ -462,7 +462,7 @@
               </a>
               <a class="btn btn-primary" href="https://calendar.app.google/4nqSFe7uQXyPCTrd6" target="_blank" rel="noopener noreferrer">カレンダーから日程を選ぶ</a>
             </div>
-            <p class="hint">無理な勧誘は一切なし。合格実績 94件・合格率88%</p>
+            <p class="hint">無理な勧誘は一切なし。合格実績 94件・合格率89.4%</p>
           </div>
 
           <!-- Cross diagnostic navigation -->
@@ -655,7 +655,7 @@ const PROFILES = [
     id: "science",
     keys: ["science","engineering","medicine"],
     badge: "理工・医療・科学タイプ",
-    badgeColor: "#3b7dd8", badgeBg: "#eff6ff",
+    badgeColor: "#4D227F", badgeBg: "#eff6ff",
     title: "科学と技術で世界を変える道",
     subtitle: "「なぜ？」と問い続ける探求心が、あなたのエンジン。",
     paths: [
@@ -693,7 +693,7 @@ const PROFILES = [
     id: "creative",
     keys: ["art","design","media"],
     badge: "芸術・デザイン・メディアタイプ",
-    badgeColor: "#e55f3a", badgeBg: "#fff3ee",
+    badgeColor: "#EE6223", badgeBg: "#FDEDE4",
     title: "表現と創造で世界を豊かにする道",
     subtitle: "「これが作りたい」という衝動が、あなたの出発点。",
     paths: [

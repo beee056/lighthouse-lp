@@ -11,20 +11,21 @@
     gtag('config', 'G-HVVFXMQ1XS');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="総合型選抜（旧AO入試）の志望理由書が書けなくて悩んでいる受験生向けの完全ガイド。書けない3つの根本原因と解決策、合格率88%の塾LIGHTHOUSEが実践する自己探究ステップ、そのまま使える構成テンプレートを解説します。">
+  <meta name="description" content="総合型選抜（旧AO入試）の志望理由書が書けなくて悩んでいる受験生向けの完全ガイド。書けない3つの根本原因と解決策、合格率89.4%の塾LIGHTHOUSEが実践する自己探究ステップ、そのまま使える構成テンプレートを解説します。">
   <title>【解決】AO入試の志望理由書が書けない！3つの原因と合格テンプレート｜LIGHTHOUSE</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+
   <!-- OGP & Canonical -->
   <link rel="canonical" href="https://lp.p-quest.com/shibou-riyusho">
   <meta property="og:type" content="article">
   <meta property="og:title" content="【解決】AO入試の志望理由書が書けない！3つの原因と合格テンプレート｜LIGHTHOUSE">
   <meta property="og:description" content="総合型選抜（旧AO入試）の志望理由書が書けなくて悩んでいる受験生向けの完全ガイド。書けない3つの根本原因と解決策、合格テンプレートを徹底解説。">
   <meta property="og:url" content="https://lp.p-quest.com/shibou-riyusho">
-  <meta property="og:image" content="https://lp.p-quest.com/image_top_lp.png">
+  <meta property="og:image" content="https://lp.p-quest.com/image_top_lp.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- AIO / SEO: FAQ Schema Markup -->
@@ -64,89 +65,114 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #fafaf8;
-      --card: #ffffff;
-      --ink: #1a1c22;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --soft: #f5f6f8;
-      --accent: #e55f3a;
-      --accent-soft: #fff3ee;
-      --accent-line: #ffd4c2;
-      --blue: #3b7dd8;
-      --radius-xl: 24px;
+      /* PIVOT&QUEST ブランドカラー(名刺基準) */
+      --paper: #F7F3E5;
+      --white: #FFFFFF;
+      --ink: #2B2723;
+      --purple: #4D227F;
+      --purple-soft: #F0EAF6;
+      --orange: #EE6223;
+      --orange-soft: #FDEDE4;
+      --gray: #7C786F;
+      --line: rgba(43, 39, 35, 0.12);
+      --line-strong: rgba(43, 39, 35, 0.55);
+      --line-green: #06C755;
+      --radius-xl: 22px;
       --radius-lg: 18px;
-      --shadow-card: 0 4px 24px rgba(20,24,33,0.07);
-      --shadow-sm: 0 2px 10px rgba(20,24,33,0.06);
+      --shadow-card: 0 6px 24px rgba(77, 34, 127, 0.07);
+      --shadow-sm: 0 3px 12px rgba(77, 34, 127, 0.06);
     }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--bg);
+      font-family: 'YakuHanJP', 'Zen Kaku Gothic New', sans-serif;
+      background: var(--paper);
       color: var(--ink);
-      line-height: 1.85;
+      line-height: 1.9;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 100px;
+      font-feature-settings: "palt";
+      padding-bottom: 96px;
     }
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; border-radius: 8px; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--orange); color: #fff; }
+    .slab { font-family: 'Zilla Slab', serif; }
 
     /* ── Layout ── */
     .container { width: min(900px, calc(100% - 32px)); margin: 0 auto; }
     .section { padding: 40px 0; }
-    
+
+    /* ── Eyebrow (三角マーカー) ── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 12px; font-weight: 700;
+      color: var(--orange); letter-spacing: 0.14em;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: ""; width: 0; height: 0;
+      border-left: 5px solid transparent; border-right: 5px solid transparent;
+      border-bottom: 9px solid var(--orange); transform: rotate(90deg);
+    }
+
     /* ── Typography ── */
     h1 {
-      font-size: clamp(24px, 5vw, 36px);
-      line-height: 1.3; letter-spacing: -0.04em; font-weight: 800;
+      font-size: clamp(26px, 5.5vw, 40px);
+      line-height: 1.4; letter-spacing: 0.02em; font-weight: 900;
       margin-bottom: 16px;
     }
     h2 {
-      font-size: clamp(22px, 4vw, 28px);
-      line-height: 1.4; letter-spacing: -0.03em; font-weight: 800;
-      margin: 48px 0 20px;
-      padding: 12px 16px;
-      background: var(--soft);
-      border-left: 6px solid var(--accent);
-      border-radius: 0 8px 8px 0;
+      font-size: clamp(21px, 4vw, 28px);
+      line-height: 1.5; letter-spacing: 0.02em; font-weight: 900;
+      margin: 48px 0 18px;
+      padding: 14px 18px;
+      background: var(--white);
+      border-left: 6px solid var(--orange);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      box-shadow: var(--shadow-sm);
     }
-    h3 { 
-      font-size: 20px; font-weight: 800; margin: 32px 0 16px; color: var(--ink);
-      border-bottom: 2px solid var(--line); padding-bottom: 8px;
+    h3 {
+      font-size: 18px; font-weight: 700; margin: 28px 0 14px; color: var(--ink);
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid var(--line); padding-bottom: 8px;
     }
-    h4 { font-size: 17px; font-weight: 800; margin: 24px 0 10px; color: var(--accent); }
-    p { margin-bottom: 20px; color: #3a4050; font-size: 16px; }
-    strong { color: var(--ink); background: linear-gradient(transparent 60%, var(--accent-line) 60%); }
+    h4 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; color: var(--orange); letter-spacing: 0.02em; }
+    p { margin-bottom: 20px; color: #4b4640; font-size: 15px; line-height: 1.95; }
+    p.lead { font-size: clamp(15px, 2.5vw, 16px); color: var(--gray); max-width: 720px; line-height: 2; }
+    p.lead strong { color: var(--ink); font-weight: 700; }
+    strong { font-weight: 700; color: var(--ink); background: linear-gradient(transparent 62%, var(--orange-soft) 62%); }
 
     /* ── Hero ── */
-    .hero { padding: 40px 0; text-align: center; background: #fff; border-bottom: 1px solid var(--line); }
+    .hero { padding: 40px 0 8px; text-align: center; }
     .hero-badge {
-      display: inline-block; background: var(--ink); color: #fff;
-      padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 700;
-      margin-bottom: 16px;
+      display: inline-block; background: var(--purple); color: #fff;
+      padding: 7px 18px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
     }
+    .hero p.hero-sub { margin: 16px auto 0; font-size: 15px; color: var(--gray); max-width: 700px; line-height: 2; }
 
     /* ── Table of Contents (TOC) ── */
     .toc {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius-lg); padding: 24px;
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); padding: 26px;
       margin: 32px 0; box-shadow: var(--shadow-sm);
     }
-    .toc-title { font-weight: 800; font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .toc-title { font-weight: 900; font-size: 17px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; color: var(--purple); }
     .toc ul { list-style: none; }
-    .toc li { margin-bottom: 8px; }
-    .toc a { color: var(--blue); font-weight: 500; font-size: 15px; }
-    .toc a:hover { text-decoration: underline; }
+    .toc li { margin-bottom: 10px; }
+    .toc a { color: var(--ink); font-weight: 500; font-size: 14px; transition: color 0.18s; }
+    .toc a:hover { color: var(--orange); text-decoration: underline; }
 
     /* ── Cards ── */
     .card {
-      background: var(--card); border: 1px solid var(--line);
+      background: var(--white); border: 1px solid var(--line);
       border-radius: var(--radius-xl); box-shadow: var(--shadow-card); padding: 24px;
       margin-bottom: 20px;
     }
     .card h3 { border-bottom: none; margin-top: 0; padding-bottom: 0; }
-    .card p { margin-bottom: 0; }
-    
+    .card p { margin-bottom: 0; font-size: 14px; color: #4b4640; }
+
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
     @media (max-width: 768px) {
       .grid-3 { grid-template-columns: 1fr; }
@@ -155,24 +181,29 @@
     /* ── Step List ── */
     .step-list { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
     .step-item {
-      display: flex; gap: 16px; background: #fff; border: 1px solid var(--line);
-      border-radius: var(--radius-xl); padding: 24px;
+      display: flex; gap: 16px; background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); padding: 24px; box-shadow: var(--shadow-sm);
     }
     .step-num {
-      width: 40px; height: 40px; border-radius: 50%; background: var(--accent);
+      width: 40px; height: 40px; border-radius: 50%; background: var(--purple);
       color: #fff; display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 18px; flex-shrink: 0;
+      font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 18px; flex-shrink: 0;
     }
     .step-body h3 { border: none; margin-top: 0; padding-bottom: 0; margin-bottom: 8px; }
+    .step-note {
+      margin-top: 10px; font-size: 13px; color: var(--gray);
+      border-top: 1px dashed var(--line); padding-top: 10px;
+    }
 
     /* ── Template Section ── */
     .template-box {
-      background: var(--accent-soft); border: 1px solid var(--accent-line);
+      background: var(--orange-soft); border: 1px solid rgba(238,98,35,0.2);
       border-radius: var(--radius-xl); padding: 28px; margin: 32px 0;
     }
-    .template-box h3 { border: none; margin-top: 0; color: var(--accent); }
+    .template-box h3 { border: none; margin-top: 0; color: var(--orange); }
+    .template-box > p { color: #4b4640; }
     .template-structure {
-      background: #fff; border: 1px solid var(--accent-line);
+      background: var(--white); border: 1px solid rgba(238,98,35,0.2);
       border-radius: var(--radius-lg); padding: 20px; margin-top: 16px;
     }
     .template-structure h4 { margin-top: 0; }
@@ -180,103 +211,159 @@
     /* ── Buttons ── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      min-height: 52px; padding: 0 24px; border-radius: 999px;
-      font-weight: 700; font-size: 15px; transition: transform 0.15s, box-shadow 0.15s;
-      cursor: pointer; text-align: center; line-height: 1.4;
+      min-height: 54px; padding: 0 28px; border-radius: 12px;
+      font-weight: 700; font-size: 15px; letter-spacing: 0.04em;
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s, color 0.18s;
+      cursor: pointer; white-space: nowrap;
     }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.22); }
-    .btn-primary:hover { box-shadow: 0 12px 30px rgba(229,95,58,0.3); }
-    .btn-secondary { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
-    .btn-line { background: #06C755; color: #fff; box-shadow: 0 8px 24px rgba(6,199,85,0.22); }
+    .btn-primary {
+      background: var(--orange); color: #fff;
+      box-shadow: 0 8px 22px rgba(238, 98, 35, 0.24);
+    }
+    .btn-primary:hover { background: var(--purple); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(77,34,127,0.24); }
+    .btn-secondary { background: #fff; color: var(--ink); border: 1.5px solid var(--line-strong); }
+    .btn-secondary:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
+    .btn-line {
+      background: var(--line-green); color: #fff;
+      box-shadow: 0 8px 22px rgba(6,199,85,0.22);
+    }
+    .btn-line:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(6,199,85,0.3); }
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; justify-content: center; }
 
     /* ── FAQ ── */
     .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
-    .faq-q { font-size: 17px; font-weight: 800; margin-bottom: 12px; position: relative; padding-left: 32px; }
-    .faq-q::before { content: "Q."; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 20px; font-weight: 900;}
-    .faq-a { font-size: 15px; color: #4b5260; position: relative; padding-left: 32px; }
-    .faq-a::before { content: "A."; position: absolute; left: 0; top: 0; color: var(--muted); font-size: 20px; font-weight: 900;}
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-size: 16px; font-weight: 700; margin-bottom: 12px; position: relative; padding-left: 32px; }
+    .faq-q::before { content: "Q."; position: absolute; left: 0; top: 0; color: var(--orange); font-size: 18px; font-weight: 900; font-family: 'Zilla Slab', serif; }
+    .faq-a { font-size: 14px; color: var(--gray); line-height: 1.9; position: relative; padding-left: 32px; }
+    .faq-a::before { content: "A."; position: absolute; left: 0; top: 0; color: var(--purple); font-size: 18px; font-weight: 900; font-family: 'Zilla Slab', serif; }
 
     /* ── Top nav ── */
     .top-nav {
-      border-bottom: 1px solid var(--line); padding: 14px 0;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line); padding: 12px 0;
+      background: rgba(247,243,229,0.92); backdrop-filter: blur(10px);
       position: sticky; top: 0; z-index: 50;
     }
     .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .top-nav-brand { font-size: 14px; font-weight: 800; color: var(--blue); letter-spacing: 0.04em; }
-    .top-nav-links { display: flex; align-items: center; gap: 16px; }
-    .top-nav-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
-    .top-nav-links a:hover { color: var(--ink); }
+    .top-nav-brand { display: flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 900; color: var(--purple); letter-spacing: 0.08em; }
+    .top-nav-brand img { height: 32px; width: auto; }
+    .top-nav-links { display: flex; align-items: center; gap: 22px; }
+    .top-nav-links a { font-size: 13px; font-weight: 500; color: var(--ink); transition: color 0.18s; }
+    .top-nav-links a:hover { color: var(--purple); }
+    .top-nav-links a.nav-diag { color: var(--orange); font-weight: 700; }
     .top-nav-links a.nav-cta {
-      background: var(--accent); color: #fff; border-radius: 999px;
-      padding: 6px 16px; font-weight: 700; font-size: 12px;
+      background: var(--orange); color: #fff; border-radius: 999px;
+      padding: 9px 20px; font-weight: 700; font-size: 13px;
+      transition: background 0.18s, transform 0.18s;
     }
-    @media (max-width: 640px) {
-      .top-nav-links a:not(.nav-cta) { display: none; }
+    .top-nav-links a.nav-cta:hover { background: var(--purple); color: #fff; transform: translateY(-1px); }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--ink); padding: 6px; }
+    .mobile-menu { display: none; }
+
+    @media (max-width: 860px) {
+      .top-nav-links { display: none; }
+      .menu-btn { display: block; }
+      .mobile-menu { display: none; flex-direction: column; padding: 6px 16px 16px; border-top: 1px solid var(--line); background: var(--paper); }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a { padding: 13px 4px; font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--line); }
+      .mobile-menu a:last-child { border-bottom: none; color: var(--orange); font-weight: 700; }
     }
 
     /* ── Cluster Tour (回遊) ── */
     .cluster-tour {
-      margin-top: 60px; padding: 32px; background: var(--soft);
+      margin-top: 60px; padding: 32px; background: var(--white);
       border-radius: var(--radius-xl); border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
     }
-    .cluster-tour h2 { border: none; padding: 0; background: none; margin: 0 0 20px 0; font-size: 22px; text-align: center; }
+    .cluster-tour h2 { border: none; padding: 0; background: none; box-shadow: none; margin: 0 0 20px 0; font-size: 22px; text-align: center; }
     .cluster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     @media (max-width: 640px) {
       .cluster-grid { grid-template-columns: 1fr; }
     }
     .cluster-card {
-      background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
-      padding: 20px; transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
+      padding: 20px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
     .cluster-card:hover {
-      transform: translateY(-2px); box-shadow: var(--shadow-sm);
-      border-color: var(--accent);
+      transform: translateY(-2px); box-shadow: var(--shadow-card);
+      border-color: var(--purple);
     }
     .cluster-card h3 { border: none; margin: 0 0 8px 0; font-size: 16px; padding-bottom: 0; }
-    .cluster-card p { font-size: 13px; color: var(--muted); margin: 0; }
+    .cluster-card p { font-size: 13px; color: var(--gray); margin: 0; }
 
-    /* ── Floating CTA ── */
-    .floating-cta {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      z-index: 100; width: 90%; max-width: 400px;
-      display: flex; justify-content: center;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 12px; border-radius: 999px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5);
+    /* ── PIVOT&QUEST 接続文 ── */
+    .brand-link {
+      margin-top: 30px; padding: 20px 24px; background: var(--purple-soft);
+      border: 1px solid rgba(77,34,127,0.14); border-radius: var(--radius-lg);
+      font-size: 14px; color: #4b4640; line-height: 1.9;
     }
-    .floating-cta .btn {
-      width: 100%; min-height: 48px; font-size: 15px; box-shadow: none; border-radius: 999px;
-    }
+    .brand-link a { color: var(--purple); font-weight: 700; text-decoration: underline; }
 
-    /* ── Footer ── */
-    .site-footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 60px; }
-    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-    .footer-brand { font-size: 13px; font-weight: 700; color: var(--muted); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
-    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
-    .footer-links a:hover { color: var(--ink); }
-    .footer-copy { font-size: 11px; color: var(--muted); margin-top: 8px; }
+    /* ── Sticky CTA ── */
+    .sticky-bar {
+      position: fixed; left: 12px; right: 12px; bottom: 12px;
+      background: rgba(255,255,255,0.96); border: 1px solid var(--line);
+      border-radius: 18px; box-shadow: 0 12px 36px rgba(77,34,127,0.16);
+      backdrop-filter: blur(12px); padding: 10px 16px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      z-index: 100;
+    }
+    .sticky-bar .btn { min-height: 46px; padding: 0 20px; font-size: 13px; border-radius: 10px; }
+
+    /* ── Site footer ── */
+    .site-footer { padding: 44px 0 40px; border-top: 1px solid var(--line); margin-top: 72px; }
+    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .footer-brand-row { display: flex; align-items: center; gap: 14px; }
+    .footer-brand-row img { height: 40px; width: auto; }
+    .footer-brand { font-size: 13px; font-weight: 700; color: var(--purple); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 14px 18px; max-width: 640px; }
+    .footer-links a { font-size: 13px; color: var(--gray); transition: color 0.18s; }
+    .footer-links a:hover { color: var(--purple); }
+    .footer-copy { font-size: 11px; color: var(--gray); margin-top: 8px; letter-spacing: 0.04em; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      body { padding-bottom: 96px; }
+      .section { padding: 28px 0; }
+      .hero { padding: 24px 0 4px; }
+      .cta-row { flex-direction: column; }
+      .cta-row .btn { width: 100%; }
+      .sticky-bar { flex-wrap: wrap; border-radius: 16px; }
+      .sticky-bar .btn { flex: 1; }
+      .site-footer .inner { flex-direction: column; }
+    }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   </style>
 </head>
 <body>
 
-  <!-- ナビゲーション -->
+  <!-- ══════════════════════════════════════ NAV ══════════════════════════════════════ -->
   <nav class="top-nav">
-    <div class="container">
+    <div class="container" style="width: min(1100px, calc(100% - 32px));">
       <div class="inner">
-        <a href="index.html" class="top-nav-brand">LIGHTHOUSE</a>
+        <a href="index.html" class="top-nav-brand">
+          <img src="logo.png" alt="">
+          <span>LIGHTHOUSE</span>
+        </a>
         <div class="top-nav-links">
           <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
           <a href="shop.html">サービス・料金</a>
           <a href="story.html">ストーリー</a>
-          <a href="tools/shindan.html" style="color:var(--accent); font-weight:bold;">無料自己診断</a>
+          <a href="tools/shindan.html" class="nav-diag">無料自己診断</a>
           <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="nav-cta">LINEで相談</a>
         </div>
+        <button class="menu-btn" id="menu-toggle" type="button" aria-label="メニューを開閉" aria-expanded="false">
+          <svg id="menu-icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg id="menu-icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none"><path stroke-linecap="round" d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
       </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
+      <a href="shop.html">サービス・料金</a>
+      <a href="story.html">ストーリー</a>
+      <a href="tools/shindan.html">無料自己診断</a>
+      <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで相談</a>
     </div>
   </nav>
 
@@ -285,15 +372,15 @@
     <div class="container">
       <span class="hero-badge">志望理由書 書き方完全対策</span>
       <h1>AO入試の志望理由書が書けない！<br>3つの原因と合格を引き寄せるテンプレート</h1>
-      <p style="margin-top: 16px; font-size: 16px; color: var(--muted); max-width: 700px; margin-inline: auto;">
+      <p class="hero-sub">
         「何時間机に向かっても一行も書けない...」「アピールできる実績なんてない...」<br>
-        そう悩む受験生は非常に多いです。しかし、書けない原因はあなたの文章力不足ではありません。Lighthouseが実践する「必然性の言語化」で、あなただけの強力な志望理由書を完成させましょう。
+        そう悩む受験生は非常に多いです。しかし、書けない原因はあなたの文章力不足ではありません。大切なのは、テクニックの前に「自分が本当は何に惹かれているのか」を問い続けること。Lighthouseが実践する「必然性の言語化」で、あなただけの志望理由書を完成させましょう。
       </p>
     </div>
   </section>
 
   <div class="container">
-    
+
     <!-- 目次 (TOC) -->
     <div class="toc">
       <div class="toc-title">
@@ -311,8 +398,8 @@
 
     <!-- Section 1 -->
     <h2 id="why">1. 志望理由書が「書けない」3つの根本原因</h2>
-    <p>志望理由書が書けずに悩んでいるとき、多くの人が「自分の文章力が低いからだ」あるいは「自慢できるような素晴らしい活動実績がないからだ」と思い込んでしまいます。しかし、それは<strong>大きな誤解</strong>です。書けない真の原因は、以下の3点にあります。</p>
-    
+    <p>志望理由書が書けずに悩んでいるとき、多くの人が「自分の文章力が低いからだ」あるいは「自慢できるような素晴らしい活動実績がないからだ」と思い込んでしまいます。しかし、それは<strong>大きな誤解</strong>です。書けない真の原因は、以下の3点にあります。そしてこれは小手先の「書き方」の問題ではなく、あなたが本当は何に惹かれているのかを問い続けるプロセスが足りていない、というだけのことです。</p>
+
     <div class="grid-3">
       <div class="card">
         <h3>① 実績不足への誤解</h3>
@@ -330,7 +417,7 @@
 
     <!-- Section 2 -->
     <h2 id="steps">2. 説得力を生む「3ステップの自己探究プロセス」</h2>
-    <p>LIGHTHOUSEでは、志望理由書を書く前に、必ず「自己探究」を行います。このプロセスを経ることで、無理に実績を盛ることなく、自分の人生から湧き出る<strong>「必然性のある志望理由」</strong>を抽出できます。</p>
+    <p>LIGHTHOUSEでは、志望理由書を書く前に、必ず「自己探究」を行います。このプロセスを経ることで、無理に実績を盛ることなく、自分の人生から湧き出る<strong>「必然性のある志望理由」</strong>を抽出できます。ただし、これは一度なぞれば完成するチェックリストではありません。行きつ戻りつしながら、何度も自分に問い直す——そのしなやかな試行錯誤こそが、深い納得につながります。</p>
 
     <div class="step-list">
       <div class="step-item">
@@ -355,14 +442,15 @@
         </div>
       </div>
     </div>
+    <p class="step-note" style="margin-top:-8px;">省察→抽出→接続は一直線には進みません。抽出した「テーマ」が違うと感じたら省察に戻り、接続がしっくりこなければテーマを見直す。何度も往復してよい、しなやかなプロセスです。</p>
 
     <!-- Section 3 -->
     <h2 id="template">3. そのまま使える！志望理由書の合格構成テンプレート</h2>
-    <p>自己探究によって「書くべき素材」が揃ったら、以下の構成に沿って執筆していきます。この構成は、難関大学の総合型選抜で数々の逆転合格を生み出してきた、極めて論理的で説得力のあるフレームワークです。</p>
+    <p>自己探究によって「書くべき素材」が揃ったら、以下の構成に沿って執筆していきます。この構成は、難関大学の総合型選抜で数々の逆転合格を生み出してきた、極めて論理的で説得力のあるフレームワークです。ただし、この型はあなたを型にはめるためのものではありません。省察・抽出・接続で見つけた自分の言葉を、他者に伝わる形に整理するための「足場」だと考えてください。</p>
 
     <div class="template-box">
       <h3>志望理由書の基本構成（全体像）</h3>
-      
+
       <div class="template-structure">
         <h4>① 導入（志望の宣言と結論）</h4>
         <p>「私は〇〇大学〇〇学部において、〇〇というテーマについて研究・実践するため、貴学を強く志望する。」というように、文章の冒頭で結論と志望意図を明確に宣言します。</p>
@@ -392,14 +480,18 @@
     <!-- Section 4 -->
     <h2 id="counseling">4. 一人で悩まず、プロと「必然性」を形にしよう</h2>
     <p>どれだけテンプレートを眺めても、自分の「過去の棚卸し」を一人で客観的に行うのは非常に難しいものです。なぜなら、自分にとって「当たり前の日常」の中にこそ、最も価値のある原体験が眠っているからです。他者との深い対話によって初めて、その原石は光り出します。</p>
-    
-    <div class="card" style="text-align: center; background: var(--accent-soft); border-color: var(--accent-line); padding: 32px;">
+
+    <div class="card" style="text-align: center; background: var(--orange-soft); border-color: rgba(238,98,35,0.2); padding: 32px;">
       <h3 style="font-size: 18px; color: var(--ink); margin-bottom: 8px;">まずはあなたの現在地を診断してみませんか？</h3>
-      <p style="font-size: 14px; color: var(--muted); margin-bottom: 20px;">あなたの志望の明確さや経験の言語化など、5つの軸から志望理由書の準備度を判定します。</p>
+      <p style="font-size: 14px; color: var(--gray); margin-bottom: 20px;">あなたの志望の明確さや経験の言語化など、5つの軸から志望理由書の準備度を判定します。</p>
       <a class="btn btn-primary" href="tools/shindan.html">5分でできる合格可能性診断を受ける（無料）</a>
     </div>
 
     <p style="margin-top: 30px;">LIGHTHOUSEでは、生徒一人ひとりと密に言葉を交わし、借り物ではない「あなただけの必然性」を引き出します。毎年多くの受験生が「最初は何も書けなかった状態」からスタートし、最後には自分自身が深く納得できる志望理由書を引っ提げて、早慶・GMARCH・国公立などの難関大学へと合格しています。</p>
+
+    <div class="brand-link">
+      LIGHTHOUSEは、<a href="https://p-quest.com/" target="_blank" rel="noopener noreferrer">株式会社PIVOT&amp;QUEST</a> が教育×コーチングを最も深く体現する現場です。合格をゴールにするのではなく、問いを起点に自分の想いを言葉にし、納得して選択・行動する力を育てる——総合型選抜は、そのための一つの手段にすぎません。
+    </div>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで無料相談を予約する</a>
@@ -411,7 +503,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">自己PRできるような大きな活動実績が何もないのですが、それでも合格できますか？</div>
-        <div class="faq-a">合格できます。総合型選抜で評価されるのは「実績の大きさ」ではなく「その経験を通して生まれた問題意識の深さと必然性」です。身近な体験や学校生活での気づきをしっかり構造化すれば、十分説得力のある志望理由書を作成できます。実際にLighthouseからは実績のない状態や不登校から難関大に合格した実績が多数あります。</div>
+        <div class="faq-a">合格できます。総合型選抜で評価されるのは「実績の大きさ」ではなく「その経験を通して生まれた問題意識の深さと必然性」です。「実績がなくても大丈夫」というだけで終わらせず、私たちはあなたとの対話を通じて<strong>あなたの問いがなぜユニークなのか</strong>を一緒に見つけていきます。身近な体験や学校生活での気づきをしっかり構造化すれば、十分説得力のある志望理由書を作成できます。実際にLighthouseからは実績のない状態や不登校から難関大に合格した実績が多数あります。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">志望理由書は何回くらい書き直すものですか？</div>
@@ -448,12 +540,15 @@
 
   </div>
 
-  <!-- フッター -->
+  <!-- ══════════════════════════════════════ SITE FOOTER ══════════════════════════════════════ -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="container" style="width: min(1100px, calc(100% - 32px));">
       <div class="inner">
         <div>
-          <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
+          <div class="footer-brand-row">
+            <img src="logo.png" alt="">
+            <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
+          </div>
           <p class="footer-copy">&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
         </div>
         <nav class="footer-links">
@@ -475,10 +570,28 @@
     </div>
   </footer>
 
-  <!-- スティッキーCTA -->
-  <div class="floating-cta">
+  <!-- ══════════════════════════════════════ STICKY CTA ══════════════════════════════════════ -->
+  <div class="sticky-bar">
+    <a class="btn btn-secondary" href="tools/shindan.html" rel="noopener">合格可能性診断</a>
     <a class="btn btn-primary" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで無料の自己探究相談を予約する</a>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // モバイルメニュー(トグル)
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const setMenu = (open) => {
+        mobileMenu.classList.toggle('open', open);
+        iconOpen.style.display = open ? 'none' : 'block';
+        iconClose.style.display = open ? 'block' : 'none';
+        menuToggle.setAttribute('aria-expanded', String(open));
+      };
+      menuToggle.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    });
+  </script>
 </body>
 </html>
