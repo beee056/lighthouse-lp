@@ -36,18 +36,18 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #fafaf8; --card: #fff; --ink: #1a1c22; --muted: #6b7280;
+      --bg: #F7F3E5; --card: #fff; --ink: #2B2723; --muted: #6b7280;
       --line: #e5e7eb; --soft: #f5f6f8;
-      --accent: #e55f3a; --accent-soft: #fff3ee; --accent-line: #ffd4c2;
-      --navy: #1A2744; --gold: #C9A84C; --green: #22c55e;
+      --accent: #EE6223; --accent-soft: #FDEDE4; --accent-line: #F7C9AE;
+      --navy: #4D227F; --gold: #C9A84C; --green: #22c55e;
       --shadow: 0 4px 24px rgba(20,24,33,0.08);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body { font-family: 'Zen Kaku Gothic New', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
     a { color: inherit; text-decoration: none; }
 
     .site-header { padding: 14px 0; border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
@@ -59,11 +59,11 @@
     .page { padding: 40px 0 80px; }
     .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 28px; }
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Noto Sans JP',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Zen Kaku Gothic New',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
     .btn:hover { transform: translateY(-1px); }
     .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.25); }
     .btn-primary:hover { box-shadow: 0 12px 32px rgba(229,95,58,0.35); }
-    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(26,39,68,0.2); }
+    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(77,34,127,0.2); }
     .btn-ghost { background: transparent; color: var(--muted); border: none; font-size: 13px; min-height: 36px; padding: 0 8px; text-decoration: underline; cursor: pointer; }
     .btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
     .btn-line { background: #06C755; color: #fff; box-shadow: 0 8px 24px rgba(6,199,85,0.2); }
@@ -89,7 +89,7 @@
     .name-block { background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin-bottom: 20px; }
     .name-block label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
     .name-block .sub { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
-    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Zen Kaku Gothic New',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
     .name-input:focus { border-color: var(--accent); }
     .name-input::placeholder { color: #c0c4cc; }
 
@@ -132,7 +132,7 @@
     .gate-option h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
     .gate-option p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
     .email-row { display: flex; gap: 8px; }
-    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Zen Kaku Gothic New',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
     .email-input:focus { border-color: var(--accent); }
     .email-input::placeholder { color: #c0c4cc; }
     .gate-skip { text-align: center; margin-top: 12px; }
@@ -173,7 +173,7 @@
 
     /* VAK card */
     .vak-card { background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 20px; padding: 22px; margin-bottom: 18px; }
-    .vak-lbl { font-size: 12px; font-weight: 700; color: #3b7dd8; margin-bottom: 8px; }
+    .vak-lbl { font-size: 12px; font-weight: 700; color: #4D227F; margin-bottom: 8px; }
     .vak-card h4 { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
     .vak-card p { font-size: 14px; color: var(--ink); line-height: 1.85; }
 
@@ -228,12 +228,12 @@
       position: sticky; top: 0; z-index: 50;
     }
     .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
-    .top-nav-brand { font-size: 14px; font-weight: 800; color: #1A2744; letter-spacing: 0.04em; text-decoration: none; }
+    .top-nav-brand { font-size: 14px; font-weight: 800; color: #4D227F; letter-spacing: 0.04em; text-decoration: none; }
     .top-nav-links { display: flex; align-items: center; gap: 16px; }
     .top-nav-links a { font-size: 13px; color: #6b7280; transition: color 0.15s; text-decoration: none; }
-    .top-nav-links a:hover { color: #1a1c22; }
+    .top-nav-links a:hover { color: #2B2723; }
     .top-nav-links a.nav-cta {
-      background: #e55f3a; color: #fff; border-radius: 999px;
+      background: #EE6223; color: #fff; border-radius: 999px;
       padding: 6px 16px; font-weight: 700; font-size: 12px;
     }
     @media (max-width: 640px) {
@@ -377,8 +377,8 @@
           <div class="gate-teaser">
             <div class="gate-teaser-inner">
               <div class="teaser-bars">
-                <div class="teaser-bar-row"><span class="teaser-bar-lbl">学習効率</span><div class="teaser-bar-bg"><div class="teaser-bar-fill" style="width:70%;background:#e55f3a;"></div></div></div>
-                <div class="teaser-bar-row"><span class="teaser-bar-lbl">コミュニケーション</span><div class="teaser-bar-bg"><div class="teaser-bar-fill" style="width:45%;background:#3b7dd8;"></div></div></div>
+                <div class="teaser-bar-row"><span class="teaser-bar-lbl">学習効率</span><div class="teaser-bar-bg"><div class="teaser-bar-fill" style="width:70%;background:#EE6223;"></div></div></div>
+                <div class="teaser-bar-row"><span class="teaser-bar-lbl">コミュニケーション</span><div class="teaser-bar-bg"><div class="teaser-bar-fill" style="width:45%;background:#4D227F;"></div></div></div>
                 <div class="teaser-bar-row"><span class="teaser-bar-lbl">問題解決</span><div class="teaser-bar-bg"><div class="teaser-bar-fill" style="width:80%;background:#7c3aed;"></div></div></div>
               </div>
             </div>
@@ -432,13 +432,13 @@
             <div class="axis-bars-title">3軸スコア</div>
             <div class="axis-bar-row">
               <span class="axis-bar-label">学習効率</span>
-              <div class="axis-bar-bg"><div class="axis-bar-fill" id="barA" style="width:0%;background:#e55f3a;"></div></div>
+              <div class="axis-bar-bg"><div class="axis-bar-fill" id="barA" style="width:0%;background:#EE6223;"></div></div>
               <span class="axis-bar-val" id="valA"></span>
               <span class="axis-level" id="levelA"></span>
             </div>
             <div class="axis-bar-row">
               <span class="axis-bar-label">コミュニケーション</span>
-              <div class="axis-bar-bg"><div class="axis-bar-fill" id="barB" style="width:0%;background:#3b7dd8;"></div></div>
+              <div class="axis-bar-bg"><div class="axis-bar-fill" id="barB" style="width:0%;background:#4D227F;"></div></div>
               <span class="axis-bar-val" id="valB"></span>
               <span class="axis-level" id="levelB"></span>
             </div>
@@ -679,7 +679,7 @@ const TYPES = {
   },
   "HHL": {
     badge: "体系化型対話者",
-    badgeColor: "#3b7dd8", badgeBg: "#eff6ff",
+    badgeColor: "#4D227F", badgeBg: "#eff6ff",
     title: "構造と協働を得意とする、体系化型の対話者。",
     subtitle: "自律的に学べて、人とも連携できる。一方、決まった方法や手順の中でこそ力を発揮します。",
     desc: { h: "仕組みをつくる力と、巻き込む力がある。", p: "計画通りに進め、チームで成果を上げることが得意なあなたは、組織や制度の中でリーダーシップを発揮するタイプです。一方、「前例のない問い」や「規則から外れた発想」には慣れていないかもしれません。" },
@@ -706,7 +706,7 @@ const TYPES = {
   },
   "LHH": {
     badge: "触媒型発想者",
-    badgeColor: "#e55f3a", badgeBg: "#fff3ee",
+    badgeColor: "#EE6223", badgeBg: "#FDEDE4",
     title: "人との交わりから閃きが生まれる、触媒型の発想者。",
     subtitle: "対話・議論・共同作業の中でこそ本領を発揮します。一人では力が出にくいが、チームでは圧倒的な存在になれます。",
     desc: { h: "あなたの最高のパフォーマンスは、人との摩擦の中から生まれる。", p: "単独では散漫になりがちでも、チームに入った瞬間に化学変化が起きる——そういうタイプです。グループ活動・議論・共同制作の中で、あなたがいなければ生まれなかった成果がいくつかあるはずです。それを掘り起こすことが第一歩です。" },
@@ -733,7 +733,7 @@ const TYPES = {
   },
   "LLL": {
     badge: "探索中タイプ",
-    badgeColor: "#e55f3a", badgeBg: "#fff3ee",
+    badgeColor: "#EE6223", badgeBg: "#FDEDE4",
     title: "自分の方法を探している段階。でも、それ自体が最大の武器になる。",
     subtitle: "まだ「自分に合ったやり方」が定まっていない段階です。でも多くの合格者が最初はここからスタートしました。",
     desc: { h: "「わからない」からこそ、本当の問いが見つかる。", p: "今の時点でどの軸も「まだ発展途上」と感じているあなたは、自己評価が正直であることの表れでもあります。多くの人は自分を過大評価しますが、現状を正直に見られることは、深い自己理解への第一歩です。ここからのスタートは、確実に変われます。" },

@@ -39,18 +39,18 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #fafaf8; --card: #fff; --ink: #1a1c22; --muted: #6b7280;
+      --bg: #F7F3E5; --card: #fff; --ink: #2B2723; --muted: #6b7280;
       --line: #e5e7eb; --soft: #f5f6f8;
-      --accent: #e55f3a; --accent-soft: #fff3ee; --accent-line: #ffd4c2;
-      --navy: #1A2744; --gold: #C9A84C; --green: #22c55e; --blue: #3b7dd8;
+      --accent: #EE6223; --accent-soft: #FDEDE4; --accent-line: #F7C9AE;
+      --navy: #4D227F; --gold: #C9A84C; --green: #22c55e; --blue: #4D227F;
       --shadow: 0 4px 24px rgba(20,24,33,0.08);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body { font-family: 'Zen Kaku Gothic New', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; min-height: 100vh; }
     a { color: inherit; text-decoration: none; }
 
     /* ── Header ── */
@@ -68,11 +68,11 @@
     .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 28px; }
 
     /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Noto Sans JP',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 15px; font-family: 'Zen Kaku Gothic New',sans-serif; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; white-space: nowrap; text-decoration: none; }
     .btn:hover { transform: translateY(-1px); }
     .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.25); }
     .btn-primary:hover { box-shadow: 0 12px 32px rgba(229,95,58,0.35); }
-    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(26,39,68,0.2); }
+    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 8px 24px rgba(77,34,127,0.2); }
     .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
     .btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
     .btn-line { background: #06C755; color: #fff; box-shadow: 0 8px 24px rgba(6,199,85,0.2); }
@@ -104,7 +104,7 @@
     .name-block { background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin-bottom: 20px; }
     .name-block label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
     .name-block .sub { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
-    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .name-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Zen Kaku Gothic New',sans-serif; font-size: 16px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
     .name-input:focus { border-color: var(--accent); }
     .name-input::placeholder { color: #c0c4cc; }
 
@@ -184,7 +184,7 @@
     .gate-option p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
 
     .email-row { display: flex; gap: 8px; }
-    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Noto Sans JP',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
+    .email-input { flex: 1; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px; font-family: 'Zen Kaku Gothic New',sans-serif; font-size: 15px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.15s; }
     .email-input:focus { border-color: var(--accent); }
     .email-input::placeholder { color: #c0c4cc; }
 
@@ -319,14 +319,14 @@
 
       #print-view {
         display: block !important;
-        font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
-        color: #1a1c22;
+        font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+        color: #2B2723;
         font-size: 10pt;
         line-height: 1.6;
       }
 
       .pv-header {
-        background: #1A2744;
+        background: #4D227F;
         color: white;
         padding: 10mm 12mm 8mm;
         margin-bottom: 6mm;
@@ -339,7 +339,7 @@
       .pv-meta { display: flex; gap: 8mm; margin-bottom: 6mm; }
       .pv-meta-item { display: flex; flex-direction: column; }
       .pv-meta-item .pv-meta-lbl { font-size: 8pt; color: #6b7280; font-weight: 700; margin-bottom: 1mm; }
-      .pv-meta-item .pv-meta-val { font-size: 11pt; font-weight: 800; color: #1A2744; }
+      .pv-meta-item .pv-meta-val { font-size: 11pt; font-weight: 800; color: #4D227F; }
 
       .pv-type-badge { display: inline-block; padding: 2mm 6mm; border-radius: 99mm; font-size: 9pt; font-weight: 800; margin-bottom: 5mm; }
 
@@ -351,20 +351,20 @@
       .pv-score-row:first-child { border-top: 0.5pt solid #e5e7eb; }
       .pv-sb-bg { height: 5pt; background: #e5e7eb; border-radius: 99pt; overflow: hidden; position: relative; }
       .pv-sb-fill { height: 100%; border-radius: 99pt; }
-      .pv-sb-mark { position: absolute; top: -2pt; height: 9pt; width: 1.5pt; background: #1A2744; opacity: 0.5; }
+      .pv-sb-mark { position: absolute; top: -2pt; height: 9pt; width: 1.5pt; background: #4D227F; opacity: 0.5; }
       .pv-sv { font-weight: 800; text-align: right; }
       .pv-gap { font-weight: 700; text-align: right; font-size: 8pt; }
 
       .pv-msg { background: #f5f6f8; border: 0.5pt solid #e5e7eb; border-radius: 3mm; padding: 5mm; margin-bottom: 5mm; }
-      .pv-msg h4 { font-size: 11pt; font-weight: 800; color: #1A2744; margin-bottom: 2mm; }
+      .pv-msg h4 { font-size: 11pt; font-weight: 800; color: #4D227F; margin-bottom: 2mm; }
       .pv-msg p { font-size: 9pt; color: #3a4050; line-height: 1.7; }
 
-      .pv-advice { background: #fff3ee; border: 0.5pt solid #ffd4c2; border-radius: 3mm; padding: 4mm; margin-bottom: 5mm; }
-      .pv-advice .pv-adv-lbl { font-size: 8pt; font-weight: 700; color: #e55f3a; margin-bottom: 2mm; }
+      .pv-advice { background: #FDEDE4; border: 0.5pt solid #F7C9AE; border-radius: 3mm; padding: 4mm; margin-bottom: 5mm; }
+      .pv-advice .pv-adv-lbl { font-size: 8pt; font-weight: 700; color: #EE6223; margin-bottom: 2mm; }
       .pv-advice p { font-size: 9pt; line-height: 1.7; }
 
       .pv-footer { border-top: 0.5pt solid #e5e7eb; padding-top: 4mm; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #6b7280; }
-      .pv-footer .pv-cta { font-size: 9pt; font-weight: 700; color: #1A2744; }
+      .pv-footer .pv-cta { font-size: 9pt; font-weight: 700; color: #4D227F; }
     }
 
     /* ── Footer ── */
@@ -410,12 +410,12 @@
       position: sticky; top: 0; z-index: 50;
     }
     .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
-    .top-nav-brand { font-size: 14px; font-weight: 800; color: #1A2744; letter-spacing: 0.04em; text-decoration: none; }
+    .top-nav-brand { font-size: 14px; font-weight: 800; color: #4D227F; letter-spacing: 0.04em; text-decoration: none; }
     .top-nav-links { display: flex; align-items: center; gap: 16px; }
     .top-nav-links a { font-size: 13px; color: #6b7280; transition: color 0.15s; text-decoration: none; }
-    .top-nav-links a:hover { color: #1a1c22; }
+    .top-nav-links a:hover { color: #2B2723; }
     .top-nav-links a.nav-cta {
-      background: #e55f3a; color: #fff; border-radius: 999px;
+      background: #EE6223; color: #fff; border-radius: 999px;
       padding: 6px 16px; font-weight: 700; font-size: 12px;
     }
     @media (max-width: 640px) {
@@ -520,8 +520,8 @@
           <div class="gate-preview">
             <div class="gate-preview-inner">
               <div class="gate-preview-bars">
-                <div class="gate-bar-row"><span class="gate-bar-name">志望の明確さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:60%;background:#e55f3a;"></div></div></div>
-                <div class="gate-bar-row"><span class="gate-bar-name">自己理解の深さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:45%;background:#3b7dd8;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">志望の明確さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:60%;background:#EE6223;"></div></div></div>
+                <div class="gate-bar-row"><span class="gate-bar-name">自己理解の深さ</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:45%;background:#4D227F;"></div></div></div>
                 <div class="gate-bar-row"><span class="gate-bar-name">経験の言語化</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:75%;background:#7c3aed;"></div></div></div>
                 <div class="gate-bar-row"><span class="gate-bar-name">準備の進捗</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:30%;background:#059669;"></div></div></div>
                 <div class="gate-bar-row"><span class="gate-bar-name">表現への自信</span><div class="gate-bar-bg"><div class="gate-bar-fill" style="width:55%;background:#d97706;"></div></div></div>
@@ -587,8 +587,8 @@
 
           <div class="chart-wrap">
             <div class="chart-legend">
-              <div class="legend-item"><div class="legend-dot" style="background:#e55f3a;"></div>あなたのスコア</div>
-              <div class="legend-item"><div class="legend-dot" style="background:#1A2744; opacity:0.6;"></div>合格者の傾向ライン（参考）</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#EE6223;"></div>あなたのスコア</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#4D227F; opacity:0.6;"></div>合格者の傾向ライン（参考）</div>
             </div>
             <div class="chart-canvas-wrap">
               <canvas id="radarChart"></canvas>
@@ -682,7 +682,7 @@
 
     <div class="pv-footer">
       <div>
-        <div style="font-weight:700;color:#1A2744;">LIGHTHOUSE — 総合型選抜専門塾</div>
+        <div style="font-weight:700;color:#4D227F;">LIGHTHOUSE — 総合型選抜専門塾</div>
         <div>株式会社PIVOT＆QUEST　info@p-quest.com</div>
       </div>
       <div class="pv-cta">
@@ -739,7 +739,7 @@ function notifyAdmin(name, email, page, result, score) {
 // DATA
 // ─────────────────────────────────────
 const AXES = ["志望の明確さ","自己理解の深さ","経験の言語化","準備の進捗","表現への自信"];
-const AXIS_COLORS = ["#e55f3a","#3b7dd8","#7c3aed","#059669","#d97706"];
+const AXIS_COLORS = ["#EE6223","#4D227F","#7c3aed","#059669","#d97706"];
 
 // 10 questions: Q1-Q5 = first round (one per axis), Q6-Q10 = second round
 const QUESTIONS = [
@@ -785,14 +785,14 @@ const BENCHMARKS = {
 };
 
 const TYPES = [
-  { min:5, max:9,  badge:"🌱 ゼロ地点タイプ",  badgeColor:"#e55f3a", badgeBg:"#fff3ee",
+  { min:5, max:9,  badge:"🌱 ゼロ地点タイプ",  badgeColor:"#EE6223", badgeBg:"#FDEDE4",
     name:"ゼロ地点タイプ",
     title:"「語れる自分」はこれから作る。<br>そこからが、本当のスタート。",
     msg:"今はまだ「自分の話」が言葉になっていない段階です。でも、これは能力の問題でも経験の少なさの問題でもありません。多くの場合、「正しい問いを立てたことがない」ことが原因です。逆に言えば、問いさえ変えれば誰でもここから動き始められる——多くの合格者が、最初はまったく同じ状態でした。",
     adv:"まず「いつ、何に感情が動いたか」を書き出すことから始めましょう。正解を探すのではなく、感情の跡を追う。それがLighthouseの出発点です。無料相談では、ゼロから一緒に掘り起こします。",
     noteUrl:"https://note.com/veintiuno",
     noteTitle:"「『実績がない』と悩む受験生へ。自己探究を始めるための3つのステップ」" },
-  { min:9.1, max:13, badge:"💡 言語化途中タイプ", badgeColor:"#3b7dd8", badgeBg:"#eff6ff",
+  { min:9.1, max:13, badge:"💡 言語化途中タイプ", badgeColor:"#4D227F", badgeBg:"#eff6ff",
     name:"言語化途中タイプ",
     title:"素材は持っている。<br>「筋の通った言葉」に変える段階。",
     msg:"経験や想いの素材はあるのに、うまく言葉にならない——「書いたら当たり前のことしか出ない」「他の人と同じになる」という感覚を持つなら、素材ではなく整理の方法に問題があります。素材を変えなくても、整理の軸を変えるだけで、まったく違う志望理由になります。",
@@ -1008,11 +1008,11 @@ function renderResultUI() {
       labels: AXES,
       datasets:[
         { label:`${userName}さん`, data: axisScores.map(s => +s.toFixed(2)),
-          backgroundColor:"rgba(229,95,58,0.12)", borderColor:"#e55f3a", borderWidth:2.5,
+          backgroundColor:"rgba(229,95,58,0.12)", borderColor:"#EE6223", borderWidth:2.5,
           pointBackgroundColor: AXIS_COLORS, pointBorderColor:"#fff", pointBorderWidth:2, pointRadius:5 },
         { label:"合格者傾向ライン", data: bench.values,
-          backgroundColor:"rgba(26,39,68,0.06)", borderColor:"#1A2744", borderWidth:2,
-          borderDash:[6,4], pointBackgroundColor:"#1A2744", pointBorderColor:"#fff",
+          backgroundColor:"rgba(77,34,127,0.06)", borderColor:"#4D227F", borderWidth:2,
+          borderDash:[6,4], pointBackgroundColor:"#4D227F", pointBorderColor:"#fff",
           pointBorderWidth:2, pointRadius:4, pointStyle:"triangle" },
       ]
     },
@@ -1023,7 +1023,7 @@ function renderResultUI() {
         ticks:{stepSize:1,display:false,backdropColor:"transparent"},
         grid:{color:"rgba(0,0,0,0.06)"},
         angleLines:{color:"rgba(0,0,0,0.06)"},
-        pointLabels:{font:{family:"'Noto Sans JP',sans-serif",size:11,weight:"700"},color:"#1a1c22",padding:10}
+        pointLabels:{font:{family:"'Zen Kaku Gothic New',sans-serif",size:11,weight:"700"},color:"#2B2723",padding:10}
       }},
       plugins:{
         legend:{display:false},
@@ -1077,7 +1077,7 @@ function printResult() {
       <span>${AXES[i]}</span>
       <div class="pv-sb-bg"><div class="pv-sb-fill" style="width:${barPct}%;background:${AXIS_COLORS[i]};"></div><div class="pv-sb-mark" style="left:${markPct}%;"></div></div>
       <span class="pv-sv" style="color:${AXIS_COLORS[i]};">${sc.toFixed(1)}</span>
-      <span class="pv-gap" style="color:${gap>=0?'#059669':'#e55f3a'};">${gapStr}</span>`;
+      <span class="pv-gap" style="color:${gap>=0?'#059669':'#EE6223'};">${gapStr}</span>`;
     pvScores.appendChild(row);
   });
   const legend = document.createElement("p"); legend.style.cssText="font-size:7pt;color:#6b7280;margin-top:2mm;";
