@@ -436,6 +436,27 @@
       html { scroll-behavior: auto; }
     }
     :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    /* ── 学問接続マップ ── */
+    .cmap-flow { display: flex; align-items: stretch; gap: 10px; margin: 28px 0 12px; }
+    .cmap-stage { flex: 1; background: var(--purple-soft); border-radius: 14px; padding: 14px 12px; text-align: center; }
+    .cmap-stage .cmap-k { display: block; font-family: 'Zilla Slab', serif; font-size: 12px; font-weight: 700; color: var(--purple); letter-spacing: 0.06em; margin-bottom: 4px; }
+    .cmap-stage .cmap-t { font-size: 13px; font-weight: 800; color: var(--ink); line-height: 1.5; }
+    .cmap-arrow { display: flex; align-items: center; color: var(--orange); font-weight: 800; font-size: 18px; }
+    .cmap-rows { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+    .cmap-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-sm); }
+    .cmap-cell { font-size: 13px; line-height: 1.6; color: #3f3a34; position: relative; }
+    .cmap-cell.is-q { font-weight: 800; color: var(--purple); }
+    .cmap-cell.is-out { font-weight: 700; color: var(--orange); }
+    .cmap-note { font-size: 12px; color: var(--gray); margin-top: 12px; }
+    @media (max-width: 720px) {
+      .cmap-flow { flex-wrap: wrap; gap: 8px; }
+      .cmap-stage { flex: 1 1 40%; }
+      .cmap-arrow { display: none; }
+      .cmap-row { grid-template-columns: 1fr; gap: 6px; }
+      .cmap-cell { padding-left: 84px; }
+      .cmap-cell::before { content: attr(data-label); position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--gray); }
+    }
   </style>
 </head>
 <body>
@@ -652,10 +673,72 @@
         </div>
       </div>
 
-      <div class="quote reveal" style="margin-top:20px;">
-        <p>「ラグビーの経験とAOで得た経験がこんなにか！ってくらい生きてます。自分の建築の好さを言語化していく作業、自分の考えを相手に伝え続ける力、失敗を繰り返してその上に素晴らしいものができること——今まで教えてもらったことばっかじゃん！みたいな。」</p>
-        <div class="meta">日本大学 理工学部建築学科 合格者（入学後の声）</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ 学問接続マップ ══════════════════════════════════════ -->
+  <section class="section section-soft">
+    <div class="container">
+      <span class="eyebrow">学問接続マップ</span>
+      <h2>問いは、どこへ<br>つながっていくのか。</h2>
+      <p class="lead">総合型選抜で本当に問われるのは、自己PRの上手さではありません。あなたの経験や関心が、問いを通じて学問・研究、そしてその先の社会や仕事へどうつながるか。これが、その「接続」の地図です。</p>
+
+      <div class="cmap-flow" aria-hidden="true">
+        <div class="cmap-stage"><span class="cmap-k">STEP 1–2</span><span class="cmap-t">経験・関心</span></div>
+        <div class="cmap-arrow">→</div>
+        <div class="cmap-stage"><span class="cmap-k">問い化</span><span class="cmap-t">自分の問い</span></div>
+        <div class="cmap-arrow">→</div>
+        <div class="cmap-stage"><span class="cmap-k">接続</span><span class="cmap-t">学問・学部</span></div>
+        <div class="cmap-arrow">→</div>
+        <div class="cmap-stage"><span class="cmap-k">行動</span><span class="cmap-t">研究・社会・仕事</span></div>
       </div>
+
+      <div class="cmap-rows">
+        <div class="cmap-row">
+          <div class="cmap-cell" data-label="経験・関心">不登校の経験と、そこで感じた孤立</div>
+          <div class="cmap-cell is-q" data-label="問い">「居場所」はどう設計できるのか？</div>
+          <div class="cmap-cell" data-label="学問・学部">社会学・都市科学／コミュニティ設計</div>
+          <div class="cmap-cell is-out" data-label="研究・社会">地域の居場所づくり・福祉政策</div>
+        </div>
+        <div class="cmap-row">
+          <div class="cmap-cell" data-label="経験・関心">ものづくり・職人の家庭で育った原体験</div>
+          <div class="cmap-cell is-q" data-label="問い">人の営みを豊かにする建築とは？</div>
+          <div class="cmap-cell" data-label="学問・学部">建築学／都市デザイン</div>
+          <div class="cmap-cell is-out" data-label="研究・社会">住環境の設計・まちづくり</div>
+        </div>
+        <div class="cmap-row">
+          <div class="cmap-cell" data-label="経験・関心">部活で音楽に救われた実感</div>
+          <div class="cmap-cell is-q" data-label="問い">音楽は精神的支援になり得るか？</div>
+          <div class="cmap-cell" data-label="学問・学部">スポーツ科学・教育学／音楽療法</div>
+          <div class="cmap-cell is-out" data-label="研究・社会">途上国での音楽教育・支援活動</div>
+        </div>
+      </div>
+      <p class="cmap-note">※ 過去の生徒の探究テーマをもとにした、接続の例です（下の「入学後の声」も参照）。あなたの出発点から、あなただけの一本の線を一緒に描きます。</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ 入学後の声 ══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">入学後の声</span>
+      <h2>問いは、大学でも<br>続いていく。</h2>
+      <p class="lead">合格はゴールではありません。ここで立てた問いが、入学後の学び・研究・活動へどうつながっているか——実際に進学した卒業生の声です。</p>
+
+      <div class="grid-3">
+        <div class="voice reveal">
+          <div class="school">慶應義塾大学 総合政策学部</div>
+          <p>「高校では『コミュニティや居場所づくり』というキーワードを定めて学んでいました。大学では憧れだった研究会に入ることができ、自分の研究テーマが現実社会と接点を深く持ち出したと実感しています。今は空間づくりや認知科学など『人がどう感じるか』という視点から深掘りしています。」</p>
+        </div>
+        <div class="voice reveal">
+          <div class="school">日本大学 理工学部 建築学科</div>
+          <p>「一年勉強して、ラグビーの経験とAOで得た経験がこんなにか！ってくらい生きてます。建築を丁寧に言語化する作業、考えを伝え続けること、失敗の上に良いものを作ること——今まで教わったことばかり。ギャラリーの作品は98点、一年生向けコンペも審査を通過しました。」</p>
+        </div>
+        <div class="voice reveal">
+          <div class="school">トロント大学 国際関係学部</div>
+          <p>「IBで学んだことと、総合型選抜で学んだことは似ていました。分析には自分の好みで偏りが出ますが、総合型の過程で『どんな偏りがなぜ出たのか』に着目する大切さを知りました。偏りは無くすものではなく、意識的に使うもの。国際的に活躍できる人材になります。」</p>
+        </div>
+      </div>
+      <p class="cmap-note">合格の先で問いを深め続けられること——それが、通用する志望理由の何よりの証です。</p>
     </div>
   </section>
 
