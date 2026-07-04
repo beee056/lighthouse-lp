@@ -12,51 +12,84 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>自己探究から、自己表現へ | LIGHTHOUSE</title>
-  <meta name="description" content="偏差値や常識に苦しむあなたが、年間20名限定の教室で「自分」を取り戻すまで。Lighthouseを創った田邊勇人の原体験と、3名の合格者の物語。">
+  <meta name="description" content="偏差値や常識に苦しむあなたが、少人数の教室で「自分」を取り戻すまで。Lighthouseを創った田邊勇人の原体験と、3名の合格者の物語。">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #fafaf8;
-      --ink: #1a1c22;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --soft: #f5f6f8;
-      --navy: #1A2744;
-      --accent: #e55f3a;
-      --accent-soft: #fff3ee;
-      --accent-line: #ffd4c2;
-      --gold: #C9A84C;
+      /* PIVOT&QUEST ブランドカラー(名刺基準) */
+      --paper: #F7F3E5;
+      --white: #FFFFFF;
+      --ink: #2B2723;
+      --purple: #4D227F;
+      --purple-soft: #F0EAF6;
+      --orange: #EE6223;
+      --orange-soft: #FDEDE4;
+      --gray: #7C786F;
+      --line: rgba(43, 39, 35, 0.12);
+      --line-strong: rgba(43, 39, 35, 0.55);
+      --line-green: #06C755;
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --shadow-card: 0 6px 24px rgba(77, 34, 127, 0.07);
+      --shadow-sm: 0 3px 12px rgba(77, 34, 127, 0.06);
+      /* story.html 内部エイリアス(旧変数名を新トークンにマップ) */
+      --bg: var(--paper);
+      --muted: var(--gray);
+      --soft: var(--white);
+      --navy: var(--purple);
+      --accent: var(--orange);
+      --accent-soft: var(--orange-soft);
+      --gold: var(--orange);
     }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--bg);
+      font-family: 'YakuHanJP', 'Zen Kaku Gothic New', sans-serif;
+      background: var(--paper);
       color: var(--ink);
       line-height: 1.9;
+      font-feature-settings: "palt";
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration: none; }
+    .slab { font-family: 'Zilla Slab', serif; }
 
-    /* ── Nav ── */
-    .topnav {
-      background: var(--navy);
-      padding: 14px 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 100;
+    /* ── Nav (index.html 準拠) ── */
+    .top-nav {
+      border-bottom: 1px solid var(--line); padding: 12px 0;
+      background: rgba(247,243,229,0.92); backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 50;
     }
-    .topnav-brand { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 0.12em; }
-    .topnav-links { display: flex; gap: 20px; align-items: center; }
-    .topnav-links a { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 700; transition: color 0.15s; }
-    .topnav-links a:hover { color: #fff; }
-    .topnav-links a.cta { background: var(--accent); color: #fff; padding: 7px 16px; border-radius: 999px; }
+    .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .top-nav-brand { display: flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 900; color: var(--purple); letter-spacing: 0.08em; }
+    .top-nav-brand img { height: 32px; width: auto; }
+    .top-nav-links { display: flex; align-items: center; gap: 22px; }
+    .top-nav-links a { font-size: 13px; font-weight: 500; color: var(--ink); transition: color 0.18s; }
+    .top-nav-links a:hover { color: var(--purple); }
+    .top-nav-links a.nav-cta {
+      background: var(--orange); color: #fff; border-radius: 999px;
+      padding: 9px 20px; font-weight: 700; font-size: 13px;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .top-nav-links a.nav-cta:hover { background: var(--purple); color: #fff; transform: translateY(-1px); }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--ink); padding: 6px; }
+    .mobile-menu { display: none; }
+    @media (max-width: 860px) {
+      .top-nav-links { display: none; }
+      .menu-btn { display: block; }
+      .mobile-menu { display: none; flex-direction: column; padding: 6px 16px 16px; border-top: 1px solid var(--line); background: var(--paper); }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a { padding: 13px 4px; font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--line); }
+      .mobile-menu a:last-child { border-bottom: none; color: var(--orange); font-weight: 700; }
+    }
 
     /* ── Hero ── */
     .story-hero {
-      background: var(--navy);
+      background: var(--purple);
       padding: 80px 24px 72px;
       text-align: center;
       color: #fff;
@@ -64,23 +97,23 @@
     .story-hero .kicker {
       display: inline-block;
       font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45); font-weight: 700; margin-bottom: 28px;
+      color: rgba(255,255,255,0.55); font-weight: 700; margin-bottom: 28px;
     }
     .story-hero h1 {
-      font-family: 'Noto Serif JP', serif;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
       font-size: clamp(30px, 7vw, 52px);
-      font-weight: 700;
+      font-weight: 900;
       line-height: 1.3;
       letter-spacing: 0.02em;
       margin-bottom: 20px;
     }
     .story-hero .hero-rule {
-      width: 48px; height: 2px; background: var(--gold);
+      width: 48px; height: 2px; background: var(--orange);
       margin: 24px auto 24px;
     }
     .story-hero .subtitle {
       font-size: clamp(13px, 2.5vw, 15px);
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.7);
       max-width: 480px;
       margin: 0 auto;
       line-height: 1.8;
@@ -91,7 +124,7 @@
 
     /* ── Prose ── */
     .prose { padding: 60px 0 36px; }
-    .prose p { font-size: 16px; line-height: 2; color: #2c303a; margin-bottom: 1.6em; }
+    .prose p { font-size: 16px; line-height: 2; color: #3f3a34; margin-bottom: 1.6em; }
     .prose p:last-child { margin-bottom: 0; }
     .prose strong { font-weight: 700; color: var(--ink); }
 
@@ -99,187 +132,191 @@
     .chapter-header { padding: 60px 0 28px; }
     .chapter-label {
       display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
     }
-    .chapter-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent); }
+    .chapter-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--orange); }
     .chapter-header h2 {
-      font-family: 'Noto Serif JP', serif;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
       font-size: clamp(22px, 4.5vw, 34px);
-      font-weight: 700; line-height: 1.4;
+      font-weight: 900; line-height: 1.4;
       color: var(--ink); margin-bottom: 8px;
     }
-    .chapter-header .sub { font-size: 14px; color: var(--muted); }
+    .chapter-header .sub { font-size: 14px; color: var(--gray); }
 
     .section-head {
-      font-family: 'Noto Serif JP', serif;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
       font-size: clamp(17px, 3vw, 22px);
       font-weight: 700; color: var(--ink);
       margin: 40px 0 16px;
       padding-left: 14px;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--orange);
       line-height: 1.5;
     }
 
     /* ── Pull quote ── */
     .pull-quote {
-      border-left: 4px solid var(--accent);
+      border-left: 4px solid var(--orange);
       padding: 20px 24px;
       margin: 28px 0;
-      background: var(--accent-soft);
+      background: var(--orange-soft);
       border-radius: 0 14px 14px 0;
     }
-    .pull-quote p { font-size: 16px; line-height: 1.9; color: #2c303a; margin: 0; }
-    .pull-quote .attr { font-size: 12px; color: var(--muted); font-weight: 700; margin-top: 10px; display: block; }
+    .pull-quote p { font-size: 16px; line-height: 1.9; color: #3f3a34; margin: 0; }
+    .pull-quote .attr { font-size: 12px; color: var(--gray); font-weight: 700; margin-top: 10px; display: block; }
 
     /* ── Dark quote ── */
     .dark-quote {
-      background: var(--navy);
+      background: var(--purple);
       border-radius: 18px;
       padding: 28px 32px;
       margin: 32px 0;
     }
-    .dark-quote p { font-family: 'Noto Serif JP', serif; font-size: 17px; line-height: 1.95; color: rgba(255,255,255,0.88); margin: 0; }
-    .dark-quote .attr { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 700; margin-top: 14px; display: block; }
+    .dark-quote p { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.95; color: rgba(255,255,255,0.92); margin: 0; }
+    .dark-quote .attr { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 700; margin-top: 14px; display: block; }
 
     /* ── Section bg ── */
-    .bg-soft { background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .bg-soft { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
     /* ── Labeled rule ── */
     .labeled-rule {
       display: flex; align-items: center; gap: 16px; margin: 52px 0 36px;
     }
     .labeled-rule::before, .labeled-rule::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-    .labeled-rule span { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+    .labeled-rule span { font-size: 11px; font-weight: 700; color: var(--gray); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
 
     hr.section-rule { border: none; border-top: 1px solid var(--line); margin: 44px 0; }
 
     /* ── Career timeline ── */
     .career-timeline {
-      background: #fff; border: 1px solid var(--line);
-      border-radius: 20px; padding: 28px;
-      margin: 28px 0; box-shadow: 0 4px 20px rgba(20,24,33,0.06);
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); padding: 28px;
+      margin: 28px 0; box-shadow: var(--shadow-card);
     }
-    .career-timeline h4 { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+    .career-timeline h4 { font-size: 11px; font-weight: 700; color: var(--gray); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
     .tl-item { display: flex; gap: 16px; align-items: flex-start; }
     .tl-dot-col { display: flex; flex-direction: column; align-items: center; min-width: 16px; }
     .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); margin-top: 5px; flex-shrink: 0; }
-    .tl-dot.accent { background: var(--accent); }
-    .tl-dot.gold { background: var(--gold); }
+    .tl-dot.accent { background: var(--orange); }
+    .tl-dot.gold { background: var(--purple); }
     .tl-line { width: 2px; flex: 1; background: var(--line); min-height: 24px; }
     .tl-content { padding-bottom: 22px; }
-    .tl-age { font-size: 11px; font-weight: 800; color: var(--muted); margin-bottom: 3px; }
-    .tl-desc { font-size: 13px; color: #3a4050; line-height: 1.75; }
+    .tl-age { font-size: 11px; font-weight: 700; color: var(--gray); margin-bottom: 3px; }
+    .tl-desc { font-size: 13px; color: #4b4640; line-height: 1.75; }
     .tl-desc strong { color: var(--ink); }
 
     /* ── Values grid ── */
     .values-grid {
-      background: var(--navy); border-radius: 20px;
+      background: var(--purple); border-radius: var(--radius-xl);
       padding: 32px; margin: 28px 0;
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
     }
     .value-item { display: flex; gap: 14px; align-items: flex-start; }
     .value-num {
-      font-size: 11px; font-weight: 800; color: var(--gold);
-      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+      font-family: 'Zilla Slab', serif;
+      font-size: 12px; font-weight: 700; color: #fff;
+      background: rgba(238,98,35,0.28); border: 1px solid rgba(238,98,35,0.5);
       border-radius: 6px; padding: 4px 8px; flex-shrink: 0;
-      letter-spacing: 0.05em; font-family: monospace;
+      letter-spacing: 0.05em;
     }
-    .value-text h5 { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 5px; }
-    .value-text p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; margin: 0; }
+    .value-text h5 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+    .value-text p { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
 
     /* ── Case card (same format for all 3) ── */
     .case-card {
-      border: 1px solid var(--line); border-radius: 20px;
+      border: 1px solid var(--line); border-radius: var(--radius-xl);
       overflow: hidden; margin: 0 0 12px;
-      box-shadow: 0 4px 20px rgba(20,24,33,0.06);
+      box-shadow: var(--shadow-card);
     }
     .case-card-head {
-      background: var(--navy); padding: 24px 28px; color: #fff;
+      background: var(--purple); padding: 24px 28px; color: #fff;
     }
     .case-card-head .case-tag {
-      font-size: 10px; font-weight: 800; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
     }
-    .case-card-head h3 { font-size: 17px; font-weight: 800; line-height: 1.5; }
-    .case-card-body { background: #fff; padding: 24px 28px; }
-    .case-card-body p { font-size: 14px; color: #3a4050; line-height: 1.9; margin-bottom: 1em; }
+    .case-card-head h3 { font-size: 17px; font-weight: 900; line-height: 1.5; }
+    .case-card-body { background: var(--white); padding: 24px 28px; }
+    .case-card-body p { font-size: 14px; color: #4b4640; line-height: 1.9; margin-bottom: 1em; }
     .case-card-body p:last-child { margin-bottom: 0; }
 
     /* ── Stats strip (same for all cases) ── */
     .stat-strip {
       display: flex; gap: 0; margin-bottom: 20px;
-      background: var(--soft); border: 1px solid var(--line);
+      background: var(--paper); border: 1px solid var(--line);
       border-radius: 14px; overflow: hidden;
     }
     .stat-item { flex: 1; padding: 20px 16px; text-align: center; border-right: 1px solid var(--line); }
     .stat-item:last-child { border-right: none; }
-    .stat-num { font-size: clamp(22px, 4vw, 32px); font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
-    .stat-label { font-size: 11px; color: var(--muted); font-weight: 700; }
+    .stat-num { font-family: 'Zilla Slab', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--purple); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 11px; color: var(--gray); font-weight: 700; }
 
     /* ── Method steps ── */
     .method-steps { margin: 28px 0; display: grid; gap: 10px; }
     .method-step {
       display: flex; gap: 16px; align-items: flex-start;
-      background: #fff; border: 1px solid var(--line);
+      background: var(--white); border: 1px solid var(--line);
       border-radius: 14px; padding: 18px 20px;
     }
     .method-num {
+      font-family: 'Zilla Slab', serif;
       min-width: 34px; height: 34px; border-radius: 50%;
-      background: var(--accent); color: #fff;
+      background: var(--purple); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 800; flex-shrink: 0;
+      font-size: 13px; font-weight: 700; flex-shrink: 0;
     }
-    .method-text h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-    .method-text p { font-size: 13px; color: var(--muted); line-height: 1.8; margin: 0; }
+    .method-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .method-text p { font-size: 13px; color: var(--gray); line-height: 1.8; margin: 0; }
 
     /* ── Guardians box ── */
     .guardians-box {
-      background: #fff; border: 1px solid var(--line);
-      border-radius: 18px; padding: 28px; margin: 32px 0;
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius-xl); padding: 28px; margin: 32px 0;
     }
-    .guardians-box .box-title { font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-    .guardians-box p { font-size: 14px; color: #3a4050; line-height: 1.9; margin-bottom: 1em; }
+    .guardians-box .box-title { font-size: 13px; font-weight: 700; color: var(--purple); margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .guardians-box p { font-size: 14px; color: #4b4640; line-height: 1.9; margin-bottom: 1em; }
     .guardians-box p:last-child { margin-bottom: 0; }
 
     /* ── FAQ ── */
     .faq-list { margin: 16px 0; display: grid; gap: 8px; }
-    .faq-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
-    .faq-q { font-size: 14px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.8; }
+    .faq-item { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+    .faq-q { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--gray); line-height: 1.8; }
 
     /* ── Final CTA ── */
     .story-cta {
-      background: var(--navy); padding: 72px 24px; text-align: center; margin-top: 60px;
+      background: var(--purple); padding: 72px 24px; text-align: center; margin-top: 60px;
     }
-    .story-cta .kicker { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 700; margin-bottom: 20px; }
-    .story-cta h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.4; }
-    .story-cta p { font-size: 14px; color: rgba(255,255,255,0.55); margin: 0 auto 32px; line-height: 1.8; max-width: 440px; }
+    .story-cta .kicker { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 700; margin-bottom: 20px; }
+    .story-cta h2 { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 900; color: #fff; margin-bottom: 16px; line-height: 1.4; }
+    .story-cta p { font-size: 14px; color: rgba(255,255,255,0.7); margin: 0 auto 32px; line-height: 1.8; max-width: 440px; }
     .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      min-height: 50px; padding: 0 26px; border-radius: 999px;
+      min-height: 50px; padding: 0 26px; border-radius: 12px;
       font-weight: 700; font-size: 14px; cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px rgba(229,95,58,0.25); }
-    .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+    .btn-primary { background: var(--orange); color: #fff; box-shadow: 0 8px 22px rgba(238,98,35,0.24); }
+    .btn-primary:hover { background: #fff; color: var(--purple); }
+    .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
 
     /* ── Progress bar ── */
-    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 1000; width: 0; transition: width 0.1s; }
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--orange); z-index: 1000; width: 0; transition: width 0.1s; }
 
-    /* ── Site footer ── */
-    .site-footer { background: #fff; border-top: 1px solid var(--line); padding: 24px; }
-    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; max-width: 720px; margin: 0 auto; }
-    .footer-brand { font-size: 13px; font-weight: 700; color: var(--muted); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
-    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
-    .footer-links a:hover { color: var(--ink); }
-    .footer-copy { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    /* ── Site footer (index.html 準拠) ── */
+    .site-footer { padding: 44px 0 40px; border-top: 1px solid var(--line); margin-top: 0; background: var(--paper); }
+    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px; max-width: 720px; margin: 0 auto; }
+    .footer-brand-row { display: flex; align-items: center; gap: 14px; }
+    .footer-brand-row img { height: 40px; width: auto; }
+    .footer-brand { font-size: 13px; font-weight: 700; color: var(--purple); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 14px 18px; max-width: 640px; }
+    .footer-links a { font-size: 13px; color: var(--gray); transition: color 0.18s; }
+    .footer-links a:hover { color: var(--purple); }
+    .footer-copy { font-size: 11px; color: var(--gray); margin-top: 8px; letter-spacing: 0.04em; }
 
     @media (max-width: 640px) {
-      .topnav-links a:not(.cta) { display: none; }
       .story-hero { padding: 56px 20px 56px; }
       .values-grid { grid-template-columns: 1fr; padding: 24px; }
       .stat-strip { flex-direction: column; }
@@ -287,41 +324,72 @@
       .stat-item:last-child { border-bottom: none; }
        .cta-row { flex-direction: column; align-items: center; }
        .cta-row .btn { width: 100%; max-width: 320px; }
+       .site-footer .inner { flex-direction: column; }
      }
 
     /* ── Cluster Tour (回遊) ── */
     .cluster-tour {
-      margin-top: 60px; padding: 32px; background: var(--soft);
+      margin-top: 60px; padding: 32px; background: var(--white);
       border-radius: var(--radius-xl); border: 1px solid var(--line);
       max-width: 720px; margin-inline: auto;
     }
-    .cluster-tour h2 { border: none; padding: 0; background: none; margin: 0 0 20px 0; font-size: 22px; text-align: center; color: var(--ink) !important; font-family: 'Noto Sans JP', sans-serif !important; }
+    .cluster-tour h2 { border: none; padding: 0; background: none; margin: 0 0 20px 0; font-size: 22px; text-align: center; color: var(--ink) !important; font-family: 'Zen Kaku Gothic New', sans-serif !important; font-weight: 900; }
     .cluster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     @media (max-width: 640px) {
       .cluster-grid { grid-template-columns: 1fr; }
     }
     .cluster-card {
-      background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
       padding: 20px; transition: transform 0.2s, box-shadow 0.2s;
     }
     .cluster-card:hover {
       transform: translateY(-2px); box-shadow: var(--shadow-sm);
-      border-color: var(--accent);
+      border-color: var(--orange);
     }
     .cluster-card h3 { border: none; margin: 0 0 8px 0; font-size: 16px; padding-bottom: 0; color: var(--ink); }
-    .cluster-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
+    .cluster-card p { font-size: 13px; color: var(--gray); margin: 0; line-height: 1.6; }
+
+    /* ── Scroll reveal (index.html 準拠) ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   </style>
 </head>
 <body>
 
   <div class="progress-bar" id="progress"></div>
 
-  <!-- Nav -->
-  <nav class="topnav">
-    <span class="topnav-brand">LIGHTHOUSE</span>
-    <div class="topnav-links">
-      <a href="index.html">← トップへ</a>
-      <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="cta">無料相談を予約する</a>
+  <!-- ══════════════════════════════════════ NAV ══════════════════════════════════════ -->
+  <nav class="top-nav">
+    <div class="container">
+      <div class="inner">
+        <a href="index.html" class="top-nav-brand">
+          <img src="logo.png" alt="">
+          <span>LIGHTHOUSE</span>
+        </a>
+        <div class="top-nav-links">
+          <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
+          <a href="shop.html">サービス・料金</a>
+          <a href="story.html">ストーリー</a>
+          <a href="tools/shindan.html" class="nav-diag">無料自己診断</a>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="nav-cta">LINEで相談</a>
+        </div>
+        <button class="menu-btn" id="menu-toggle" type="button" aria-label="メニューを開閉" aria-expanded="false">
+          <svg id="menu-icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg id="menu-icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none"><path stroke-linecap="round" d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
+      <a href="shop.html">サービス・料金</a>
+      <a href="story.html">ストーリー</a>
+      <a href="tools/shindan.html">無料自己診断</a>
+      <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで相談</a>
     </div>
   </nav>
 
@@ -330,7 +398,7 @@
     <p class="kicker">Lighthouse Story</p>
     <h1>自己探究から、<br>自己表現へ。</h1>
     <div class="hero-rule"></div>
-    <p class="subtitle">偏差値や常識に苦しむあなたが、年間20名限定の教室で「自分」を取り戻すまで</p>
+    <p class="subtitle">偏差値や常識に苦しむあなたが、少人数の教室で「自分」を取り戻すまで</p>
   </header>
 
   <!-- Prologue -->
@@ -341,7 +409,7 @@
         <h2>主役は、あなた。</h2>
       </div>
       <div class="prose">
-        <p>最初に、誤解のないように言っておきたい。この教室「Lighthouse（ライトハウス）」から、毎年驚くような合格者が生まれているのは事実だ。偏差値36からの慶應SFC合格、不登校からの立教・同志社合格、第一志望不合格からの建築コンペ受賞……。</p>
+        <p>最初に、誤解のないように言っておきたい。この教室「Lighthouse（ライトハウス）」には、それぞれが自分だけの問いを見つけた物語がある。偏差値36からの慶應SFC合格、不登校からの立教・同志社合格、第一志望不合格からの建築コンペ受賞——結果として毎年、そんな合格者が生まれているのは事実だ。</p>
         <p>だがそれは、僕らのおかげなんかじゃない。彼らが自分の頭で考え、泥臭く行動し、傷つきながら積み重ねた結果だ。</p>
         <div class="pull-quote">
           <p>僕らがやったことは、頭の中のぐちゃぐちゃを整理する手伝いをしたり、「本当はどう思ってるの？」と本心を引き出したり、漠然とした不安を明日やるべきことに細分化して、背中をポンと押すこと。主役は、いつだって彼らだ。</p>
@@ -394,7 +462,7 @@
           <div class="tl-dot-col"><div class="tl-dot gold"></div></div>
           <div class="tl-content">
             <div class="tl-age" style="color:var(--gold);">現在</div>
-            <div class="tl-desc"><strong>予備校講師を経てLighthouse設立。合格実績94件・合格率88%。</strong><br>次世代に同じ遠回りはさせない、という一心で指導を続けている。</div>
+            <div class="tl-desc"><strong>予備校講師を経てLighthouse設立。合格実績94件・合格率89.4%——それは一人ひとりの探究に深く関わり続けてきた結果だ。</strong><br>次世代に同じ遠回りはさせない、という一心で指導を続けている。</div>
           </div>
         </div>
       </div>
@@ -624,10 +692,11 @@
       <div class="prose">
         <p>最後に、改めて伝えたい。僕たちの指導に、魔法はない。あるのは、あなたの人生に泥臭く向き合う覚悟だけだ。</p>
         <p>合格するのは、僕たちでも親でもない。人生を変えるのは、いつだって自分で決めて、自分で動いた人間だけだ。自分の手綱を自分の手で握り返す覚悟がある人にだけ、来てほしい。</p>
-        <p>担当できるのは年間20名が限界だ。それ以上増やすと、一人ひとりの人生に深く関わり、共に変化していくことができなくなるから。</p>
+        <p>担当できるのは年間20名が限界だ。それ以上増やすと、一人ひとりの探究に深く関わり、共に変化していくことができなくなるから。少人数であることは制約ではなく、一人の人生に本気で向き合うための選択だ。</p>
         <div class="pull-quote">
           <p>一緒に、面白い未来を作ろう。</p>
         </div>
+        <p>LIGHTHOUSEは、<a href="https://p-quest.com/" target="_blank" rel="noopener noreferrer" style="color:var(--orange); font-weight:700; text-decoration:underline;">株式会社PIVOT&amp;QUEST</a> が教育×コーチングを最も深く体現する現場です。</p>
       </div>
 
       <hr class="section-rule">
@@ -663,7 +732,7 @@
       <div class="faq-list">
         <div class="faq-item">
           <div class="faq-q">偏差値30台でも総合型選抜で合格できますか？</div>
-          <div class="faq-a">はい、可能です。偏差値36からのSFC合格事例にもある通り、総合型選抜はペーパーテストの点数だけで決まりません。探究の実績や志、大学との研究マッチングを総合的に評価します。まずは無料相談で現状を整理しましょう。</div>
+          <div class="faq-a">はい、可能です。偏差値36からのSFC合格事例にもある通り、総合型選抜はペーパーテストの点数だけで決まりません。大切なのは、偏差値では測れない、あなた自身の問いを言葉にすること。探究の実績や志、大学との研究マッチングを総合的に評価します。まずは無料相談で現状を整理しましょう。</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">不登校の期間が長く、活動実績が何もないのですが。</div>
@@ -715,22 +784,27 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- ══════════════════════════════════════ SITE FOOTER ══════════════════════════════════════ -->
   <footer class="site-footer">
-    <div class="inner">
-      <div>
-        <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
-        <p class="footer-copy">&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+    <div class="container">
+      <div class="inner">
+        <div>
+          <div class="footer-brand-row">
+            <img src="logo.png" alt="">
+            <p class="footer-brand">LIGHTHOUSE / PIVOT &amp; QUEST Inc.</p>
+          </div>
+          <p class="footer-copy">&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.</p>
+        </div>
+        <nav class="footer-links">
+          <a href="index.html">トップ</a>
+          <a href="shibou-riyusho.html">志望理由書ガイド</a>
+          <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
+          <a href="for-parents.html">保護者向けガイド</a>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINE</a>
+          <a href="terms.html">利用規約</a>
+          <a href="privacy-policy.html">プライバシーポリシー</a>
+        </nav>
       </div>
-      <nav class="footer-links">
-        <a href="index.html">トップ</a>
-        <a href="shibou-riyusho.html">志望理由書ガイド</a>
-        <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
-        <a href="for-parents.html">保護者向けガイド</a>
-        <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINE</a>
-        <a href="terms.html">利用規約</a>
-        <a href="privacy-policy.html">プライバシーポリシー</a>
-      </nav>
     </div>
   </footer>
 
@@ -740,6 +814,32 @@
       const scrolled = doc.scrollTop;
       const total = doc.scrollHeight - doc.clientHeight;
       document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // スクロールリビール
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // モバイルメニュー(トグル)
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      if (menuToggle && mobileMenu && iconOpen && iconClose) {
+        const setMenu = (open) => {
+          mobileMenu.classList.toggle('open', open);
+          iconOpen.style.display = open ? 'none' : 'block';
+          iconClose.style.display = open ? 'block' : 'none';
+          menuToggle.setAttribute('aria-expanded', String(open));
+        };
+        menuToggle.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+      }
     });
   </script>
 </body>
