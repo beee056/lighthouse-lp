@@ -195,8 +195,19 @@
         .compare-table td a { color: var(--primary); text-decoration: none; font-weight: 500; }
         .compare-table td a:hover { text-decoration: underline; }
 
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 2rem; }
+        .compare-table { margin-bottom: 0; }
+
         .modal-actions { display: flex; gap: 1rem; justify-content: flex-end; }
         .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 0.95rem; text-decoration: none; display: inline-block; text-align: center;}
+
+        @media (max-width: 640px) {
+            .table-scroll { border: 1px solid var(--border-color); border-radius: 8px; }
+            .compare-table { min-width: 620px; font-size: 0.82rem; }
+            .compare-table th, .compare-table td { padding: 0.55rem 0.6rem; white-space: normal; }
+            .modal-actions { flex-direction: column; gap: 0.6rem; }
+            .modal-actions .btn { width: 100%; margin: 0 !important; white-space: normal; }
+        }
         .btn-primary { background: var(--primary); color: var(--white); }
         .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
         .btn-outline:hover { background: #f3f4f6; }
@@ -226,6 +237,8 @@
             #compareModal .modal-content, #compareModal .modal-content * { visibility: visible; }
             .modal-content { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; padding: 0; max-height: none; overflow: visible; display: block; }
             .modal-header, .modal-body { padding: 0; border: none; overflow: visible; }
+            .table-scroll { overflow: visible !important; border: none !important; }
+            .compare-table { min-width: 0 !important; }
             .modal-close, .modal-actions, .ext-btn, .fav-btn, .remove-compare-btn, #uniDetailModal { display: none !important; }
             .counseling-fields { background: none; border: none; padding: 0; margin-bottom: 2rem; }
             .counseling-fields input, .counseling-fields textarea, .compare-table select, .compare-table textarea { border: none; padding: 0; resize: none; background: transparent; -webkit-appearance: none; appearance: none; }
@@ -299,11 +312,12 @@
                 <h2 style="color: #15803d; font-size: 1.4rem;">💡 やりたいことが決まっていませんか？</h2>
                 <p style="color: #166534; font-size: 1rem; margin-bottom: 1rem;">まずは自分の強みや向いている進路を発見しましょう！</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://p-quest.com/shinro-map" target="_blank" rel="noopener noreferrer" class="lp-btn" style="background: #4D227F; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(77, 34, 127, 0.25);">🗺 進路探究マップ ↗</a>
                     <a href="shinro.html" class="lp-btn" style="background: #16a34a; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);">🧭 進路発見チャート</a>
                     <a href="learning-style.html" class="lp-btn" style="background: #8b5cf6; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);">🧠 学習スタイル診断</a>
                     <a href="shindan.html" class="lp-btn" style="background: #0ea5e9; padding: 0.75rem 1.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);">📈 合格可能性診断</a>
                 </div>
-                <p style="margin-top: 0.9rem; font-size: 0.9rem;"><a href="https://p-quest.com/shinro-map" target="_blank" rel="noopener noreferrer" style="color: #15803d; text-decoration: underline; font-weight: 600;">🗺 進路探究マップ ↗</a>｜興味・問いから学問・進路のつながりを一望する</p>
+                <p style="margin-top: 0.9rem; font-size: 0.9rem; color: #166534;"><b>🗺 進路探究マップ</b>なら、興味・問いから学問と進路のつながりを一望できます（志望校がまだ決まっていない方に）。</p>
             </div>
         </div>
 
@@ -389,6 +403,7 @@
                 </div>
             </div>
 
+            <div class="table-scroll">
             <table class="compare-table">
                 <thead>
                     <tr>
@@ -403,6 +418,7 @@
                     <!-- JS Inject -->
                 </tbody>
             </table>
+            </div>
 
             <div class="modal-actions" style="margin-top: 1rem;">
                 <button class="btn btn-outline" onclick="copyShareUrl()" style="margin-right: auto;">🔗 リストのURLを共有</button>
@@ -575,8 +591,8 @@
             // Top level external links for the university
             listContainer.innerHTML = `
                 <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
-                    <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;">🔍 Benesseで検索</a>
-                    <a href="${keinetUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;">🔍 Keinetで検索</a>
+                    <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;">🔍 Benesse</a>
+                    <a href="${keinetUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;">🔍 Keinet</a>
                 </div>
             `;
 
@@ -595,7 +611,7 @@
                         <span style="font-weight: 700; font-size: 0.98rem; color: var(--text-main);">${facultyName}</span>
                     </div>
                     <div style="display:flex; justify-content:space-between; align-items:center; gap:0.6rem;">
-                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + facultyName + ' ' + item.category + ' 募集要項 公式')}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:600; font-size:0.82rem; text-decoration:none; white-space:nowrap;">🔍 募集要項を検索 &rarr;</a>
+                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + facultyName + ' ' + item.category + ' 募集要項 公式')}" target="_blank" rel="noopener noreferrer" style="color:var(--primary); font-weight:600; font-size:0.82rem; text-decoration:none; white-space:nowrap;">🔍 募集要項</a>
                         <button class="${starClass}" style="padding: 0.35rem 0.7rem; border:1px solid #e5e7eb; border-radius:6px; background:var(--white); white-space:nowrap; font-size:0.8rem;" onclick="toggleCompareFromDetail('${item.id}', this)">
                             ${starIcon}
                         </button>
@@ -709,13 +725,14 @@
             compareItems.forEach(item => {
                 const meta = compareMeta[item.id] || { status: '', action: '', memo: '' };
                 const tr = document.createElement('tr');
-                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + item.faculty + ' ' + item.category + ' 募集要項 公式')}`;
+                const facultyName = (item.faculty || '').replace(/^[\s　]*[0-9]+[\s　.．・:：]*/, '');
+                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(item.university + ' ' + facultyName + ' ' + item.category + ' 募集要項 公式')}`;
                 const benesseUrl = getGoogleSiteSearchUrl('manabi.benesse.ne.jp/daigaku', item.university);
                 
                 tr.innerHTML = `
                     <td style="line-height: 1.4;">
                         <div style="font-weight: 700; font-size: 1.1rem; color: var(--primary-dark);">${item.university}</div>
-                        <div style="font-weight: 600; margin-top: 0.25rem;">${item.faculty}</div>
+                        <div style="font-weight: 600; margin-top: 0.25rem;">${facultyName}</div>
                         <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">${item.category} / 📍${item.prefecture}</div>
                         <button class="btn-outline remove-compare-btn" style="display:block; padding: 0.2rem 0.5rem; margin-top:0.75rem; font-size:0.75rem; width:100%;" onclick="toggleCompareFromTray('${item.id}')">リストから外す</button>
                     </td>
@@ -735,8 +752,8 @@
                         <textarea rows="3" onchange="updateMeta('${item.id}', 'memo', this.value)" placeholder="例：小論文重視、英検必須..." style="width:100%; padding:0.5rem; border:1px solid var(--border-color); border-radius:4px; font-family:inherit; resize:vertical;">${meta.memo}</textarea>
                     </td>
                     <td style="text-align: center; vertical-align: top;">
-                        <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="display:block; padding: 0.4rem; font-size: 0.8rem; margin-bottom: 0.5rem; border-radius: 6px;">🔍 公式要項を検索</a>
-                        <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; color: var(--text-muted); text-decoration: underline;">Benesseで調べる</a>
+                        <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="display:block; padding: 0.4rem; font-size: 0.8rem; margin-bottom: 0.5rem; border-radius: 6px;">🔍 募集要項</a>
+                        <a href="${benesseUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; color: var(--text-muted); text-decoration: underline;">🔍 Benesse</a>
                     </td>
                 `;
                 tbody.appendChild(tr);
