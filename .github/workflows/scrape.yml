@@ -28,11 +28,17 @@ jobs:
       - name: Run Scraper
         run: node scripts/scraper.js
 
+      # 慶應公式サイトの構造変更などで失敗しても、大学一覧データの更新は止めない
+      - name: Run Keio Scraper
+        continue-on-error: true
+        run: node scripts/keio-scraper.js
+
       - name: Commit and Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add data.json
+          git add keio-data.json || true
           git diff --cached --quiet && exit 0
           git commit -m "chore(data): auto-update university data"
           git push
