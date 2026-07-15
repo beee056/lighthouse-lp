@@ -34,5 +34,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git add data.json
           git diff --cached --quiet && exit 0
-          git commit -m "chore(data): auto-update university data [skip ci]"
+          git commit -m "chore(data): auto-update university data"
           git push
