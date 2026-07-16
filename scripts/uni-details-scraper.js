@@ -22,13 +22,25 @@ const MODEL = 'claude-haiku-4-5';
 //   {type:'html', url}                          … ページ本文をテキスト化
 //   {type:'pdf', url}                           … PDFをテキスト化
 //   {type:'pdf-links', url, match, max}         … ページ内のPDFリンク(正規表現match)を最大max件取得
+//   {type:'pdf-from-js', jsUrl, varRegex}       … JS設定ファイル内のPDFパスを解決して取得(52school電子ブック等)
+// 各ソースに cap(1ソースあたりの最大文字数)を指定可。要項PDFは冒頭に日程・募集人員が
+// あることが多いため、capで先頭部分だけをAIに渡す
 const UNIVERSITIES = [
   {
     id: 'waseda',
     name: '早稲田大学',
-    officialUrl: 'https://www.waseda.jp/inst/admission/undergraduate/system/ao/',
+    officialUrl: 'https://www.waseda.jp/inst/admission/undergraduate/application/',
     sources: [
-      { type: 'html', url: 'https://www.waseda.jp/inst/admission/undergraduate/system/ao/' }
+      // 全制度×学部の一覧(要項公開時期つき)
+      { type: 'html', url: 'https://www.waseda.jp/inst/admission/undergraduate/application/' },
+      // 地域探究・貢献入試(全学横断)
+      { type: 'html', url: 'https://www.waseda.jp/inst/admission/undergraduate/system/wacel/', cap: 15000 },
+      // 社会科学部 全国自己推薦(ページ本文に日程あり。要項PDFはWAFで直接取得不可)
+      { type: 'html', url: 'https://www.waseda.jp/fsss/sss/applicants/admission/', cap: 20000 },
+      // 国際教養学部AO / 人間科学部FACT / スポーツ科学部
+      { type: 'html', url: 'https://www.waseda.jp/fire/sils/applicants/admission/', cap: 15000 },
+      { type: 'html', url: 'https://www.waseda.jp/fhum/hum/applicants/admission/', cap: 15000 },
+      { type: 'html', url: 'https://www.waseda.jp/fsps/sps/applicants/admissions/', cap: 15000 }
     ]
   },
   {
@@ -45,8 +57,10 @@ const UNIVERSITIES = [
     name: '青山学院大学',
     officialUrl: 'https://www.aoyama.ac.jp/admission/undergraduate/examination/',
     sources: [
-      { type: 'html', url: 'https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html' },
-      { type: 'pdf-links', url: 'https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html', match: /ad_exam/, max: 2 }
+      { type: 'html', url: 'https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html', cap: 15000 },
+      // 選抜要項ダウンロードページの制度別要項PDF(総合型系のみ)。
+      // 対象: 文学部自己推薦(英米文)/理工/地球社会共生/コミュニティ人間科学/キリスト者推薦/スポーツ推薦
+      { type: 'pdf-links', url: 'https://www.aoyama.ac.jp/admission/undergraduate/request/request.html', match: /ad_2\d{3}_(literature_english|rikou|gsc|ccs|christ|sports)_/, max: 6, cap: 15000 }
     ]
   },
   {
@@ -55,7 +69,13 @@ const UNIVERSITIES = [
     officialUrl: 'https://www.rikkyo.ac.jp/admissions/undergraduate/guidelines/index.html',
     sources: [
       { type: 'html', url: 'https://www.rikkyo.ac.jp/admissions/undergraduate/guidelines/index.html' },
-      { type: 'html', url: 'https://www.rikkyo.ac.jp/admissions/undergraduate/' }
+      // 自由選抜入試要項: 電子ブックリーダー(52school)の設定JSから実体PDFを解決
+      {
+        type: 'pdf-from-js',
+        jsUrl: 'https://exam.52school.com/rikkyo/admissions/undergraduate/guidelines/J_guideline/js/viewerSetting.js',
+        varRegex: /PDF_PATH\s*=\s*"([^"]+)"/,
+        cap: 45000
+      }
     ]
   },
   {
@@ -156,13 +176,14 @@ async function fetchPdfText(url) {
 
 async function fetchSourceTexts(university) {
   const parts = [];
+  const cap = (text, source) => (source.cap ? text.slice(0, source.cap) : text);
   for (const source of university.sources) {
     if (source.type === 'html') {
       const { data } = await axios.get(source.url, { timeout: 30000 });
-      parts.push(`===== ソース(HTML): ${source.url} =====\n${stripHtml(data)}`);
+      parts.push(`===== ソース(HTML): ${source.url} =====\n${cap(stripHtml(data), source)}`);
     } else if (source.type === 'pdf') {
       const text = await fetchPdfText(source.url);
-      parts.push(`===== ソース(PDF): ${source.url} =====\n${text}`);
+      parts.push(`===== ソース(PDF): ${source.url} =====\n${cap(text, source)}`);
     } else if (source.type === 'pdf-links') {
       const { data } = await axios.get(source.url, { timeout: 30000 });
       const links = [...new Set(
@@ -173,9 +194,17 @@ async function fetchSourceTexts(university) {
       )].slice(0, source.max);
       for (const link of links) {
         const text = await fetchPdfText(link);
-        parts.push(`===== ソース(PDF): ${link} =====\n${text}`);
+        parts.push(`===== ソース(PDF): ${link} =====\n${cap(text, source)}`);
         await new Promise((r) => setTimeout(r, 300));
       }
+    } else if (source.type === 'pdf-from-js') {
+      // 電子ブックリーダーの設定JSからPDFの実体パスを解決して取得
+      const { data: js } = await axios.get(source.jsUrl, { timeout: 30000 });
+      const m = String(js).match(source.varRegex);
+      if (!m) throw new Error(`pdf path not found in ${source.jsUrl}`);
+      const pdfUrl = new URL(m[1], source.jsUrl.replace(/js\/[^/]+$/, '')).href;
+      const text = await fetchPdfText(pdfUrl);
+      parts.push(`===== ソース(PDF): ${pdfUrl} =====\n${cap(text, source)}`);
     }
     await new Promise((r) => setTimeout(r, 500));
   }
