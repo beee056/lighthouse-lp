@@ -5,7 +5,9 @@
     "dev": "npx serve -l 3000 ."
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
     "axios": "^1.15.2",
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "pdf-parse": "^2.4.5"
   }
 }
