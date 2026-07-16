@@ -33,12 +33,21 @@ jobs:
         continue-on-error: true
         run: node scripts/keio-scraper.js
 
+      # 早稲田・GMARCHの要項をClaude APIで構造化抽出。
+      # ANTHROPIC_API_KEY (Secrets)未設定時はスクリプト側で何もせず正常終了する
+      - name: Run University Details Scraper (AI)
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/uni-details-scraper.js
+
       - name: Commit and Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add data.json
           git add keio-data.json || true
+          git add uni-details.json || true
           git diff --cached --quiet && exit 0
           git commit -m "chore(data): auto-update university data"
           git push

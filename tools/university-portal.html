@@ -499,6 +499,7 @@
     <script>
         let allData = [];
         let keioData = null; // 慶應公式サイトから週次取得した入試日程・募集人員
+        let uniDetails = null; // 早稲田・GMARCH等の公式要項からAI抽出した入試情報
         let compareUrls = [];
         let compareMeta = {}; // stores metadata like { "item_123": { status: "第一志望", action: "OC行く", memo: "英検必須" } }
         let currentGroupedData = {}; // Store mapped data by university
@@ -509,10 +510,14 @@
                 const res = await fetch('../data.json');
                 allData = await res.json();
 
-                // 慶應公式データ(任意)。取得失敗しても一覧表示には影響させない
+                // 公式サイト由来の詳細データ(任意)。取得失敗しても一覧表示には影響させない
                 try {
                     const keioRes = await fetch('../keio-data.json');
                     if (keioRes.ok) keioData = await keioRes.json();
+                } catch (e) { /* noop */ }
+                try {
+                    const detailsRes = await fetch('../uni-details.json');
+                    if (detailsRes.ok) uniDetails = await detailsRes.json();
                 } catch (e) { /* noop */ }
                 
                 // Assign deterministic unique IDs
@@ -629,24 +634,10 @@
                 </div>
             `;
 
-            // 慶應義塾大学のみ: 公式サイトから週次取得した入試日程・募集人員を表示
-            if (uniName.includes('慶應義塾大学') && keioData && Array.isArray(keioData.programs) && keioData.programs.length > 0) {
-                const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-                const keioBlock = document.createElement('div');
-                keioBlock.style.cssText = "background:#f5f3ff; border:1px solid #ddd6fe; border-radius:10px; padding:0.85rem 0.95rem; margin-bottom:1.2rem;";
-                keioBlock.innerHTML = `
-                    <div style="font-weight:800; font-size:0.92rem; color:var(--text-main); display:flex; align-items:center; gap:0.4rem;">🎓 公式サイトの入試日程・募集人員<span class="badge category" style="margin-left:0;">自動更新</span></div>
-                    ${keioData.programs.map(p => `
-                        <details style="margin-top:0.55rem; border-top:1px solid #e9e5f8; padding-top:0.55rem;">
-                            <summary style="cursor:pointer; font-size:0.86rem; color:var(--text-main);"><span style="font-weight:700;">${esc(p.name)}</span><span style="color:#6d28d9; font-size:0.8rem;"> ─ ${esc(p.capacity)}</span></summary>
-                            <div style="padding:0.5rem 0 0.15rem;">
-                                ${p.schedule.map(s => `<div style="font-size:0.8rem; line-height:1.55; margin-bottom:0.35rem;"><span style="font-weight:700;">${esc(s.label)}:</span> ${esc(s.value)}</div>`).join('')}
-                                <a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; color:var(--primary); font-weight:600; text-decoration:none;">公式ページで確認 ↗</a>
-                            </div>
-                        </details>`).join('')}
-                    <div style="font-size:0.72rem; color:#6b7280; margin-top:0.65rem;">出典: 慶應義塾大学公式サイト(週次自動取得)。正式な内容は必ず各募集要項で確認してください。</div>
-                `;
-                listContainer.appendChild(keioBlock);
+            // 公式サイト由来の入試日程・募集人員(慶應=構造化スクレイピング、他校=AI抽出)
+            const officialInfo = getOfficialInfo(uniName);
+            if (officialInfo) {
+                listContainer.appendChild(buildOfficialInfoBlock(officialInfo.programs, officialInfo.note));
             }
 
             items.forEach(item => {
@@ -678,6 +669,48 @@
 
         function closeUniDetailModal() {
             document.getElementById('uniDetailModal').classList.remove('active');
+        }
+
+        // 大学名に対応する公式詳細データ(programs + 出典注記)を返す。無ければnull
+        function getOfficialInfo(uniName) {
+            if (uniName.includes('慶應義塾大学') && keioData && Array.isArray(keioData.programs) && keioData.programs.length > 0) {
+                return {
+                    programs: keioData.programs,
+                    note: '出典: 慶應義塾大学公式サイト(週次自動取得)。正式な内容は必ず各募集要項で確認してください。'
+                };
+            }
+            if (uniDetails && Array.isArray(uniDetails.universities)) {
+                const uni = uniDetails.universities.find(u => uniName === u.name);
+                if (uni && Array.isArray(uni.programs) && uni.programs.length > 0) {
+                    return {
+                        programs: uni.programs,
+                        note: '出典: 公式サイト・入学試験要項からAIが週次で自動抽出した参考情報です。誤りを含む可能性があるため、正式な内容は必ず公式の募集要項で確認してください。',
+                        officialUrl: uni.officialUrl
+                    };
+                }
+            }
+            return null;
+        }
+
+        // 公式入試情報のアコーディオンブロックを生成(慶應・AI抽出校で共通)
+        function buildOfficialInfoBlock(programs, note) {
+            const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            const block = document.createElement('div');
+            block.style.cssText = "background:#f5f3ff; border:1px solid #ddd6fe; border-radius:10px; padding:0.85rem 0.95rem; margin-bottom:1.2rem;";
+            block.innerHTML = `
+                <div style="font-weight:800; font-size:0.92rem; color:var(--text-main); display:flex; align-items:center; gap:0.4rem;">🎓 公式サイトの入試日程・募集人員<span class="badge category" style="margin-left:0;">自動更新</span></div>
+                ${programs.map(p => `
+                    <details style="margin-top:0.55rem; border-top:1px solid #e9e5f8; padding-top:0.55rem;">
+                        <summary style="cursor:pointer; font-size:0.86rem; color:var(--text-main);"><span style="font-weight:700;">${esc(p.name)}</span><span style="color:#6d28d9; font-size:0.8rem;">${p.capacity ? ' ─ ' + esc(p.capacity) : ''}</span></summary>
+                        <div style="padding:0.5rem 0 0.15rem;">
+                            ${p.faculties ? `<div style="font-size:0.8rem; line-height:1.55; margin-bottom:0.35rem;"><span style="font-weight:700;">対象:</span> ${esc(p.faculties)}</div>` : ''}
+                            ${p.schedule.map(s => `<div style="font-size:0.8rem; line-height:1.55; margin-bottom:0.35rem;"><span style="font-weight:700;">${esc(s.label)}:</span> ${esc(s.value)}</div>`).join('')}
+                            ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; color:var(--primary); font-weight:600; text-decoration:none;">公式ページで確認 ↗</a>` : ''}
+                        </div>
+                    </details>`).join('')}
+                <div style="font-size:0.72rem; color:#6b7280; margin-top:0.65rem;">${esc(note)}</div>
+            `;
+            return block;
         }
 
         function toggleCompareFromDetail(url, btnElement) {
