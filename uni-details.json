@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "580811b76253dac7537b9d47972de77613b3ab6ee80accb122d1aa8652c16512",
+      "sourceHash": "dd44d60e9a72eaed283f0a8164fa71de8d8baaf0d03d29b81fb1f83b8ddc8dce",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -14,11 +14,7 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月1日（火）～9月10日（木）"
-            },
-            {
-              "label": "2次選考実施日",
-              "value": "記載なし"
+              "value": "2026年9月1日～9月10日"
             }
           ],
           "url": "https://www.waseda.jp/inst/admission/undergraduate/system/wacel/"
@@ -33,7 +29,7 @@
               "value": "2026年9月25日～10月1日"
             },
             {
-              "label": "一次選考合格発表日",
+              "label": "一次選考合格発表",
               "value": "2026年11月13日"
             },
             {
@@ -41,7 +37,7 @@
               "value": "2026年11月22日"
             },
             {
-              "label": "二次選考合格発表日",
+              "label": "二次選考合格発表",
               "value": "2026年12月11日"
             }
           ],
@@ -61,7 +57,7 @@
               "value": "2026年10月25日"
             },
             {
-              "label": "合格者発表日",
+              "label": "合格発表",
               "value": "2026年11月23日"
             }
           ],
@@ -71,24 +67,14 @@
           "name": "AO入試（4月入学）国外選考",
           "faculties": "国際教養学部",
           "capacity": "100名",
-          "schedule": [
-            {
-              "label": "詳細情報",
-              "value": "英語版WEBサイト参照"
-            }
-          ],
+          "schedule": [],
           "url": "https://www.waseda.jp/fire/sils/applicants/admission/"
         },
         {
           "name": "AO入試（9月入学）",
           "faculties": "国際教養学部",
           "capacity": "150名",
-          "schedule": [
-            {
-              "label": "詳細情報",
-              "value": "英語版WEBサイト参照"
-            }
-          ],
+          "schedule": [],
           "url": "https://www.waseda.jp/fire/sils/applicants/admission/"
         },
         {
@@ -98,67 +84,67 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月1日（火）～9月8日（火）"
+              "value": "2026年9月1日～9月8日"
             },
             {
-              "label": "1次選考合格者発表日",
-              "value": "2026年9月25日（金）"
+              "label": "一次選考合格発表",
+              "value": "2026年9月25日"
             },
             {
-              "label": "2次選考日",
-              "value": "2026年10月10日（土）"
+              "label": "二次選考日",
+              "value": "2026年10月10日"
             },
             {
-              "label": "最終合格者発表日",
-              "value": "2026年11月1日（日）"
+              "label": "最終合格発表",
+              "value": "2026年11月1日"
             }
           ],
           "url": "https://www.waseda.jp/fhum/hum/applicants/admission/"
         },
         {
-          "name": "総合型選抜III群（スポーツ自己推薦入学試験）",
+          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入試）",
           "faculties": "スポーツ科学部",
           "capacity": "60名",
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月15日（火）～9月28日（月）"
+              "value": "2026年9月15日～9月28日"
             },
             {
               "label": "第二次選考試験日",
-              "value": "2026年11月14日（土）"
+              "value": "2026年11月14日"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "総合型選抜I群（トップアスリート入学試験）",
+          "name": "総合型選抜Ⅰ群（トップアスリート入試）",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
             {
               "label": "第1回事前セミナー申込期間",
-              "value": "2026年4月7日（火）～4月13日（月）"
+              "value": "2026年4月7日～4月13日"
             },
             {
               "label": "第2回事前セミナー申込期間",
-              "value": "2026年6月9日（火）～6月15日（月）"
+              "value": "2026年6月9日～6月15日"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "スポーツサポート歴入学試験",
+          "name": "スポーツサポート歴入試",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月7日（月）～9月11日（金）"
+              "value": "2026年9月7日～9月11日"
             },
             {
               "label": "第二次選考試験日",
-              "value": "2026年11月14日（土）"
+              "value": "2026年11月14日"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
@@ -481,7 +467,7 @@
       "id": "chuo",
       "name": "中央大学",
       "officialUrl": "https://www.chuo-u.ac.jp/connect/admission/special/guide/",
-      "sourceHash": "da9f175447c80b7db8257cd0d619d49db6d769b1a867e25ecbaa79d5dbb2f1c1",
+      "sourceHash": "c3991c9ded13a1c7f800aae089b05e4763a80091c04b60e9d32525ab22b0a1fc",
       "programs": [
         {
           "name": "チャレンジ入学試験",
@@ -490,10 +476,10 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月1日(火)10:00～9月7日(月)(締切日消印有効)"
+              "value": "2026年9月1日(火)10:00～9月7日(月)※締切日消印有効"
             },
             {
-              "label": "1次選考(書類選考)合格発表",
+              "label": "1次選考合格発表",
               "value": "2026年10月16日(金)11:00～"
             },
             {
@@ -501,7 +487,7 @@
               "value": "2026年10月24日(土)"
             },
             {
-              "label": "合格発表",
+              "label": "最終合格発表",
               "value": "2026年11月5日(木)11:00～"
             },
             {
@@ -542,6 +528,13 @@
         {
           "name": "外国語能力特別入学試験",
           "faculties": "経済学部、商学部",
+          "capacity": "",
+          "schedule": [],
+          "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
+        },
+        {
+          "name": "社会人入学試験",
+          "faculties": "商学部",
           "capacity": "",
           "schedule": [],
           "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
@@ -782,7 +775,7 @@
       "id": "gakushuin",
       "name": "学習院大学",
       "officialUrl": "https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/",
-      "sourceHash": "d13dd9b384d21be585273609e87c1e733cac5d034fdc8c1811bc600098d5d492",
+      "sourceHash": "15fdd2c854170ee8162b51c4bcd325adc3b4a0b8e4ce3824066237b756ce9ae5",
       "programs": [
         {
           "name": "学校推薦型選抜（公募制）",
@@ -791,11 +784,19 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "令和8（2026）年11月1日（土）～11月6日（木）"
+              "value": "令和9（2027）年度 11月1日（土）～11月6日（木）"
+            },
+            {
+              "label": "試験日",
+              "value": "令和9（2027）年度 11月22日（土）"
             },
             {
               "label": "合格発表日",
-              "value": "令和8（2026）年12月12日（金）"
+              "value": "令和9（2027）年度 12月12日（金）"
+            },
+            {
+              "label": "入学手続締切日",
+              "value": "令和9（2027）年度 2月27日（金）"
             }
           ],
           "url": "https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/recommendation-open/"
