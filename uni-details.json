@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "dd44d60e9a72eaed283f0a8164fa71de8d8baaf0d03d29b81fb1f83b8ddc8dce",
+      "sourceHash": "56f8f7fac29a1cc125061e77b4e67a91193bff23a42160059633f4c002d8df38",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -14,7 +14,7 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月1日～9月10日"
+              "value": "2026年9月1日（火）～9月10日（木）"
             }
           ],
           "url": "https://www.waseda.jp/inst/admission/undergraduate/system/wacel/"
@@ -29,7 +29,7 @@
               "value": "2026年9月25日～10月1日"
             },
             {
-              "label": "一次選考合格発表",
+              "label": "一次選考合格発表日",
               "value": "2026年11月13日"
             },
             {
@@ -37,7 +37,7 @@
               "value": "2026年11月22日"
             },
             {
-              "label": "二次選考合格発表",
+              "label": "二次選考合格発表日",
               "value": "2026年12月11日"
             }
           ],
@@ -53,11 +53,11 @@
               "value": "2026年9月1日～9月8日"
             },
             {
-              "label": "筆記審査日",
+              "label": "筆記審査",
               "value": "2026年10月25日"
             },
             {
-              "label": "合格発表",
+              "label": "合格者発表",
               "value": "2026年11月23日"
             }
           ],
@@ -84,67 +84,67 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月1日～9月8日"
+              "value": "2026年9月1日（火）～9月8日（火）"
             },
             {
-              "label": "一次選考合格発表",
-              "value": "2026年9月25日"
+              "label": "1次選考合格者発表日",
+              "value": "2026年9月25日（金）"
             },
             {
-              "label": "二次選考日",
-              "value": "2026年10月10日"
+              "label": "2次選考日",
+              "value": "2026年10月10日（土）"
             },
             {
-              "label": "最終合格発表",
-              "value": "2026年11月1日"
+              "label": "最終合格者発表日",
+              "value": "2026年11月1日（日）"
             }
           ],
           "url": "https://www.waseda.jp/fhum/hum/applicants/admission/"
         },
         {
-          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入試）",
+          "name": "総合型選抜III群（スポーツ自己推薦入学試験）",
           "faculties": "スポーツ科学部",
           "capacity": "60名",
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月15日～9月28日"
+              "value": "2026年9月15日（火）～9月28日（月）"
             },
             {
               "label": "第二次選考試験日",
-              "value": "2026年11月14日"
+              "value": "2026年11月14日（土）"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "総合型選抜Ⅰ群（トップアスリート入試）",
+          "name": "総合型選抜I群（トップアスリート入学試験）",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
             {
               "label": "第1回事前セミナー申込期間",
-              "value": "2026年4月7日～4月13日"
+              "value": "2026年4月7日（火）～4月13日（月）"
             },
             {
               "label": "第2回事前セミナー申込期間",
-              "value": "2026年6月9日～6月15日"
+              "value": "2026年6月9日（火）～6月15日（月）"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "スポーツサポート歴入試",
+          "name": "スポーツサポート歴入学試験",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2026年9月7日～9月11日"
+              "value": "2026年9月7日（月）～9月11日（金）"
             },
             {
               "label": "第二次選考試験日",
-              "value": "2026年11月14日"
+              "value": "2026年11月14日（土）"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
