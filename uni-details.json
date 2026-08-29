@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "fc80eece0a71d28db73dfe1b19c66c0d38ae410d3e713321031f8beae47d9fe4",
+      "sourceHash": "c660e5ca5adc1e4d9490f1d5ac2a099a9f044e18980068cf0b77e9a21fdf336b",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -37,14 +37,14 @@
               "value": "2026年11月22日"
             },
             {
-              "label": "最終合格発表",
+              "label": "二次選考合格発表",
               "value": "2026年12月11日"
             }
           ],
           "url": "https://www.waseda.jp/fsss/sss/applicants/admission/"
         },
         {
-          "name": "AO入学試験（4月入学）国内選考",
+          "name": "AO入試（4月入学）国内選考",
           "faculties": "国際教養学部",
           "capacity": "95名",
           "schedule": [
@@ -64,14 +64,14 @@
           "url": "https://www.waseda.jp/fire/sils/applicants/admission/"
         },
         {
-          "name": "AO入学試験（4月入学）国外選考",
+          "name": "AO入試（4月入学）国外選考",
           "faculties": "国際教養学部",
           "capacity": "100名",
           "schedule": [],
           "url": "https://www.waseda.jp/fire/sils/applicants/admission/"
         },
         {
-          "name": "AO入学試験（9月入学）",
+          "name": "AO入試（9月入学）",
           "faculties": "国際教養学部",
           "capacity": "150名",
           "schedule": [],
@@ -102,7 +102,7 @@
           "url": "https://www.waseda.jp/fhum/hum/applicants/admission/"
         },
         {
-          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入試）",
+          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入学試験）",
           "faculties": "スポーツ科学部",
           "capacity": "60名",
           "schedule": [
@@ -111,8 +111,24 @@
               "value": "2026年9月15日（火）～9月28日（月）"
             },
             {
-              "label": "第二次選考日",
+              "label": "第二次選考試験日",
               "value": "2026年11月14日（土）"
+            }
+          ],
+          "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
+        },
+        {
+          "name": "総合型選抜Ⅰ群（トップアスリート入学試験）",
+          "faculties": "スポーツ科学部",
+          "capacity": "若干名",
+          "schedule": [
+            {
+              "label": "第1回事前セミナー申込期間",
+              "value": "2026年4月7日（火）～4月13日（月）"
+            },
+            {
+              "label": "第2回事前セミナー申込期間",
+              "value": "2026年6月9日（火）～6月15日（月）"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
@@ -127,24 +143,8 @@
               "value": "2026年9月7日（月）～9月11日（金）"
             },
             {
-              "label": "第二次選考日",
+              "label": "第二次選考試験日",
               "value": "2026年11月14日（土）"
-            }
-          ],
-          "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
-        },
-        {
-          "name": "総合型選抜Ⅰ群（トップアスリート入試）",
-          "faculties": "スポーツ科学部",
-          "capacity": "若干名",
-          "schedule": [
-            {
-              "label": "第1回事前セミナー申込期間",
-              "value": "2026年4月7日（火）～4月13日（月）"
-            },
-            {
-              "label": "第2回事前セミナー申込期間",
-              "value": "2026年6月9日（火）～6月15日（月）"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
@@ -833,190 +833,368 @@
       "id": "hosei",
       "name": "法政大学",
       "officialUrl": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/",
-      "sourceHash": "1bf425f4a90c8939dfa51975fde426a097fb0b110091198dd04e9e7fe7e22cfe",
+      "sourceHash": "6a513fc969993ae097c6309783ee2a402bb9acf71f133277dacad85a7cade326",
       "programs": [
         {
           "name": "英語外部試験利用自己推薦",
           "faculties": "法学部国際政治学科",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "自己推薦",
-          "faculties": "文学部哲学科、文学部日本文学科、文学部地理学科",
+          "faculties": "文学部哲学科、日本文学科",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "英語外部試験利用自己推薦",
           "faculties": "文学部英文学科",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、面接"
+            }
+          ],
+          "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
+        },
+        {
+          "name": "自己推薦",
+          "faculties": "文学部地理学科",
+          "capacity": "",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "グローバル体験公募推薦",
-          "faculties": "経営学部経営戦略学科、キャリアデザイン学部、現代福祉学部福祉コミュニティ学科、現代福祉学部臨床心理学科",
-          "capacity": "経営学部経営戦略学科：若干名、現代福祉学部福祉コミュニティ学科：2名、現代福祉学部臨床心理学科：2名、キャリアデザイン学部：3名",
+          "faculties": "経営学部経営戦略学科",
+          "capacity": "",
           "schedule": [
             {
-              "label": "出願期間（経営学部・現代福祉学部）",
+              "label": "出願期間",
               "value": "2026年9月22日（火）～10月2日（金）"
             },
             {
-              "label": "出願期間（キャリアデザイン学部）",
-              "value": "2026年9月29日（火）～10月9日（金）"
-            },
-            {
-              "label": "第1次選考合格発表日（経営学部・現代福祉学部）",
+              "label": "第1次選考合格発表日",
               "value": "2026年10月29日（木）10:00"
             },
             {
-              "label": "第1次選考合格発表日（キャリアデザイン学部）",
-              "value": "2026年11月6日（金）10:00"
-            },
-            {
-              "label": "第2次選考試験日（経営学部）",
+              "label": "第2次選考試験日",
               "value": "2026年11月8日（日）"
             },
             {
-              "label": "第2次選考試験日（現代福祉学部・キャリアデザイン学部）",
-              "value": "2026年11月15日（日）"
+              "label": "第2次選考合格発表日",
+              "value": "2026年11月17日(火)10:00"
             },
             {
-              "label": "第2次選考合格発表日（経営学部）",
-              "value": "2026年11月17日（火）10:00"
-            },
-            {
-              "label": "第2次選考合格発表日（現代福祉学部・キャリアデザイン学部）",
-              "value": "2026年11月24日（火）10:00"
-            },
-            {
-              "label": "入学手続締切日（経営学部）",
-              "value": "2026年11月24日（火）"
-            },
-            {
-              "label": "入学手続締切日（現代福祉学部・キャリアデザイン学部）",
-              "value": "2026年12月1日（火）"
+              "label": "入学手続締切日",
+              "value": "2026年11月24日(火)"
             }
           ],
-          "url": "https://www.guide.52school.com/export/sites/default/guidance/net-hosei-tokubetsu/gid/pdf/hosei_tokubetsu_global_yoko_2027.pdf"
+          "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "SA自己推薦",
           "faculties": "国際文化学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "分野優秀者",
           "faculties": "国際文化学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "自己推薦",
           "faculties": "人間環境学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "キャリア体験自己推薦",
           "faculties": "キャリアデザイン学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "商業学科等対象公募推薦",
           "faculties": "キャリアデザイン学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
-          "name": "自己推薦（春入学S基準）",
-          "faculties": "GIS（グローバル教養学部）",
-          "capacity": "",
-          "schedule": [],
+          "name": "グローバル体験公募推薦",
+          "faculties": "キャリアデザイン学部",
+          "capacity": "3名",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2026年9月29日（火）～10月9日（金）"
+            },
+            {
+              "label": "第1次選考合格発表日",
+              "value": "2026年11月6日（金）10:00"
+            },
+            {
+              "label": "第2次選考試験日",
+              "value": "2026年11月15日（日）"
+            },
+            {
+              "label": "第2次選考合格発表日",
+              "value": "2026年11月24日(火)10:00"
+            },
+            {
+              "label": "入学手続締切日",
+              "value": "2026年12月1日(火)"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
-          "name": "自己推薦（春入学A基準）",
+          "name": "自己推薦 春入学S基準",
           "faculties": "GIS（グローバル教養学部）",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、面接"
+            }
+          ],
+          "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
+        },
+        {
+          "name": "自己推薦 春入学A基準",
+          "faculties": "GIS（グローバル教養学部）",
+          "capacity": "",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "自己推薦",
           "faculties": "スポーツ健康学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "まちづくりチャレンジ自己推薦",
           "faculties": "現代福祉学部福祉コミュニティ学科",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
+          "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
+        },
+        {
+          "name": "グローバル体験公募推薦",
+          "faculties": "現代福祉学部福祉コミュニティ学科、臨床心理学科",
+          "capacity": "福祉コミュニティ学科2名、臨床心理学科2名",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2026年9月22日（火）～10月2日（金）"
+            },
+            {
+              "label": "第1次選考合格発表日",
+              "value": "2026年10月29日（木）10:00"
+            },
+            {
+              "label": "第2次選考試験日",
+              "value": "2026年11月15日（日）"
+            },
+            {
+              "label": "第2次選考合格発表日",
+              "value": "2026年11月24日(火)10:00"
+            },
+            {
+              "label": "入学手続締切日",
+              "value": "2026年12月1日(火)"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "自己推薦",
           "faculties": "情報科学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "公募推薦",
-          "faculties": "理工学部電気電子工学科、理工学部応用情報工学科、理工学部経営システム工学科、理工学部創生科学科",
+          "faculties": "理工学部電気電子工学科、応用情報工学科、経営システム工学科、創生科学科",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2027年度の具体的な日程は記載されていません"
+            },
+            {
+              "label": "選考方法",
+              "value": "書類審査、筆記試験、面接"
+            }
+          ],
           "url": "https://nyushi.hosei.ac.jp/nyushi/seido/suisen/"
         },
         {
           "name": "国際バカロレア利用自己推薦",
           "faculties": "文学部、経済学部、人間環境学部、キャリアデザイン学部",
-          "capacity": "各学科若干名",
+          "capacity": "",
           "schedule": [
-            {
-              "label": "出願期間（人間環境学部・キャリアデザイン学部）",
-              "value": "2024年10月1日（火）～10月11日（金）"
-            },
             {
               "label": "出願期間（文学部・経済学部）",
               "value": "2024年11月5日（火）～11月15日（金）"
             },
             {
-              "label": "試験日（人間環境学部・キャリアデザイン学部）",
-              "value": "2024年11月17日（日）"
+              "label": "出願期間（人間環境学部・キャリアデザイン学部）",
+              "value": "2024年10月1日（火）～10月11日（金）"
             },
             {
               "label": "試験日（文学部・経済学部）",
-              "value": "2024年12月1日（日）"
+              "value": "2024年12月1日(日)"
             },
             {
-              "label": "合格発表日（人間環境学部・キャリアデザイン学部）",
-              "value": "2024年11月26日（火）10:00"
+              "label": "試験日（人間環境学部・キャリアデザイン学部）",
+              "value": "2024年11月17日(日)"
             },
             {
               "label": "合格発表日（文学部・経済学部）",
               "value": "2024年12月17日（火）10:00"
             },
             {
-              "label": "入学手続締切日（人間環境学部・キャリアデザイン学部）",
-              "value": "2024年12月3日（火）"
+              "label": "合格発表日（人間環境学部・キャリアデザイン学部）",
+              "value": "2024年11月26日(火)10:00"
             },
             {
               "label": "入学手続締切日（文学部・経済学部）",
-              "value": "2024年12月24日（火）"
+              "value": "2024年12月24日(火)"
+            },
+            {
+              "label": "入学手続締切日（人間環境学部・キャリアデザイン学部）",
+              "value": "2024年12月3日(火)"
             }
           ],
           "url": "https://www.guide.52school.com/guidance/net-hosei-tokubetsu/gid/pdf/hosei_tokubetsu_IB-jiko_yoko_2025.pdf"
