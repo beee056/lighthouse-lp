@@ -1,0 +1,265 @@
+{
+  "reference": "https://drive.google.com/file/d/1P25j-LbFmbT9g75r7zgZpZaIefRXCuv8/view",
+  "assetFolder": "https://drive.google.com/drive/folders/1dlTOaLaNTvtu7RCbpPeTvhY4eVA4pRsi",
+  "processing": "Supplied PNGs converted to WebP. Illustrations fit within 1000 px. Decorative and UI assets have transparent outer padding trimmed. No new SVG artwork.",
+  "files": [
+    {
+      "file": "shape20.webp",
+      "driveFileId": "1-bWqS1Jr3GiJWcCT77bF_13E96s_Youu",
+      "source": "20_青白_同心円セット.png",
+      "bytes": 11406
+    },
+    {
+      "file": "shape21.webp",
+      "driveFileId": "1EBB3XyPIqqAczabi-Dt06mjoFexauceJ",
+      "source": "21_黄アイボリー_リングセット.png",
+      "bytes": 10756
+    },
+    {
+      "file": "shape19.webp",
+      "driveFileId": "1AikHdHhOamRMBRSouHog2LyIfKKlJ3Fe",
+      "source": "19_黄青_同心円セット.png",
+      "bytes": 12720
+    },
+    {
+      "file": "shape16.webp",
+      "driveFileId": "1fLDlY0CGvaNjEJVfR6FeUUf9BPAlp7mY",
+      "source": "16_黄色斜めバー_大.png",
+      "bytes": 4308
+    },
+    {
+      "file": "shape17.webp",
+      "driveFileId": "1robNESTLe8JAr3euKDFQT3etoJ_iKDne",
+      "source": "17_黄色い光の曲線.png",
+      "bytes": 4698
+    },
+    {
+      "file": "shape15.webp",
+      "driveFileId": "1NjveriB0N0XaR58gTqO21rEnMrahGW_A",
+      "source": "15_黄色斜めバー_中.png",
+      "bytes": 4164
+    },
+    {
+      "file": "shape13.webp",
+      "driveFileId": "1-YrajZDqO_NEIfdWa_C2dapGMJmOSsKR",
+      "source": "13_淡ブルー斜めバー_大.png",
+      "bytes": 4402
+    },
+    {
+      "file": "shape14.webp",
+      "driveFileId": "1A4ZLzVEkzGB0HoxjdBLV1uU2x3rzmlga",
+      "source": "14_オレンジ斜めバー_大.png",
+      "bytes": 4138
+    },
+    {
+      "file": "shape12.webp",
+      "driveFileId": "1ORjOyVh7XDqOTq760U5UvtHazppT5hns",
+      "source": "12_ブルー斜めバー_小.png",
+      "bytes": 2272
+    },
+    {
+      "file": "shape11.webp",
+      "driveFileId": "1vCFSzR9Y8K8TrYGqgNyBdI9shmp8mqbD",
+      "source": "11_オレンジコーナー図形.png",
+      "bytes": 2116
+    },
+    {
+      "file": "shape10.webp",
+      "driveFileId": "1H0JxnfJCuH07lz9FTmPr1apHYmQwszA6",
+      "source": "10_黄色コーナー三角形.png",
+      "bytes": 1508
+    },
+    {
+      "file": "shape09.webp",
+      "driveFileId": "1XFAUy1gWYB9huzU5oUWsRW34sfiHqo0j",
+      "source": "09_オレンジ三角形_左.png",
+      "bytes": 2512
+    },
+    {
+      "file": "shape08.webp",
+      "driveFileId": "1WK08vafkY7pnBtOVNQcMlRBy32nPIqBO",
+      "source": "08_白リング_中.png",
+      "bytes": 5392
+    },
+    {
+      "file": "shape05.webp",
+      "driveFileId": "1D-IU4iswutxF-sR-dIqZKEBUlVMgx7aj",
+      "source": "05_黄色リング_大.png",
+      "bytes": 11502
+    },
+    {
+      "file": "shape07.webp",
+      "driveFileId": "1sWdBgdvM2gYktnovj-DnwzwSculkNFHj",
+      "source": "07_ブルーリング_中.png",
+      "bytes": 5980
+    },
+    {
+      "file": "shape06.webp",
+      "driveFileId": "1wH5Q1JvBtoHcK0JWuRWP_S-JCwSQKCru",
+      "source": "06_ブルーリング_大.png",
+      "bytes": 7286
+    },
+    {
+      "file": "shape01.webp",
+      "driveFileId": "12EUsniGF3Dl4d4ZE5KUlp_xuw4Yvx8_W",
+      "source": "01_黄色円_大.png",
+      "bytes": 6466
+    },
+    {
+      "file": "shape03.webp",
+      "driveFileId": "12O9lCdTJsOwG9AP_JiCYkTCOHe4RIUlC",
+      "source": "03_ブルー円_中.png",
+      "bytes": 5564
+    },
+    {
+      "file": "shape02.webp",
+      "driveFileId": "1msuPQigLMZL1H1L8ygyD6n-1rOBdhg8i",
+      "source": "02_黄色円_中.png",
+      "bytes": 4768
+    },
+    {
+      "file": "ui16.webp",
+      "driveFileId": "1Tr6gkrWiYaFyIqhUIsu12Vw0PupFcuiM",
+      "source": "16_工程レール_黄色.png",
+      "bytes": 310
+    },
+    {
+      "file": "ui15.webp",
+      "driveFileId": "1Wjdee6GjbhFEcB0rTtS29aShe1wf4pKq",
+      "source": "15_区切り線_淡ブルー.png",
+      "bytes": 142
+    },
+    {
+      "file": "ui14.webp",
+      "driveFileId": "1YuWjDsBFDE7EW6Ryj9oxInknTuDnrVBk",
+      "source": "14_無料相談番号_3.png",
+      "bytes": 10436
+    },
+    {
+      "file": "ui12.webp",
+      "driveFileId": "1y3fmZmIXY_kn0-EYsMv0nsfxjTeZ-ZvZ",
+      "source": "12_無料相談番号_1.png",
+      "bytes": 7476
+    },
+    {
+      "file": "ui13.webp",
+      "driveFileId": "1Ua-5tUL7kM9c19LB_KM3GRgZLzv-ynuG",
+      "source": "13_無料相談番号_2.png",
+      "bytes": 9714
+    },
+    {
+      "file": "ui11.webp",
+      "driveFileId": "1-cp3pzu5-X0escVdPGStPL6EZzEGAgqO",
+      "source": "11_指導工程番号_05.png",
+      "bytes": 12224
+    },
+    {
+      "file": "ui08.webp",
+      "driveFileId": "1gnSJVsQkkoMmMGndzP1bP4fzjrfrEzlR",
+      "source": "08_指導工程番号_02.png",
+      "bytes": 12070
+    },
+    {
+      "file": "ui10.webp",
+      "driveFileId": "1vYggt6CQRLAxjfSV7YLBU91N9uJ5VIkt",
+      "source": "10_指導工程番号_04.png",
+      "bytes": 11406
+    },
+    {
+      "file": "ui09.webp",
+      "driveFileId": "1i9jSjxmaq0iEoj7YnqthGilR2BCIKOX8",
+      "source": "09_指導工程番号_03.png",
+      "bytes": 12406
+    },
+    {
+      "file": "ui06.webp",
+      "driveFileId": "1bjZFXw28grNaLVRooArGxvFF2Yug8if0",
+      "source": "06_接続ノード.png",
+      "bytes": 5266
+    },
+    {
+      "file": "ui07.webp",
+      "driveFileId": "1tt1qwr7thJb0zVJE9TQBMUnHp7quriKd",
+      "source": "07_指導工程番号_01.png",
+      "bytes": 10566
+    },
+    {
+      "file": "ui04.webp",
+      "driveFileId": "1kiwuADvQvEtxBR51alsQp4tdl9S959YQ",
+      "source": "04_チェックマーク.png",
+      "bytes": 4700
+    },
+    {
+      "file": "ui05.webp",
+      "driveFileId": "1O-rTtDu06pJCTTvJKXVUMHtSKzMYhtGL",
+      "source": "05_黄色ドット.png",
+      "bytes": 3334
+    },
+    {
+      "file": "ui03.webp",
+      "driveFileId": "10ppFm9J1ZASrhIZxv6BmtOccgbhQIYUT",
+      "source": "03_LINE丸バッジ.png",
+      "bytes": 6756
+    },
+    {
+      "file": "ui02.webp",
+      "driveFileId": "1SgoXEVUXKyqBV0MqvWK4EXAaRS9--Qgv",
+      "source": "02_ハンバーガーメニュー.png",
+      "bytes": 1204
+    },
+    {
+      "file": "ui01.webp",
+      "driveFileId": "1tZnoHtMXKJcE4CO1F_fDJNPxCaDaJxHy",
+      "source": "01_LIGHTHOUSE文字ロゴ.png",
+      "bytes": 8408
+    },
+    {
+      "file": "hero.webp",
+      "driveFileId": "1jVQ9rlN4yRA2vDCHkHEhRmU5fCplFg95",
+      "source": "01_ファーストビュー_対話.png",
+      "bytes": 254596
+    },
+    {
+      "file": "student.webp",
+      "driveFileId": "1Re3ipAWwTZ-iEa_C3XOPbhQCcLOsRnfT",
+      "source": "02_悩み_女子生徒.png",
+      "bytes": 173400
+    },
+    {
+      "file": "dialogue.webp",
+      "driveFileId": "1MKdqMfxttMrngVssqUq-o-lo3SI6346f",
+      "source": "03_対話指導.png",
+      "bytes": 257698
+    },
+    {
+      "file": "research.webp",
+      "driveFileId": "1MUh45_zhosk5hqIuyNgHnPepPWk3IJaZ",
+      "source": "04_学問研究.png",
+      "bytes": 228096
+    },
+    {
+      "file": "case1.webp",
+      "driveFileId": "1YbcLoR2Zfdw3zKPl3b745pnRREE-Qddp",
+      "source": "05_CASE01_女子生徒.png",
+      "bytes": 217966
+    },
+    {
+      "file": "case2.webp",
+      "driveFileId": "19VYijIU7l_mMdppoNqQJyix7-iEzRAQ6",
+      "source": "06_CASE02_女子生徒.png",
+      "bytes": 258116
+    },
+    {
+      "file": "case3.webp",
+      "driveFileId": "1YzZKH9uAbk-ArNKaYnioE8hMUEDK-CbR",
+      "source": "07_CASE03_建築.png",
+      "bytes": 251212
+    },
+    {
+      "file": "mentor.webp",
+      "driveFileId": "1s2m3mrRGemqVtYq2VySYKeQAt8Fq3D5P",
+      "source": "08_指導者_田邊勇人.png",
+      "bytes": 318270
+    }
+  ]
+}

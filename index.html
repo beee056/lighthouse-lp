@@ -97,1004 +97,136 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      /* PIVOT&QUEST ブランドカラー(名刺基準) */
-      --paper: #F7F3E5;
-      --white: #FFFFFF;
-      --ink: #2B2723;
-      --purple: #4D227F;
-      --purple-soft: #F0EAF6;
-      --orange: #EE6223;
-      --orange-soft: #FDEDE4;
-      --gray: #7C786F;
-      --line: rgba(43, 39, 35, 0.12);
-      --line-strong: rgba(43, 39, 35, 0.55);
-      --line-green: #06C755;
-      --radius-xl: 22px;
-      --radius-lg: 18px;
-      --shadow-card: 0 6px 24px rgba(77, 34, 127, 0.07);
-      --shadow-sm: 0 3px 12px rgba(77, 34, 127, 0.06);
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'YakuHanJP', 'Zen Kaku Gothic New', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.9;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      font-feature-settings: "palt";
-      padding-bottom: 96px;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    ::selection { background: var(--orange); color: #fff; }
-    .slab { font-family: 'Zilla Slab', serif; }
-
-    /* ── Layout ── */
-    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
-    .section { padding: 76px 0; }
-    .section-soft { background: var(--white); }
-
-    /* ── Eyebrow (三角マーカー) ── */
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-size: 12px; font-weight: 700;
-      color: var(--orange); letter-spacing: 0.14em;
-      margin-bottom: 14px;
-    }
-    .eyebrow::before {
-      content: ""; width: 0; height: 0;
-      border-left: 5px solid transparent; border-right: 5px solid transparent;
-      border-bottom: 9px solid var(--orange); transform: rotate(90deg);
-    }
-
-    /* ── Typography ── */
-    h1 {
-      font-size: clamp(30px, 7vw, 54px);
-      line-height: 1.4; letter-spacing: 0.02em; font-weight: 900;
-    }
-    h2 {
-      font-size: clamp(24px, 5vw, 38px);
-      line-height: 1.45; letter-spacing: 0.02em; font-weight: 900;
-      margin-bottom: 14px;
-    }
-    h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
-    p.lead { font-size: clamp(15px, 2.5vw, 16px); color: var(--gray); max-width: 720px; line-height: 2; }
-    p.lead strong { color: var(--ink); font-weight: 700; }
-    strong { font-weight: 700; }
-
-    /* ── Buttons ── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 54px; padding: 0 28px; border-radius: 12px;
-      font-weight: 700; font-size: 15px; letter-spacing: 0.04em;
-      transition: transform 0.18s, box-shadow 0.18s, background 0.18s, color 0.18s;
-      cursor: pointer; white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--orange); color: #fff;
-      box-shadow: 0 8px 22px rgba(238, 98, 35, 0.24);
-    }
-    .btn-primary:hover { background: var(--purple); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(77,34,127,0.24); }
-    .btn-secondary { background: #fff; color: var(--ink); border: 1.5px solid var(--line-strong); }
-    .btn-secondary:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
-    .btn-line {
-      background: var(--line-green); color: #fff;
-      box-shadow: 0 8px 22px rgba(6,199,85,0.22);
-    }
-    .btn-line:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(6,199,85,0.3); }
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
-    .hint { margin-top: 12px; font-size: 12px; color: var(--gray); }
-
-    /* ── Cards / Grid ── */
-    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 24px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 24px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 24px; }
-    .card {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: var(--radius-xl); box-shadow: var(--shadow-card); padding: 26px;
-    }
-    .section-soft .card { background: var(--paper); }
-    .card p, .card li { font-size: 14px; color: #4b4640; line-height: 1.9; }
-    .card h3 { color: var(--ink); }
-
-    /* ── Top nav ── */
-    .top-nav {
-      border-bottom: 1px solid var(--line); padding: 12px 0;
-      background: rgba(247,243,229,0.92); backdrop-filter: blur(10px);
-      position: sticky; top: 0; z-index: 50;
-    }
-    .top-nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .top-nav-brand { display: flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 900; color: var(--purple); letter-spacing: 0.08em; }
-    .top-nav-brand img { height: 32px; width: auto; }
-    .top-nav-links { display: flex; align-items: center; gap: 22px; }
-    .top-nav-links a { font-size: 13px; font-weight: 500; color: var(--ink); transition: color 0.18s; }
-    .top-nav-links a:hover { color: var(--purple); }
-    .top-nav-links a.nav-diag { color: var(--orange); font-weight: 700; }
-    .top-nav-links a.nav-cta {
-      background: var(--orange); color: #fff; border-radius: 999px;
-      padding: 9px 20px; font-weight: 700; font-size: 13px;
-      transition: background 0.18s, transform 0.18s;
-    }
-    .top-nav-links a.nav-cta:hover { background: var(--purple); color: #fff; transform: translateY(-1px); }
-    .menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--ink); padding: 6px; }
-    .mobile-menu { display: none; }
-
-    @media (max-width: 860px) {
-      .top-nav-links { display: none; }
-      .menu-btn { display: block; }
-      .mobile-menu { display: none; flex-direction: column; padding: 6px 16px 16px; border-top: 1px solid var(--line); background: var(--paper); }
-      .mobile-menu.open { display: flex; }
-      .mobile-menu a { padding: 13px 4px; font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--line); }
-      .mobile-menu a:last-child { border-bottom: none; color: var(--orange); font-weight: 700; }
-    }
-
-    /* ── Hero ── */
-    .hero { padding: 44px 0 52px; position: relative; overflow: hidden; }
-    .hero-poly { position: absolute; top: -6%; right: -6%; width: clamp(260px, 32vw, 440px); opacity: 0.5; pointer-events: none; z-index: 0; }
-    .hero-inner {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1.12fr 0.88fr;
-      gap: 28px; align-items: center;
-    }
-    .hero-copy { }
-    .hero-copy h1 { margin-bottom: 20px; }
-    .hero-copy h1 .accent { color: var(--purple); }
-    .hero-sub { font-size: 16px; color: var(--gray); margin: 16px 0 22px; line-height: 2; }
-    .hero-img {
-      background: linear-gradient(180deg, var(--purple-soft) 0%, #fff 100%);
-      border: 1px solid var(--line); border-radius: 26px;
-      box-shadow: var(--shadow-card); overflow: hidden;
-      aspect-ratio: 4/5;
-    }
-    .hero-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96); }
-
-    /* ── Proof chips ── */
-    .proof-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
-    .chip {
-      background: var(--purple-soft); border: 1px solid rgba(77,34,127,0.14);
-      border-radius: 999px; padding: 8px 15px;
-      font-size: 13px; font-weight: 700; color: var(--purple);
-    }
-    .diag-inline { margin-top: 16px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--gray); }
-    .diag-inline a { text-decoration: underline; color: var(--orange); font-weight: 700; }
-
-    /* ── Stats ── */
-    .stat { text-align: center; padding: 28px 16px; }
-    .stat .num {
-      font-family: 'Zilla Slab', serif;
-      font-size: clamp(32px, 5vw, 44px); font-weight: 700;
-      line-height: 1.1; margin-bottom: 8px; color: var(--purple);
-    }
-    .stat .lbl { font-size: 13px; color: var(--gray); }
-
-    /* ── Voice cards ── */
-    .voice {
-      background: linear-gradient(165deg, #fff 0%, var(--orange-soft) 130%);
-      border: 1px solid rgba(238,98,35,0.18);
-      border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); padding: 24px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .section-soft .voice { background: linear-gradient(165deg, var(--paper) 0%, var(--orange-soft) 130%); }
-    .voice .school { font-size: 12px; font-weight: 700; color: var(--orange); }
-    .voice p { font-size: 14px; color: #3f3a34; line-height: 1.95; flex: 1; }
-
-    /* ── Quote block ── */
-    .quote {
-      background: var(--orange-soft); border: 1px solid rgba(238,98,35,0.2);
-      border-radius: 18px; padding: 22px 24px; margin-top: 18px;
-    }
-    .quote p { font-size: 15px; color: #3f3a34; line-height: 1.95; }
-    .quote .meta { font-size: 12px; color: var(--gray); font-weight: 700; margin-top: 10px; }
-
-    /* ── 4 Steps ── */
-    .steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: 28px; }
-    .step {
-      position: relative; padding: 28px 20px;
-      background: var(--white); border: 1px solid var(--line); border-radius: 18px;
-      text-align: center;
-    }
-    .section-soft .step { background: var(--paper); }
-    .step .step-num {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--purple); color: #fff;
-      font-family: 'Zilla Slab', serif; font-size: 17px; font-weight: 700;
-      margin: 0 auto 12px;
-    }
-    .step h3 { font-size: 16px; margin-bottom: 6px; }
-    .step p { font-size: 13px; color: var(--gray); line-height: 1.85; }
-
-    /* ── Philosophy tags ── */
-    .tag {
-      display: inline-block;
-      background: var(--purple-soft); border: 1px solid rgba(77,34,127,0.14);
-      border-radius: 999px; padding: 5px 13px;
-      font-size: 11px; font-weight: 700; color: var(--purple);
-      letter-spacing: 0.08em; margin: 0 4px 10px 0;
-    }
-    .tag.slab { letter-spacing: 0.14em; }
-
-    /* ── Dot list ── */
-    .dot-list { list-style: none; display: grid; gap: 10px; margin-top: 12px; }
-    .dot-list li { position: relative; padding-left: 20px; font-size: 14px; color: #4b4640; line-height: 1.85; }
-    .dot-list li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 9px; height: 2px; background: var(--orange); }
-
-    /* ── Diagnostic cards ── */
-    .diag-num {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 34px; height: 34px; border-radius: 9px;
-      background: var(--purple); color: #fff;
-      font-family: 'Zilla Slab', serif; font-size: 14px; font-weight: 700;
-      flex-shrink: 0;
-    }
-    .diag-card {
-      position: relative; overflow: hidden;
-      transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-color 0.22s;
-      border: 1px solid var(--line); background: var(--white);
-    }
-    .section-soft .diag-card { background: var(--paper); }
-    .diag-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 34px rgba(77,34,127,0.14);
-      border-color: var(--purple);
-    }
-    .diag-badge {
-      display: inline-block; font-size: 10px; font-weight: 700;
-      color: var(--orange); background: var(--orange-soft);
-      border: 1px solid rgba(238,98,35,0.2); border-radius: 999px;
-      padding: 3px 10px; margin-left: auto;
-    }
-    .diag-card .diag-arrow {
-      font-size: 13px; font-weight: 700; color: var(--orange);
-      display: inline-flex; align-items: center; gap: 4px; margin-top: auto;
-      transition: transform 0.18s;
-    }
-    .diag-card:hover .diag-arrow { transform: translateX(4px); color: var(--purple); }
-
-    /* ── FAQ ── */
-    .faq { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); margin-top: 18px; background: var(--white); }
-    .section-soft .faq { background: var(--paper); }
-    .faq-item { border-bottom: 1px solid var(--line); padding: 20px 22px; }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q { font-size: 15px; font-weight: 700; }
-    .faq-a { font-size: 14px; color: var(--gray); line-height: 1.9; }
-
-    /* ── Quest Note friendly block ── */
-    .quest-penguin { display: none; }
-
-    /* ── Footer CTA (purple band) ── */
-    .footer-cta {
-      background: var(--purple); color: #fff;
-      border-radius: 28px; padding: 52px 36px; text-align: center;
-      margin-top: 20px; position: relative; overflow: hidden;
-    }
-    .footer-cta .eyebrow { color: rgba(255,255,255,0.7); }
-    .footer-cta .eyebrow::before { border-bottom-color: var(--orange); }
-    .footer-cta h2 { color: #fff; }
-    .footer-cta p.lead { color: rgba(255,255,255,0.72); margin: 14px auto 0; }
-    .footer-cta .cta-row .btn-secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
-    .footer-cta .cta-row .btn-secondary:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
-
-    /* ── Site footer ── */
-    .site-footer { padding: 44px 0 40px; border-top: 1px solid var(--line); margin-top: 72px; }
-    .site-footer .inner { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px; }
-    .footer-brand-row { display: flex; align-items: center; gap: 14px; }
-    .footer-brand-row img { height: 40px; width: auto; }
-    .footer-brand { font-size: 13px; font-weight: 700; color: var(--purple); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 14px 18px; max-width: 640px; }
-    .footer-links a { font-size: 13px; color: var(--gray); transition: color 0.18s; }
-    .footer-links a:hover { color: var(--purple); }
-    .footer-copy { font-size: 11px; color: var(--gray); margin-top: 8px; letter-spacing: 0.04em; }
-
-    /* ── Sticky CTA ── */
-    .sticky-bar {
-      position: fixed; left: 12px; right: 12px; bottom: 12px;
-      background: rgba(255,255,255,0.96); border: 1px solid var(--line);
-      border-radius: 18px; box-shadow: 0 12px 36px rgba(77,34,127,0.16);
-      backdrop-filter: blur(12px); padding: 10px 16px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      z-index: 100;
-    }
-    .sticky-bar p { font-size: 12px; color: var(--gray); flex: 1; font-weight: 500; }
-    .sticky-bar p b { color: var(--purple); }
-    .sticky-bar .btn { min-height: 44px; padding: 0 18px; font-size: 13px; border-radius: 10px; }
-
-    /* ── Scroll reveal ── */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── Responsive ── */
-    @media (max-width: 960px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-img { order: -1; aspect-ratio: 16/10; max-height: 320px; }
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .grid-4 { grid-template-columns: repeat(2,1fr); }
-    }
-    @media (max-width: 640px) {
-      body { padding-bottom: 118px; }
-      .btn { white-space: normal; line-height: 1.3; }
-      .section { padding: 52px 0; }
-      .hero { padding: 28px 0 36px; }
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .cta-row { flex-direction: column; }
-      .cta-row .btn { width: 100%; }
-      .sticky-bar { flex-wrap: wrap; border-radius: 16px; gap: 8px 8px; padding: 10px 12px; }
-      .sticky-bar p { flex-basis: 100%; text-align: center; margin-bottom: 2px; }
-      .sticky-bar .btn { flex: 1 1 0; min-width: 0; white-space: nowrap; }
-      .footer-cta { padding: 36px 22px; border-radius: 22px; }
-      .site-footer .inner { flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
-      html { scroll-behavior: auto; }
-    }
-    :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
-
-    /* ── 学問接続マップ ── */
-    .cmap-flow { display: flex; align-items: stretch; gap: 10px; margin: 28px 0 12px; }
-    .cmap-stage { flex: 1; background: var(--purple-soft); border-radius: 14px; padding: 14px 12px; text-align: center; }
-    .cmap-stage .cmap-k { display: block; font-family: 'Zilla Slab', serif; font-size: 12px; font-weight: 700; color: var(--purple); letter-spacing: 0.06em; margin-bottom: 4px; }
-    .cmap-stage .cmap-t { font-size: 13px; font-weight: 800; color: var(--ink); line-height: 1.5; }
-    .cmap-arrow { display: flex; align-items: center; color: var(--orange); font-weight: 800; font-size: 18px; }
-    .cmap-rows { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
-    .cmap-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-sm); }
-    .cmap-cell { font-size: 13px; line-height: 1.6; color: #3f3a34; position: relative; }
-    .cmap-cell.is-q { font-weight: 800; color: var(--purple); }
-    .cmap-cell.is-out { font-weight: 700; color: var(--orange); }
-    .cmap-note { font-size: 12px; color: var(--gray); margin-top: 12px; }
-    @media (max-width: 720px) {
-      .cmap-flow { flex-wrap: wrap; gap: 8px; }
-      .cmap-stage { flex: 1 1 40%; }
-      .cmap-arrow { display: none; }
-      .cmap-row { grid-template-columns: 1fr; gap: 6px; }
-      .cmap-cell { padding-left: 84px; }
-      .cmap-cell::before { content: attr(data-label); position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--gray); }
-    }
-  </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/lp.css">
 </head>
 <body>
-  <!-- ══════════════════════════════════════ NAV ══════════════════════════════════════ -->
-  <nav class="top-nav">
-    <div class="container">
-      <div class="inner">
-        <a href="index.html" class="top-nav-brand">
-          <img src="logo.png" alt="">
-          <span>LIGHTHOUSE</span>
-        </a>
-        <div class="top-nav-links">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div class="page">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="LIGHTHOUSE トップ"><img src="assets/lp/ui01.webp" alt="LIGHTHOUSE" width="500" height="53"></a>
+      <details class="navigation">
+        <summary aria-label="メニュー"><img src="assets/lp/ui02.webp" alt="" width="404" height="276"><span class="sr-only">メニュー</span></summary>
+        <nav aria-label="メインメニュー">
           <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
           <a href="shop.html">サービス・料金</a>
           <a href="story.html">ストーリー</a>
-          <a href="tools/shindan.html" class="nav-diag">無料自己診断</a>
-          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" class="nav-cta">LINEで相談</a>
+          <a href="tools/shindan.html">無料自己診断</a>
+          <a href="for-parents.html">保護者の方へ</a>
+          <a href="https://quest.p-quest.com/" target="_blank" rel="noopener noreferrer">Quest Noteを受け取る</a>
+          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで無料受験相談</a>
+        </nav>
+      </details>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="deco hero-circle" src="assets/lp/shape01.webp" alt="" width="482" height="482">
+        <img class="deco hero-ring" src="assets/lp/shape06.webp" alt="" width="490" height="490">
+        <img class="deco hero-bar" src="assets/lp/shape12.webp" alt="" width="450" height="184">
+        <img class="hero-art" src="assets/lp/hero.webp" alt="生徒の話を聞き、一緒に考える指導者のイラスト" fetchpriority="high" width="1000" height="667">
+        <div class="content hero-copy">
+          <p class="hero-label">総合型選抜専門オンライン塾</p>
+          <h1 id="hero-title">あなたの経験を、<br>大学で学ぶ理由に。</h1>
+          <p class="hero-description">実績の大きさではなく、そこから何を考え、<br class="wide-only">何を学びたいと思ったか。経験を問いへ変え、<br class="wide-only">大学で深める学びにつなげます。</p>
+          <a class="cta" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer"><img src="assets/lp/ui03.webp" alt="" width="534" height="534">LINEで無料受験相談</a>
+          <p class="cta-note">志望校未定でも、実績に自信がなくても相談できます。</p>
         </div>
-        <button class="menu-btn" id="menu-toggle" type="button" aria-label="メニューを開閉" aria-expanded="false">
-          <svg id="menu-icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></svg>
-          <svg id="menu-icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none"><path stroke-linecap="round" d="M5 5l14 14M19 5L5 19"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="ao-sogo-taisaku.html">総合型選抜とは</a>
-      <a href="shop.html">サービス・料金</a>
-      <a href="story.html">ストーリー</a>
-      <a href="tools/shindan.html">無料自己診断</a>
-      <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">LINEで相談</a>
-    </div>
-  </nav>
-
-  <!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
-  <section class="hero">
-    <svg class="hero-poly" viewBox="0 0 420 360" aria-hidden="true">
-      <g fill="none" stroke="#4D227F" stroke-opacity="0.16" stroke-width="1.5">
-        <path d="M60 40 L180 20 L150 120 Z" />
-        <path d="M180 20 L320 60 L150 120 Z" />
-        <path d="M320 60 L290 190 L150 120 Z" />
-        <path d="M290 190 L390 150 L320 60 Z" />
-        <path d="M150 120 L110 240 L290 190 Z" />
-        <path d="M110 240 L230 320 L290 190 Z" />
-      </g>
-      <path d="M320 60 L390 150 L290 190 Z" fill="#EE6223" fill-opacity="0.14" />
-      <path d="M60 40 L180 20 L150 120 Z" fill="#4D227F" fill-opacity="0.08" />
-    </svg>
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <span class="eyebrow">偏差値36からの逆転合格 / 慶應義塾大学6年連続合格</span>
-          <h1>「なぜ、<span class="accent">あなたが学ぶ</span>のか。」<br>を、問いから設計する。</h1>
-          <p class="hero-sub">総合型選抜で問われるのは、きれいな自己PRではありません。経験や関心を、学問・研究・社会との接点まで深め、自分の選択を言葉にする力です。総合型選抜専門のオンライン塾。</p>
-
-          <div class="proof-strip">
-            <span class="chip">84/94件 合格</span>
-            <span class="chip">慶應義塾大学6年連続</span>
-            <span class="chip">評価 4.93 / 83件</span>
-            <span class="chip">国内外の大学に対応</span>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">無料相談を予約する</a>
-            <a class="btn btn-secondary" href="https://quest.p-quest.com/" target="_blank" rel="noopener noreferrer">Quest Noteを受け取る</a>
-          </div>
-          <p class="hint">まずワークブックに取り組んでから相談すると、面談の質が上がります。</p>
-          <div class="diag-inline">
-            <span>📊 5分で現在地を判定：</span>
-            <a href="tools/shindan.html">①合格可能性診断</a>
-            <a href="tools/shinro.html">②進路発見チャート</a>
-            <a href="tools/learning-style.html">③学習スタイル診断</a>
-          </div>
+      </section>
+      <section class="section results" aria-labelledby="results-title">
+        <img class="deco results-circle" src="assets/lp/shape03.webp" alt="" loading="lazy" width="378" height="378">
+        <img class="deco results-corner" src="assets/lp/shape10.webp" alt="" loading="lazy" width="514" height="514">
+        <div class="content"><p class="eyebrow">RESULTS</p><h2 id="results-title">一人ひとりの進路と、<br>本気で向き合ってきました。</h2>
+          <dl class="metrics"><div><dt>合格</dt><dd>84/94件</dd></div><div><dt>慶應義塾大学 合格</dt><dd>6年連続</dd></div><div><dt>から慶應SFC合格</dt><dd>偏差値36</dd></div><div><dt>口コミ83件</dt><dd>4.93 / 5.0</dd></div></dl>
+          <p class="small results-note">合格件数：2022〜2026年の実績</p>
         </div>
-        <div class="hero-img">
-          <img src="image_top_lp.jpg" alt="問いから進路を設計するイメージ" width="900" height="1600">
+      </section>
+      <section class="section concerns" aria-labelledby="concerns-title">
+        <img class="deco concerns-ring" src="assets/lp/shape05.webp" alt="" loading="lazy" width="530" height="530"><img class="deco concerns-bar" src="assets/lp/shape13.webp" alt="" loading="lazy" width="482" height="256">
+        <div class="content"><img class="concerns-art art" src="assets/lp/student.webp" alt="志望理由書を前に考える高校生のイラスト" loading="lazy" width="1000" height="667">
+          <p class="eyebrow">YOUR CONCERNS</p><h2 id="concerns-title">志望理由書を前に、<br>こんなところで<br>止まっていませんか？</h2>
+          <ul class="checks"><li>自分には書けるような実績がない</li><li>興味と大学の学びがつながらない</li><li>添削されるほど自分の言葉ではなくなる</li><li>面接で深掘りされると答えられない</li></ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ PAIN ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">こんな悩みはありませんか</span>
-      <h2>書けないのは、<br>能力不足ではありません。</h2>
-      <p class="lead">志望理由書が薄くなる原因は、経験がないことでも文章力でもありません。あなたの経験が、<strong>学問や社会とどう接続するか</strong>がまだ整理されていないからです。ただし、フワッとした想いのままでは総合型選抜は通用しません。</p>
-
-      <div class="grid-3">
-        <div class="card reveal">
-          <h3>実績が弱い</h3>
-          <p>問われるのは実績の大きさより、その経験から<strong>どんな問いを持ったか</strong>。派手な活動歴がなくても、問いは鍛えられます。</p>
+      </section>
+      <section class="section why" aria-labelledby="why-title">
+        <img class="deco why-corner" src="assets/lp/shape10.webp" alt="" loading="lazy" width="514" height="514"><img class="deco why-ring" src="assets/lp/shape07.webp" alt="" loading="lazy" width="390" height="390">
+        <div class="content"><p class="eyebrow">WHY</p><h2 id="why-title">書けないのは、<br>経験が足りないからではない。</h2>
+          <p>経験から生まれた関心と、大学で深めたい学び。その間にある一本の線が、まだ整理されていないだけかもしれません。</p>
+          <p>LIGHTHOUSEは完成した文章を直すのではなく、本人の経験を振り返るところから始めます。</p>
+          <img class="why-art art" src="assets/lp/dialogue.webp" alt="資料を囲んで対話する生徒と指導者のイラスト" loading="lazy" width="1000" height="667">
         </div>
-        <div class="card reveal">
-          <h3>言葉にできない</h3>
-          <p>やってきたことはあるのに薄くなるのは、経験が<strong>学問や社会とまだ接続できていない</strong>から。文章力の問題ではありません。</p>
+      </section>
+      <section class="section policy" aria-labelledby="policy-title">
+        <img class="deco policy-rings" src="assets/lp/shape19.webp" alt="" loading="lazy" width="514" height="514"><img class="deco policy-bar" src="assets/lp/shape14.webp" alt="" loading="lazy" width="502" height="214"><img class="deco policy-beam" src="assets/lp/shape17.webp" alt="" loading="lazy" width="622" height="106">
+        <div class="content"><p class="eyebrow">OUR POLICY</p><h2 id="policy-title">受かるための<br>言葉ではなく、<br>自分で選ぶための<br>言葉を。</h2><p>問いを立て、調べ、考え、選んだ理由を自分の言葉で。<br>その力を育てます。</p></div>
+      </section>
+      <section class="section connection" aria-labelledby="connection-title">
+        <img class="deco connection-ring" src="assets/lp/shape07.webp" alt="" loading="lazy" width="390" height="390"><img class="deco connection-triangle" src="assets/lp/shape09.webp" alt="" loading="lazy" width="489" height="466">
+        <div class="content"><p class="eyebrow">CONNECTION</p><h2 id="connection-title">経験が、問いと学問に<br>つながる。</h2><p>特別な実績をつくるのではなく、<br>すでにある経験の意味を掘り下げます。</p>
+          <ol class="chain"><li>不登校で感じた孤立</li><li>人が安心できる居場所は、<br>どう設計できるのか？</li><li>社会学・都市科学</li><li>地域の居場所づくり</li></ol>
+          <p class="small">過去の生徒の探究テーマをもとにした接続の例です。</p>
         </div>
-        <div class="card reveal">
-          <h3>面接が不安</h3>
-          <p>借り物の言葉は深掘りで崩れます。自分の選択の理由を、<strong>問いから説明できる</strong>形に鍛えます。</p>
+      </section>
+      <section class="section process" aria-labelledby="process-title">
+        <img class="deco process-circle" src="assets/lp/shape20.webp" alt="" loading="lazy" width="500" height="500"><img class="deco process-bar" src="assets/lp/shape16.webp" alt="" loading="lazy" width="520" height="214">
+        <div class="content"><p class="eyebrow">PROCESS</p><h2 id="process-title">あなたの経験が、<br>志望理由になるまで。</h2>
+          <ol class="steps">
+            <li><img src="assets/lp/ui07.webp" alt="" loading="lazy" width="488" height="488"><div><h3>経験を振り返る</h3><p>出来事、選択、感情を対話によって整理します。</p></div></li>
+            <li><img src="assets/lp/ui08.webp" alt="" loading="lazy" width="488" height="488"><div><h3>問いを見つける</h3><p>経験の中の違和感を、大学で深める問いへ変えます。</p></div></li>
+            <li><img src="assets/lp/ui09.webp" alt="" loading="lazy" width="488" height="488"><div><h3>学問とつなぐ</h3><p>大学、研究室、先行研究、社会課題まで調べます。</p></div></li>
+            <li><img src="assets/lp/ui10.webp" alt="" loading="lazy" width="488" height="488"><div><h3>言葉にする</h3><p>志望理由書、小論文、面接を同じ軸でつなげます。</p></div></li>
+            <li><img src="assets/lp/ui11.webp" alt="" loading="lazy" width="488" height="488"><div><h3>行動に移す</h3><p>調査、探究、制作、発信など合格後にも続く行動へ。</p></div></li>
+          </ol>
         </div>
-      </div>
-
-      <div class="card reveal" style="margin-top: 24px; text-align: center; background: var(--orange-soft); border-color: rgba(238,98,35,0.2);">
-        <h3 style="font-size: 18px;">あなたはどのタイプ？まず現在地を診断してみましょう</h3>
-        <p style="font-size: 14px; color: var(--gray); margin: 8px 0 18px;">5つの質問に答えるだけで、あなたの強みと対策の準備度がレーダーチャートで分かります。</p>
-        <a class="btn btn-primary" href="tools/shindan.html" style="min-height: 48px; font-size: 14px;">5分でできる合格可能性診断を受ける</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ STATS ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">数字で見る実績</span>
-      <h2>数字の裏に、納得して選んだ進路がある。</h2>
-      <p class="lead">合格実績は目的ではなく、生徒が自分で問いを立て、納得して選び取った進路の証です。この結果が再現できるのは、経験を問いに変え、学問へ接続する——省察・問い化・接続のプロセスを、一人ひとりに徹底しているからです。</p>
-
-      <div class="grid-4" style="margin-top:24px;">
-        <div class="card stat reveal"><div class="num">84/94</div><div class="lbl">2022〜2026の合格件数</div></div>
-        <div class="card stat reveal"><div class="num">6年</div><div class="lbl">慶應SFC連続合格</div></div>
-        <div class="card stat reveal"><div class="num">4.93</div><div class="lbl">外部口コミ評価 / 83件</div></div>
-        <div class="card stat reveal"><div class="num">国内外</div><div class="lbl">早慶・国公立・海外大まで</div></div>
-      </div>
-
-      <div class="grid-2" style="margin-top:16px;">
-        <div class="card reveal">
-          <h3>主な合格実績</h3>
-          <ul class="dot-list">
-            <li>慶應義塾大学 総合政策・環境情報・法・商（SFC含む6年連続）</li>
-            <li>早稲田大学 国際教養・商・創造理工・スポーツ科学・社会学部</li>
-            <li>上智大学 / ICU / 立教大学 / 明治大学 / 中央大学 / 成城大学</li>
-            <li>横浜国立大学 / 筑波大学 / 東京農工大学 / 広島大学 / 岡山大学</li>
-            <li>トロント大学 / UBC / ライデン大学 / アムステルダム自由大学 他</li>
-          </ul>
+      </section>
+      <section class="section mid-cta" aria-labelledby="mid-title">
+        <img class="deco mid-corner" src="assets/lp/shape10.webp" alt="" loading="lazy" width="514" height="514"><img class="deco mid-ring" src="assets/lp/shape08.webp" alt="" loading="lazy" width="428" height="428">
+        <div class="content"><h2 id="mid-title">その経験が、<br>進路を変える。</h2><p>まずは現在地を一緒に整理します。</p><a class="cta cta-light" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer"><img src="assets/lp/ui03.webp" alt="" loading="lazy" width="534" height="534">LINEで無料受験相談</a></div>
+      </section>
+      <section class="section reasons" aria-labelledby="reasons-title">
+        <img class="deco reasons-bar" src="assets/lp/shape15.webp" alt="" loading="lazy" width="472" height="215"><img class="deco reasons-rings" src="assets/lp/shape20.webp" alt="" loading="lazy" width="500" height="500">
+        <div class="content"><p class="eyebrow">WHY LIGHTHOUSE</p><h2 id="reasons-title">LIGHTHOUSEが<br>選ばれる理由</h2><img class="research-art art" src="assets/lp/research.webp" alt="書籍、論文、PCをつなぐ学問研究のイラスト" loading="lazy" width="1000" height="667">
+          <article class="reason"><p class="eyebrow">REASON 01</p><h3>対話から始める個別設計</h3><p>定型文に当てはめず、経験と関心から指導を組み立てます。</p></article>
+          <article class="reason"><p class="eyebrow">REASON 02</p><h3>志望理由書から面接まで一貫指導</h3><p>書類、小論文、面接、任意資料を同じ進路の軸でつなぎます。</p></article>
+          <article class="reason"><p class="eyebrow">REASON 03</p><h3>学問・研究まで調べる</h3><p>自己分析で終わらず、大学の研究と社会課題まで調査します。</p></article>
+          <article class="reason"><p class="eyebrow">REASON 04</p><h3>合格後にも残る力を育てる</h3><p>問いを立て、調べ、考え、伝える力を大学での学びへ。</p></article>
         </div>
-        <div class="card reveal">
-          <h3>向いている受験生</h3>
-          <ul class="dot-list">
-            <li>偏差値・評定・課外実績に自信はないが逆転を狙いたい</li>
-            <li>やってきたことはあるのに、うまく言語化できない</li>
-            <li>志望理由書で「自分の話」にならず苦しんでいる</li>
-            <li>一般受験との両立を考えながら総合型も目指したい</li>
-            <li>大学合格の先の学びや生き方まで見据えたい</li>
-          </ul>
+      </section>
+      <section class="section stories" aria-labelledby="stories-title">
+        <img class="deco stories-rings" src="assets/lp/shape21.webp" alt="" loading="lazy" width="500" height="500"><img class="deco stories-triangle" src="assets/lp/shape09.webp" alt="" loading="lazy" width="489" height="466">
+        <div class="content"><p class="eyebrow">STORIES</p><h2 id="stories-title">合格者の声</h2>
+          <article class="case"><img class="case-art art" src="assets/lp/case1.webp" alt="生徒のイメージイラスト" loading="lazy" width="667" height="1000"><p class="eyebrow">CASE 01</p><h3>偏差値36<br>→ 慶應SFC合格</h3><dl class="transform"><div><dt>BEFORE</dt><dd>自分の経験に価値があると思えなかった</dd></div><div><dt>FOUND</dt><dd>自分の人生を貫いていた問題意識</dd></div><div><dt>AFTER</dt><dd>自分の言葉で志望理由を語れるようになった</dd></div></dl><blockquote>「合格した時より、8万字書ききったことの方が誇らしかった。」</blockquote><a class="more" href="story.html" aria-label="慶應SFC合格のストーリーを読む">詳しく読む →</a></article>
+          <article class="case"><img class="case-art art" src="assets/lp/case2.webp" alt="生徒のイメージイラスト" loading="lazy" width="667" height="1000"><p class="eyebrow">CASE 02</p><h3>不登校・通信制<br>→ 立教・同志社合格</h3><dl class="transform"><div><dt>BEFORE</dt><dd>学校に通えなかった経験を弱みだと思っていた</dd></div><div><dt>FOUND</dt><dd>「正直者がバカを見ない社会」という問い</dd></div><div><dt>AFTER</dt><dd>経験を社会への問いとして説明できた</dd></div></dl><blockquote>「結局、父の仕事を丸ごと書いたことで、面接官の目が変わった。」</blockquote><a class="more" href="story.html" aria-label="立教・同志社合格のストーリーを読む">詳しく読む →</a></article>
+          <article class="case"><img class="case-art art" src="assets/lp/case3.webp" alt="建築を学ぶ生徒のイメージイラスト" loading="lazy" width="667" height="1000"><p class="eyebrow">CASE 03</p><h3>第一志望不合格<br>→ 建築を学ぶ進路へ</h3><dl class="transform"><div><dt>BEFORE</dt><dd>不合格をただの失敗だと思っていた</dd></div><div><dt>FOUND</dt><dd>人の心と空間をつなぐ建築への関心</dd></div><div><dt>AFTER</dt><dd>本当に取り組みたい進路を選び直した</dd></div></dl><blockquote>「ラグビーで得た学びも挫折も、受験で取り組んだ自己探究も、全部繋がっているんですね。」</blockquote><a class="more" href="story.html" aria-label="建築を学ぶ進路のストーリーを読む">詳しく読む →</a></article>
+          <p class="small">人物画像はイメージイラストです。体験談は代表ストーリーより抜粋。</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ VOICE ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">合格者の声</span>
-      <h2>手にしたのは、合格だけではない。</h2>
-      <p class="lead">受験を通して立てた問いは、大学での学びや進路の先まで生き続けています。</p>
-
-      <div class="grid-3">
-        <div class="voice reveal">
-          <div class="school">慶應義塾大学 総合政策学部</div>
-          <p>「自分の人生の軸を見つけられた。大学に入ってからどんなに辛くても戻ってこられる軸を持てたことは本当に大きい。加えて、本質的な課題を見つけて取り組む思考力が身についた。自分の人生に本気で責任を持つことの難しさと強さを知ることができた。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">早稲田大学 スポーツ科学部</div>
-          <p>「自己理解がより深まり、自分が本当にやりたいことがはっきりした。途上国で音楽教育を通した精神的支援をしたいという目標を見つけられたことは、総合型選抜の過程で得た大きなものの一つ。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">横浜国立大学 都市科学部</div>
-          <p>「最初は一年もない期間で合格するのは難しいと思っていました。でも授業を通して自分自身と向き合い、最終的に納得のいく文章を書き上げることができました。たった600字×2枚にかけた2か月半が、今の自分に生きています。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">トロント大学 国際関係学部</div>
-          <p>「今までは目標を持ってもすぐ諦めてしまったけど、第一志望大学に受かるために必死に努力できました。幅広い視点から自分の考えを構成していくことを学びました。大手の塾よりも圧倒的に相談しやすく、1人に対してのサポートが手厚いため、自分のわからないこと・疑問点を全てぶつけることができる点が良かったです。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">早稲田大学 スポーツ科学部</div>
-          <p>「最初は自分の強みがわからなかったことに苦しんだ。でも日常の些細なことを客観的に評価するようにした。自分の人柄や性格を客観的に知れたことが良かったです。模擬面接が楽しかった。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">同志社大学 グローバル・コミュニケーション学部</div>
-          <p>「高校の途中から通信制に通っていて、最初は『短期留学に行った経験しかない』と不安でした。でも、そこで得た経験や感じたことは、すべてもっと前から繋がっていたのだと実感しました。表面的な情報にとらわれず、自信を持って大学でも頑張ります。」</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ 4 STEPS ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">5ステップ</span>
-      <h2>「なんとなく」を、「学問への問い」へ。</h2>
-      <p class="lead">経験を問いに変え、学問・社会へ接続し、進路と入学後の学びまで一本の筋を通すプロセスです。</p>
-
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-num">1</div>
-          <h3>省察</h3>
-          <p>経験・違和感・関心の棚卸し。プロとの対話で、これまでの経験や感情を深く掘り起こす。</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">2</div>
-          <h3>問い化</h3>
-          <p>好き・得意・活動歴を、<strong>大学で深めたい「問い」</strong>に変える。すべての起点になる工程。</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">3</div>
-          <h3>接続</h3>
-          <p>問いを、<strong>学問・研究・仕事・社会課題</strong>と論理的に結びつける。ここがサービスの核。</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">4</div>
-          <h3>証明</h3>
-          <p>志望理由書・小論文・面接で伝わる形にする。「なぜ私が学ぶのか」を一本の筋に。</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">5</div>
-          <h3>行動</h3>
-          <p>合格後の学び・研究・活動につながる計画に落とし込む。受験を通過点にする。</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ 学問接続マップ ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">学問接続マップ</span>
-      <h2>問いは、どこへ<br>つながっていくのか。</h2>
-      <p class="lead">総合型選抜で本当に問われるのは、自己PRの上手さではありません。あなたの経験や関心が、問いを通じて学問・研究、そしてその先の社会や仕事へどうつながるか。これが、その「接続」の地図です。</p>
-
-      <div class="cmap-flow" aria-hidden="true">
-        <div class="cmap-stage"><span class="cmap-k">STEP 1–2</span><span class="cmap-t">経験・関心</span></div>
-        <div class="cmap-arrow">→</div>
-        <div class="cmap-stage"><span class="cmap-k">問い化</span><span class="cmap-t">自分の問い</span></div>
-        <div class="cmap-arrow">→</div>
-        <div class="cmap-stage"><span class="cmap-k">接続</span><span class="cmap-t">学問・学部</span></div>
-        <div class="cmap-arrow">→</div>
-        <div class="cmap-stage"><span class="cmap-k">行動</span><span class="cmap-t">研究・社会・仕事</span></div>
-      </div>
-
-      <div class="cmap-rows">
-        <div class="cmap-row">
-          <div class="cmap-cell" data-label="経験・関心">不登校の経験と、そこで感じた孤立</div>
-          <div class="cmap-cell is-q" data-label="問い">「居場所」はどう設計できるのか？</div>
-          <div class="cmap-cell" data-label="学問・学部">社会学・都市科学／コミュニティ設計</div>
-          <div class="cmap-cell is-out" data-label="研究・社会">地域の居場所づくり・福祉政策</div>
-        </div>
-        <div class="cmap-row">
-          <div class="cmap-cell" data-label="経験・関心">ものづくり・職人の家庭で育った原体験</div>
-          <div class="cmap-cell is-q" data-label="問い">人の営みを豊かにする建築とは？</div>
-          <div class="cmap-cell" data-label="学問・学部">建築学／都市デザイン</div>
-          <div class="cmap-cell is-out" data-label="研究・社会">住環境の設計・まちづくり</div>
-        </div>
-        <div class="cmap-row">
-          <div class="cmap-cell" data-label="経験・関心">部活で音楽に救われた実感</div>
-          <div class="cmap-cell is-q" data-label="問い">音楽は精神的支援になり得るか？</div>
-          <div class="cmap-cell" data-label="学問・学部">スポーツ科学・教育学／音楽療法</div>
-          <div class="cmap-cell is-out" data-label="研究・社会">途上国での音楽教育・支援活動</div>
-        </div>
-      </div>
-      <p class="cmap-note">※ 過去の生徒の探究テーマをもとにした、接続の例です（下の「入学後の声」も参照）。あなたの出発点から、あなただけの一本の線を一緒に描きます。</p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ 入学後の声 ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">入学後の声</span>
-      <h2>問いは、大学でも<br>続いていく。</h2>
-      <p class="lead">合格はゴールではありません。ここで立てた問いが、入学後の学び・研究・活動へどうつながっているか——実際に進学した卒業生の声です。</p>
-
-      <div class="grid-3">
-        <div class="voice reveal">
-          <div class="school">慶應義塾大学 総合政策学部</div>
-          <p>「高校では『コミュニティや居場所づくり』というキーワードを定めて学んでいました。大学では憧れだった研究会に入ることができ、自分の研究テーマが現実社会と接点を深く持ち出したと実感しています。今は空間づくりや認知科学など『人がどう感じるか』という視点から深掘りしています。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">日本大学 理工学部 建築学科</div>
-          <p>「一年勉強して、ラグビーの経験とAOで得た経験がこんなにか！ってくらい生きてます。建築を丁寧に言語化する作業、考えを伝え続けること、失敗の上に良いものを作ること——今まで教わったことばかり。ギャラリーの作品は98点、一年生向けコンペも審査を通過しました。」</p>
-        </div>
-        <div class="voice reveal">
-          <div class="school">トロント大学 国際関係学部</div>
-          <p>「IBで学んだことと、総合型選抜で学んだことは似ていました。分析には自分の好みで偏りが出ますが、総合型の過程で『どんな偏りがなぜ出たのか』に着目する大切さを知りました。偏りは無くすものではなく、意識的に使うもの。国際的に活躍できる人材になります。」</p>
-        </div>
-      </div>
-      <p class="cmap-note">合格の先で問いを深め続けられること——それが、通用する志望理由の何よりの証です。</p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ VISION ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">プログラムを経た先に</span>
-      <h2>あなたが手にする、確実な変化。</h2>
-
-      <div class="grid-3">
-        <div class="card reveal">
-          <h3>どんな質問にも動じない面接力</h3>
-          <p>自分の人生から抽出した本物の言葉で語れるため、面接官の深掘りにも圧倒的な説得力で答えられます。</p>
-        </div>
-        <div class="card reveal">
-          <h3>評価の土台となる評定UP</h3>
-          <p>現代文・英語・生物など教科学習にも一貫して伴走。選抜の基礎となる学校成績から確実にサポートします。</p>
-        </div>
-        <div class="card reveal">
-          <h3>合格後の学びに接続する進路設計</h3>
-          <p>自分の問いで進路を選ぶ力を身につけます。学問・研究への接続は、大学進学後の学びや、その先の仕事でも武器になります。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ PHILOSOPHY ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">指導の哲学 — Philosophy</span>
-      <h2>"自分らしさ"は、後からついてくる。</h2>
-      <p class="lead">総合型選抜は手段。私たちが本当に育てたいのは、問いを起点に、自分の選択と行動をつくる力です。だから、ラクな逃げ道は用意しません。若いうちに必死にのめり込み、壁にぶつかる経験こそが、一生の財産になるからです。</p>
-
-      <div class="grid-3" style="margin-top:20px;">
-        <div class="card reveal">
-          <span class="tag slab">QUEST</span>
-          <h3>探究 — 問いを立て、学びに接続する</h3>
-          <p>答えを急がず「なぜ？」を問い続け、その問いを学問へつなげる。受験後も学びを駆動し続ける力になります。</p>
-        </div>
-        <div class="card reveal">
-          <span class="tag slab">Dialogue</span>
-          <h3>対話 — 他者と思考を鍛える</h3>
-          <p>一人では気づけない視点は、他者との対話で鍛えられる。思考の精度を上げ、問いを深める方法です。</p>
-        </div>
-        <div class="card reveal">
-          <span class="tag slab">Connection</span>
-          <h3>接続 — 関心を学問・社会へ</h3>
-          <p>自分の関心を、学問・研究・社会課題との接点まで深める。これこそがLIGHTHOUSEの核となる原則です。</p>
-        </div>
-        <div class="card reveal">
-          <span class="tag slab">Expression</span>
-          <h3>表現 — 借り物でない言葉で選択を説明する</h3>
-          <p>自分の体温が宿った言葉で、自分の選択の理由を説明できること。それが納得して選び取る力の土台になります。</p>
-        </div>
-        <div class="card reveal">
-          <span class="tag slab">Selection</span>
-          <h3>選択 — 何を学び、何に取り組むか引き受ける</h3>
-          <p>何に賭けるかを自分で決め、その責任を引き受ける。その経験こそが、納得して人生を選び取る力を育てます。</p>
-        </div>
-        <div class="card reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span class="tag">代表・田邊勇人</span>
-            <h3>生徒一人ひとりのルーツへ</h3>
-            <p>私立中高での探究授業の企画・実施を経て、独自メソッドによる総合型選抜指導を確立。6年連続SFC合格者を輩出。</p>
-          </div>
-          <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer" style="margin-top: 14px; display: inline-flex; align-items: center; font-size: 13px; font-weight: 700; color: var(--orange); text-decoration: underline;">
-            公式ノートで探究と進路の知見を発信中 →
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ CASE STUDY ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">3名の実例</span>
-      <h2>様々な出発点から、それぞれの必然性へ。</h2>
-      <p class="lead">ここで紹介するのは、特別な生徒ではありません。出発点は違っても、「なぜ自分なのか」を掘り起こしたプロセスは同じです。</p>
-
-      <div class="grid-3">
-        <div class="card reveal">
-          <span class="tag">Case 1</span>
-          <h3>偏差値36 → SFC合格</h3>
-          <p>100回の自己否定と、1回の自己肯定感。成績ではなく、自分の人生の文脈を言語化することで突破した軌跡。</p>
-        </div>
-        <div class="card reveal">
-          <span class="tag">Case 2</span>
-          <h3>不登校・通信制 → GMARCH合格</h3>
-          <p>「正直者がバカを見ない社会」を作るための、執念の対話。ハンデをそのまま志望理由の核に変えたケース。</p>
-        </div>
-        <div class="card reveal">
-          <span class="tag">Case 3</span>
-          <h3>第一志望不合格 → 建築家の誕生</h3>
-          <p>「第一志望」より大切なこと。フィットネスリーダーが見た景色——不合格の先に見えた、より本質的な進路の話。</p>
-        </div>
-      </div>
-
-      <p class="lead" style="margin-top:20px; font-size:14px;">
-        📖 3名の詳しいエピソードは
-        <a href="story.html" style="color:var(--orange); font-weight:700; text-decoration:underline;">「迷走の先に、問いがあった。」（読み物）</a>
-        でご覧いただけます。志望理由書でお悩みの方は
-        <a href="shibou-riyusho.html" style="color:var(--orange); font-weight:700; text-decoration:underline;">「志望理由書の書き方ガイド」</a>
-        も参考にしてください。また、代表の公式note
-        <a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer" style="color:var(--orange); font-weight:700; text-decoration:underline;">「ちーず｜note」</a>
-        でも問いの立て方や進路設計のノウハウを公開しています。
-      </p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ QUEST NOTE ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">まずは一人で</span>
-      <h2>Quest Noteから始める。</h2>
-      <p class="lead">「いきなり相談は少し重い」という方のための、問いを整理するワークブックです。書き込みと壁打ちを往復しながら、「なぜ自分が学ぶのか」の言葉を見つけます。</p>
-
-      <div class="grid-2">
-        <div class="card reveal">
-          <h3>こんな人に向いています</h3>
-          <ul class="dot-list">
-            <li>いきなり個別相談はハードルが高い</li>
-            <li>まずは自分で考えを整理してみたい</li>
-            <li>面談前に、自分の現在地を言語化したい</li>
-          </ul>
-        </div>
-        <div class="card reveal">
-          <h3>ワークブックの役割</h3>
-          <ul class="dot-list">
-            <li>問いを整理する入口になる</li>
-            <li>相談前のフィルタリングになる</li>
-            <li>面談の質を大きく上げる前提材料になる</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn-secondary" href="https://quest.p-quest.com/" target="_blank" rel="noopener noreferrer">Quest Noteを受け取る（無料）</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ LINE ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">公式LINE</span>
-      <h2>LINEでも、役立つ情報を発信しています。</h2>
-      <p class="lead">総合型選抜の準備・問いの立て方・志望理由の書き方など、実践的な情報を定期的に配信。無料相談もLINEから受け付けています。</p>
-
-      <div class="cta-row">
-        <a class="btn btn-line" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">
-          <svg style="width:20px;height:20px;margin-right:8px;" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.88 1.39 5.44 3.56 7.12L4.5 22l3.94-1.97C9.55 20.65 10.76 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
-          LINE友だち追加（無料）
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ SHINDAN ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">まず、知る</span>
-      <h2>あなたの「準備度」を、<br>チャートで見てみる。</h2>
-      <p class="lead">5つの質問に答えるだけで、志望の明確さ・自己理解・経験の言語化・準備の進捗・表現への自信の5軸を<strong>レーダーチャートで可視化</strong>します。</p>
-
-      <div class="grid-3" style="margin-top:24px;">
-        <div class="card reveal" style="text-align:center;">
-          <h3>5軸を可視化</h3>
-          <p>合否を分ける5つのポイントをチャートで一覧。得意・苦手が一目でわかる。</p>
-        </div>
-        <div class="card reveal" style="text-align:center;">
-          <h3>最優先課題がわかる</h3>
-          <p>弱点ポイントに特化したアドバイスを提供。どこから手をつければいいか明確になる。</p>
-        </div>
-        <div class="card reveal" style="text-align:center;">
-          <h3>所要時間 約5分</h3>
-          <p>登録不要・スマホ完結。回答は外部に送信されないので安心。</p>
-        </div>
-      </div>
-
-      <div class="cta-row" style="margin-top:28px;">
-        <a class="btn btn-primary" href="tools/shindan.html" rel="noopener">合格可能性診断を受ける（無料）</a>
-      </div>
-      <p class="hint">無料・約5分・スマホ対応。</p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ TOOLS ══════════════════════════════════════ -->
-  <section class="section section-soft">
-    <div class="container">
-      <span class="eyebrow">無料ツール一覧</span>
-      <h2>今すぐ使える、3つの自己診断。</h2>
-      <p class="lead">合格への距離・進路の方向性・自分の学び方——気になるものから試してみてください。すべて無料です。</p>
-
-      <div class="grid-3" style="margin-top:28px;">
-        <a href="tools/shindan.html" class="card diag-card reveal" style="display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;min-height:220px;">
-          <div class="diag-head" style="display:flex;align-items:center;gap:10px;width:100%;">
-            <div class="diag-num">01</div>
-            <h3 style="font-size:16px;margin-bottom:0;">合格可能性診断</h3>
-            <span class="diag-badge">準備度 5軸判定</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray);flex:1;line-height:1.7;">10の質問に答えるだけ。志望校合格ラインとの比較レーダーチャートで現状を可視化。所要時間約5分。</p>
-          <span class="diag-arrow">診断する <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-        </a>
-        <a href="tools/shinro.html" class="card diag-card reveal" style="display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;min-height:220px;">
-          <div class="diag-head" style="display:flex;align-items:center;gap:10px;width:100%;">
-            <div class="diag-num">02</div>
-            <h3 style="font-size:16px;margin-bottom:0;">進路発見チャート</h3>
-            <span class="diag-badge">興味＆価値観分析</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray);flex:1;line-height:1.7;">8つの質問から興味と価値観の方向性を探り、あなたに向いている学部や進路タイプを見つけます。</p>
-          <span class="diag-arrow">診断する <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-        </a>
-        <a href="tools/learning-style.html" class="card diag-card reveal" style="display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;min-height:220px;">
-          <div class="diag-head" style="display:flex;align-items:center;gap:10px;width:100%;">
-            <div class="diag-num">03</div>
-            <h3 style="font-size:16px;margin-bottom:0;">学習スタイル診断</h3>
-            <span class="diag-badge">自習効率アップ</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray);flex:1;line-height:1.7;">12の質問から学習効率・コミュニケーション・問題解決の3軸で、あなただけの学び方のタイプを分析。</p>
-          <span class="diag-arrow">診断する <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ FAQ ══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">FAQ</span>
-      <h2>よくある質問</h2>
-
-      <div class="faq">
-        <details class="faq-item" style="cursor: pointer; outline: none; display: block;" open>
-          <summary class="faq-q" style="list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>実績がほとんどなくても大丈夫ですか？</span>
-            <span style="font-size: 12px; color: var(--orange);">▼</span>
-          </summary>
-          <div class="faq-a" style="margin-top: 10px;">はい。ただし「実績がないから何もしなくていい」わけではありません。問われるのは実績の大きさではなく、何かにのめり込み、壁にぶつかった経験と、そこから生まれた問いです。まだ無ければ、これから一緒に作ります。実績を盛るのではなく、あなたの経験を学問へつながる問いへと鍛えます。</div>
-        </details>
-        <details class="faq-item" style="cursor: pointer; outline: none; display: block;">
-          <summary class="faq-q" style="list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>一般受験との両立は可能ですか？</span>
-            <span style="font-size: 12px; color: var(--orange);">▼</span>
-          </summary>
-          <div class="faq-a" style="margin-top: 10px;">可能です。実際に一般対策と並行しながら合格した事例が多数あります。英語・現代文・生物など教科面の伴走も行っています。</div>
-        </details>
-        <details class="faq-item" style="cursor: pointer; outline: none; display: block;">
-          <summary class="faq-q" style="list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>相談前に準備するものはありますか？</span>
-            <span style="font-size: 12px; color: var(--orange);">▼</span>
-          </summary>
-          <div class="faq-a" style="margin-top: 10px;">Quest Noteに一度取り組んでいただくのがおすすめです。現状の整理が進んだ状態で相談すると、初回面談の密度が大きく変わります。</div>
-        </details>
-        <details class="faq-item" style="cursor: pointer; outline: none; display: block;">
-          <summary class="faq-q" style="list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>偏差値が低くても受けられますか？</span>
-            <span style="font-size: 12px; color: var(--orange);">▼</span>
-          </summary>
-          <div class="faq-a" style="margin-top: 10px;">はい。偏差値36からの慶應SFC合格など、出発点の学力は問いません。総合型選抜は現在の学力だけで決まるものではありません。</div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ FINAL CTA ══════════════════════════════════════ -->
-  <section class="section" style="padding-bottom: 100px;">
-    <div class="container">
-      <div class="footer-cta reveal">
-        <span class="eyebrow">テクニックではなく、必然性を。</span>
-        <h2>無料相談で、いまの課題を整理する。</h2>
-        <p class="lead">あなたの現状・志望校・書けない理由を一緒に整理します。<br>無理な勧誘はしません。まずは、あなたの話を聞かせてください。</p>
-        <p class="lead">LIGHTHOUSEは、<a href="https://p-quest.com/" target="_blank" rel="noopener noreferrer" style="color:var(--orange); font-weight:700; text-decoration:underline;">株式会社PIVOT&amp;QUEST</a> が教育×コーチングを最も深く体現する現場です。</p>
-        <div class="cta-row" style="justify-content:center; margin-top:26px;">
-          <a class="btn btn-primary" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINEで無料相談を予約する</a>
-          <a class="btn btn-secondary" href="shop.html">サービス・料金を見る</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ SITE FOOTER ══════════════════════════════════════ -->
-  <footer class="site-footer" style="background:#2B2723; color:rgba(255,255,255,0.82); padding:48px 24px 34px;">
-    <div style="max-width:1040px; margin:0 auto;">
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:28px; margin-bottom:32px;">
-        <div>
-          <div style="font-weight:700; color:#fff; margin-bottom:12px; font-size:0.86rem; letter-spacing:0.04em;">無料の診断・ツール</div>
-          <a href="/tools/shinro.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">🧭 進路発見チャート</a>
-          <a href="/tools/shindan.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">📈 合格可能性診断</a>
-          <a href="/tools/learning-style.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">🧠 学習スタイル診断</a>
-          <a href="/tools/university-portal.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">🏫 受験情報ポータル</a>
-          <a href="https://p-quest.com/shinro-map.html" target="_blank" rel="noopener noreferrer" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem;">🗺 進路探究マップ ↗</a>
-        </div>
-        <div>
-          <div style="font-weight:700; color:#fff; margin-bottom:12px; font-size:0.86rem; letter-spacing:0.04em;">サービス</div>
-          <a href="/index.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">LIGHTHOUSE トップ</a>
-          <a href="/shop.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">サービス・料金</a>
-          <a href="/for-parents.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem;">保護者の方へ</a>
-        </div>
-        <div>
-          <div style="font-weight:700; color:#fff; margin-bottom:12px; font-size:0.86rem; letter-spacing:0.04em;">読み物・ガイド</div>
-          <a href="/story.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">代表ストーリー</a>
-          <a href="/shibou-riyusho.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">志望理由書ガイド</a>
-          <a href="/ao-sogo-taisaku.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem;">総合型選抜 塾比較</a>
-        </div>
-        <div>
-          <div style="font-weight:700; color:#fff; margin-bottom:12px; font-size:0.86rem; letter-spacing:0.04em;">会社・規約</div>
-          <a href="https://p-quest.com/" target="_blank" rel="noopener noreferrer" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">運営会社 PIVOT&QUEST ↗</a>
-          <a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">公式LINE</a>
-          <a href="/terms.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">利用規約</a>
-          <a href="/privacy-policy.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem; margin-bottom:8px;">プライバシーポリシー</a>
-          <a href="/tokusho.html" style="display:block; color:rgba(255,255,255,0.8); font-size:0.85rem;">特定商取引法</a>
-        </div>
-      </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:20px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">
-        LIGHTHOUSE / PIVOT &amp; QUEST Inc.　&middot;　&copy; 2026 PIVOT &amp; QUEST Inc. All Rights Reserved.
-      </div>
-    </div>
-  </footer>
-
-  <!-- ══════════════════════════════════════ STICKY CTA ══════════════════════════════════════ -->
-  <div class="sticky-bar">
-    <p><b>84/94件合格</b> · 慶應義塾大学6年連続 · 評価4.93</p>
-    <a class="btn btn-secondary" href="tools/shindan.html" rel="noopener">合格可能性診断</a>
-    <a class="btn btn-primary" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">無料相談を予約する</a>
+      </section>
+      <section class="section mentor" aria-labelledby="mentor-title">
+        <img class="deco mentor-circle" src="assets/lp/shape02.webp" alt="" loading="lazy" width="354" height="354"><img class="deco mentor-triangle" src="assets/lp/shape09.webp" alt="" loading="lazy" width="489" height="466">
+        <div class="content"><p class="eyebrow">MENTOR</p><h2 id="mentor-title">問いを一緒に深める<br>指導者</h2><div class="mentor-card"><img class="art" src="assets/lp/mentor.webp" alt="対話する指導者のイメージイラスト" loading="lazy" width="962" height="1000"><p>「答え」を<br>教えるのではなく、<br>一緒に問いを<br>深めていく。</p></div><h3>田邊勇人</h3><p>一人ひとりの経験や価値観を大切にし、<br>「何を学びたいか」を一緒に掘り下げます。</p><ul class="credentials"><li>慶應義塾大学を含む大学合格支援</li><li>私立中高での探究授業の企画・実施</li><li>株式会社PIVOT&amp;QUEST 代表</li></ul><a class="more" href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer">探究と進路についての発信を読む →</a></div>
+      </section>
+      <section class="section consult" aria-labelledby="consult-title">
+        <img class="deco consult-ring" src="assets/lp/shape06.webp" alt="" loading="lazy" width="490" height="490"><img class="deco consult-bar" src="assets/lp/shape16.webp" alt="" loading="lazy" width="520" height="214">
+        <div class="content"><p class="eyebrow">FREE CONSULTATION</p><h2 id="consult-title">無料相談で、<br>いま必要な対策が<br>分かります。</h2><p>入塾を決める場ではなく、<br>現在地と次の一歩を整理します。</p><ol class="consult-list"><li><img src="assets/lp/ui12.webp" alt="" loading="lazy" width="488" height="488">現在地と、書けない理由</li><li><img src="assets/lp/ui13.webp" alt="" loading="lazy" width="488" height="488">最初に取り組むべき課題</li><li><img src="assets/lp/ui14.webp" alt="" loading="lazy" width="488" height="488">出願までのおおまかな進め方</li></ol></div>
+      </section>
+      <section class="section final-cta" aria-labelledby="final-title">
+        <img class="deco final-rings" src="assets/lp/shape19.webp" alt="" loading="lazy" width="514" height="514"><img class="deco final-corner" src="assets/lp/shape11.webp" alt="" loading="lazy" width="338" height="242">
+        <div class="content"><p class="eyebrow">START FROM HERE</p><h2 id="final-title">あなたの経験から、<br>進路を一緒に<br>考えませんか。</h2><p>入塾前提ではありません。<br>志望校が決まっていない段階でも相談できます。</p><a class="cta cta-light" href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer"><img src="assets/lp/ui03.webp" alt="" loading="lazy" width="534" height="534">無料受験相談を予約する</a><p class="final-signature">総合型選抜専門オンライン塾　LIGHTHOUSE</p></div>
+      </section>
+      <section class="section resources" aria-labelledby="resources-title"><div class="content"><p class="eyebrow">FIND YOUR NEXT STEP</p><h2 id="resources-title">まずは、自分の現在地から。</h2><p>相談前の整理に使える、無料のワークブックと診断です。</p><a class="resource-link" href="https://quest.p-quest.com/" target="_blank" rel="noopener noreferrer"><span>Quest Noteを受け取る<small>経験や関心を整理する無料ワークブック</small></span><span aria-hidden="true">↗</span></a><a class="resource-link" href="tools/shindan.html"><span>合格可能性診断<small>5分で現在地と対策の準備度を確認</small></span><span aria-hidden="true">→</span></a><a class="resource-link" href="tools/shinro.html"><span>進路発見チャート</span><span aria-hidden="true">→</span></a><a class="resource-link" href="tools/learning-style.html"><span>学習スタイル診断</span><span aria-hidden="true">→</span></a><a class="resource-link" href="shop.html"><span>サービス・料金を見る</span><span aria-hidden="true">→</span></a></div></section>
+      <section class="section faq-section" aria-labelledby="faq-title"><div class="content"><p class="eyebrow">FAQ</p><h2 id="faq-title">よくある質問</h2>
+        <!-- FAQ entries are retained from the current website. -->
+        <details class="faq-item"><summary>実績がほとんどなくても大丈夫ですか？</summary><p>はい。ただし「実績がないから何もしなくていい」わけではありません。問われるのは実績の大きさではなく、何かにのめり込み、壁にぶつかった経験と、そこから生まれた問いです。まだ無ければ、これから一緒に作ります。実績を盛るのではなく、あなたの経験を学問へつながる問いへと鍛えます。</p></details>
+<details class="faq-item"><summary>一般受験との両立は可能ですか？</summary><p>可能です。実際に一般対策と並行しながら合格した事例が多数あります。英語・現代文・生物など教科面の伴走も行っています。</p></details>
+<details class="faq-item"><summary>相談前に準備するものはありますか？</summary><p>Quest Noteに一度取り組んでいただくのがおすすめです。現状の整理が進んだ状態で相談すると、初回面談の密度が大きく変わります。</p></details>
+<details class="faq-item"><summary>偏差値が低くても受けられますか？</summary><p>はい。偏差値36からの慶應SFC合格など、出発点の学力は問いません。総合型選抜は現在の学力だけで決まるものではありません。</p></details>
+      </div></section>
+    </main>
+    <footer class="footer">
+      <a class="footer-brand" href="/index.html">LIGHTHOUSE</a>
+      <nav class="footer-links" aria-label="サイト内リンク"><div><h2>進路を考える</h2><a href="/tools/shinro.html">進路発見チャート</a><a href="/tools/shindan.html">合格可能性診断</a><a href="/tools/learning-style.html">学習スタイル診断</a><a href="/tools/university-portal.html">受験情報ポータル</a><a href="https://p-quest.com/shinro-map.html" target="_blank" rel="noopener noreferrer">進路探究マップ ↗</a></div><div><h2>LIGHTHOUSEについて</h2><a href="/shop.html">サービス・料金</a><a href="/for-parents.html">保護者の方へ</a><a href="/story.html">代表ストーリー</a><a href="/shibou-riyusho.html">志望理由書ガイド</a><a href="/ao-sogo-taisaku.html">総合型選抜 塾比較</a></div><div><h2>運営・お問い合わせ</h2><a href="https://p-quest.com/" target="_blank" rel="noopener noreferrer">運営会社 PIVOT&amp;QUEST ↗</a><a href="https://lin.ee/brTdUGs" target="_blank" rel="noopener noreferrer">公式LINE</a><a href="https://note.com/veintiuno" target="_blank" rel="noopener noreferrer">ちーず｜note ↗</a></div><div><h2>ご利用について</h2><a href="/terms.html">利用規約</a><a href="/privacy-policy.html">プライバシーポリシー</a><a href="/tokusho.html">特定商取引法</a><a href="shibou-riyusho.html">志望理由書の書き方ガイド</a></div></nav>
+      <p class="copyright">総合型選抜専門オンライン塾<br>© PIVOT&amp;QUEST</p>
+    </footer>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // スクロールリビール
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-      // モバイルメニュー(トグル)
-      const menuToggle = document.getElementById('menu-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('menu-icon-open');
-      const iconClose = document.getElementById('menu-icon-close');
-      const setMenu = (open) => {
-        mobileMenu.classList.toggle('open', open);
-        iconOpen.style.display = open ? 'none' : 'block';
-        iconClose.style.display = open ? 'block' : 'none';
-        menuToggle.setAttribute('aria-expanded', String(open));
-      };
-      menuToggle.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
-      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    });
-  </script>
+  <script src="assets/lp.js" defer></script>
 </body>
 </html>
