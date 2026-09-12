@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "d2fac5695945f5aab74c73a82e448625540f0205bd870a6d830b23b9f8eb24f8",
+      "sourceHash": "481b578eee87f6bd61041b0c1eccd711af05eafbbdac78f3e89cad611c02d9fc",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -29,7 +29,7 @@
               "value": "2026年9月25日～10月1日"
             },
             {
-              "label": "一次選考合格発表日",
+              "label": "一次選考合格発表",
               "value": "2026年11月13日"
             },
             {
@@ -37,7 +37,7 @@
               "value": "2026年11月22日"
             },
             {
-              "label": "二次選考合格発表日",
+              "label": "二次選考合格発表",
               "value": "2026年12月11日"
             }
           ],
@@ -80,14 +80,14 @@
         {
           "name": "FACT選抜",
           "faculties": "人間科学部",
-          "capacity": "若干名",
+          "capacity": "",
           "schedule": [
             {
               "label": "出願期間",
               "value": "2026年9月1日（火）～9月8日（火）"
             },
             {
-              "label": "1次選考合格者発表日",
+              "label": "1次選考合格発表",
               "value": "2026年9月25日（金）"
             },
             {
@@ -95,7 +95,7 @@
               "value": "2026年10月10日（土）"
             },
             {
-              "label": "最終合格者発表日",
+              "label": "最終合格発表",
               "value": "2026年11月1日（日）"
             }
           ],
@@ -120,7 +120,7 @@
         {
           "name": "総合型選抜Ⅰ群（トップアスリート入試）",
           "faculties": "スポーツ科学部",
-          "capacity": "若干名",
+          "capacity": "",
           "schedule": [
             {
               "label": "第1回事前セミナー申込期間",
@@ -136,7 +136,7 @@
         {
           "name": "スポーツサポート歴入学試験",
           "faculties": "スポーツ科学部",
-          "capacity": "若干名",
+          "capacity": "",
           "schedule": [
             {
               "label": "出願期間",
@@ -262,455 +262,247 @@
       "id": "aoyama",
       "name": "青山学院大学",
       "officialUrl": "https://www.aoyama.ac.jp/admission/undergraduate/examination/",
-      "sourceHash": "d50ea93a999a1152d31ad38900066b898d14eab9d8efd2f7489a07dd14ee0268",
+      "sourceHash": "c04f2d57113f5e8b23bdeff883d26e5fcf189456a303f9fcbab90acb15ea1899",
       "programs": [
         {
-          "name": "自己推薦（英米文学科）",
+          "name": "全国高等学校キリスト者推薦",
+          "faculties": "教育人間科学部心理学科、経済学部経済学科・現代経済デザイン学科、法学部法学科・ヒューマンライツ学科、経営学部経営学科・マーケティング学科、国際政治経済学部国際政治学科・国際経済学科・国際コミュニケーション学科、総合文化政策学部総合文化政策学科、理工学部物理科学科・数理サイエンス学科・化学・生命科学科・電気電子工学科・機械創造工学科・経営システム工学科・情報テクノロジー学科、社会情報学部社会情報学科",
+          "capacity": "各学部・学科で若干名～数名",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2026年9月～10月"
+            },
+            {
+              "label": "選考",
+              "value": "書類審査および面接"
+            },
+            {
+              "label": "合格発表",
+              "value": "2026年11月～12月"
+            }
+          ],
+          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
+        },
+        {
+          "name": "自己推薦（文学部英米文学科）",
           "faculties": "文学部英米文学科",
           "capacity": "約30名",
           "schedule": [
             {
-              "label": "Web出願登録期間",
-              "value": "2026年8月27日（木）～9月10日（木）23:59"
+              "label": "第一次審査Web出願登録期間",
+              "value": "2026年8月27日～9月10日23:59"
             },
             {
-              "label": "出願書類提出期間",
-              "value": "2026年9月7日（月）～9月10日（木）郵送必着"
+              "label": "第一次審査出願書類提出期間",
+              "value": "2026年9月7日～9月10日郵送必着"
             },
             {
-              "label": "受験番号開示日",
-              "value": "2026年10月14日（水）"
+              "label": "第一次審査受験番号開示日",
+              "value": "2026年10月14日"
             },
             {
               "label": "第一次審査合格発表期間",
-              "value": "2026年10月16日（金）13:00～10月24日（土）23:59"
+              "value": "2026年10月16日13:00～10月24日23:59"
             },
             {
               "label": "第二次審査Web出願登録期間",
-              "value": "2026年10月16日（金）13:00～10月19日（月）23:59"
+              "value": "2026年10月16日13:00～10月19日23:59"
             },
             {
               "label": "第二次審査受験票開示日",
-              "value": "2026年10月21日（水）"
+              "value": "2026年10月21日"
             },
             {
               "label": "第二次審査試験日",
-              "value": "2026年10月24日（土）"
+              "value": "2026年10月24日"
             },
             {
               "label": "第二次審査合格発表期間",
-              "value": "2026年11月16日（月）13:00～11月30日（月）23:59"
+              "value": "2026年11月16日13:00～11月30日23:59"
             },
             {
               "label": "入学手続書類提出締切日",
-              "value": "2026年11月30日（月）郵送必着"
+              "value": "2026年11月30日郵送必着"
             }
           ],
           "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
         },
         {
-          "name": "自己推薦（地球社会共生学科）",
+          "name": "自己推薦（地球社会共生学部地球社会共生学科）",
           "faculties": "地球社会共生学部地球社会共生学科",
           "capacity": "約21名",
           "schedule": [
             {
-              "label": "Web出願登録期間",
-              "value": "2026年8月27日（木）～9月10日（木）23:59"
+              "label": "第一次審査Web出願登録期間",
+              "value": "2026年8月27日～9月10日23:59"
             },
             {
-              "label": "出願書類提出期間",
-              "value": "2026年9月7日（月）～9月10日（木）郵送必着"
+              "label": "第一次審査出願書類提出期間",
+              "value": "2026年9月7日～9月10日郵送必着"
             },
             {
-              "label": "受験番号開示日",
-              "value": "2026年10月14日（水）"
+              "label": "第一次審査受験番号開示日",
+              "value": "2026年10月14日"
             },
             {
               "label": "第一次審査合格発表期間",
-              "value": "2026年10月16日（金）13:00～10月24日（土）23:59"
+              "value": "2026年10月16日13:00～10月24日23:59"
             },
             {
               "label": "第二次審査Web出願登録期間",
-              "value": "2026年10月16日（金）13:00～10月19日（月）23:59"
+              "value": "2026年10月16日13:00～10月19日23:59"
             },
             {
               "label": "第二次審査受験票開示日",
-              "value": "2026年10月21日（水）"
+              "value": "2026年10月21日"
             },
             {
               "label": "第二次審査試験日",
-              "value": "2026年10月24日（土）"
+              "value": "2026年10月24日"
             },
             {
               "label": "第二次審査合格発表期間",
-              "value": "2026年11月16日（月）13:00～11月30日（月）23:59"
+              "value": "2026年11月16日13:00～11月30日23:59"
             },
             {
               "label": "入学手続書類提出締切日",
-              "value": "2026年11月30日（月）郵送必着"
+              "value": "2026年11月30日郵送必着"
             }
           ],
           "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
         },
         {
-          "name": "自己推薦（コミュニティ人間科学科）",
+          "name": "自己推薦（コミュニティ人間科学部コミュニティ人間科学科）",
           "faculties": "コミュニティ人間科学部コミュニティ人間科学科",
           "capacity": "約12名",
           "schedule": [
             {
-              "label": "Web出願登録期間",
-              "value": "2026年8月27日（木）～9月10日（木）23:59"
+              "label": "第一次審査Web出願登録期間",
+              "value": "2026年8月27日～9月10日23:59"
             },
             {
-              "label": "出願書類提出期間",
-              "value": "2026年9月7日（月）～9月10日（木）郵送必着"
+              "label": "第一次審査出願書類提出期間",
+              "value": "2026年9月7日～9月10日郵送必着"
             },
             {
-              "label": "受験番号開示日",
-              "value": "2026年10月14日（水）"
+              "label": "第一次審査受験番号開示日",
+              "value": "2026年10月14日"
             },
             {
               "label": "第一次審査合格発表期間",
-              "value": "2026年10月16日（金）13:00～10月24日（土）23:59"
+              "value": "2026年10月16日13:00～10月24日23:59"
             },
             {
               "label": "第二次審査Web出願登録期間",
-              "value": "2026年10月16日（金）13:00～10月19日（月）23:59"
+              "value": "2026年10月16日13:00～10月19日23:59"
             },
             {
               "label": "第二次審査受験票開示日",
-              "value": "2026年10月21日（水）"
+              "value": "2026年10月21日"
             },
             {
               "label": "第二次審査試験日",
-              "value": "2026年10月24日（土）"
+              "value": "2026年10月24日"
             },
             {
               "label": "第二次審査合格発表期間",
-              "value": "2026年11月16日（月）13:00～11月30日（月）23:59"
+              "value": "2026年11月16日13:00～11月30日23:59"
             },
             {
               "label": "入学手続書類提出締切日",
-              "value": "2026年11月30日（月）郵送必着"
+              "value": "2026年11月30日郵送必着"
             }
           ],
           "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
         },
         {
-          "name": "全国高等学校キリスト者推薦（教育人間科学部心理学科）",
-          "faculties": "教育人間科学部心理学科",
-          "capacity": "若干名",
+          "name": "スポーツに優れた者の入学者選抜",
+          "faculties": "文学部史学科・比較芸術学科、教育人間科学部教育学科、法学部法学科・ヒューマンライツ学科、経営学部経営学科・マーケティング学科、国際政治経済学部国際政治学科・国際経済学科・国際コミュニケーション学科、総合文化政策学部総合文化政策学科、社会情報学部社会情報学科、コミュニティ人間科学部コミュニティ人間科学科",
+          "capacity": "各学部・学科で1名～15名",
           "schedule": [
             {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（経済学部）",
-          "faculties": "経済学部経済学科、現代経済デザイン学科",
-          "capacity": "各若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（法学部）",
-          "faculties": "法学部法学科、ヒューマンライツ学科",
-          "capacity": "各若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（経営学部）",
-          "faculties": "経営学部経営学科、マーケティング学科",
-          "capacity": "各若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（国際政治経済学部）",
-          "faculties": "国際政治経済学部国際政治学科、国際経済学科、国際コミュニケーション学科",
-          "capacity": "各若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（総合文化政策学部）",
-          "faculties": "総合文化政策学部総合文化政策学科",
-          "capacity": "若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（理工学部）",
-          "faculties": "理工学部物理科学科、機械創造工学科、数理サイエンス学科、経営システム工学科、化学・生命科学科、情報テクノロジー学科、電気電子工学科",
-          "capacity": "各若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "全国高等学校キリスト者推薦（社会情報学部）",
-          "faculties": "社会情報学部社会情報学科",
-          "capacity": "若干名",
-          "schedule": [
-            {
-              "label": "対象学年",
-              "value": "2027年3月卒業見込み"
-            }
-          ],
-          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
-        },
-        {
-          "name": "スポーツに優れた者（文学部）",
-          "faculties": "文学部史学科、比較芸術学科",
-          "capacity": "約2～1名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
+              "label": "第一次審査Web出願登録期間",
+              "value": "2026年10月8日～10月22日23:59"
             },
             {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
+              "label": "第一次審査出願書類提出期間",
+              "value": "2026年10月19日～10月22日郵送必着"
             },
             {
-              "label": "受験番号開示日",
-              "value": "2026年11月11日（水）"
+              "label": "第一次審査受験番号開示日",
+              "value": "2026年11月11日"
             },
             {
               "label": "第一次審査合格発表期間",
-              "value": "2026年11月13日（金）13:00～11月21日（土）23:59"
+              "value": "2026年11月13日13:00～11月21日23:59"
             },
             {
               "label": "第二次審査Web出願登録期間",
-              "value": "2026年11月13日（金）13:00～11月16日（月）23:59"
+              "value": "2026年11月13日13:00～11月16日23:59"
             },
             {
               "label": "第二次審査受験票開示日",
-              "value": "2026年11月18日（水）"
+              "value": "2026年11月18日"
             },
             {
               "label": "第二次審査試験日",
-              "value": "2026年11月21日（土）"
+              "value": "2026年11月21日"
             },
             {
               "label": "第二次審査合格発表期間",
-              "value": "2026年12月1日（火）13:00～12月11日（金）23:59"
+              "value": "2026年12月1日13:00～12月11日23:59"
             },
             {
               "label": "入学手続書類提出締切日",
-              "value": "2026年12月11日（金）郵送必着"
+              "value": "2026年12月11日郵送必着"
             }
           ],
-          "url": ""
+          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
         },
         {
-          "name": "スポーツに優れた者（教育人間科学部）",
-          "faculties": "教育人間科学部教育学科",
-          "capacity": "約4名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            },
-            {
-              "label": "受験番号開示日",
-              "value": "2026年11月11日（水）"
-            },
-            {
-              "label": "第一次審査合格発表期間",
-              "value": "2026年11月13日（金）13:00～11月21日（土）23:59"
-            },
-            {
-              "label": "第二次審査試験日",
-              "value": "2026年11月21日（土）"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "スポーツに優れた者（法学部）",
-          "faculties": "法学部法学科、ヒューマンライツ学科",
-          "capacity": "3～4名以内",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            },
-            {
-              "label": "受験番号開示日",
-              "value": "2026年11月11日（水）"
-            },
-            {
-              "label": "第一次審査合格発表期間",
-              "value": "2026年11月13日（金）13:00～11月21日（土）23:59"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "スポーツに優れた者（経営学部）",
-          "faculties": "経営学部経営学科、マーケティング学科",
-          "capacity": "約10～5名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "スポーツに優れた者（国際政治経済学部）",
-          "faculties": "国際政治経済学部国際政治学科、国際経済学科、国際コミュニケーション学科",
-          "capacity": "約2～1名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "スポーツに優れた者（総合文化政策学部）",
-          "faculties": "総合文化政策学部総合文化政策学科",
-          "capacity": "若干名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "スポーツに優れた者（社会情報学部スポーツに優れた者方式）",
-          "faculties": "社会情報学部社会情報学科",
-          "capacity": "約2名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "スポーツに優れた者（コミュニティ人間科学部）",
-          "faculties": "コミュニティ人間科学部コミュニティ人間科学科",
-          "capacity": "約8名",
-          "schedule": [
-            {
-              "label": "Web出願登録期間",
-              "value": "2026年10月8日（木）～10月22日（木）23:59"
-            },
-            {
-              "label": "出願書類提出期間",
-              "value": "2026年10月19日（月）～10月22日（木）郵送必着"
-            }
-          ],
-          "url": ""
-        },
-        {
-          "name": "理工系女子特別",
+          "name": "理工系女子特別選抜",
           "faculties": "理工学部物理科学科、電気電子工学科、機械創造工学科、情報テクノロジー学科",
-          "capacity": "各5名",
+          "capacity": "各学科5名",
           "schedule": [
             {
-              "label": "Web出願登録期間",
-              "value": "2026年9月18日（金）～10月5日（月）23:59"
+              "label": "第一次審査Web出願登録期間",
+              "value": "2026年9月18日～10月5日23:59"
             },
             {
-              "label": "出願書類提出期間",
-              "value": "2026年10月1日（木）～10月5日（月）郵送必着"
+              "label": "第一次審査出願書類提出期間",
+              "value": "2026年10月1日～10月5日郵送必着"
             },
             {
-              "label": "受験番号開示日",
-              "value": "2026年10月14日（水）"
+              "label": "第一次審査受験番号開示日",
+              "value": "2026年10月14日"
             },
             {
               "label": "第一次審査合格発表期間",
-              "value": "2026年10月16日（金）13:00～10月24日（土）23:59"
+              "value": "2026年10月16日13:00～10月24日23:59"
             },
             {
               "label": "第二次審査Web出願登録期間",
-              "value": "2026年10月16日（金）13:00～10月19日（月）23:59"
+              "value": "2026年10月16日13:00～10月19日23:59"
             },
             {
               "label": "第二次審査受験票開示日",
-              "value": "2026年10月21日（水）"
+              "value": "2026年10月21日"
             },
             {
               "label": "第二次審査試験日",
-              "value": "2026年10月24日（土）"
+              "value": "2026年10月24日"
             },
             {
               "label": "第二次審査合格発表期間",
-              "value": "2026年11月16日（月）13:00～11月30日（月）23:59"
+              "value": "2026年11月16日13:00～11月30日23:59"
             },
             {
               "label": "入学手続書類提出締切日",
-              "value": "2026年11月30日（月）郵送必着"
+              "value": "2026年11月30日郵送必着"
             }
           ],
-          "url": ""
+          "url": "https://www.aoyama.ac.jp/admission/undergraduate/examination/recommendation_self.html"
         }
       ]
     },
@@ -762,7 +554,7 @@
       "id": "chuo",
       "name": "中央大学",
       "officialUrl": "https://www.chuo-u.ac.jp/connect/admission/special/guide/",
-      "sourceHash": "3bf50a28a052ed800543d465b5ade2a30dc31c23d65c72a99cf7ed0f6ace961f",
+      "sourceHash": "0768e3af115f3f766b7341a32c23174b3e060ad98f76f931f34a012d17b13a46",
       "programs": [
         {
           "name": "チャレンジ入学試験",
@@ -775,15 +567,15 @@
             },
             {
               "label": "1次選考合格発表",
-              "value": "2026年10月16日(金)11:00～"
+              "value": "2026年10月16日(金)11:00"
             },
             {
               "label": "2次選考試験日",
               "value": "2026年10月24日(土)"
             },
             {
-              "label": "合格発表",
-              "value": "2026年11月5日(木)11:00～"
+              "label": "最終合格発表",
+              "value": "2026年11月5日(木)11:00"
             },
             {
               "label": "入学手続期間",
@@ -828,13 +620,6 @@
           "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
         },
         {
-          "name": "社会人入学試験",
-          "faculties": "商学部、スポーツ情報学部",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
-        },
-        {
           "name": "スポーツマネジメント入学試験",
           "faculties": "スポーツ情報学部",
           "capacity": "",
@@ -851,6 +636,20 @@
         {
           "name": "DSプロ入学試験",
           "faculties": "スポーツ情報学部",
+          "capacity": "",
+          "schedule": [],
+          "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
+        },
+        {
+          "name": "社会人入学試験",
+          "faculties": "商学部、スポーツ情報学部",
+          "capacity": "",
+          "schedule": [],
+          "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
+        },
+        {
+          "name": "スポーツ推薦入学試験",
+          "faculties": "法学部、経済学部、商学部、基幹理工学部、社会理工学部、先進理工学部、文学部、総合政策学部、スポーツ情報学部",
           "capacity": "",
           "schedule": [],
           "url": "https://www.chuo-u.ac.jp/connect/admission/special/guide/"
