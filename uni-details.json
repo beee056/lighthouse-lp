@@ -155,69 +155,154 @@
       "id": "meiji",
       "name": "明治大学",
       "officialUrl": "https://www.meiji.ac.jp/exam/reference/tgansho.html",
-      "sourceHash": "8e79536fef029f54baf1ad6f31c50754da6585b89ec7d09a8df0568284ee9075",
+      "sourceHash": "6febb33de3c3304591f86d849d971f7d5a8c7ae96d5af66616c6590bc263edc1",
       "programs": [
         {
           "name": "自己推薦特別入学試験",
-          "faculties": "文学部、理工学部、農学部",
-          "capacity": "",
+          "faculties": "文学部",
+          "capacity": "37名（14専攻別の募集人員あり）",
           "schedule": [
             {
               "label": "一次選考出願期間",
-              "value": "2027年9月25日(金)～10月1日(木)"
+              "value": "2026年9月25日～10月1日"
             },
             {
               "label": "一次選考結果発表",
-              "value": "2027年10月21日(水)"
+              "value": "2026年10月21日"
             },
             {
               "label": "二次選考出願期間",
-              "value": "2027年10月22日(木)～27日(火)"
+              "value": "2026年10月22日～27日"
             },
             {
               "label": "二次選考試験日",
-              "value": "2027年11月14日(土)"
+              "value": "2026年11月14日"
             },
             {
               "label": "二次選考合格発表",
-              "value": "2027年11月18日(水)10:00"
+              "value": "2026年11月18日"
+            },
+            {
+              "label": "入学手続期間",
+              "value": "2027年1月14日～22日"
+            }
+          ],
+          "url": "https://www.meiji.ac.jp/exam/reference/6t5h7p00000burkr-att/tp4_youkou_27.pdf"
+        },
+        {
+          "name": "自己推薦特別入学試験",
+          "faculties": "理工学部",
+          "capacity": "22名（学科別募集）",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2026年9月3日～7日"
+            },
+            {
+              "label": "試験日",
+              "value": "2026年10月24日"
+            },
+            {
+              "label": "合格発表",
+              "value": "2026年11月17日"
+            },
+            {
+              "label": "入学手続期間",
+              "value": "2027年1月14日～22日"
+            }
+          ],
+          "url": "https://www.meiji.ac.jp/exam/reference/6t5h7p00000burkr-att/01_to5_youkou_27.pdf"
+        },
+        {
+          "name": "自己推薦特別入学試験",
+          "faculties": "農学部",
+          "capacity": "40名（学科別募集各10名）",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2026年9月1日～4日"
+            },
+            {
+              "label": "第一次選考合格発表",
+              "value": "2026年9月25日"
+            },
+            {
+              "label": "第二次選考出願期間",
+              "value": "2026年9月25日～10月1日"
+            },
+            {
+              "label": "第二次選考試験日",
+              "value": "2026年10月10日"
+            },
+            {
+              "label": "第二次選考合格発表",
+              "value": "2026年11月4日"
+            },
+            {
+              "label": "入学手続期間",
+              "value": "2027年1月14日～22日"
+            }
+          ],
+          "url": "https://www.meiji.ac.jp/exam/reference/6t5h7p00000burkr-att/tp6_youkou_27.pdf"
+        },
+        {
+          "name": "公募制特別入学試験（大学入学共通テスト利用）",
+          "faculties": "商学部",
+          "capacity": "",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": ""
             }
           ],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         },
         {
-          "name": "公募制特別入学試験(大学入学共通テスト利用)",
+          "name": "公募制特別入学試験（全国商業高等学校長協会会員校対象）",
           "faculties": "商学部",
           "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "公募制特別入学試験(全国商業高等学校長協会会員校対象)",
-          "faculties": "商学部",
-          "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": ""
+            }
+          ],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         },
         {
           "name": "地域農業振興特別入学試験",
           "faculties": "農学部食料環境政策学科",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": ""
+            }
+          ],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         },
         {
           "name": "グローバル型特別入学試験",
           "faculties": "政治経済学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": ""
+            }
+          ],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         },
         {
           "name": "海外就学者特別入学試験",
           "faculties": "法学部",
           "capacity": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": ""
+            }
+          ],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         }
       ]
