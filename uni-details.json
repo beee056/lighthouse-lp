@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "0df129fa3a1e6a88a8552f8922dae95488ccb9d7631c7f17917f5a478ce973aa",
+      "sourceHash": "24a5ef1f98031b965c3cfab15b067c95281fdfcece4a0738cd15279845a88542",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -53,11 +53,11 @@
               "value": "2026年9月1日～9月8日"
             },
             {
-              "label": "筆記審査実施日",
+              "label": "筆記審査",
               "value": "2026年10月25日"
             },
             {
-              "label": "合格者発表日",
+              "label": "合格者発表",
               "value": "2026年11月23日"
             }
           ],
@@ -87,11 +87,11 @@
               "value": "2026年9月1日（火）～9月8日（火）"
             },
             {
-              "label": "一次選考合格者発表日",
+              "label": "1次選考合格者発表日",
               "value": "2026年9月25日（金）"
             },
             {
-              "label": "二次選考実施日",
+              "label": "2次選考日",
               "value": "2026年10月10日（土）"
             },
             {
@@ -102,7 +102,7 @@
           "url": "https://www.waseda.jp/fhum/hum/applicants/admission/"
         },
         {
-          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入試）",
+          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入学試験）",
           "faculties": "スポーツ科学部",
           "capacity": "60名",
           "schedule": [
@@ -111,7 +111,7 @@
               "value": "2026年9月15日（火）～9月28日（月）"
             },
             {
-              "label": "第二次選考実施日",
+              "label": "第二次選考試験日",
               "value": "2026年11月14日（土）"
             }
           ],
@@ -134,7 +134,7 @@
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "スポーツサポート歴入試",
+          "name": "スポーツサポート歴入学試験",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
@@ -143,7 +143,7 @@
               "value": "2026年9月7日（月）～9月11日（金）"
             },
             {
-              "label": "第二次選考実施日",
+              "label": "第二次選考試験日",
               "value": "2026年11月14日（土）"
             }
           ],
