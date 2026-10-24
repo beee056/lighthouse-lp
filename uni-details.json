@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "7dbf3d34033bf04bc638de4772937536f8c19565218291e98e0fff13a33500d3",
+      "sourceHash": "e2b53fea359a35b7d26ab6cc24b4e1a3b66fe81a2da862c1ebae989e81742368",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -20,7 +20,7 @@
           "url": "https://www.waseda.jp/inst/admission/undergraduate/system/wacel/"
         },
         {
-          "name": "全国自己推薦入学試験",
+          "name": "全国自己推薦入試",
           "faculties": "社会科学部",
           "capacity": "35名",
           "schedule": [
@@ -29,7 +29,7 @@
               "value": "2026年9月25日～10月1日"
             },
             {
-              "label": "一次選考合格発表日",
+              "label": "一次選考合格発表",
               "value": "2026年11月13日"
             },
             {
@@ -37,14 +37,14 @@
               "value": "2026年11月22日"
             },
             {
-              "label": "二次選考合格発表日",
+              "label": "二次選考合格発表",
               "value": "2026年12月11日"
             }
           ],
           "url": "https://www.waseda.jp/fsss/sss/applicants/admission/"
         },
         {
-          "name": "AO入学試験（4月入学）国内選考",
+          "name": "AO入試（4月入学）国内選考",
           "faculties": "国際教養学部",
           "capacity": "95名",
           "schedule": [
@@ -53,25 +53,25 @@
               "value": "2026年9月1日～9月8日"
             },
             {
-              "label": "筆記審査実施日",
+              "label": "筆記審査",
               "value": "2026年10月25日"
             },
             {
-              "label": "合格者発表日",
+              "label": "合格者発表",
               "value": "2026年11月23日"
             }
           ],
           "url": "https://www.waseda.jp/fire/sils/applicants/admission/"
         },
         {
-          "name": "AO入学試験（4月入学）国外選考",
+          "name": "AO入試（4月入学）国外選考",
           "faculties": "国際教養学部",
           "capacity": "100名",
           "schedule": [],
           "url": "https://www.waseda.jp/fire/sils/applicants/admission/"
         },
         {
-          "name": "AO入学試験（9月入学）",
+          "name": "AO入試（9月入学）",
           "faculties": "国際教養学部",
           "capacity": "150名",
           "schedule": [],
@@ -87,22 +87,22 @@
               "value": "2026年9月1日（火）～9月8日（火）"
             },
             {
-              "label": "1次選考合格者発表日",
+              "label": "一次選考合格発表",
               "value": "2026年9月25日（金）"
             },
             {
-              "label": "2次選考実施日",
+              "label": "二次選考日",
               "value": "2026年10月10日（土）"
             },
             {
-              "label": "最終合格者発表日",
+              "label": "最終合格発表",
               "value": "2026年11月1日（日）"
             }
           ],
           "url": "https://www.waseda.jp/fhum/hum/applicants/admission/"
         },
         {
-          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入学試験）",
+          "name": "総合型選抜Ⅲ群（スポーツ自己推薦入試）",
           "faculties": "スポーツ科学部",
           "capacity": "60名",
           "schedule": [
@@ -111,14 +111,14 @@
               "value": "2026年9月15日（火）～9月28日（月）"
             },
             {
-              "label": "第二次選考実施日",
+              "label": "第二次選考試験日",
               "value": "2026年11月14日（土）"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "総合型選抜Ⅰ群（トップアスリート入学試験）",
+          "name": "総合型選抜Ⅰ群（トップアスリート入試）",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
@@ -134,7 +134,7 @@
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "スポーツサポート歴入学試験",
+          "name": "スポーツサポート歴入試",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
           "schedule": [
@@ -143,7 +143,7 @@
               "value": "2026年9月7日（月）～9月11日（金）"
             },
             {
-              "label": "第二次選考実施日",
+              "label": "第二次選考試験日",
               "value": "2026年11月14日（土）"
             }
           ],
@@ -155,131 +155,82 @@
       "id": "meiji",
       "name": "明治大学",
       "officialUrl": "https://www.meiji.ac.jp/exam/reference/tgansho.html",
-      "sourceHash": "32ca260cfaf6825e74aa5a84e3e22f242fdab4165a32edfdd97716fc2ca342ef",
+      "sourceHash": "d28dfdf0501442ffb2137eef784edc6f27152bb3468ad0edb00121a32505a67c",
       "programs": [
         {
           "name": "自己推薦特別入学試験",
-          "faculties": "文学部、理工学部、農学部、国際日本学部、総合数理学部",
-          "capacity": "",
+          "faculties": "文学部",
+          "capacity": "42名",
           "schedule": [
             {
               "label": "一次選考出願期間",
-              "value": "2026年9月25日(金)～10月1日(木)"
+              "value": "2026年9月25日～10月1日"
             },
             {
               "label": "一次選考結果発表",
-              "value": "2026年10月21日(水)"
+              "value": "2026年10月21日"
             },
             {
               "label": "二次選考出願期間",
-              "value": "2026年10月22日(木)～27日(火)"
+              "value": "2026年10月22日～27日"
             },
             {
               "label": "二次選考試験日",
-              "value": "2026年11月14日(土)"
-            },
-            {
-              "label": "二次選考合格発表",
-              "value": "2026年11月18日(水)10:00"
-            }
-          ],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "理工学部自己推薦特別入学試験",
-          "faculties": "理工学部",
-          "capacity": "電気電子生命学科9名、機械情報工学科4名、建築学科4名、応用化学科2名",
-          "schedule": [
-            {
-              "label": "出願期間",
-              "value": "2026年9月3日(木)～9月7日(月)消印有効"
-            },
-            {
-              "label": "試験日",
-              "value": "2026年10月24日(土)"
+              "value": "2026年11月14日"
             },
             {
               "label": "合格発表",
-              "value": "2026年11月17日(火)10:00"
+              "value": "2026年11月18日"
             }
           ],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         },
         {
-          "name": "農学部自己推薦特別入学試験",
+          "name": "自己推薦特別入学試験",
+          "faculties": "理工学部",
+          "capacity": "22名",
+          "schedule": [
+            {
+              "label": "出願期間",
+              "value": "2026年9月3日～9月7日"
+            },
+            {
+              "label": "試験日",
+              "value": "2026年10月24日"
+            },
+            {
+              "label": "合格発表",
+              "value": "2026年11月17日"
+            }
+          ],
+          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
+        },
+        {
+          "name": "自己推薦特別入学試験",
           "faculties": "農学部",
-          "capacity": "農学科10名、農芸化学科10名、生命科学科10名、食料環境政策学科10名",
+          "capacity": "40名",
           "schedule": [
             {
               "label": "第一次選考出願期間",
-              "value": "2026年9月1日(火)～9月4日(金)消印有効"
+              "value": "2026年9月1日～9月4日"
             },
             {
               "label": "第一次選考合格発表",
-              "value": "2026年9月25日(金)"
+              "value": "2026年9月25日"
             },
             {
               "label": "第二次選考出願期間",
-              "value": "2026年9月25日(金)～10月1日(木)消印有効"
+              "value": "2026年9月25日～10月1日"
             },
             {
               "label": "第二次選考試験日",
-              "value": "2026年10月10日(土)"
+              "value": "2026年10月10日"
             },
             {
               "label": "第二次選考合格発表",
-              "value": "2026年11月4日(水)"
+              "value": "2026年11月4日"
             }
           ],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "公募制特別入学試験（大学入学共通テスト利用）",
-          "faculties": "商学部",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "公募制特別入学試験（全国商業高等学校長協会会員校対象）",
-          "faculties": "商学部",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "地域農業振興特別入学試験",
-          "faculties": "農学部食料環境政策学科",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "グローバル型特別入学試験",
-          "faculties": "政治経済学部",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "海外就学者特別入学試験",
-          "faculties": "法学部",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "社会人特別入学試験【30歳以上対象】",
-          "faculties": "文学部",
-          "capacity": "",
-          "schedule": [],
-          "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
-        },
-        {
-          "name": "スポーツ特別入学試験",
-          "faculties": "全学部",
-          "capacity": "",
-          "schedule": [],
           "url": "https://www.meiji.ac.jp/exam/reference/tgansho.html"
         }
       ]
@@ -899,7 +850,7 @@
       "id": "gakushuin",
       "name": "学習院大学",
       "officialUrl": "https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/",
-      "sourceHash": "cd5a9519231ad2c02efe7219ad6973f1c790a7905d8c723dbf344dac62785cd5",
+      "sourceHash": "3982d5dd00b50d8a5eacdda9148bfc36991415b8b634959d9e1e5761705d630a",
       "programs": [
         {
           "name": "学校推薦型選抜（公募制）",
@@ -908,23 +859,19 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "令和9（2027）年度：11月1日（土）～11月5日（水）"
+              "value": "2027年11月1日（土）～11月5日（水）"
             },
             {
-              "label": "第1次選考（書類選考）",
-              "value": "令和9（2027）年度：11月21日（金）"
-            },
-            {
-              "label": "最終選考日",
-              "value": "令和9（2027）年度：12月6日（土）"
+              "label": "試験日",
+              "value": "2027年11月15日（土）、11月22日（土）（学部により異なる）"
             },
             {
               "label": "合格発表日",
-              "value": "令和9（2027）年度：12月12日（金）"
+              "value": "2027年12月3日（水）、12月5日（金）、12月12日（金）（学部により異なる）"
             },
             {
               "label": "入学手続締切日",
-              "value": "令和9（2027）年度：12月17日（水）"
+              "value": "2027年12月17日（水）、2028年2月27日（金）（学部により異なる）"
             }
           ],
           "url": "https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/recommendation-open/"
