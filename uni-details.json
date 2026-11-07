@@ -5,7 +5,7 @@
       "id": "waseda",
       "name": "早稲田大学",
       "officialUrl": "https://www.waseda.jp/inst/admission/undergraduate/application/",
-      "sourceHash": "2ef30109ca3eb336a71cadd3ef7c4acc3456c4bc9aa83efc9fdaaabbde304494",
+      "sourceHash": "3ef82aabbe65b0d08b46b2770fa49819c13d1a6d7b8dc709f5f51de2b6d6f5a3",
       "programs": [
         {
           "name": "地域探究・貢献入試",
@@ -53,7 +53,7 @@
               "value": "2026年9月1日～9月8日"
             },
             {
-              "label": "筆記審査実施日",
+              "label": "筆記審査日",
               "value": "2026年10月25日"
             },
             {
@@ -87,11 +87,11 @@
               "value": "2026年9月1日～9月8日"
             },
             {
-              "label": "一次選考合格発表日",
+              "label": "一次選考合格者発表日",
               "value": "2026年9月25日"
             },
             {
-              "label": "二次選考実施日",
+              "label": "二次選考日",
               "value": "2026年10月10日"
             },
             {
@@ -118,22 +118,6 @@
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
         },
         {
-          "name": "総合型選抜Ⅰ群（トップアスリート入学試験）",
-          "faculties": "スポーツ科学部",
-          "capacity": "若干名",
-          "schedule": [
-            {
-              "label": "第1回事前セミナー申込期間",
-              "value": "2026年4月7日～4月13日"
-            },
-            {
-              "label": "第2回事前セミナー申込期間",
-              "value": "2026年6月9日～6月15日"
-            }
-          ],
-          "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
-        },
-        {
           "name": "スポーツサポート歴入学試験",
           "faculties": "スポーツ科学部",
           "capacity": "若干名",
@@ -145,6 +129,22 @@
             {
               "label": "第二次選考試験日",
               "value": "2026年11月14日"
+            }
+          ],
+          "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
+        },
+        {
+          "name": "総合型選抜Ⅰ群（トップアスリート入学試験）",
+          "faculties": "スポーツ科学部",
+          "capacity": "若干名",
+          "schedule": [
+            {
+              "label": "第1回事前セミナー申込期間",
+              "value": "2026年4月7日～4月13日"
+            },
+            {
+              "label": "第2回事前セミナー申込期間",
+              "value": "2026年6月9日～6月15日"
             }
           ],
           "url": "https://www.waseda.jp/fsps/sps/applicants/admissions/"
@@ -960,7 +960,7 @@
       "id": "gakushuin",
       "name": "学習院大学",
       "officialUrl": "https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/",
-      "sourceHash": "3982d5dd00b50d8a5eacdda9148bfc36991415b8b634959d9e1e5761705d630a",
+      "sourceHash": "3f23ca32da050d3ba1d1f6e82f0ca6f8ec967eb6ac5fbea0db84219954dd1b2b",
       "programs": [
         {
           "name": "学校推薦型選抜（公募制）",
@@ -969,19 +969,19 @@
           "schedule": [
             {
               "label": "出願期間",
-              "value": "2027年11月1日（土）～11月5日（水）"
+              "value": "令和9（2027）年度 11月1日（土）～11月6日（木）"
             },
             {
-              "label": "試験日",
-              "value": "2027年11月15日（土）、11月22日（土）（学部により異なる）"
+              "label": "第1次選考（書類選考）",
+              "value": "令和9（2027）年度 11月21日（金）"
             },
             {
-              "label": "合格発表日",
-              "value": "2027年12月3日（水）、12月5日（金）、12月12日（金）（学部により異なる）"
+              "label": "最終選考",
+              "value": "令和9（2027）年度 12月6日（土）"
             },
             {
-              "label": "入学手続締切日",
-              "value": "2027年12月17日（水）、2028年2月27日（金）（学部により異なる）"
+              "label": "合格発表",
+              "value": "令和9（2027）年度 12月12日（金）"
             }
           ],
           "url": "https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/recommendation-open/"
