@@ -105,6 +105,125 @@ const UNIVERSITIES = [
       { type: 'html', url: 'https://www.univ.gakushuin.ac.jp/admissions/faculty-exam/recommendation-open/' },
       { type: 'pdf', url: 'https://www.univ.gakushuin.ac.jp/admissions/schedule_1.pdf' }
     ]
+  },
+
+  // --- 優先グループA ---
+  {
+    id: 'keio-fit-letters',
+    name: '慶應義塾大学',
+    officialUrl: 'https://www.keio.ac.jp/ja/admissions/undergrad/fit/',
+    sources: [
+      { type: 'html', url: 'https://www.keio.ac.jp/ja/admissions/undergrad/fit/', cap: 20000 },
+      { type: 'html', url: 'https://www.keio.ac.jp/ja/admissions/undergrad/faculty/letters/self_recommendation.html', cap: 15000 }
+    ]
+  },
+  {
+    id: 'sophia',
+    name: '上智大学',
+    officialUrl: 'https://www.sophia.ac.jp/jpn/admissions/gakubu/suisen/',
+    sources: [
+      { type: 'html', url: 'https://www.sophia.ac.jp/jpn/admissions/gakubu/suisen/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'icu',
+    name: '国際基督教大学',
+    officialUrl: 'https://www.icu.ac.jp/admissions/ao/',
+    sources: [
+      { type: 'html', url: 'https://www.icu.ac.jp/admissions/ao/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'doshisha',
+    name: '同志社大学',
+    officialUrl: 'https://www.doshisha.ac.jp/admissions/faculty/recommendation.html',
+    sources: [
+      { type: 'html', url: 'https://www.doshisha.ac.jp/admissions/faculty/recommendation.html', cap: 20000 }
+    ]
+  },
+  {
+    id: 'ritsumeikan',
+    name: '立命館大学',
+    officialUrl: 'https://www.ritsumei.ac.jp/applicant/before/ao/',
+    sources: [
+      { type: 'html', url: 'https://www.ritsumei.ac.jp/applicant/before/ao/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'kansai',
+    name: '関西大学',
+    officialUrl: 'https://www.kansai-u.ac.jp/admission/faculty/ao_recommend/',
+    sources: [
+      { type: 'html', url: 'https://www.kansai-u.ac.jp/admission/faculty/ao_recommend/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'kwansei',
+    name: '関西学院大学',
+    officialUrl: 'https://www.kwansei.ac.jp/admission/ao/',
+    sources: [
+      { type: 'html', url: 'https://www.kwansei.ac.jp/admission/ao/', cap: 20000 }
+    ]
+  },
+
+  // --- 優先グループB ---
+  {
+    id: 'apu',
+    name: '立命館アジア太平洋大学',
+    officialUrl: 'https://www.apu.ac.jp/admission/japan/',
+    sources: [
+      { type: 'html', url: 'https://www.apu.ac.jp/admission/japan/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'aiu',
+    name: '国際教養大学',
+    officialUrl: 'https://www.aiu.ac.jp/ja/admissions/ao/',
+    sources: [
+      { type: 'html', url: 'https://www.aiu.ac.jp/ja/admissions/ao/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'tus',
+    name: '東京理科大学',
+    officialUrl: 'https://www.tus.ac.jp/admissions/faculty/special/',
+    sources: [
+      { type: 'html', url: 'https://www.tus.ac.jp/admissions/faculty/special/', cap: 20000 }
+    ]
+  },
+
+  // --- 優先グループC（国立大） ---
+  {
+    id: 'tohoku',
+    name: '東北大学',
+    officialUrl: 'https://www.tohoku.ac.jp/japanese/admissions/admission01/admission01-01/',
+    sources: [
+      { type: 'html', url: 'https://www.tohoku.ac.jp/japanese/admissions/admission01/admission01-01/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'nagoya',
+    name: '名古屋大学',
+    officialUrl: 'https://www.nagoya-u.ac.jp/admissions/examination/specialty/',
+    sources: [
+      { type: 'html', url: 'https://www.nagoya-u.ac.jp/admissions/examination/specialty/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'hitotsubashi',
+    name: '一橋大学',
+    officialUrl: 'https://www.hit-u.ac.jp/guide/admission/ao/',
+    sources: [
+      { type: 'html', url: 'https://www.hit-u.ac.jp/guide/admission/ao/', cap: 20000 }
+    ]
+  },
+  {
+    id: 'tsukuba',
+    name: '筑波大学',
+    officialUrl: 'https://www.tsukuba.ac.jp/education/ug-admissions/special/',
+    sources: [
+      { type: 'html', url: 'https://www.tsukuba.ac.jp/education/ug-admissions/special/', cap: 20000 }
+    ]
   }
 ];
 
